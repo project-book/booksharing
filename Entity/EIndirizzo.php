@@ -64,6 +64,7 @@ class EIndirizzo
     {
         return "Via " . " $this->via" . "," ." $this->civico " .PHP_EOL. "$this->comune";
     }
+
     public function getobj()
     {
         return get_object_vars($this);
