@@ -22,11 +22,11 @@ class ERegistrato extends EUtente
         $this->indirizzo=new EIndirizzo($i->getVia(),$i->getNcivico(),$i->getcap(),$i->getComune(),$i->getprovincia());
         $this->saldo=$s;
     }
+
     public function getindirizzo(): EIndirizzo
     {
         return $this->indirizzo;
     }
-
 
     public function getsaldo(): int
     {
@@ -43,17 +43,13 @@ class ERegistrato extends EUtente
         return $this->cognome;
     }
 
-
     public function getemail(): string
     {
         return $this->EMAIL;
     }
-    public function addlibro(ECartaceo $a)
+
+    public function getobj():array
     {
-        array_push($this->listalibri,$a);
+        return array_merge(parent::getobj(),get_object_vars($this));
     }
-public function getobj():array
-{
-    return array_merge(parent::getobj(),get_object_vars($this));
-}
 }

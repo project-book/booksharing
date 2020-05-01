@@ -30,8 +30,7 @@ class FCartaceo
     {
         return $this->key;
     }
-//$fields = 'titolo,autore,editore,genere,anno,condizione,proprietario';
-//$values = ':titolo,:autore,:editore,:genere,:anno,:condizione,:proprietario';
+
     public function store($objec)
     {
         $o=$objec->getobj();
@@ -114,7 +113,9 @@ class FCartaceo
             $this->risultato[0]['genere'],$this->risultato[0]['anno'],$this->risultato[0]['condizione'],$x);
         return $p;
     }
-    public function delete($val) {
+
+    public function delete($val)
+    {
         $i=0;
         $s='';
         foreach ($val as $k=>$v) {
@@ -128,6 +129,7 @@ class FCartaceo
         print $query;
         return $this->query($query);
     }
+
     public function update($parametri = array(),$chiave = array())
     {
         $i=0;
@@ -162,5 +164,4 @@ class FCartaceo
         $stmt=$this->connection->prepare($query);
         $stmt->execute();
     }
-
 }

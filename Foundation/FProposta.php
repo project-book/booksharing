@@ -45,7 +45,8 @@ class FProposta
         $stmt->execute($return);
     }
 
-    public function delete($val) {
+    public function delete($val)
+    {
         $query='DELETE ' .
             'FROM `'.$this->tab.'` ' .
             'WHERE '.$this->key.'='.'\''.$val.'\'';

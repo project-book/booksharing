@@ -13,14 +13,4 @@ class EAdmin extends  EUtente
         $this->vendite=array();
     }
 
-    public function getUsr(): string
-    {
-        return $this->usr;
-    }
-
-    public function getPsw(): string
-    {
-        return $this->psw;
-    }
-
 }

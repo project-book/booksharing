@@ -1,6 +1,7 @@
 <?php
 require_once'autoload.php';
 require_once 'PersistentManager.php';
+
 class FRegistrato
 {
     protected $connection;
@@ -13,14 +14,17 @@ class FRegistrato
     {
         return $this->key;
     }
+
     public function __construct()
     {
         $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
     }
+
     public function getris():array
     {
         return $this->risultato;
     }
+
     public function query($query)
     {
         $stmt = $this->connection->query($query);
@@ -86,17 +90,17 @@ class FRegistrato
 
             }
         $stmt = $this->connection->prepare($query);
-        print $query;
-        print_r($return);
         $stmt->execute($return);
     }
 
-    public function delete($val) {
+    public function delete($val)
+    {
         $query='DELETE ' .
             'FROM `'.$this->tab.'` ' .
             'WHERE '.$this->key.'='.'\''.$val.'\'';
         return $this->query($query);
     }
+
     public function update($parametri = array(),$chiave)
     {
         $i=0;
@@ -126,7 +130,7 @@ class FRegistrato
         $stmt->execute();
     }
 
-    function load($chiave):ERegistrato
+    public function load($chiave):ERegistrato
     {
         $query='SELECT * ' .
             'FROM `'.$this->tab.'` '.'WHERE '.$this->key.'='.'\''.$chiave.'\'';      print $query;
@@ -140,7 +144,7 @@ class FRegistrato
         return $x;
     }
 
-    function search($par,$o):array
+    public function search($par,$o):array
     {
             $s='';
             foreach ($par as $key=>$value)
@@ -165,6 +169,4 @@ class FRegistrato
             }
             return $t;
     }
-
-
 }

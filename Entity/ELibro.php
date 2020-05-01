@@ -69,6 +69,7 @@ class ELibro
     {
         return $this->anno= $e;
     }
+
     public function getobj():array
     {
         return get_object_vars($this);

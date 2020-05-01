@@ -7,10 +7,10 @@ class EUtente
     private $password;
 
     public function __construct(string $a,string $b)
-{
-    $this->user=$a;
-    $this->password=$b;
-}
+    {
+        $this->user=$a;
+        $this->password=$b;
+    }
 
     public function getuser():string
     {
@@ -31,14 +31,15 @@ class EUtente
     {
         return $this->password=$a;
     }
-    public function __toString()
-{
-    return $this->user.$this->password;
-}
 
-public function getobj():array
-{
-    return get_object_vars($this);
-}
+    public function __toString()
+    {
+        return $this->user.$this->password;
+    }
+
+    public function getobj():array
+    {
+        return get_object_vars($this);
+    }
 }
 ?>

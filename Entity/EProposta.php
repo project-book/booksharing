@@ -33,6 +33,7 @@ class EProposta
     {
         return 'proponente: '.$this->proponente->__toString().'ricevente: '.$this->ricevente->__toString().'libro: '.$this->libro->__toString();
     }
+
     public function getobj():array
     {
         return get_object_vars($this);

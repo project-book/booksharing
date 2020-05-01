@@ -15,10 +15,9 @@ class ECartaceo extends ELibro
     {
         parent::__construct($t,$a,$e,$g,$an);
         $this->condizione = $c;
-        $this->proprietario=new ERegistrato($reg->getuser(),$reg->getpsw(),$reg->getnome(),$reg->getcognome(),
-            $reg->getemail(),
-           new EIndirizzo($reg->getindirizzo()->getVia(),$reg->getindirizzo()->getNcivico(),
-               $reg->getindirizzo()->getcap(),$reg->getindirizzo()->getComune(),$reg->getindirizzo()->getprovincia())
+        $this->proprietario=new ERegistrato($reg->getuser(),$reg->getpsw(),$reg->getnome(),$reg->getcognome(), $reg->getemail(),
+            new EIndirizzo($reg->getindirizzo()->getVia(),$reg->getindirizzo()->getNcivico(),
+                $reg->getindirizzo()->getcap(),$reg->getindirizzo()->getComune(),$reg->getindirizzo()->getprovincia())
                ,$reg->getsaldo());
     }
 
