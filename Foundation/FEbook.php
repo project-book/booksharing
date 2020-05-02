@@ -146,11 +146,8 @@ class FEbook
         $t=array();
         $n=count($this->risultato);
         for($i=0;$i<$n;$i++) {
-            $l = new FIndirizzo();
-            $x = $l->load(array($this->risultato[$i]['via'], $this->risultato[$i]['civico'], (int)$this->risultato[$i]['cap']));
-            $p = new ERegistrato($this->risultato[$i]['user'], $this->risultato[$i]['password'], $this->risultato[$i]['nome'], $this->risultato[$i]['cognome'], $this->risultato[$i]['email'], $x, $this->risultato[$i]['saldo']);
-
-            array_push($t,$p);
+            $p = new EEbook($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],(int)$this->risultato[$i]['anno'], (int)$this->risultato[$i]['prezzo_punti']);
+            array_push($t, $p);
         }
         return $t;
     }

@@ -52,4 +52,36 @@ class FProposta
             'WHERE '.$this->key.'='.'\''.$val.'\'';
         return $this->query($query);
     }
+
+
+    public function search($par,$o):array
+    {
+        $s='';
+        foreach ($par as $key=>$value)
+            if(gettype($value)=="integer")
+                $s.=' '.$key.'='.$value.' AND';
+            else
+                $s.=' '.$key.'='.'\''.$value.'\''.'AND';
+        $s=substr($s,0,strlen($s)-3);
+        $query='SELECT * ' .
+            'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
+        if ($o!='')
+            $query.='ORDER BY '.$o.' ';
+        print $query;
+        $this->query($query);
+        $t=array();
+        $n=count($this->risultato);
+        for($i=0;$i<$n;$i++) {
+            $l=new FCartaceo();
+            $ll=new FCartaceo();
+            $r=new FRegistrato();
+            $e=$r->load($this->risultato[$i]['proponente']);
+            $ee=$r->load($this->risultato[$i]['ricevente']);
+            $x=$l->load(array($this->risultato[$i]['titolo_libro'],$this->risultato[$i]['autore_libro']));
+            $xx=$ll->load(array($this->risultato[$i]['titolo_prop'],$this->risultato[$i]['autore_prop']));
+            $p = new EProposta($x,$xx);
+            array_push($t,$p);
+        }
+        return $t;
+    }
 }

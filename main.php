@@ -1,9 +1,12 @@
 <?php
 require_once"autoload.php";
 $x=new PersistentManager();
-$i=new EIndirizzo('via','civico',4,'comune','pro');
-$r=new ERegistrato('u','p','n','c','e',$i,5);
-$x->store($r);
+$p=new ERegistrato('d','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
+$pp=new ERegistrato('dedw','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
+
+$rr=new ECartaceo('uuu','pp','n','c',7,'',$p);
+$r=new ECartaceo('u','p','n','c',7,'s',$pp);
+var_dump($x->search('Cartaceo',array('genere'=>'c','titolo'=>'u'),'titolo'));
 
 
 

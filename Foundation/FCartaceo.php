@@ -164,4 +164,30 @@ class FCartaceo
         $stmt=$this->connection->prepare($query);
         $stmt->execute();
     }
+    public function search($par,$o):array
+    {
+        $s='';
+        foreach ($par as $key=>$value)
+            if(gettype($value)=="integer")
+                $s.=' '.$key.'='.$value.' AND';
+            else
+                $s.=' '.$key.'='.'\''.$value.'\''.'AND';
+        $s=substr($s,0,strlen($s)-3);
+        $query='SELECT * ' .
+            'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
+        if ($o!='')
+            $query.='ORDER BY '.$o.' ';
+        print $query;
+        $this->query($query);
+        $t=array();
+        $n=count($this->risultato);
+        for($i=0;$i<$n;$i++) {
+            $l = new FRegistrato();
+            $x = $l->load($this->risultato[$i]['user']);
+            $p = new ECartaceo($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],
+                (int)$this->risultato[$i]['anno'], $this->risultato[$i]['condizione'],$x);
+            array_push($t,$p);
+        }
+        return $t;
+    }
 }
