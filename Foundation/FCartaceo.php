@@ -7,7 +7,7 @@ class FCartaceo
     protected $connection;
     protected $risultato;
     protected $tab = 'libro_cartaceo';
-    protected $key = array('titolo','autore');
+    protected $key = array('titolo','autore','user');
     protected $type;
 
     public function __construct()
