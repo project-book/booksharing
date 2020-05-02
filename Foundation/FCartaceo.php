@@ -7,7 +7,7 @@ class FCartaceo
     protected $connection;
     protected $risultato;
     protected $tab = 'libro_cartaceo';
-    protected $key = array('titolo','autore');
+    protected $key = array('titolo','autore','user');
     protected $type;
 
     public function __construct()
@@ -88,8 +88,6 @@ class FCartaceo
 
             }
         $stmt = $this->connection->prepare($query);
-        print $query;
-        print_r($return);
         $stmt->execute($return);
 
     }
@@ -106,7 +104,6 @@ class FCartaceo
         $query='SELECT * ' .
             'FROM `'.$this->tab.'` '.'WHERE '.$s;      print $query;
         $this->query($query);
-        print_r($this->risultato);
         $i=new FRegistrato();
         $x=$i->load($this->risultato[0]['user']);
         $p = new ECartaceo($this->risultato[0]['titolo'],$this->risultato[0]['autore'],$this->risultato[0]['editore'],
@@ -126,7 +123,6 @@ class FCartaceo
         $query='DELETE ' .
             'FROM `'.$this->tab.'` ' .
             'WHERE '.$s;
-        print $query;
         return $this->query($query);
     }
 
@@ -164,6 +160,7 @@ class FCartaceo
         $stmt=$this->connection->prepare($query);
         $stmt->execute();
     }
+
     public function search($par,$o):array
     {
         $s='';
@@ -177,7 +174,6 @@ class FCartaceo
             'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
-        print $query;
         $this->query($query);
         $t=array();
         $n=count($this->risultato);

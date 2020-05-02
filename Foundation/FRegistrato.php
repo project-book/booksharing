@@ -125,7 +125,6 @@ class FRegistrato
             $query='UPDATE '.$this->tab.' SET '.$fields.' WHERE '.$this->key.'='.$chiave;
         if(gettype($chiave)=="string")
             $query='UPDATE '.$this->tab.' SET '.$fields.' WHERE '.$this->key.'='.'\''.$chiave.'\'';
-        print $query;
         $stmt=$this->connection->prepare($query);
         $stmt->execute();
     }
@@ -133,15 +132,13 @@ class FRegistrato
     public function load($chiave):ERegistrato
     {
         $query='SELECT * ' .
-            'FROM `'.$this->tab.'` '.'WHERE '.$this->key.'='.'\''.$chiave.'\'';      print $query;
+            'FROM `'.$this->tab.'` '.'WHERE '.$this->key.'='.'\''.$chiave.'\'';
         $this->query($query);
-         print_r($this->risultato);
           $i=new FIndirizzo();
-           $s=(int)$this->risultato[0]['cap'];
-       $x=$i->load(array($this->risultato[0]['via'],$this->risultato[0]['civico'],$s));
-        $x = new ERegistrato($this->risultato[0]['user'],$this->risultato[0]['password'],$this->risultato[0]['nome'],
+          $x=$i->load(array($this->risultato[0]['via'],$this->risultato[0]['civico'],$this->risultato[0]['cap']));
+        $p = new ERegistrato($this->risultato[0]['user'],$this->risultato[0]['password'],$this->risultato[0]['nome'],
             $this->risultato[0]['cognome'],$this->risultato[0]['email'],$x,$this->risultato[0]['saldo']);
-        return $x;
+        return $p;
     }
 
     public function search($par,$o):array

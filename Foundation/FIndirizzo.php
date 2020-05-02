@@ -67,7 +67,6 @@ class FIndirizzo
         }
         $query = 'SELECT * ' .'FROM `' . $this->tab . '` ' . 'WHERE ' .$s;
         $query=substr($query,0,strlen($query)-4);
-        print $query;
         $this->query($query);
         return $x = new EIndirizzo($this->risultato[0]['via'], $this->risultato[0]['civico'], $this->risultato[0]['cap'],
             $this->risultato[0]['comune'], $this->risultato[0]['provincia']);

@@ -39,9 +39,7 @@ class FProposta
         $return[':autore_libro']=$aa['autore'];
         $return[':proponente']=$a['proprietario']->getuser();
         $return[':ricevente']=$aa['proprietario']->getuser();
-        print_r($return);
         $stmt = $this->connection->prepare($query);
-        print $query;
         $stmt->execute($return);
     }
 
@@ -67,7 +65,6 @@ class FProposta
             'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
-        print $query;
         $this->query($query);
         $t=array();
         $n=count($this->risultato);

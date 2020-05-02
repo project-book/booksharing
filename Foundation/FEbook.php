@@ -52,8 +52,6 @@ class FEbook
         foreach ($ob as $key => $value)
             $return[':' . $key] = $value;
         $stmt = $this->connection->prepare($query);
-        print $query;
-        print_r($return);
         $stmt->execute($return);
     }
 
@@ -71,7 +69,6 @@ class FEbook
         $query = 'SELECT * ' .'FROM `' . $this->tab . '` ' . 'WHERE ' .$s;
         $query=substr($query,0,strlen($query)-4);
         $this->query($query);
-        print ($query);
         return $x = new EEbook($this->risultato[0]['titolo'], $this->risultato[0]['autore'], $this->risultato[0]['editore'],
             $this->risultato[0]['genere'], $this->risultato[0]['anno'],$this->risultato[0]['prezzo_punti']);
     }
