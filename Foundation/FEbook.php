@@ -128,4 +128,30 @@ class FEbook
         $stmt=$this->connection->prepare($query);
         $stmt->execute();
     }
+
+    public function search($par,$o):array
+    {
+        $s='';
+        foreach ($par as $key=>$value)
+            if(gettype($value)=="integer")
+                $s.=' '.$key.'='.$value.' AND';
+            else
+                $s.=' '.$key.'='.'\''.$value.'\''.'AND';
+        $s=substr($s,0,strlen($s)-3);
+        $query='SELECT * ' .
+            'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
+        if ($o!='')
+            $query.='ORDER BY '.$o.' ';
+        $this->query($query);
+        $t=array();
+        $n=count($this->risultato);
+        for($i=0;$i<$n;$i++) {
+            $l = new FIndirizzo();
+            $x = $l->load(array($this->risultato[$i]['via'], $this->risultato[$i]['civico'], (int)$this->risultato[$i]['cap']));
+            $p = new ERegistrato($this->risultato[$i]['user'], $this->risultato[$i]['password'], $this->risultato[$i]['nome'], $this->risultato[$i]['cognome'], $this->risultato[$i]['email'], $x, $this->risultato[$i]['saldo']);
+
+            array_push($t,$p);
+        }
+        return $t;
+    }
 }
