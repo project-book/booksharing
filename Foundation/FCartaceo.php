@@ -175,7 +175,8 @@ class FCartaceo
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);
-        $t=array();
+
+        /*$t=array();
         $n=count($this->risultato);
         for($i=0;$i<$n;$i++) {
             $l = new FRegistrato();
@@ -183,7 +184,7 @@ class FCartaceo
             $p = new ECartaceo($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],
                 (int)$this->risultato[$i]['anno'], $this->risultato[$i]['condizione'],$x);
             array_push($t,$p);
-        }
-        return $t;
+        }*/
+        return $this->risultato;
     }
 }

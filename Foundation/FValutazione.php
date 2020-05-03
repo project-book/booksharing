@@ -99,11 +99,34 @@ class FValutazione
                 }
             }
         }
-            print $query;
         $stmt = $this->connection->prepare($query);
-
-            print_r ($return);
         $stmt->execute($return);
 
+    }
+
+    public function delete($val)
+    {
+        $query='DELETE ' .
+            'FROM `'.$this->tab.'` ' .
+            'WHERE '.$this->key.'='.'\''.$val.'\'';
+        return $this->query($query);
+    }
+
+    public function search($par,$o):array
+    {
+        $s='';
+        foreach ($par as $key=>$value)
+            if(gettype($value)=="integer")
+                $s.=' '.$key.'='.$value.' AND';
+            else
+                $s.=' '.$key.'='.'\''.$value.'\''.'AND';
+        $s=substr($s,0,strlen($s)-3);
+        $query='SELECT * ' .
+            'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
+        if ($o!='')
+            $query.='ORDER BY '.$o.' ';
+        $this->query($query);
+
+        return $this->risultato;
     }
 }

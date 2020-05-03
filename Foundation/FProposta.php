@@ -66,7 +66,7 @@ class FProposta
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);
-        $t=array();
+        /*$t=array();
         $n=count($this->risultato);
         for($i=0;$i<$n;$i++) {
             $l=new FCartaceo();
@@ -78,7 +78,7 @@ class FProposta
             $xx=$ll->load(array($this->risultato[$i]['titolo_prop'],$this->risultato[$i]['autore_prop']));
             $p = new EProposta($x,$xx);
             array_push($t,$p);
-        }
-        return $t;
+        }*/
+        return $this->risultato;
     }
 }
