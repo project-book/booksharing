@@ -8,9 +8,6 @@ $rr=new ECartaceo('uuu','pp','n','c',7,'',$p);
 $r=new ECartaceo('u','p','n','c',7,'s',$pp);
 
 
-var_dump($x->load('Cartaceo',array('u','pp','dedw')));
-var_dump($x->search('Cartaceo',array('genere'=>'c','titolo'=>'u'),'titolo'));
-
 
 
 $aa=new EValutazione(1,'cuai',5,$pp,$p);

@@ -45,20 +45,6 @@ class EIndirizzo
         return $this->comune;
     }
 
-    public function setVia(string $param_via)
-    {
-        return $this->via = $param_via;
-    }
-
-    public function setNcivico(string $param_ncivico)
-    {
-        return $this->civico = $param_ncivico;
-    }
-
-    public function setComune(string $param_comune)
-    {
-        return $this->comune= $param_comune;
-    }
 
     public function __toString(): string
     {
