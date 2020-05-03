@@ -45,30 +45,6 @@ class ELibro
         return $this->anno;
     }
 
-    public function setTitolo(string $a)
-    {
-        return $this->titolo = $a;
-    }
-
-    public function setAutore(string $b)
-    {
-        return $this->autore = $b;
-    }
-
-    public function setEditore(string $c)
-    {
-        return $this->editore= $c;
-    }
-
-    public function setGenere(string $d)
-    {
-        return $this->genere= $d;
-    }
-
-    public function setAnno(int $e)
-    {
-        return $this->anno= $e;
-    }
 
     public function getobj():array
     {

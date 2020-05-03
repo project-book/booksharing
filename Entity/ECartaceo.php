@@ -26,15 +26,6 @@ class ECartaceo extends ELibro
         return $this->condizione;
     }
 
-    public function setCondizione(string $c)
-    {
-        return $this->condizione=$c;
-    }
-
-    public function setprop(string $a)
-    {
-        $this->proprietario=$a;
-    }
 
     public function getobj():array
     {
