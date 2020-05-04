@@ -8,9 +8,8 @@ class ERegistrato extends EUtente
 
     private $nome;
     private $cognome;
-    private $EMAIL;
+    private $email;
     private $indirizzo;
-
     private $saldo;
 
     public function __construct(string $a,string $b,string $c,string $d,string $e,EIndirizzo $i,int $s)
@@ -18,7 +17,7 @@ class ERegistrato extends EUtente
        parent::__construct($a,$b);
         $this->nome=$c;
         $this->cognome=$d;
-        $this->EMAIL=$e;
+        $this->email=$e;
         $this->indirizzo=new EIndirizzo($i->getVia(),$i->getNcivico(),$i->getcap(),$i->getComune(),$i->getprovincia());
         $this->saldo=$s;
     }
@@ -45,7 +44,7 @@ class ERegistrato extends EUtente
 
     public function getemail(): string
     {
-        return $this->EMAIL;
+        return $this->email;
     }
 
     public function getobj():array

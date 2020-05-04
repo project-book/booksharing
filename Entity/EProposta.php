@@ -14,26 +14,6 @@ class EProposta
         $this->librorich=$l;
     }
 
-    public function getprop():ERegistrato
-    {
-        return $this->proponente;
-    }
-
-    public function getric():ERegistrato
-    {
-        return $this->ricevente;
-    }
-
-    public function getlibro():ELibro
-    {
-        return $this->ricevente;
-    }
-
-    public function __toString():string
-    {
-        return 'proponente: '.$this->proponente->__toString().'ricevente: '.$this->ricevente->__toString().'libro: '.$this->libro->__toString();
-    }
-
     public function getobj():array
     {
         return get_object_vars($this);
