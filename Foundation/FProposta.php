@@ -14,7 +14,7 @@ class FProposta
         $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
     }
 
-    public function getris(): string
+    public function getris(): array
     {
         return $this->risultato;
     }

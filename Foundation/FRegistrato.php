@@ -6,7 +6,7 @@ class FRegistrato
 {
     protected $connection;
     protected $risultato;
-    protected $tab = 'Registrato';
+    protected $tab = 'registrato';
     protected $key = 'user';
     protected $type;
 
@@ -155,7 +155,7 @@ class FRegistrato
             if ($o!='')
                 $query.='ORDER BY '.$o.' ';
             $this->query($query);
-            $t=array();
+            /*$t=array();
             $n=count($this->risultato);
             for($i=0;$i<$n;$i++) {
                 $l = new FIndirizzo();
@@ -163,7 +163,7 @@ class FRegistrato
                 $p = new ERegistrato($this->risultato[$i]['user'], $this->risultato[$i]['password'], $this->risultato[$i]['nome'], $this->risultato[$i]['cognome'], $this->risultato[$i]['email'], $x, $this->risultato[$i]['saldo']);
 
                 array_push($t,$p);
-            }
-            return $t;
+            }*/
+            return $this->risultato;
     }
 }

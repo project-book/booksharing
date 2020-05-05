@@ -14,7 +14,7 @@ class ERegistrato extends EUtente
 
     public function __construct(string $a,string $b,string $c,string $d,string $e,EIndirizzo $i,int $s)
     {
-       parent::__construct($a,$b);
+        parent::__construct($a,$b);
         $this->nome=$c;
         $this->cognome=$d;
         $this->email=$e;

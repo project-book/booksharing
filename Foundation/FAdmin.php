@@ -31,4 +31,38 @@ class FAdmin
         return $this->key;
     }
 
+    public function store($objec)
+    {
+        $o=$objec->getobj();
+        $i = 0;
+        $values = '';
+        $fields = '';
+        foreach ($o as $key => $value)
+        {
+            if ($i == 0) {
+                $fields .= $key;
+                $values .= ':' . $key;
+            } else {
+                $fields .= ', ' . $key;
+                $values .= ', :' . $key;
+            }
+            $i++;
+        }
+        $query = 'INSERT INTO ' .$this->tab . ' (' . $fields . ') VALUES (' . $values . ');';
+
+        foreach ($o as $key => $value)
+                $return[':' . $key] = $value;
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute($return);
+    }
+
+    public function delete($val)
+    {
+        $query='DELETE ' .
+            'FROM `'.$this->tab.'` ' .
+            'WHERE '.$this->key.'='.'\''.$val.'\'';
+        return $this->query($query);
+    }
+
+
 }

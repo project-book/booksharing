@@ -92,7 +92,7 @@ class FCartaceo
 
     }
 
-    function load($chiave):ECartaceo
+    public function load($chiave):ECartaceo
     {
         $s='';
         $i=0;

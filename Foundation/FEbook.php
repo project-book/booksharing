@@ -140,12 +140,12 @@ class FEbook
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);
-        $t=array();
+        /*$t=array();
         $n=count($this->risultato);
         for($i=0;$i<$n;$i++) {
             $p = new EEbook($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],(int)$this->risultato[$i]['anno'], (int)$this->risultato[$i]['prezzo_punti']);
             array_push($t, $p);
-        }
-        return $t;
+        }*/
+        return $this->risultato;
     }
 }
