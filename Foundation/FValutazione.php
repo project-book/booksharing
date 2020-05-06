@@ -126,7 +126,17 @@ class FValutazione
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);
-
-        return $this->risultato;
+        $t=array();
+        $n=count($this->risultato);
+        for($i=0;$i<$n;$i++)
+        {
+            $tt=new FRegistrato();
+            $ii=new FRegistrato();
+            $e=$tt->load($this->risultato[$i]['valutante']);
+            $ee=$ii->load($this->risultato[$i]['valutato']);
+            $p = new EValutazione($this->risultato[$i]['id'],$this->risultato[$i]['commento'],$this->risultato[$i]['voto'],$e,$ee);
+            array_push($t, $p);
+        }
+        return $t;
     }
 }

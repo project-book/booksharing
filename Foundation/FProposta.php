@@ -66,19 +66,16 @@ class FProposta
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);
-        /*$t=array();
+        $t=array();
         $n=count($this->risultato);
         for($i=0;$i<$n;$i++) {
             $l=new FCartaceo();
             $ll=new FCartaceo();
-            $r=new FRegistrato();
-            $e=$r->load($this->risultato[$i]['proponente']);
-            $ee=$r->load($this->risultato[$i]['ricevente']);
-            $x=$l->load(array($this->risultato[$i]['titolo_libro'],$this->risultato[$i]['autore_libro']));
-            $xx=$ll->load(array($this->risultato[$i]['titolo_prop'],$this->risultato[$i]['autore_prop']));
+            $x=$l->load(array($this->risultato[$i]['titolo_libro'],$this->risultato[$i]['autore_libro'],$this->risultato[$i]['proponente']));
+            $xx=$ll->load(array($this->risultato[$i]['titolo_prop'],$this->risultato[$i]['autore_prop'],$this->risultato[$i]['ricevente']));
             $p = new EProposta($x,$xx);
             array_push($t,$p);
-        }*/
-        return $this->risultato;
+        }
+        return $t;
     }
 }

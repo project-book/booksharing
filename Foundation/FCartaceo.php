@@ -102,7 +102,7 @@ class FCartaceo
         }
         $s=substr($s,0,strlen($s)-4);
         $query='SELECT * ' .
-            'FROM `'.$this->tab.'` '.'WHERE '.$s;      print $query;
+            'FROM `'.$this->tab.'` '.'WHERE '.$s;
         $this->query($query);
         $i=new FRegistrato();
         $x=$i->load($this->risultato[0]['user']);
@@ -175,8 +175,7 @@ class FCartaceo
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);
-
-        /*$t=array();
+        $t=array();
         $n=count($this->risultato);
         for($i=0;$i<$n;$i++) {
             $l = new FRegistrato();
@@ -184,7 +183,7 @@ class FCartaceo
             $p = new ECartaceo($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],
                 (int)$this->risultato[$i]['anno'], $this->risultato[$i]['condizione'],$x);
             array_push($t,$p);
-        }*/
-        return $this->risultato;
+        }
+        return $t;
     }
 }
