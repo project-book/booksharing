@@ -1,7 +1,7 @@
 <?php
 
 
-class PersistentManager
+class FPersistentManager
 {
 
     public function store($o)

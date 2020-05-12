@@ -1,9 +1,6 @@
 <?php
 
-require_once "autoload.php";
-require_once "ELibro.php";
-require_once "ERegistrato.php";
-require_once "EIndirizzo.php";
+
 
 
 class ECartaceo extends ELibro

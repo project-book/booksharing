@@ -1,6 +1,6 @@
 <?php
-require_once"autoload.php";
-$x=new PersistentManager();
+require_once"Foundation/utility/autoload.php";
+$x=new FPersistentManager();
 $p=new ERegistrato('d','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
 $pp=new ERegistrato('dedw','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
 
@@ -11,7 +11,7 @@ $r=new ECartaceo('uuu','pp','n','c',7,'s',$pp);
 
 
 
-$ee=new EAdmin('mario','rossi');
+$ee=new EAdmin('bruno','verdi');
 $tr=new EEbook('o','p','edit','gen',1320,23);
 $aa=new EValutazione(1,'cuai',5,$pp,$p);
 $bb=new EValutazione(2,'rgdc',5,$p,$pp);
