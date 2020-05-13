@@ -1,7 +1,6 @@
 <?php
 
 require_once "autoload.php";
-
 class FCartaceo
 {
     protected $connection;
@@ -10,10 +9,12 @@ class FCartaceo
     protected $key = array('titolo','autore','user');
     protected $type;
 
+
     public function __construct()
     {
         $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
     }
+
 
     public function query($query)
     {

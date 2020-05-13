@@ -28,6 +28,9 @@ function my_autoloader($className)
             case 's':
             include_once( 'Foundation/utility/'. $className . '.php');
             break;
+        case 'c':
+            include_once( 'utility/'. $className . '.php' );
+            break;
     }
 }
 

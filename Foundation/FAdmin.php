@@ -1,7 +1,5 @@
 <?php
 
-
-
 class FAdmin
 {
     protected $connection;
@@ -10,11 +8,11 @@ class FAdmin
     protected $key = 'user';
     protected $type;
 
+
     public function __construct()
     {
         $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
     }
-
     public function query($query)
     {
         $stmt = $this->connection->query($query);
