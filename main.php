@@ -11,6 +11,7 @@ $r=new ECartaceo('uuu','pp','n','c',7,'s',$pp);
 
 
 
+
 $ee=new EAdmin('brjo','verdi');
 $tr=new EEbook('o','p','edit','gen',1320,23);
 $aa=new EValutazione(1,'cuai',5,$pp,$p);
