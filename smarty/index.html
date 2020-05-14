@@ -7,18 +7,18 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Booksharing : Home</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
+    <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Slick slider -->
-    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
     <!-- Theme color -->
-    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
 
     <!-- Main Style -->
-    <link href="style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 
     <!-- Fonts -->
 
@@ -67,9 +67,9 @@
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
 					        <li><a href="#">HOME</a></li>
-					        <li><a href="#mu-book-overview">CERCA LIBRO</a></li>
+					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#mu-author">CERCA EBOOK</a></li>
-                                            <li><a href="login.html">LOGIN</a></li>
+                                            <li><a href="#login">LOGIN</a></li>
 				            <li><a href="#mu-contact">CONTACT</a></li>
 				      	</ul>
 				    </div><!-- /.navbar-collapse -->
@@ -87,7 +87,7 @@
 
 				<div class="col-md-6 col-sm-6 col-sm-push-6">
 					<div class="mu-hero-right">
-						<img src="assets/images/ebook.png" alt="Ebook img">
+						<img src="images/ebook.png" alt="Ebook img">
 					</div>
 				</div>
 
@@ -112,49 +112,49 @@
 
 
 		<!-- Start Cerca libro -->
-		<section id="mu-book-overview">
+		<section id="cerca-libro">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="mu-book-overview-area">
+						<div class="cerca-libro-area">
 
-							<div class="mu-heading-area">
-								<h2 class="mu-heading-title">CERCA LIBRO</h2>
-								<span class="mu-header-dot"></span>
-								<form method="post" action="ricerca.html">
+							<div class="cerca-libro-heading-area">
+								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
+								<span class="cerca-libro-header-dot"></span>
+								<form method="post" action="ricerca">
 
-  <!-- CASELLE DI TESTO -->
-  TITOLO<br>
-  <input type="text" name="titolo"><br>
-  AUTORE<br>
-  <input type="text" name="autore"><br>
-  EDITORE<br>
-  <input type="text" name="editore"><br>
-  ANNO<br>
-  <input type="text" name="anno"><br>
+  									<!-- CASELLE DI TESTO -->
+  										TITOLO<br>
+ 									 <input type="text" name="titolo"><br>
+  										AUTORE<br>
+  									<input type="text" name="autore"><br>
+  										EDITORE<br>
+  									<input type="text" name="editore"><br>
+  										ANNO<br>
+  									<input type="text" name="anno"><br>
   
-  <!-- SELECTBOX -->
-  GENERE<br>
-  <select name="genere">
-  <option value=""></option>
-  <option value="G">Giallo</option>
-  <option value="H">Horror</option>
-  </select><br>
+  									<!-- SELECTBOX -->
+  										GENERE<br>
+  									<select name="genere">
+ 									<option value=""></option>
+  									<option value="G">Giallo</option>
+  									<option value="H">Horror</option>
+  									</select><br>
 
-  <!-- CHECKBOX -->
-  CONDIZIONE<br>
-  <input type="checkbox" name="condizone" value="N"> Nuovo<br>
-  <input type="checkbox" name="condizione" value="U"> Usato<br>
-
-
-
-  <!-- SUBMIT -->
-  <input type="submit" name="ricerca" value="ricerca">
-
-</form>
+  									<!-- CHECKBOX -->
+ 										CONDIZIONE<br>
+  									<input type="checkbox" name="condizone" value="N"> Nuovo<br>
+  									<input type="checkbox" name="condizione" value="U"> Usato<br>
 
 
-					
+
+  										<!-- SUBMIT -->
+ 							 <input type="submit" name="ricerca" value="ricerca">
+
+								</form>
+
+
+							</div>
 						</div>
 					</div>
 				</div>
@@ -166,60 +166,57 @@
 
 
 
-		<!-- Start Cercaebook -->
-		<section id="mu-author">
+		<!-- Start Cerca ebook -->
+		<section id="cercaebook">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="mu-author-area">
-
-							<div class="mu-heading-area">
-								<h2 class="mu-heading-title">CERCA EBOOK</h2>
-								<span class="mu-header-dot"></span>
+						<div class="cerca-ebook-area">
+								<h2 class="cerca-ebook-heading-title">CERCA EBOOK</h2>
+								<span class="cerca-ebook-header-dot"></span>
 								<br>
-<form method="post" action="VCercaebook.php">
+								<form method="post" action="VCercaebook.php">
 
-  <!-- CASELLE DI TESTO -->
-  TITOLO<br>
-  <input type="text" name="titolo"><br>
-  AUTORE<br>
-  <input type="text" name="autore"><br>
-  EDITORE<br>
-  <input type="text" name="editore"><br>
-  ANNO<br>
-  <input type="text" name="anno"><br>
+  								<!-- CASELLE DI TESTO -->
+  									TITOLO<br>
+  								<input type="text" name="titolo"><br>
+  									AUTORE<br>
+  								<input type="text" name="autore"><br>
+  									EDITORE<br>
+  								<input type="text" name="editore"><br>
+  									ANNO<br>
+  								<input type="text" name="anno"><br>
   
-  <!-- SELECTBOX -->
-  GENERE<br>
-  <select name="genere">
-  <option value=""></option>
-  <option value="G">Giallo</option>
-  <option value="H">Horror</option>
-  </select><br>
+  								<!-- SELECTBOX -->
+  									GENERE<br>
+  								<select name="genere">
+  								<option value=""></option>
+  								<option value="G">Giallo</option>
+  								<option value="H">Horror</option>
+  								</select><br>
 
-  <!-- CHECKBOX -->
-  CONDIZIONE<br>
-  <input type="checkbox" name="condizone" value="N"> Nuovo<br>
-  <input type="checkbox" name="condizione" value="U"> Usato<br>
+  								<!-- CHECKBOX -->
+  									CONDIZIONE<br>
+  								<input type="checkbox" name="condizone" value="N"> Nuovo<br>
+  								<input type="checkbox" name="condizione" value="U"> Usato<br>
 
-  <!-- CHECKBOX -->
-  FASCIA DI PREZZO<br>
-  <input type="checkbox" name="fascia di prezzo" value="0"> 0-50<br>
-  <input type="checkbox" name="fascia di prezzo" value="50"> 50-100<br>
+  								<!-- CHECKBOX -->
+  									FASCIA DI PREZZO<br>
+  								<input type="checkbox" name="fascia di prezzo" value="0"> 0-50<br>
+  								<input type="checkbox" name="fascia di prezzo" value="50"> 50-100<br>
 
 
-  <!-- SUBMIT -->
-  <input type="submit" name="ricerca" value="ricerca">
+ 								 <!-- SUBMIT -->
+ 								 <input type="submit" name="ricerca" value="ricerca">
 
-</form>
+								</form>
 
- 
-
+ 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- End Author -->
+		<!-- End cerca ebook -->
 
 
 
@@ -276,18 +273,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 	<!-- Slick slider -->
-    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
     <!-- Counter js -->
-    <script type="text/javascript" src="assets/js/counter.js"></script>
+    <script type="text/javascript" src="js/counter.js"></script>
     <!-- Ajax contact form  -->
-    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
    
  
 	
     <!-- Custom js -->
-	<script type="text/javascript" src="assets/js/custom.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
 	
     
   </body>

@@ -13,10 +13,8 @@ Version: 1.0
 #HEADER	
 #MENU 
 #HERO SECTION
-#COUNTER
-#BOOK OVERVIEW
-#VIDEO REVIEW
-#AUTHOR
+#CERCA LIBRO
+#CERCA EBOOK
 #PRICING
 #READERS TESTIMONIALS
 #CONTACT US
@@ -390,104 +388,39 @@ button:focus {
 
 
 /*--------------------*/
-/* COUNTER */
-/*--------------------*/
-
-#mu-counter {
-	background-color: #fff;
-	background-position: center center;
-	background-size: cover;
-	background-attachment: fixed;
-	display: inline;
-	float: left;
-	position: relative;
-	width: 100%;
-}
-
-.mu-counter-area {
-	display: inline;
-	float: left;
-	padding: 70px 0 50px;
-	width: 100%;
-}
-
-.mu-counter-area h2 {
-	color: #fff;
-	text-align: center;
-}
-
-.mu-counter-block {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-.mu-single-counter {
-	display: inline;
-	float: left;
-	text-align: center;
-	width: 80%;
-	border: 1px solid #ddd;
-	padding-bottom: 20px;
-	margin: 0 10%;
-}
-
-.mu-single-counter i {
-	font-size: 40px;
-	padding: 15px 40px;
-	margin-bottom: 0px;
-	display: inline-block;
-	padding-bottom: 0;
-	margin-top: -60px;
-	background: #fff;
-}
-
-.counter-value {
-	font-size: 35px;
-	font-weight: 700;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.mu-counter-name {
-	color: #333;
-}
-
-
-/*--------------------*/
-/* BOOK OVERVIEW */
+/* CERCA LIBRO */
 /*--------------------*/
 
 
-#mu-book-overview {
+#cerca-libro {
 	background-color: #f8f8f8;
 	display: inline;
 	float: left;
 	width: 100%;
 }
 
-.mu-book-overview-area {
+.cerca-libro-area {
 	display: inline;
 	float: left;
 	padding: 100px 0;
 	width: 100%;
 }
 
-.mu-heading-area {
+.cerca-libro-heading-area {
 	display: inline;
 	float: left;
 	text-align: center;
-	padding: 0 10%;
+	padding: 0 30%;
 	width: 100%;
 }
 
-.mu-heading-title {
+.cerca-libro-heading-title {
 	color: #1c1b1b;
 	margin-bottom: 15px;
 	position: relative;
 }
 
-.mu-header-dot {
+.cerca-libro-header-dot {
 	border-radius: 0;
 	height: 3px;
 	width: 100px;
@@ -495,154 +428,48 @@ button:focus {
 	margin-bottom: 20px;
 }
 
-.mu-book-overview-content{
-	display: inline;
-	float: left;
-	margin-top: 70px;
-	width: 100%;
-}
-
-.mu-book-overview-single {
-	display: inline;
-	float: left;
-	text-align: center;
-	width: 100%;
-	background: #fff;
-	padding: 20px 10px;
-	margin: 10px 0 15px;
-}
-
-.mu-book-overview-icon-box {
-	font-size: 25px;
-	padding: 5px 12px;
-	margin-bottom: 30px;
-	display: inline-block;
-}
-
-.mu-book-overview-single h4{
-	margin-bottom: 20px;
-}
 
 
 /*--------------------*/
-/* VIDEO REVIEW */
+/* CERCA BOOK */
 /*--------------------*/
 
 
-#mu-video-review {
-	background-image: url(assets/images/video-review-bg.jpeg);
-	background-attachment: fixed;
-	background-size: cover;
-	display: inline;
-	position: relative;
-	float: left;
-	width: 100%;
-}
-
-#mu-video-review:before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	opacity: 0.84;
-}
-
-.mu-video-review-area {
-	display: inline;
-	float: left;
-	padding: 150px 0;
-	width: 100%;
-}
-
-.mu-video-review-area .mu-heading-title, 
-.mu-video-review-area .mu-heading-area p{
-	color: #fff;
-}
-
-.mu-video-review-area .mu-header-dot {
-	background-color: #f8f8f8;
-}
-
-.mu-video-review-content {
-	display: inline;
-	float: left;
-	margin-top: 70px;
-	width: 100%;
-	padding: 0 10%;
-}
-
-.mu-video-iframe {
-	height: 550px;
-}
-
-/*--------------------*/
-/* AUTHOR */
-/*--------------------*/
-
-
-#mu-author {
+#cercaebook {
 	background-color: #fff;
 	display: inline;
 	float: left;
 	width: 100%;
 }
 
-.mu-author-area {
+.cerca-ebook-area {
 	display: inline;
 	float: left;
 	padding: 100px 0;
 	width: 100%;
 }
 
-.mu-author-content{
+.cerca-ebook-heading-area {
 	display: inline;
 	float: left;
-	margin-top: 50px;
-	width: 100%;
-}
-
-.mu-author-image {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-.mu-author-info {
-	display: inline;
-	float: left;
-	margin-top: 20px;
-	width: 100%;
-}
-
-.mu-author-info h3 {
-	border-bottom: 1px solid #ddd;
-	padding-bottom: 10px;
-	margin-bottom: 20px;
-}
-
-.mu-author-info p {
-	margin-bottom: 20px;
-}
-
-.mu-author-social {
-	display: inline;
-	float: left;
-	margin-top: 25px;
-	width: 100%;
-}
-
-.mu-author-social a {
-	display: inline-block;
-	font-size: 16px;
-	padding: 5px;
-	margin-right: 10px;
-	color: #fff;
-	width: 35px;
 	text-align: center;
+	padding: 0 30%;
+	width: 100%;
 }
 
+.cerca-ebook-heading-title {
+	color: #1c1b1b;
+	margin-bottom: 15px;
+	position: relative;
+}
+
+.cerca-ebook-header-dot {
+	border-radius: 0;
+	height: 3px;
+	width: 100px;
+	display: inline-block;
+	margin-bottom: 20px;
+}
 
 
 
