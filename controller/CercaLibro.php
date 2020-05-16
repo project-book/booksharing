@@ -3,6 +3,7 @@
 
 class CercaLibro
 {
+    print_r($_SERVER);
     public function ricerca($p)
     {
       $VRicerca=new VCercaLibro();

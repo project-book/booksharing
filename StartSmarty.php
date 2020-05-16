@@ -1,5 +1,6 @@
 <?php
 require_once'smarty/Smarty.class.php';
+
 class StartSmarty
 {
     static function configuration()
