@@ -121,7 +121,9 @@
 							<div class="cerca-libro-heading-area">
 								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
 								<span class="cerca-libro-header-dot"></span>
+
 								<form method="post" action="/booksharing/Controller/CCercaLibro.php/ricerca">
+
 
   									<!-- CASELLE DI TESTO -->
   										TITOLO<br>

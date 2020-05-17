@@ -1,19 +1,20 @@
 <?php
 
 
-class CercaLibro
+class CCercaLibro
 {
-    public function ricerca($p)
+    public function ricerca()
     {
+       
       $VRicerca=new VCercaLibro();
-        $t=array();
-      $t['titolo']=$VRicerca->gettitolo();
-      //$t['autore']=0;
-      //$t['editore']=0;
-      //$t['genere']=0;
-      //$t['anno']=0;
-      //$t['condizione']=0;
-      $ordine='';
+      $t=array();
+      $t['titolo']=0;
+      $t['autore']=0;
+      $t['editore']=0;
+      $t['genere']=0;
+      $t['anno']=0;
+      $t['condizione']=0;
+      $ordine=0;
       $classe='Cartaceo';
       $x=new FPersistentManager();
       $y=array();
@@ -22,8 +23,6 @@ class CercaLibro
           if($v!=NULL)
               $y[$k]=$v;
       }
-      $result= $x->search($classe,$y,$ordine);
-      $VRicerca->showResult($result);
+      $VRicerca->showresult($x->search($classe,$y,$ordine));
     }
 }
-?>
