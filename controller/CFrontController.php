@@ -10,20 +10,15 @@ class CFrontController
         $method = $_SERVER['REQUEST_METHOD'];
         $resource = explode('/', $p);
         array_shift($resource);
-        print $resource[0];
-        if ($resource[0] != 'booksharing') {
-
-            $controller = "C" . $resource[0];
-            $dir = 'Controller';
+        if (array_key_exists(2,$resource)) {
+            $controller = "C" . $resource[1];
+            $dir = 'controller';
             $eledir = scandir($dir);
-
             if (in_array($controller . ".php", $eledir)) {
-                if (isset($resource[1])) {
-                    $function = $resource[1];
+                    $function = $resource[2];
                     if (method_exists($controller, $function)) {
-
                         $param = array();
-                        for ($i = 2; $i < count($resource); $i++) {
+                        for ($i = 3; $i < count($resource); $i++) {
                             $param[] = $resource[$i];
                             $a = $i - 2;
                         }
@@ -34,10 +29,11 @@ class CFrontController
                     }
                 }
             }
-        } else
+         else
         {
             $x=StartSmarty::configuration();
             $x->display('index.tpl');
+            
         }
 
     }

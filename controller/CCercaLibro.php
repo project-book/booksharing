@@ -1,13 +1,13 @@
 <?php
 
 
-class CercaLibro
+class CCercaLibro
 {
-    print_r($_SERVER);
-    public function ricerca($p)
+    public function ricerca()
     {
+        print 'ciao';
       $VRicerca=new VCercaLibro();
-    $t=array();
+      $t=array();
       $t['titolo']=0;
       $t['autore']=0;
       $t['editore']=0;
