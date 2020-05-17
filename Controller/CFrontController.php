@@ -10,7 +10,8 @@ class CFrontController
         $method = $_SERVER['REQUEST_METHOD'];
         $resource = explode('/', $p);
         array_shift($resource);
-        print $resource[0];
+        print_r($resource);
+
         if ($resource[0] != 'booksharing') {
 
             $controller = "C" . $resource[0];

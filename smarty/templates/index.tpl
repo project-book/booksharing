@@ -55,7 +55,7 @@
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BOOKSHARING</a>
+				      <a class="navbar-brand" href="/booksharing/smarty/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BOOKSHARING</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png"></a> -->
@@ -121,7 +121,7 @@
 							<div class="cerca-libro-heading-area">
 								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
 								<span class="cerca-libro-header-dot"></span>
-								<form method="post" action="/booksharing/Ricerca/ricerca">
+								<form method="post" action="/booksharing/Controller/CCercaLibro.php/ricerca">
 
   									<!-- CASELLE DI TESTO -->
   										TITOLO<br>
