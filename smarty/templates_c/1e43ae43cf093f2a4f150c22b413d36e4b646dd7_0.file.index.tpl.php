@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-05-18 18:22:37
+  from 'C:\xampp\htdocs\booksharing\smarty\templates\index.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5ec2b64dbb8e83_84194795',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '1e43ae43cf093f2a4f150c22b413d36e4b646dd7' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\booksharing\\smarty\\templates\\index.tpl',
+      1 => 1589818899,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ec2b64dbb8e83_84194795 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -32,8 +55,12 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
+>
     <![endif]-->
   </head>
 
@@ -272,22 +299,36 @@
 	
 	
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
+>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 	<!-- Slick slider -->
-    <script type="text/javascript" src="js/slick.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/slick.min.js"><?php echo '</script'; ?>
+>
     <!-- Counter js -->
-    <script type="text/javascript" src="js/counter.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/counter.js"><?php echo '</script'; ?>
+>
     <!-- Ajax contact form  -->
-    <script type="text/javascript" src="js/app.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/app.js"><?php echo '</script'; ?>
+>
    
  
 	
     <!-- Custom js -->
-	<script type="text/javascript" src="js/custom.js"></script>
+	<?php echo '<script'; ?>
+ type="text/javascript" src="js/custom.js"><?php echo '</script'; ?>
+>
 	
     
   </body>
 </html>
+<?php }
+}

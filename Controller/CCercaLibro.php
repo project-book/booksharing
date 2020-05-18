@@ -5,7 +5,9 @@ class CCercaLibro
 {
     public function ricerca()
     {
-       
+        $smarty = StartSmarty::configuration();
+        $smarty->display('ricerca.tpl');
+
       $VRicerca=new VCercaLibro();
       $t=array();
       $t['titolo']=0;

@@ -22,9 +22,8 @@ class VCercaLibro
     public function showResult($result){
 
         $this->smarty->assign('array', $result);
-
         //mostro la home con i risultati della query
-        $this->smarty->display('index.tpl');
+        $this->smarty->display('ricerca.tpl');
     }
 
 }
