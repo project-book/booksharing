@@ -6,11 +6,14 @@ class CFrontController
 {
     public function run($p)
     {
-        $method = $_SERVER['REQUEST_METHOD'];
+        
         $resource = explode('/', $p);
         array_shift($resource);
-        print_r($resource);
+        if($resource[0]!='booksharing')
+        	array_shift($resource);
+  
         if ($resource[1] != NULL) {
+        
           $controller = "C" . $resource[1];
             $dir = 'Controller';
             $eledir = scandir($dir);
@@ -22,7 +25,7 @@ class CFrontController
                         $param = array();
                         for ($i = 3; $i < count($resource); $i++) {
                             $param[] = $resource[$i];
-                            $a = $i - 2;
+                            $a = $i - 3;
                         }
                         $num = (count($param));
                         if ($num == 0) $controller::$function();
