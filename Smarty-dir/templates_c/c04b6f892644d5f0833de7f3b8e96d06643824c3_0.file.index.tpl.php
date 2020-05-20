@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-20 18:43:04
-  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-05-20 18:42:37
+  from '/home/giorgio/public_html/booksharing/Smarty-dir/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ec55e183dec03_95638738',
+  'unifunc' => 'content_5ec55dfdbeec71_08751486',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '4a9ae5d6a20ecc9cb7e7409fd4cb285d466938ee' => 
+    'c04b6f892644d5f0833de7f3b8e96d06643824c3' => 
     array (
-      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl',
+      0 => '/home/giorgio/public_html/booksharing/Smarty-dir/templates/index.tpl',
       1 => 1589992828,
       2 => 'file',
     ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ec55e183dec03_95638738 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ec55dfdbeec71_08751486 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>

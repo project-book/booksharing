@@ -93,7 +93,7 @@
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
 						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Smarty-dir/html/registarti.html">REGISTRATI</a>
+						 <a href="/booksharing/Smarty-dir/html/registrati.html">REGISTRATI</a>
 					</div>
 				</div>	
 
@@ -275,18 +275,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"></script>
 	<!-- Slick slider -->
-    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"></script>
     <!-- Counter js -->
-    <script type="text/javascript" src="../assets/js/counter.js"></script>
+    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"></script>
     <!-- Ajax contact form  -->
-    <script type="text/javascript" src="../assets/js/app.js"></script>
+    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
    
  
 	
     <!-- Custom js -->
-	<script type="text/javascript" src="../assets/js/custom.js"></script>
+	<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"></script>
 	
     
   </body>
