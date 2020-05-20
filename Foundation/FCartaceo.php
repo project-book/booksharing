@@ -1,6 +1,5 @@
 <?php
 
-require_once "autoload.php";
 class FCartaceo
 {
     protected $connection;
@@ -164,6 +163,7 @@ class FCartaceo
 
     public function search($par,$o):array
     {
+
         $s='';
         foreach ($par as $key=>$value)
             if(gettype($value)=="integer")
@@ -186,5 +186,6 @@ class FCartaceo
             array_push($t,$p);
         }
         return $t;
+
     }
 }

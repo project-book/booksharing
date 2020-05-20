@@ -7,18 +7,19 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Booksharing : Home</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
+    <link rel="shortcut icon" type="image/icon" href="/booksharing/smarty/images/favicon.ico"/>
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/booksharing/smarty/css/bootstrap.min.css" rel="stylesheet">
     <!-- Slick slider -->
-    <link href="css/slick.css" rel="stylesheet">
+    <link href="/booksharing/smarty/css/slick.css" rel="stylesheet">
     <!-- Theme color -->
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="/booksharing/smarty/css/theme-color/default-theme.css" rel="stylesheet">
+
 
     <!-- Main Style -->
-    <link href="css/index.css" rel="stylesheet">
+    <link href="/booksharing/smarty/css/index.css" rel="stylesheet">
 
     <!-- Fonts -->
 
@@ -145,10 +146,11 @@
 
   									<!-- CHECKBOX -->
  										CONDIZIONE<br>
-  									<input type="checkbox" name="condizone" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
-
-
+									<select name="condizione">
+										<option value=""></option>
+										<option value="N">nuovo</option>
+										<option value="U">usato</option>
+									</select><br>
 
   										<!-- SUBMIT -->
  							 <input type="submit" name="ricerca" value="ricerca">

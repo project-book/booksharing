@@ -5,18 +5,16 @@ class CCercaLibro
 {
     public function ricerca()
     {
-        $smarty = StartSmarty::configuration();
-        $smarty->display('ricerca.tpl');
 
       $VRicerca=new VCercaLibro();
       $t=array();
-      $t['titolo']=0;
-      $t['autore']=0;
-      $t['editore']=0;
-      $t['genere']=0;
-      $t['anno']=0;
-      $t['condizione']=0;
-      $ordine=0;
+      $t['titolo']=$VRicerca->gettitolo();
+      $t['autore']=$VRicerca->getautore();
+      $t['editore']=$VRicerca->geteditore();
+      $t['genere']=$VRicerca->getgenere();
+      $t['anno']=$VRicerca->getanno();
+      $t['condizione']=$VRicerca->getcondizione();
+      $ordine='';
       $classe='Cartaceo';
       $x=new FPersistentManager();
       $y=array();
