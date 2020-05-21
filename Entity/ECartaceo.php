@@ -23,7 +23,10 @@ class ECartaceo extends ELibro
         return $this->condizione;
     }
 
-
+public function getUser()
+{
+    return $this->proprietario;
+}
     public function getobj():array
     {
         $y=parent::getobj();

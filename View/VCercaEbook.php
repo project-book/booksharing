@@ -1,9 +1,8 @@
 <?php
 
 
-class VCercaLibro
+class VCercaEbook
 {
-
     private $smarty;
 
     public function __construct()
@@ -46,31 +45,19 @@ class VCercaLibro
             $value = $_POST['genere'];
         return $value;
     }
-    public function getcondizione()
+    public function getprezzo()
     {
         $value = NULL;
         if (isset($_POST))
-            $value = $_POST['condizione'];
+            $value = $_POST['prezzo_punti'];
         return $value;
     }
 
-    public function showResult($result,$l){
+    public function showResult($result){
 
         $this->smarty->assign('array', $result);
-        $this->smarty->assign('libriposseduti', $l);
         //mostro la home con i risultati della query
-        $this->smarty->display('ricercalibro.tpl');
-    }
-
-    //CARICA LA PAGINA DI RIEPILOGO PROPOSTA
-    public function showlibro($l,$ll)
-    {
-        $x=getobj($l);
-        $xx=getobj($ll);
-        $this->smarty->assign('LibroRichiesto',$x);
-        $this->smarty->assign('LibroProposto',$xx);
-        $this->smarty->display('riepilogo.tpl');
+        $this->smarty->display('ricercaebook.tpl');
     }
 
 }
-?>

@@ -5,7 +5,6 @@ class CCercaLibro
 {
     public function ricerca()
     {
-
       $VRicerca=new VCercaLibro();
       $t=array();
       $t['titolo']=$VRicerca->gettitolo();
@@ -23,6 +22,17 @@ class CCercaLibro
           if($v!=NULL)
               $y[$k]=$v;
       }
-      $VRicerca->showresult($x->search($classe,$y,$ordine));
+      $libri=$x->search('Cartaceo',array(),$ordine);
+      $VRicerca->showresult($x->search($classe,$y,$ordine),$libri);
+
+    }
+    public function scambia()
+    {
+     $x=new FPersistentManager();
+     $xx=$_POST['LibroPersonale'];
+     $ll=$_POST['LibroRichiesto'];
+     $y=$x->load('Cartaceo',array($t,$a,$u));
+     $v=new Smarty();
+     $v->showlibro($y,$xx);
     }
 }
