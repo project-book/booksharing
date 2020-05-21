@@ -12,7 +12,7 @@ class CCercaLibro
       $t['editore']=$VRicerca->geteditore();
       $t['genere']=$VRicerca->getgenere();
       $t['anno']=$VRicerca->getanno();
-      $t['condizione']=$VRicerca->getcondizione();
+      //$t['condizione']=$VRicerca->getcondizione();
       $ordine='';
       $classe='Cartaceo';
       $x=new FPersistentManager();
@@ -22,8 +22,8 @@ class CCercaLibro
           if($v!=NULL)
               $y[$k]=$v;
       }
-      $libri=$x->search('Cartaceo',array(),$ordine);
-      $VRicerca->showresult($x->search($classe,$y,$ordine),$libri);
+      //$libri=$x->search('Cartaceo',array(),$ordine);
+      $VRicerca->showresult($x->search($classe,$y,$ordine));
 
     }
     public function scambia()

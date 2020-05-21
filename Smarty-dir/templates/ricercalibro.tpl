@@ -16,7 +16,7 @@
 	<link id="switcher" href="/booksharing/Smarty-dir/assets/css/theme-color/default-theme.css" rel="stylesheet">
 
 	<!-- Main Style -->
-	<link href="/booksharing/Smarty-dir/assets/css/style.css" rel="stylesheet">
+	<link href="/booksharing/Smarty-dir/assets/css/ricercalibro.css" rel="stylesheet">
 
 	<!-- Fonts -->
 
@@ -82,29 +82,109 @@
 
 
 
-	<section id="mu-hero">
-		<div class="container">
-			<div class="row">
+	<section id="cerca-libro">
+			<hr>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="cerca-libro-overview-area">
 
-				<div class="col-md-6 col-sm-6 col-sm-push-6">
-					<div class="mu-hero-right">
-						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+							<div class="cerca-libro-heading-area">
+								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
+								<span class="cerca-libro-header-dot"></span>
+								<p>Scrivi i valori di ricerca</p>
+							</div>
+
+							<!-- Start Cerca Libro Overview Content -->
+							<div class="cerca-libro-overview-content">
+								<div class="row">
+
+								<form method="post" action="/booksharing/CercaLibro/ricerca">
+
+  									<!-- CASELLE DI TESTO -->
+ 									TITOLO<br>
+  									<input type="text" name="titolo"><br>
+  									AUTORE<br>
+  									<input type="text" name="autore"><br>
+  									EDITORE<br>
+  									<input type="text" name="editore"><br>
+  									ANNO<br>
+  									<input type="text" name="anno"><br>
+  									
+  									
+  									<!-- SELECTBOX -->
+  									GENERE<br>
+  									<select name="genere">
+ 									<option value=""></option>
+  									<option value="G">Giallo</option>
+  									<option value="H">Horror</option>
+  									</select><br>
+
+  									<!-- CHECKBOX -->
+ 									CONDIZIONE<br>
+  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
+  									<input type="checkbox" name="condizione" value="U"> Usato<br>
+
+
+
+  										<!-- SUBMIT -->
+ 							 <input type="submit" name="ricerca" value="ricerca">
+  								
+
+									</form>
+								</div>
+							</div>
+							<!-- End Cerca Libro Overview Content -->
+							<!-- Start Cerca Libro Overview Content -->
+							<div class="cerca-libro-overview-content">
+								<div class="row">
+
+								<form method="post" action="/booksharing/CercaLibro/ricerca">
+
+  									<!-- CASELLE DI TESTO -->
+ 									TITOLO<br>
+  									<input type="text" name="titolo"><br>
+  									AUTORE<br>
+  									<input type="text" name="autore"><br>
+  									EDITORE<br>
+  									<input type="text" name="editore"><br>
+  									ANNO<br>
+  									<input type="text" name="anno"><br>
+  									
+  									
+  									<!-- SELECTBOX -->
+  									GENERE<br>
+  									<select name="genere">
+ 									<option value=""></option>
+  									<option value="G">Giallo</option>
+  									<option value="H">Horror</option>
+  									</select><br>
+
+  									<!-- CHECKBOX -->
+ 									CONDIZIONE<br>
+  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
+  									<input type="checkbox" name="condizione" value="U"> Usato<br>
+
+
+
+  										<!-- SUBMIT -->
+ 							 <input type="submit" name="ricerca" value="ricerca">
+  								
+
+									</form>
+								</div>
+							</div>
+							<!-- End Cerca Libro Overview Content -->
+
+						</div>
 					</div>
 				</div>
-
-				<div class="col-md-6 col-sm-6 col-sm-pull-6">
-					<div class="mu-hero-left">
-						<h1>Condividi i tuoi libri </h1>
-						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						{foreach $array as $x}
-						<a href="booksharing/CercaLibro/scambia/{$x->geTtitolo()}/{$x->getAutore()}/{$x->getUser()}">REGISTRATI</a>
-						{/foreach}
-					</div>
-				</div>
-
 			</div>
-		</div>
-	</section>
+		</section>
+
+		<!-- End Cerca Libro -->
+
+
 
 
 </main>

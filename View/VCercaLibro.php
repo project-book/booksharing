@@ -54,10 +54,10 @@ class VCercaLibro
         return $value;
     }
 
-    public function showResult($result,$l){
+    public function showResult($result){
 
         $this->smarty->assign('array', $result);
-        $this->smarty->assign('libriposseduti', $l);
+        //$this->smarty->assign('libriposseduti', $l);
         //mostro la home con i risultati della query
         $this->smarty->display('ricercalibro.tpl');
     }

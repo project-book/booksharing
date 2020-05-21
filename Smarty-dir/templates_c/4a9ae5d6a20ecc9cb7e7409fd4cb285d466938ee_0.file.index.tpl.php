@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-20 18:43:04
+/* Smarty version 3.1.34-dev-7, created on 2020-05-21 18:35:50
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ec55e183dec03_95638738',
+  'unifunc' => 'content_5ec6ade6cd1835_26352238',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a9ae5d6a20ecc9cb7e7409fd4cb285d466938ee' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl',
-      1 => 1589992828,
+      1 => 1590078402,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ec55e183dec03_95638738 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -184,7 +184,6 @@ function content_5ec55e183dec03_95638738 (Smarty_Internal_Template $_smarty_tpl)
 
   										<!-- SUBMIT -->
  							 <input type="submit" name="ricerca" value="ricerca">
-  									
   								
 
 									</form>
