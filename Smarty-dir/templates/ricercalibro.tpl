@@ -90,7 +90,9 @@
 
 <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 <tr>
+
 <td width="70%">&nbsp;
+
 <table id="customers">
 
 <h1> libri da scegliere </h1>
@@ -104,12 +106,14 @@
     <th>Genere</th>
     <th>Anno</th>
     <th>Condizione</th>
+
     
   </tr>
   {foreach $array as $x}
     <tr>
     <td>
     <div class="bottone">
+
 	<input type="radio" name="LibroRichiesto"
 	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"></div><br></div>
 	</td>
@@ -120,6 +124,7 @@
     <td>{$x->getgenere()}</td>
     <td>{$x->getanno()}</td>
     <td>{$x->getcondizione()}</td>
+
     
   </tr>
   
@@ -127,7 +132,9 @@
   </table>
   </td>
     
+
 <td width="30%">&nbsp;
+
 <table id="customers">
   
  
@@ -144,6 +151,7 @@
     <div class="bottone">
 	<input type="radio" name="LibroPersonale" 
 	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"><br></div>
+
 	</td>
     <td>{$x->gettitolo()}</td>
     <td>{$x->getautore()}</td>
@@ -178,7 +186,7 @@
 									<div class="testo-centrato">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
 					</div>
-					<hr>
+
 
 							<!-- End Cerca Libro Overview Content -->
 
