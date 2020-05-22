@@ -46,7 +46,7 @@
 				<!-- Brand and toggle get grouped for better mobile display -->
 
 					<!-- Text Logo -->
-					<a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+					<a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 					<!-- Image Logo -->
 					<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -76,46 +76,101 @@
 						<div class="cerca-libro-overview-area">
 
 							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
+								<h2 class="cerca-libro-heading-title">SELEZIONA LIBRO</h2>
 								<span class="cerca-libro-header-dot"></span>
-								<p>Scrivi i valori di ricerca</p>
+								<p>Seleziona il libro che vuoi</p>
 							</div>
-							<form method="post" action="/booksharing/CercaLibro/scambia">
-<div class="cerca-libro-overview-content1">
+							
 
-							{foreach $array as $x}
-								Libri personali<br>
-								<select name="LibroPersonale">
-									<option value=""></option>
-									<option value="G">{$x->gettitolo()}-{$x->getautore()}-
-										<div class="ciao">{$x->getUser()->getuser()}</div> </option>
-								</select><br>
-							{/foreach}
-
-						</div>
 					</div>
 				</div>
 			</div>
 	</section>
-							<!-- Start Cerca Libro Overview Content -->
+							<form method="post" action="/booksharing/CercaLibro/scambia">
+
+<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+<tr>
+<td width="50%">&nbsp;
+<table id="customers">
+
+<h1> libri da scegliere </h1>
+
+  <tr>
+    <th>Seleziona</th>
+    <th>User</th>
+    <th>Autore</th>
+    <th>Titolo</th>
+    
+  </tr>
+  {foreach $array as $x}
+    <tr>
+    <td>
+    <div class="bottone">
+	<input type="radio" name="LibroRichiesto" value="titolo">	
+	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}</div><br></div>
+	</td>
+    <td>{$x->getUser()->getuser()}</td>
+    <td>{$x->getautore()}</td>
+    
+    <td>{$x->gettitolo()}</td>
+    
+  </tr>
+  
+  {/foreach}
+  </table>
+  </td>
+    
+<td width="50%">&nbsp;
+<table id="customers">
+  
+ 
+<h1> libri personali </h1>
+  <tr>
+    <th>Seleziona</th>
+    <th>Titolo</th>
+    <th>Autore</th>
+    
+  </tr>
+  {foreach $array as $x}
+    <tr>
+    <td>
+    <div class="bottone">
+	<input type="radio" name="LibroPersonale" value="titolo">	
+	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}</div><br></div>
+	</td>
+    <td>{$x->gettitolo()}</td>
+    <td>{$x->getautore()}</td>
+    
+    
+    
+  </tr>
+  {/foreach}
+  </table>
+</td>
+  
+  
+  </tr>
+  </table>
+  
+ 
+
+		
+						<div class="testo-centrato">
+						  
+							
 
 
-									{foreach $array as $x}
-										<div class="bottone">
-										<input type="radio" name="LibroRichiesto" value="titolo">
-										<div class="ciao">{$x->gettitolo()}</div><br>
-										</div>
-										<div class="text-center"
-										<h2>{$x->gettitolo()}{$x->getautore()}</h2>
-										</div>
-										<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-									{/foreach}
+ 							 <input type="submit" name="ricerca" value="Richiedi scambio" >
 
-
-
- 							 <input type="submit" name="ricerca" value="Richiedi scambio">
-
+								</div>
+								
+									
 									</form>
+									
+									
+									<div class="testo-centrato">
+						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+					</div>
 
 							<!-- End Cerca Libro Overview Content -->
 

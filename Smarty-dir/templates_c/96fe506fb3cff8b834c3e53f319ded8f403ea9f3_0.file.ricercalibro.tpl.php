@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-21 19:40:31
+/* Smarty version 3.1.34-dev-7, created on 2020-05-22 17:02:01
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercalibro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ec6bd0f015250_44566173',
+  'unifunc' => 'content_5ec7e9698d1477_67707118',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '96fe506fb3cff8b834c3e53f319ded8f403ea9f3' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercalibro.tpl',
-      1 => 1590082826,
+      1 => 1590159719,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ec6bd0f015250_44566173 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ec7e9698d1477_67707118 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,16 +71,9 @@ function content_5ec6bd0f015250_44566173 (Smarty_Internal_Template $_smarty_tpl)
 		<nav class="navbar navbar-default mu-navbar">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
 
 					<!-- Text Logo -->
-					<a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+					<a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 					<!-- Image Logo -->
 					<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -89,15 +82,7 @@ function content_5ec6bd0f015250_44566173 (Smarty_Internal_Template $_smarty_tpl)
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav mu-menu navbar-right">
-						<li><a href="#">HOME</a></li>
-						<li><a href="#cerca-libro">CERCA LIBRO</a></li>
-						<li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-						<li><a href="">LOGIN</a></li>
-						<li><a href="#mu-contact">CONTATTI</a></li>
-					</ul>
-				</div><!-- /.navbar-collapse -->
+
 			</div><!-- /.container-fluid -->
 		</nav>
 	</div>
@@ -109,105 +94,139 @@ function content_5ec6bd0f015250_44566173 (Smarty_Internal_Template $_smarty_tpl)
 
 
 
+
 	<section id="cerca-libro">
-			<hr>
+
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="cerca-libro-overview-area">
 
 							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
+								<h2 class="cerca-libro-heading-title">SELEZIONA LIBRO</h2>
 								<span class="cerca-libro-header-dot"></span>
-								<p>Scrivi i valori di ricerca</p>
+								<p>Seleziona il libro che vuoi</p>
 							</div>
+							
 
-							<!-- Start Cerca Libro Overview Content -->
-							<div class="cerca-libro-overview-content">
-								<div class="row">
-
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
-
-  									<!-- CASELLE DI TESTO -->
- 									TITOLO<br>
-  									<input type="text" name="titolo"><br>
-  									AUTORE<br>
-  									<input type="text" name="autore"><br>
-  									EDITORE<br>
-  									<input type="text" name="editore"><br>
-  									ANNO<br>
-  									<input type="text" name="anno"><br>
-  									
-  									
-  									<!-- SELECTBOX -->
-  									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
-  									</select><br>
-
-  									<!-- CHECKBOX -->
- 									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
-
-
-
-  										<!-- SUBMIT -->
- 							 <input type="submit" name="ricerca" value="ricerca">
-  								
-
-									</form>
-								</div>
-							</div>
-							<!-- End Cerca Libro Overview Content -->
-							<!-- Start Cerca Libro Overview Content -->
-							<div class="cerca-libro-overview-content">
-								<div class="row">
-
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
-
-  									<!-- CASELLE DI TESTO -->
- 									TITOLO<br>
-  									<input type="text" name="titolo"><br>
-  									AUTORE<br>
-  									<input type="text" name="autore"><br>
-  									EDITORE<br>
-  									<input type="text" name="editore"><br>
-  									ANNO<br>
-  									<input type="text" name="anno"><br>
-  									
-  									
-  									<!-- SELECTBOX -->
-  									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
-  									</select><br>
-
-  									<!-- CHECKBOX -->
- 									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
-
-
-
-  										<!-- SUBMIT -->
- 							 <input type="submit" name="ricerca" value="ricerca">
-  								
-
-									</form>
-								</div>
-							</div>
-							<!-- End Cerca Libro Overview Content -->
-
-						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+	</section>
+							<form method="post" action="/booksharing/CercaLibro/scambia">
+
+<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+<tr>
+<td width="50%">&nbsp;
+<table id="customers">
+
+<h1> libri da scegliere </h1>
+
+  <tr>
+    <th>Seleziona</th>
+    <th>User</th>
+    <th>Autore</th>
+    <th>Titolo</th>
+    
+  </tr>
+  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
+    <tr>
+    <td>
+    <div class="bottone">
+	<input type="radio" name="LibroRichiesto" value="titolo">	
+	<div class="ciao"><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+</div><br></div>
+	</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+</td>
+    
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+</td>
+    
+  </tr>
+  
+  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+  </table>
+  </td>
+    
+<td width="50%">&nbsp;
+<table id="customers">
+  
+ 
+<h1> libri personali </h1>
+  <tr>
+    <th>Seleziona</th>
+    <th>Titolo</th>
+    <th>Autore</th>
+    
+  </tr>
+  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
+    <tr>
+    <td>
+    <div class="bottone">
+	<input type="radio" name="LibroPersonale" value="titolo">	
+	<div class="ciao"><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+</div><br></div>
+	</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+</td>
+    
+    
+    
+  </tr>
+  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+  </table>
+</td>
+  
+  
+  </tr>
+  </table>
+  
+ 
+
+		
+						<div class="testo-centrato">
+						  
+							
+
+
+ 							 <input type="submit" name="ricerca" value="Richiedi scambio" >
+
+								</div>
+								
+									
+									</form>
+									
+									
+									<div class="testo-centrato">
+						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+					</div>
+
+							<!-- End Cerca Libro Overview Content -->
+
+
 
 		<!-- End Cerca Libro -->
 

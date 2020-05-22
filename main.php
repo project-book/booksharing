@@ -1,11 +1,11 @@
 <?php
 require_once"Foundation/utility/autoload.php";
-//$x=new FPersistentManager();
-//$p=new ERegistrato('d','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
+$x=new FPersistentManager();
+$p=new ERegistrato('d','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
 //$pp=new ERegistrato('dedw','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
 
 //$rr=new ECartaceo('u','p','n','c',7,'',$p);
-//$r=new ECartaceo('uuu','pp','n','c',7,'s',$pp);
+$r=new ECartaceo('uuu','pp','n','c',7,'s',$p);
 
 
 
@@ -20,7 +20,7 @@ require_once"Foundation/utility/autoload.php";
 //$ww=new EProposta($rr,$r);
 //$x->delete('Proposta',24);
 //print_r($x->search('Valutazione',array('id'=>1),''));
-//$x->store($ee);
+$x->store($r);
 //$x->delete('Admin','mario');
 //$x->delete('Valutazione',1);
 //$x->search('Cartaceo',array('genere'=>'c','titolo'=>'u'),'titolo');
