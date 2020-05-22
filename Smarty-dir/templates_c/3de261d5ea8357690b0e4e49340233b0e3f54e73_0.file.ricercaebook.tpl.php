@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-05-22 18:20:37
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercaebook.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5ec7fbd5335148_12108201',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '3de261d5ea8357690b0e4e49340233b0e3f54e73' => 
+    array (
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercaebook.tpl',
+      1 => 1590164363,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ec7fbd5335148_12108201 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -30,8 +53,12 @@
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
+>
 	<![endif]-->
 </head>
 
@@ -76,7 +103,7 @@
 						<div class="cerca-libro-overview-area">
 
 							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">SELEZIONA LIBRO</h2>
+								<h2 class="cerca-libro-heading-title">SELEZIONA EBOOK</h2>
 								<span class="cerca-libro-header-dot"></span>
 								<p>Seleziona il libro che vuoi</p>
 							</div>
@@ -86,74 +113,62 @@
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/CercaLibro/scambia">
+							<form method="post" action="/booksharing/CercaLibro/compra">
 
 <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 <tr>
-<td width="70%">&nbsp;
+<td width="80%">&nbsp;
 <table id="customers">
 
-<h1> libri da scegliere </h1>
+<h1> Ebook da scegliere </h1>
 
   <tr>
     <th>Seleziona</th>
-    <th>User</th>
     <th>Titolo</th>
     <th>Autore</th>
     <th>Editore</th>
     <th>Genere</th>
     <th>Anno</th>
-    <th>Condizione</th>
+    <th>prezzo punti</th>
     
   </tr>
-  {foreach $array as $x}
+  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
     <tr>
     <td>
     <div class="bottone">
-	<input type="radio" name="LibroRichiesto"
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"></div><br></div>
+	<input type="radio" name="LibroRichiesto" value="titolo">	
+	<div class="ciao"><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+</div><br></div>
 	</td>
-    <td>{$x->getUser()->getuser()}</td>
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
-    <td>{$x->geteditore()}</td>
-    <td>{$x->getgenere()}</td>
-    <td>{$x->getanno()}</td>
-    <td>{$x->getcondizione()}</td>
+    
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->geteditore();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getgenere();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getanno();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getprezzo();?>
+</td>
     
   </tr>
   
-  {/foreach}
+  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </table>
   </td>
     
-<td width="30%">&nbsp;
-<table id="customers">
-  
- 
-<h1> libri personali </h1>
-  <tr>
-    <th>Seleziona</th>
-    <th>Titolo</th>
-    <th>Autore</th>
-    
-  </tr>
-  {foreach $array as $x}
-    <tr>
-    <td>
-    <div class="bottone">
-	<input type="radio" name="LibroPersonale" 
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"><br></div>
-	</td>
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
-    
-    
-    
-  </tr>
-  {/foreach}
-  </table>
-</td>
+
   
   
   </tr>
@@ -167,7 +182,7 @@
 							
 
 
- 							 <input type="submit" name="ricerca" value="Richiedi scambio" >
+ 							 <input type="submit" name="ricerca" value="COMPRA" >
 
 								</div>
 								
@@ -178,10 +193,8 @@
 									<div class="testo-centrato">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
 					</div>
-					<hr>
 
-							<!-- End Cerca Libro Overview Content -->
-
+							<hr>
 
 
 		<!-- End Cerca Libro -->
@@ -193,22 +206,36 @@
 
 <!-- End main content -->
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
+>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
-<script src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 <!-- Slick slider -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"><?php echo '</script'; ?>
+>
 <!-- Counter js -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"><?php echo '</script'; ?>
+>
 <!-- Ajax contact form  -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"><?php echo '</script'; ?>
+>
 
 
 
 <!-- Custom js -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"><?php echo '</script'; ?>
+>
 
 
 </body>
 </html>
+<?php }
+}

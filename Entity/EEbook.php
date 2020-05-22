@@ -11,7 +11,7 @@ class EEbook extends ELibro
         $this->prezzo_punti = $p;
     }
 
-    public function getPrezzo(): int
+    public function getprezzo(): int
     {
         return $this->prezzo_punti;
     }

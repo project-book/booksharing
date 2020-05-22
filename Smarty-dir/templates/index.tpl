@@ -53,7 +53,7 @@
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -144,14 +144,14 @@
   									GENERE<br>
   									<select name="genere">
  									<option value=""></option>
-  									<option value="G">Giallo</option>
+  									<option value="c">c</option>
   									<option value="H">Horror</option>
   									</select><br>
 
   									<!-- CHECKBOX -->
  									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
+  									<input type="checkbox" name="condizione" value="s"> Nuovo<br>
+  									<input type="checkbox" name="condizione" value="h"> Usato<br>
 
 
 
@@ -193,7 +193,7 @@
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
+								<form method="post" action="/booksharing/CercaEbook/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>

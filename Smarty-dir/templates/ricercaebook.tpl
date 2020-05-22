@@ -76,7 +76,7 @@
 						<div class="cerca-libro-overview-area">
 
 							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">SELEZIONA LIBRO</h2>
+								<h2 class="cerca-libro-heading-title">SELEZIONA EBOOK</h2>
 								<span class="cerca-libro-header-dot"></span>
 								<p>Seleziona il libro che vuoi</p>
 							</div>
@@ -86,40 +86,39 @@
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/CercaLibro/scambia">
+							<form method="post" action="/booksharing/CercaLibro/compra">
 
 <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 <tr>
-<td width="70%">&nbsp;
+<td width="80%">&nbsp;
 <table id="customers">
 
-<h1> libri da scegliere </h1>
+<h1> Ebook da scegliere </h1>
 
   <tr>
     <th>Seleziona</th>
-    <th>User</th>
     <th>Titolo</th>
     <th>Autore</th>
     <th>Editore</th>
     <th>Genere</th>
     <th>Anno</th>
-    <th>Condizione</th>
+    <th>prezzo punti</th>
     
   </tr>
   {foreach $array as $x}
     <tr>
     <td>
     <div class="bottone">
-	<input type="radio" name="LibroRichiesto"
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"></div><br></div>
+	<input type="radio" name="LibroRichiesto" value="titolo">	
+	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}</div><br></div>
 	</td>
-    <td>{$x->getUser()->getuser()}</td>
+    
     <td>{$x->gettitolo()}</td>
     <td>{$x->getautore()}</td>
     <td>{$x->geteditore()}</td>
     <td>{$x->getgenere()}</td>
     <td>{$x->getanno()}</td>
-    <td>{$x->getcondizione()}</td>
+    <td>{$x->getprezzo()}</td>
     
   </tr>
   
@@ -127,33 +126,7 @@
   </table>
   </td>
     
-<td width="30%">&nbsp;
-<table id="customers">
-  
- 
-<h1> libri personali </h1>
-  <tr>
-    <th>Seleziona</th>
-    <th>Titolo</th>
-    <th>Autore</th>
-    
-  </tr>
-  {foreach $array as $x}
-    <tr>
-    <td>
-    <div class="bottone">
-	<input type="radio" name="LibroPersonale" 
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"><br></div>
-	</td>
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
-    
-    
-    
-  </tr>
-  {/foreach}
-  </table>
-</td>
+
   
   
   </tr>
@@ -167,7 +140,7 @@
 							
 
 
- 							 <input type="submit" name="ricerca" value="Richiedi scambio" >
+ 							 <input type="submit" name="ricerca" value="COMPRA" >
 
 								</div>
 								
@@ -178,10 +151,8 @@
 									<div class="testo-centrato">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
 					</div>
-					<hr>
 
-							<!-- End Cerca Libro Overview Content -->
-
+							<hr>
 
 
 		<!-- End Cerca Libro -->

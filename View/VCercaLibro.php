@@ -69,7 +69,7 @@ class VCercaLibro
         $xx=getobj($ll);
         $this->smarty->assign('LibroRichiesto',$x);
         $this->smarty->assign('LibroProposto',$xx);
-        $this->smarty->display('riepilogo.tpl');
+        $this->smarty->display('riepilogoscambio.tpl');
     }
 
 }

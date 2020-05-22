@@ -106,12 +106,12 @@
     <th>Condizione</th>
     
   </tr>
-  {foreach $array as $x}
+  {foreach $LibroRichiesto as $x}
     <tr>
     <td>
     <div class="bottone">
-	<input type="radio" name="LibroRichiesto"
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"></div><br></div>
+	<input type="radio" name="LibroRichiesto" value="titolo">	
+	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}</div><br></div>
 	</td>
     <td>{$x->getUser()->getuser()}</td>
     <td>{$x->gettitolo()}</td>
@@ -136,17 +136,23 @@
     <th>Seleziona</th>
     <th>Titolo</th>
     <th>Autore</th>
+    <th>Editore</th>
+    <th>Genere</th>
+    <th>Anno</th>
     
   </tr>
-  {foreach $array as $x}
+  {foreach $LibroProposto as $x}
     <tr>
     <td>
     <div class="bottone">
-	<input type="radio" name="LibroPersonale" 
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"><br></div>
+	<input type="radio" name="LibroPersonale" value="titolo">	
+	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}</div><br></div>
 	</td>
     <td>{$x->gettitolo()}</td>
     <td>{$x->getautore()}</td>
+    <td>{$x->geteditore()}</td>
+    <td>{$x->getgenere()}</td>
+    <td>{$x->getanno()}</td>
     
     
     
@@ -178,7 +184,6 @@
 									<div class="testo-centrato">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
 					</div>
-					<hr>
 
 							<!-- End Cerca Libro Overview Content -->
 

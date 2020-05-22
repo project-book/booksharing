@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-21 18:35:50
+/* Smarty version 3.1.34-dev-7, created on 2020-05-22 18:38:39
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ec6ade6cd1835_26352238',
+  'unifunc' => 'content_5ec8000f317917_71841453',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a9ae5d6a20ecc9cb7e7409fd4cb285d466938ee' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl',
-      1 => 1590078402,
+      1 => 1590165513,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ec8000f317917_71841453 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80,7 +80,7 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -171,14 +171,14 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
   									GENERE<br>
   									<select name="genere">
  									<option value=""></option>
-  									<option value="G">Giallo</option>
+  									<option value="c">c</option>
   									<option value="H">Horror</option>
   									</select><br>
 
   									<!-- CHECKBOX -->
  									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
+  									<input type="checkbox" name="condizione" value="s"> Nuovo<br>
+  									<input type="checkbox" name="condizione" value="h"> Usato<br>
 
 
 
@@ -220,7 +220,7 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
+								<form method="post" action="/booksharing/CercaEbook/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>

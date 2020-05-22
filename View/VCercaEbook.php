@@ -45,13 +45,13 @@ class VCercaEbook
             $value = $_POST['genere'];
         return $value;
     }
-    public function getprezzo()
+    /*public function getprezzo()
     {
         $value = NULL;
         if (isset($_POST))
             $value = $_POST['prezzo_punti'];
         return $value;
-    }
+    }*/
 
     public function showResult($result){
 
