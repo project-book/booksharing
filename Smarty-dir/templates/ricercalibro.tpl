@@ -44,13 +44,6 @@
 		<nav class="navbar navbar-default mu-navbar">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
 
 					<!-- Text Logo -->
 					<a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
@@ -62,15 +55,7 @@
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav mu-menu navbar-right">
-						<li><a href="#">HOME</a></li>
-						<li><a href="#cerca-libro">CERCA LIBRO</a></li>
-						<li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-						<li><a href="">LOGIN</a></li>
-						<li><a href="#mu-contact">CONTATTI</a></li>
-					</ul>
-				</div><!-- /.navbar-collapse -->
+
 			</div><!-- /.container-fluid -->
 		</nav>
 	</div>
@@ -82,8 +67,9 @@
 
 
 
+
 	<section id="cerca-libro">
-			<hr>
+
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -94,93 +80,46 @@
 								<span class="cerca-libro-header-dot"></span>
 								<p>Scrivi i valori di ricerca</p>
 							</div>
+							<form method="post" action="/booksharing/CercaLibro/scambia">
+<div class="cerca-libro-overview-content1">
 
-							<!-- Start Cerca Libro Overview Content -->
-							<div class="cerca-libro-overview-content">
-								<div class="row">
-
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
-
-  									<!-- CASELLE DI TESTO -->
- 									TITOLO<br>
-  									<input type="text" name="titolo"><br>
-  									AUTORE<br>
-  									<input type="text" name="autore"><br>
-  									EDITORE<br>
-  									<input type="text" name="editore"><br>
-  									ANNO<br>
-  									<input type="text" name="anno"><br>
-  									
-  									
-  									<!-- SELECTBOX -->
-  									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
-  									</select><br>
-
-  									<!-- CHECKBOX -->
- 									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
-
-
-
-  										<!-- SUBMIT -->
- 							 <input type="submit" name="ricerca" value="ricerca">
-  								
-
-									</form>
-								</div>
-							</div>
-							<!-- End Cerca Libro Overview Content -->
-							<!-- Start Cerca Libro Overview Content -->
-							<div class="cerca-libro-overview-content">
-								<div class="row">
-
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
-
-  									<!-- CASELLE DI TESTO -->
- 									TITOLO<br>
-  									<input type="text" name="titolo"><br>
-  									AUTORE<br>
-  									<input type="text" name="autore"><br>
-  									EDITORE<br>
-  									<input type="text" name="editore"><br>
-  									ANNO<br>
-  									<input type="text" name="anno"><br>
-  									
-  									
-  									<!-- SELECTBOX -->
-  									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
-  									</select><br>
-
-  									<!-- CHECKBOX -->
- 									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
-
-
-
-  										<!-- SUBMIT -->
- 							 <input type="submit" name="ricerca" value="ricerca">
-  								
-
-									</form>
-								</div>
-							</div>
-							<!-- End Cerca Libro Overview Content -->
+							{foreach $array as $x}
+								Libri personali<br>
+								<select name="LibroPersonale">
+									<option value=""></option>
+									<option value="G">{$x->gettitolo()}-{$x->getautore()}-
+										<div class="ciao">{$x->getUser()->getuser()}</div> </option>
+								</select><br>
+							{/foreach}
 
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+	</section>
+							<!-- Start Cerca Libro Overview Content -->
+
+
+									{foreach $array as $x}
+										<div class="bottone">
+										<input type="radio" name="LibroRichiesto" value="titolo">
+										<div class="ciao">{$x->gettitolo()}</div><br>
+										</div>
+										<div class="text-center"
+										<h2>{$x->gettitolo()}{$x->getautore()}</h2>
+										</div>
+										<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+									{/foreach}
+
+
+
+ 							 <input type="submit" name="ricerca" value="Richiedi scambio">
+
+									</form>
+
+							<!-- End Cerca Libro Overview Content -->
+
+
 
 		<!-- End Cerca Libro -->
 

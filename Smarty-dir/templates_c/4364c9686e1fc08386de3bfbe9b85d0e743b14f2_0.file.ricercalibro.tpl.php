@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-21 15:51:17
+/* Smarty version 3.1.34-dev-7, created on 2020-05-22 13:11:06
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\ricercalibro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ec6875500b858_16586794',
+  'unifunc' => 'content_5ec7b34a0c02d8_65480485',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4364c9686e1fc08386de3bfbe9b85d0e743b14f2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\ricercalibro.tpl',
-      1 => 1590069001,
+      1 => 1590145864,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ec6875500b858_16586794 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ec7b34a0c02d8_65480485 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +39,7 @@ function content_5ec6875500b858_16586794 (Smarty_Internal_Template $_smarty_tpl)
 	<link id="switcher" href="/booksharing/Smarty-dir/assets/css/theme-color/default-theme.css" rel="stylesheet">
 
 	<!-- Main Style -->
-	<link href="/booksharing/Smarty-dir/assets/css/style.css" rel="stylesheet">
+	<link href="/booksharing/Smarty-dir/assets/css/ricercalibro.css" rel="stylesheet">
 
 	<!-- Fonts -->
 
@@ -71,13 +71,6 @@ function content_5ec6875500b858_16586794 (Smarty_Internal_Template $_smarty_tpl)
 		<nav class="navbar navbar-default mu-navbar">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
 
 					<!-- Text Logo -->
 					<a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
@@ -89,15 +82,7 @@ function content_5ec6875500b858_16586794 (Smarty_Internal_Template $_smarty_tpl)
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav mu-menu navbar-right">
-						<li><a href="#">HOME</a></li>
-						<li><a href="#cerca-libro">CERCA LIBRO</a></li>
-						<li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-						<li><a href="">LOGIN</a></li>
-						<li><a href="#mu-contact">CONTATTI</a></li>
-					</ul>
-				</div><!-- /.navbar-collapse -->
+
 			</div><!-- /.container-fluid -->
 		</nav>
 	</div>
@@ -109,39 +94,83 @@ function content_5ec6875500b858_16586794 (Smarty_Internal_Template $_smarty_tpl)
 
 
 
-	<section id="mu-hero">
-		<div class="container">
-			<div class="row">
 
-				<div class="col-md-6 col-sm-6 col-sm-push-6">
-					<div class="mu-hero-right">
-						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
-					</div>
-				</div>
+	<section id="cerca-libro">
 
-				<div class="col-md-6 col-sm-6 col-sm-pull-6">
-					<div class="mu-hero-left">
-						<h1>Condividi i tuoi libri </h1>
-						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						<?php
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="cerca-libro-overview-area">
+
+							<div class="cerca-libro-heading-area">
+								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
+								<span class="cerca-libro-header-dot"></span>
+								<p>Scrivi i valori di ricerca</p>
+							</div>
+							<form method="post" action="/booksharing/CercaLibro/scambia">
+<div class="cerca-libro-overview-content1">
+
+							<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ?>
-						<a href="booksharing/CercaLibro/scambia/<?php echo $_smarty_tpl->tpl_vars['x']->value->geTtitolo();?>
-/<?php echo $_smarty_tpl->tpl_vars['x']->value->getAutore();?>
-/<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser();?>
-">REGISTRATI</a>
-						<?php
+								Libri personali<br>
+								<select name="LibroPersonale">
+									<option value=""></option>
+									<option value="G"><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+-<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+-
+										<div class="ciao"><?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+</div> </option>
+								</select><br>
+							<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+						</div>
 					</div>
 				</div>
-
 			</div>
-		</div>
 	</section>
+							<!-- Start Cerca Libro Overview Content -->
+
+
+									<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
+										<div class="bottone">
+										<input type="radio" name="LibroRichiesto" value="titolo">
+										<div class="ciao"><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+</div><br>
+										</div>
+										<div class="text-center"
+										<h2><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();
+echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+</h2>
+										</div>
+										<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+									<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+
+
+ 							 <input type="submit" name="ricerca" value="Richiedi scambio">
+
+									</form>
+
+							<!-- End Cerca Libro Overview Content -->
+
+
+
+		<!-- End Cerca Libro -->
+
+
 
 
 </main>
