@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-05-24 18:17:41
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercalibro.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5eca9e25b08857_48792060',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '96fe506fb3cff8b834c3e53f319ded8f403ea9f3' => 
+    array (
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercalibro.tpl',
+      1 => 1590337059,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5eca9e25b08857_48792060 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -30,8 +53,12 @@
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
+>
 	<![endif]-->
 </head>
 
@@ -109,26 +136,43 @@
 
     
   </tr>
-  {foreach $array as $x}
+  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
     <tr>
     <td>
     <div class="bottone">
 
 	<input type="radio" name="LibroRichiesto"
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"></div><br></div>
+	value = "<?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+"></div><br></div>
 	</td>
-    <td>{$x->getUser()->getuser()}</td>
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
-    <td>{$x->geteditore()}</td>
-    <td>{$x->getgenere()}</td>
-    <td>{$x->getanno()}</td>
-    <td>{$x->getcondizione()}</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->geteditore();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getgenere();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getanno();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getcondizione();?>
+</td>
 
     
   </tr>
   
-  {/foreach}
+  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </table>
   </td>
     
@@ -145,21 +189,33 @@
     <th>Autore</th>
     
   </tr>
-  {foreach $array as $x}
+  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
     <tr>
     <td>
     <div class="bottone">
 	<input type="radio" name="LibroPersonale" 
-	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"><br></div>
+	value = "<?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+"><br></div>
 
 	</td>
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
+</td>
+    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
+</td>
     
     
     
   </tr>
-  {/foreach}
+  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </table>
 </td>
   
@@ -201,22 +257,36 @@
 
 <!-- End main content -->
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
+>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
-<script src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 <!-- Slick slider -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"><?php echo '</script'; ?>
+>
 <!-- Counter js -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"><?php echo '</script'; ?>
+>
 <!-- Ajax contact form  -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"><?php echo '</script'; ?>
+>
 
 
 
 <!-- Custom js -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"><?php echo '</script'; ?>
+>
 
 
 </body>
 </html>
+<?php }
+}

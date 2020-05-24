@@ -17,6 +17,7 @@ class CCercaLibro
       $classe='Cartaceo';
       $x=new FPersistentManager();
       $y=array();
+
       foreach ($t as $k=>$v)
       {
           if($v!=NULL)

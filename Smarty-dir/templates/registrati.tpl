@@ -43,17 +43,10 @@
 		<div class="container">
 			<nav class="navbar navbar-default mu-navbar">
 			  	<div class="container-fluid">
-				    <!-- Brand and toggle get grouped for better mobile display -->
-				    <div class="navbar-header">
-				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				        <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				      </button>
+
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/Smarty-dir/templates/index.tpl"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -61,16 +54,7 @@
 
 				    </div>
 
-				    <!-- Collect the nav links, forms, and other content for toggling -->
-				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				      	<ul class="nav navbar-nav mu-menu navbar-right">
-					        <li><a href="#">HOME</a></li>
-					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
-					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="">LOGIN</a></li>
-				            <li><a href="#mu-contact">CONTATTI</a></li>
-				      	</ul>
-				    </div><!-- /.navbar-collapse -->
+
 			  	</div><!-- /.container-fluid -->
 			</nav>
 		</div>
@@ -105,14 +89,26 @@
 								<form method="post" action="/booksharing/Utente/registra">
 
   									<!-- CASELLE DI TESTO -->
- 									NOME<br>
+									User<br>
+									<input type="text" name="user"><br>
+									Password<br>
+									<input type="password" name="password"><br>
+ 									Nome<br>
   									<input type="text" name="nome"><br>
-  									COGNOME<br>
+  									Cognome<br>
   									<input type="text" name="cognome"><br>
-  									INDIRIZZO<br>
-  									<input type="text" name="via"><br>
-  
-
+									email<br>
+									<input type="text" name="email"><br>
+									via<br>
+									<input type="text" name="via"><br>
+									N°civico<br>
+									<input type="text" name="ncivico"><br>
+									CAP<br>
+									<input type="text" name="cap"><br>
+									Comune<br>
+									<input type="text" name="comune"><br>
+									Provincia<br>
+									<input type="text" name="provincia"><br>
 
 
   										<!-- SUBMIT -->
