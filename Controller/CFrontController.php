@@ -36,7 +36,11 @@ class CFrontController
             }}}
          else
         {
+            session_start();
             $x=StartSmarty::configuration();
+            if(isset($_SESSION['user']))
+            $x->display('indexreg.tpl');
+            else
             $x->display('index.tpl');
             
         }

@@ -31,7 +31,6 @@ public function getUser()
     {
         $y=parent::getobj();
         return array_merge($y,get_object_vars($this));
-
     }
 
 

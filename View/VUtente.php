@@ -17,6 +17,10 @@ class VUtente
             $value = $_POST['user'];
         return $value;
     }
+    public function inserimento()
+    {
+        $this->smarty->display('login.tpl');
+    }
     public function getpassword()
     {
         $value = NULL;
@@ -83,13 +87,22 @@ class VUtente
     }
 
 
+    public function login()
+    {
+        $this->smarty->assign('nome',$_POST['user']);
+        $this->smarty->display('indexreg.tpl');
+    }
     public function showResult($result){
 
         $this->smarty->assign('registrato', $result);
         //mostro la home con i risultati della query
         $this->smarty->display('index.tpl');
     }
-
+public function errore()
+{
+    $this->smarty->assign('errore','Errore');
+    $this->smarty->display('login.tpl');
+}
 }
 
 

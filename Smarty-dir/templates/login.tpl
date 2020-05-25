@@ -82,13 +82,15 @@
                         <!-- Start Cerca Libro Overview Content -->
                         <div class="cerca-libro-overview-content">
                             <div class="row">
-                                <form method="post" action="/booksahring/">
+                                <form method="post" action="/booksharing/Utente/login">
                                     <h1>Login</h1>
-                                    <input type="text" id="username" placeholder="user" name="username">
+                                    <input type="text" id="username" placeholder="user" name="user">
                                     <input type="password" id="password" placeholder="password" name="password">
                                     <button type="submit" name="login">Accedi</button>
                                 </form>
-
+                        {if $errore!=NULL}
+                             <h2>{$errore}</h2>
+                                {/if}
                                 <div class="mt-1">
                                     <p align="center">Non hai un account? <br/>
                                         <a href="/booksharing/Smarty-dir/templates/registrati.tpl" >Registrati</a>

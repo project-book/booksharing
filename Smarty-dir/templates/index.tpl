@@ -67,7 +67,7 @@
 					        <li><a href="#">HOME</a></li>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="/booksharing/Smarty-dir/templates/login.tpl">LOGIN</a></li>
+				            <li><a href="/booksharing/Utente/inserimento">LOGIN</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
 				      	</ul>
 				    </div><!-- /.navbar-collapse -->

@@ -39,7 +39,7 @@ class FProposta
         $return[':autore_libro']=$aa['autore'];
         $return[':titolo_prop']=$a['titolo'];
         $return[':autore_prop']=$a['autore'];
-
+        $return[':Accettato']=false;
         $stmt = $this->connection->prepare($query);
         print $query;
         print_r($return);
