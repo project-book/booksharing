@@ -6,7 +6,9 @@ require_once"Foundation/utility/autoload.php";
 
 
 //$rr=new ECartaceo('pp','p','n','c',7,'nuovo',$p);
+
 //$r=new ECartaceo('uuu','pp','n','c',7,'s',$pp);
+
 
 
 
@@ -23,7 +25,9 @@ require_once"Foundation/utility/autoload.php";
 //$x->delete('Proposta',24);
 //print_r($x->search('Valutazione',array('id'=>1),''));
 
-//$x->store($r);
+
+//$x->store($rr);
+
 
 //$x->delete('Admin','mario');
 //$x->delete('Valutazione',1);

@@ -150,6 +150,7 @@
 
   									<!-- CHECKBOX -->
  									CONDIZIONE<br>
+
   									<input type="checkbox" name="condizione" value="nuovo">Nuovo<br>
   									<input type="checkbox" name="condizione" value="usato">Usato<br>
 
