@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-05-25 16:25:29
+  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\indexreg.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5ecbd559bc27e7_30829846',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '52c1f4665cfb75dd56ff96e3742e82f240d515d5' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\indexreg.tpl',
+      1 => 1590416728,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ecbd559bc27e7_30829846 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -30,8 +53,12 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
+>
     <![endif]-->
   </head>
 
@@ -64,10 +91,13 @@
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
+							<h2>Benvenuto<?php echo $_smarty_tpl->tpl_vars['nome']->value;?>
+</h2>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="/booksharing/Utente/inserimento">LOGIN</a></li>
+				            <li><a href="/booksharing/Utente/profilo">profilo</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
+							<li><a href="/booksharing/Utente/logout">LOGOUT</a></li>
 				      	</ul>
 				    </div><!-- /.navbar-collapse -->
 			  	</div><!-- /.container-fluid -->
@@ -92,7 +122,7 @@
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
 						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Utente/registra">REGISTRATI</a>
+						 <a href="/booksharing/Smarty-dir/templates/registrati.tpl">REGISTRATI</a>
 					</div>
 				</div>	
 
@@ -264,22 +294,36 @@
 	
 	
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
+>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
-    <script src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 	<!-- Slick slider -->
-    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"><?php echo '</script'; ?>
+>
     <!-- Counter js -->
-    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"><?php echo '</script'; ?>
+>
     <!-- Ajax contact form  -->
-    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"><?php echo '</script'; ?>
+>
    
  
 	
     <!-- Custom js -->
-	<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"></script>
+	<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"><?php echo '</script'; ?>
+>
 	
     
   </body>
 </html>
+<?php }
+}

@@ -64,10 +64,12 @@
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
+							<h2>Benvenuto{$nome}</h2>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="/booksharing/Utente/inserimento">LOGIN</a></li>
+				            <li><a href="/booksharing/Utente/profilo">profilo</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
+							<li><a href="/booksharing/Utente/logout">LOGOUT</a></li>
 				      	</ul>
 				    </div><!-- /.navbar-collapse -->
 			  	</div><!-- /.container-fluid -->
@@ -92,7 +94,7 @@
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
 						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Utente/registra">REGISTRATI</a>
+						 <a href="/booksharing/Smarty-dir/templates/registrati.tpl">REGISTRATI</a>
 					</div>
 				</div>	
 

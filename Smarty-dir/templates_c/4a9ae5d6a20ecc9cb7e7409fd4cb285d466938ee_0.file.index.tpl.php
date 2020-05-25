@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-05-21 18:35:50
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5ec6ade6cd1835_26352238',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4a9ae5d6a20ecc9cb7e7409fd4cb285d466938ee' => 
+    array (
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl',
+      1 => 1590078402,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -30,8 +53,12 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
+>
     <![endif]-->
   </head>
 
@@ -53,7 +80,7 @@
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -64,9 +91,10 @@
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
+					        <li><a href="#">HOME</a></li>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="/booksharing/Utente/inserimento">LOGIN</a></li>
+				            <li><a href="">LOGIN</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
 				      	</ul>
 				    </div><!-- /.navbar-collapse -->
@@ -92,7 +120,7 @@
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
 						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Utente/registra">REGISTRATI</a>
+						 <a href="/booksharing/Smarty-dir/html/registrati.html">REGISTRATI</a>
 					</div>
 				</div>	
 
@@ -143,15 +171,15 @@
   									GENERE<br>
   									<select name="genere">
  									<option value=""></option>
-  									<option value="c">c</option>
+  									<option value="G">Giallo</option>
   									<option value="H">Horror</option>
   									</select><br>
 
   									<!-- CHECKBOX -->
  									CONDIZIONE<br>
+  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
+  									<input type="checkbox" name="condizione" value="U"> Usato<br>
 
-  									<input type="checkbox" name="condizione" value="nuovo">Nuovo<br>
-  									<input type="checkbox" name="condizione" value="usato">Usato<br>
 
 
   										<!-- SUBMIT -->
@@ -192,7 +220,7 @@
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/CercaEbook/ricerca">
+								<form method="post" action="/booksharing/CercaLibro/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -239,20 +267,26 @@
 
 	
 		<!-- Start Contact -->
-	<section id="mu-contact">
+		<section id="mu-contact">
 		<hr>
-								<h2 align="center">CONTATTI</h2>
-		<div style="float: left; text-align: justify; width: 47%;">
-			<p align="center">Federico Paolone </p>
-			<p align="center">federico.paolone@student.univaq.it</p></div>
-		<div style="float: right; text-align: justify; width: 47%;">
-			<p align="center">Giorgio Fraccavento</p>
-			<p align="center">giorgio.fraccavento@student.univaq.it</p></div>
-		<div style="clear: both;">
-		</div>
-		<hr>
-	</section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="mu-contact-area">
 
+							<div class="mu-heading-area">
+								<h2 class="mu-heading-title">CONTATTI</h2>
+								<span class="mu-header-dot"></span>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 		<!-- End Contact -->
 
 
@@ -264,22 +298,36 @@
 	
 	
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
+>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
-    <script src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 	<!-- Slick slider -->
-    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"><?php echo '</script'; ?>
+>
     <!-- Counter js -->
-    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"><?php echo '</script'; ?>
+>
     <!-- Ajax contact form  -->
-    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"><?php echo '</script'; ?>
+>
    
  
 	
     <!-- Custom js -->
-	<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"></script>
+	<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"><?php echo '</script'; ?>
+>
 	
     
   </body>
 </html>
+<?php }
+}

@@ -54,10 +54,15 @@ class VCercaLibro
         return $value;
     }
 
-    public function showResult($result,$l){
+    public function Login()
+    {
+        $this->smarty->assign('errore','prima di effettuare una ricerca devi essere registrato');
+        $this->smarty->display('login.tpl');
+    }
+    public function showResult($lr,$lp){
 
-        $this->smarty->assign('array', $result);
-        $this->smarty->assign('libriposseduti', $l);
+        $this->smarty->assign('libriricercati', $lr);
+        $this->smarty->assign('libriposseduti', $lp);
         //mostro la home con i risultati della query
         $this->smarty->display('ricercalibro.tpl');
     }
@@ -65,8 +70,9 @@ class VCercaLibro
     //CARICA LA PAGINA DI RIEPILOGO PROPOSTA
     public function showlibro($l,$ll)
     {
-        $x=getobj($l);
-        $xx=getobj($ll);
+        $x=$l->getobj();
+        $xx=$ll->getobj();
+
         $this->smarty->assign('LibroRichiesto',$x);
         $this->smarty->assign('LibroProposto',$xx);
         $this->smarty->display('riepilogoscambio.tpl');

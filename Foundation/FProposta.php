@@ -27,8 +27,8 @@ class FProposta
 
     public function store($objec)
     {
-        $fields = 'proponente , ricevente , titolo_libro ,autore_libro ,titolo_prop ,autore_prop';
-        $values = ':proponente , :ricevente , :titolo_libro , :autore_libro,:titolo_prop ,:autore_prop';
+        $fields = 'proponente , ricevente , titolo_libro ,autore_libro ,titolo_prop ,autore_prop,Accettato';
+        $values = ':proponente , :ricevente , :titolo_libro , :autore_libro,:titolo_prop ,:autore_prop,:Accettato';
         $query = 'INSERT INTO ' . $this->tab . ' (' . $fields . ') VALUES (' . $values . ');';
         $x = $objec->getobj();
         $a=$x['libroprop']->getobj();
@@ -39,10 +39,8 @@ class FProposta
         $return[':autore_libro']=$aa['autore'];
         $return[':titolo_prop']=$a['titolo'];
         $return[':autore_prop']=$a['autore'];
-
+        $return[':Accettato']=false;
         $stmt = $this->connection->prepare($query);
-        print $query;
-        print_r($return);
         $stmt->execute($return);
     }
 

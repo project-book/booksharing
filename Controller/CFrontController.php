@@ -36,8 +36,14 @@ class CFrontController
             }}}
          else
         {
-            $x=StartSmarty::configuration();
-            $x->display('index.tpl');
+            if(CUtente::isLogged()) {
+                $v = new VUtente();
+                $v->login();
+            }
+            else {
+                $x = StartSmarty::configuration();
+                $x->display('index.tpl');
+            }
             
         }
 

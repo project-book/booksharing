@@ -1,31 +1,39 @@
 <?php
 
-
 class CCercaLibro
 {
     public function ricerca()
     {
-      $VRicerca=new VCercaLibro();
-      $t=array();
-      $t['titolo']=$VRicerca->gettitolo();
-      $t['autore']=$VRicerca->getautore();
-      $t['editore']=$VRicerca->geteditore();
-      $t['genere']=$VRicerca->getgenere();
-      $t['anno']=$VRicerca->getanno();
-      $t['condizione']=$VRicerca->getcondizione();
-      $ordine='';
-      $classe='Cartaceo';
-      $x=new FPersistentManager();
-      $y=array();
-
-      foreach ($t as $k=>$v)
-      {
-          if($v!=NULL)
-              $y[$k]=$v;
-      }
-      $libri=array();
-      $VRicerca->showresult($x->search($classe,$y,$ordine),$libri);
-
+            $VRicerca = new VCercaLibro();
+            if(CUtente::isLogged()==true) {
+            $t = array();
+            $t['titolo'] = $VRicerca->gettitolo();
+            $t['autore'] = $VRicerca->getautore();
+            $t['editore'] = $VRicerca->geteditore();
+            $t['genere'] = $VRicerca->getgenere();
+            $t['anno'] = $VRicerca->getanno();
+            $t['condizione'] = $VRicerca->getcondizione();
+            $ordine = '';
+            $classe = 'Cartaceo';
+            $x = new FPersistentManager();
+            $y = array();
+            foreach ($t as $k => $v) {
+                if ($v != NULL)
+                    $y[$k] = $v;
+            }
+            $s['user']=$_SESSION['user'];
+            $libri = $x->search('Cartaceo',$s,'');
+            $l=$x->search($classe, $y, $ordine);
+            $i=0;
+               foreach ($l as $k)
+               {
+                   if($k->getUser()->getuser()==$_SESSION['user'])
+                   unset($l[$i]);
+                   $i++;
+               }
+            $VRicerca->showresult($l, $libri);
+        }
+        else $VRicerca->Login();
     }
 
     public function scambia()
@@ -41,7 +49,7 @@ class CCercaLibro
         $yy=$x->load('Cartaceo',$tt);
         $p=new EProposta($y,$yy);
         $x->store($p);
-        $v=new Smarty();
+        $v=new VCercaLibro();
         $v->showlibro($y,$yy);
     }
 }
