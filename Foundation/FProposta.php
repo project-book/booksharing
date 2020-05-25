@@ -33,13 +33,16 @@ class FProposta
         $x = $objec->getobj();
         $a=$x['libroprop']->getobj();
         $aa=$x['librorich']->getobj();
-        $return[':titolo_prop']=$a['titolo'];
-        $return[':autore_prop']=$a['autore'];
-        $return[':titolo_libro']=$aa['titolo'];
-        $return[':autore_libro']=$aa['autore'];
         $return[':proponente']=$a['proprietario']->getuser();
         $return[':ricevente']=$aa['proprietario']->getuser();
+        $return[':titolo_libro']=$aa['titolo'];
+        $return[':autore_libro']=$aa['autore'];
+        $return[':titolo_prop']=$a['titolo'];
+        $return[':autore_prop']=$a['autore'];
+
         $stmt = $this->connection->prepare($query);
+        print $query;
+        print_r($return);
         $stmt->execute($return);
     }
 

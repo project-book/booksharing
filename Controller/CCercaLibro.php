@@ -17,6 +17,7 @@ class CCercaLibro
       $classe='Cartaceo';
       $x=new FPersistentManager();
       $y=array();
+
       foreach ($t as $k=>$v)
       {
           if($v!=NULL)
@@ -26,21 +27,21 @@ class CCercaLibro
       $VRicerca->showresult($x->search($classe,$y,$ordine),$libri);
 
     }
+
     public function scambia()
     {
-     $x=new FPersistentManager();
-     $xx=$_POST['LibroPersonale'];
-     $ll=$_POST['LibroRichiesto'];
-
-     $t=explode('/',$xx);
-     $tt=explode('/',$ll);
-     unset($t[3]);
-     unset($tt[3]);
-     $y=$x->load('Cartaceo',$t);
-     $yy=$x->load('Cartaceo',$tt);
-     $p=new EProposta($y,$yy);
-     $x->store($p);
-     $v=new Smarty();
-     $v->showlibro($y,$yy);
+        $x=new FPersistentManager();
+        $xx=$_POST['LibroPersonale'];
+        $ll=$_POST['LibroRichiesto'];
+        $t=explode('/',$xx);
+        $tt=explode('/',$ll);
+        unset($t[3]);
+        unset($tt[3]);
+        $y=$x->load('Cartaceo',$t);
+        $yy=$x->load('Cartaceo',$tt);
+        $p=new EProposta($y,$yy);
+        $x->store($p);
+        $v=new Smarty();
+        $v->showlibro($y,$yy);
     }
 }

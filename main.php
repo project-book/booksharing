@@ -1,12 +1,12 @@
 <?php
 require_once"Foundation/utility/autoload.php";
-$x=new FPersistentManager();
-$p=new ERegistrato('d','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
+//$x=new FPersistentManager();
+//$p=new ERegistrato('uy','ygh','d','d','d',new EIndirizzo('g','8',64100,'s','s'),8);
 //$pp=new ERegistrato('dedw','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
 
 
-//$rr=new ECartaceo('pp','p','n','c',7,'',$p);
-//$r=new ECartaceo('uuu','pp','n','c',7,'s',$p);
+//$rr=new ECartaceo('pp','p','n','c',7,'nuovo',$p);
+//$r=new ECartaceo('uuu','pp','n','c',7,'s',$pp);
 
 
 
@@ -23,7 +23,7 @@ $p=new ERegistrato('d','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
 //$x->delete('Proposta',24);
 //print_r($x->search('Valutazione',array('id'=>1),''));
 
-//$x->store($ww);
+//$x->store($r);
 
 //$x->delete('Admin','mario');
 //$x->delete('Valutazione',1);

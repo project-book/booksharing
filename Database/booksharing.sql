@@ -16,7 +16,7 @@ CREATE TABLE ebook (
 CREATE TABLE indirizzo (
   via varchar(40) NOT NULL,
   civico varchar(5) NOT NULL,
-  cap smallint(6) NOT NULL,
+  cap int(6) NOT NULL,
   comune varchar(20) NOT NULL,
   provincia varchar(20) NOT NULL,
   PRIMARY KEY (via,civico,cap)
@@ -30,7 +30,7 @@ CREATE TABLE registrato (
   email varchar(50) NOT NULL,
   via varchar(40) NOT NULL,
   civico varchar(5) NOT NULL,
-  cap smallint(6) NOT NULL,
+  cap int(6) NOT NULL,
   saldo int(100) NOT NULL,
   FOREIGN KEY (via,civico,cap) references indirizzo(via,civico,cap) on update cascade on delete cascade
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
