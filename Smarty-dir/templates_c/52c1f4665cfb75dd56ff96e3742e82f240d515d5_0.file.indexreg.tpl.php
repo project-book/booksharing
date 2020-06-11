@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-25 11:30:35
+/* Smarty version 3.1.34-dev-7, created on 2020-06-03 16:27:17
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\indexreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ecb903bcb3213_10542646',
+  'unifunc' => 'content_5ed7b34519d179_44266136',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52c1f4665cfb75dd56ff96e3742e82f240d515d5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\indexreg.tpl',
-      1 => 1590399031,
+      1 => 1591194427,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ecb903bcb3213_10542646 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ed7b34519d179_44266136 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80,7 +80,7 @@ function content_5ecb903bcb3213_10542646 (Smarty_Internal_Template $_smarty_tpl)
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="/booksharing/Smarty-dir/templates/index.tpl"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -91,12 +91,11 @@ function content_5ecb903bcb3213_10542646 (Smarty_Internal_Template $_smarty_tpl)
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
-							<h2>Benvenuto<?php echo $_smarty_tpl->tpl_vars['nome']->value;?>
+							<h2>Benvenuto   <?php echo $_smarty_tpl->tpl_vars['nome']->value;?>
 </h2>
-					        <li><a href="#">HOME</a></li>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="/booksharing/Utente/profilo">profilo</a></li>
+				            <li><a href="/booksharing/Utente/profilo">PROFILO</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
 							<li><a href="/booksharing/Utente/logout">LOGOUT</a></li>
 				      	</ul>
@@ -157,7 +156,7 @@ function content_5ecb903bcb3213_10542646 (Smarty_Internal_Template $_smarty_tpl)
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
+								<form method="post" action="/booksharing/Libri/ricerca">
 
   									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -223,7 +222,7 @@ function content_5ecb903bcb3213_10542646 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/CercaEbook/ricerca">
+								<form method="post" action="/booksharing/Ebooks/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>

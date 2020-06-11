@@ -73,7 +73,7 @@ h6 {
 
 
 h1 {
-	font-size: 38px;
+	font-size: 50px;
 }
 
 h2 {  
@@ -409,7 +409,7 @@ button:focus {
 .cerca-libro-overview-area {
 	display: inline;
 	float: left;
-	padding: 100px 0;
+	padding: 150px 0;
 	width: 50%;
 }
 
@@ -423,7 +423,7 @@ button:focus {
 
 .cerca-libro-heading-title {
 	color: #1c1b1b;
-	margin-bottom: 15px;
+	margin-bottom: 50px;
 
 }
 
@@ -468,14 +468,15 @@ border-radius: 50px;
 }
 
 #customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 80%;
+
+    border: 1px solid #000;
+	background-color: #ccc;
+
 }
 
 #customers td, #customers th {
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 15px;
 }
 
 #customers tr:nth-child(even){background-color: #f2f2f2;}
@@ -485,8 +486,8 @@ border-radius: 50px;
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
+  text-align: center;
+  background-color: #CCC;
   color: white;
 }
 
@@ -576,7 +577,7 @@ input[type= "checkbox"]{position:relative;
 .mu-contact-area {
 	display: inline;
 	float: left;
-	padding: 100px 0;
+	padding: 200px 50px;
 	width: 100%;
 }
 

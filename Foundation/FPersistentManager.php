@@ -30,7 +30,7 @@ class FPersistentManager
         return $x->search($par,$ord);
     }
 
-    public function load($o,$key):object
+    public function load($o,$key)
     {
         $x=singleton::getInstance('F'.$o);
         return $x->load($key);

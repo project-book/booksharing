@@ -9,9 +9,8 @@ class EValutazione
     private $valutante;
     private $valutato;
 
-    public function __construct(int $i,string $c,int $v,ERegistrato $val,ERegistrato $valto)
+    public function __construct(string $c,string $v,ERegistrato $val,ERegistrato $valto)
     {
-        $this->id=$i;
         $this->commento = $c;
         $this->voto = $v;
         $this->valutante=new ERegistrato($val->getuser(),$val->getpsw(),$val->getnome(),$val->getcognome(),$val->getemail(),
@@ -27,9 +26,24 @@ class EValutazione
         return $this->commento;
     }
 
-    public function getVoto(): int
+    public function getVoto(): string
     {
         return $this->voto;
+    }
+
+    public function getValutato(): string
+    {
+        return $this->valutato->getuser();
+    }
+
+    public function getValutante(): string
+    {
+        return $this->valutante->getuser();
+    }
+
+    public function getid(): string
+    {
+        return $this->id();
     }
 
     public function getobj():array

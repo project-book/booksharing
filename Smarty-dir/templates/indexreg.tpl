@@ -53,7 +53,7 @@
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="/booksharing/Smarty-dir/templates/index.tpl"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -64,11 +64,10 @@
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
-							<h2>Benvenuto{$nome}</h2>
-					        <li><a href="#">HOME</a></li>
+							<h2>Benvenuto   {$nome}</h2>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="/booksharing/Utente/profilo">profilo</a></li>
+				            <li><a href="/booksharing/Utente/profilo">PROFILO</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
 							<li><a href="/booksharing/Utente/logout">LOGOUT</a></li>
 				      	</ul>
@@ -95,7 +94,7 @@
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
 						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Smarty-dir/templates/registrati.tpl">REGISTRATI</a>
+
 					</div>
 				</div>	
 
@@ -129,7 +128,7 @@
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
+								<form method="post" action="/booksharing/Libri/ricerca">
 
   									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -144,17 +143,26 @@
   									
   									<!-- SELECTBOX -->
   									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="c">c</option>
-  									<option value="H">Horror</option>
-  									</select><br>
+									<select name="genere">
+										<option value=""></option>
+										<option value="Giallo">Giallo</option>
+										<option value="Horror">Horror</option>ù
+										<option value="Storico">Storico</option>
+										<option value="Biografia">Biografia</option>
+										<option value="Fantasy">Fantasy</option>
+										<option value="Narrativa">Narrativa</option>
+										<option value="Thriller">Thriller</option>
+										<option value="Romanzo">Romanzo</option>
+									</select><br>
 
-  									<!-- CHECKBOX -->
- 									CONDIZIONE<br>
-
-  									<input type="checkbox" name="condizione" value="nuovo">Nuovo<br>
-  									<input type="checkbox" name="condizione" value="usato">Usato<br>
+									CONDIZIONE<br>
+									<select name="condizione">
+										<option value=""></option>
+										<option value="nuovo">Nuovo</option>
+										<option value="come">Come nuovo</option>
+										<option value="usato">Usato</option>
+										<option value="pessime">Pessime condizioni</option>
+									</select><br>
 
 
   										<!-- SUBMIT -->
@@ -195,7 +203,7 @@
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/CercaEbook/ricerca">
+								<form method="post" action="/booksharing/Ebooks/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -209,12 +217,18 @@
   									
   									
   									<!-- SELECTBOX -->
-  									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
-  									</select><br>
+									GENERE<br>
+									<select name="genere">
+										<option value=""></option>
+										<option value="Giallo">Giallo</option>
+										<option value="Horror">Horror</option>ù
+										<option value="Storico">Storico</option>
+										<option value="Biografia">Biografia</option>
+										<option value="Fantasy">Fantasy</option>
+										<option value="Narrativa">Narrativa</option>
+										<option value="Thriller">Thriller</option>
+										<option value="Romanzo">Romanzo</option>
+									</select><br>
 
   									<!-- CHECKBOX -->
  									PREZZO PUNTI<br>

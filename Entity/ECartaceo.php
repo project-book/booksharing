@@ -3,10 +3,26 @@
 
 
 
-class ECartaceo extends ELibro
+class ECartaceo extends ELibro implements JsonSerializable
 {
     private $condizione;
     private $proprietario;
+    private $esaurito=0;
+
+    public function jsonSerialize()
+    {
+        return
+            [
+                'titolo'   => $this->getTitolo(),
+                'autore'   => $this->getAutore(),
+                'editore'   => $this->getEditore(),
+                'genere'   => $this->getGenere(),
+                'anno'   => $this->getAnno(),
+                'condizione'   => $this->getCondizione(),
+                'propietario' => $this->getUser(),
+            ];
+    }
+
 
     public function __construct(string $t,string $a,string $e,string $g,int $an,string $c,ERegistrato $reg)
     {
@@ -23,10 +39,16 @@ class ECartaceo extends ELibro
         return $this->condizione;
     }
 
-public function getUser()
-{
-    return $this->proprietario;
-}
+    public function getesaurito(): int
+    {
+        return $this->esaurito;
+    }
+
+    public function getUser()
+    {
+        return $this->proprietario;
+    }
+
     public function getobj():array
     {
         $y=parent::getobj();

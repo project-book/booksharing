@@ -40,25 +40,25 @@
 
 <!-- Start Header -->
 <header id="mu-header" class="" role="banner">
-	<div class="container">
-		<nav class="navbar navbar-default mu-navbar">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
+<div class="container">
+	<nav class="navbar navbar-default mu-navbar">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
 
-					<!-- Text Logo -->
-					<a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+			<!-- Text Logo -->
+			<a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
-					<!-- Image Logo -->
-					<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
+			<!-- Image Logo -->
+			<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
 
 
-				</div>
+		</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
+		<!-- Collect the nav links, forms, and other content for toggling -->
 
-			</div><!-- /.container-fluid -->
-		</nav>
-	</div>
+</div><!-- /.container-fluid -->
+</nav>
+</div>
 </header>
 <!-- End Header -->
 <!-- Start main content -->
@@ -70,126 +70,109 @@
 
 	<section id="cerca-libro">
 
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="cerca-libro-overview-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="cerca-libro-overview-area">
 
-							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">SELEZIONA LIBRO</h2>
-								<span class="cerca-libro-header-dot"></span>
-								<p>Seleziona il libro che vuoi</p>
-							</div>
-							
+						<div class="cerca-libro-heading-area">
+							<h2 class="cerca-libro-heading-title">RIEPILOGO SCAMBIO</h2>
+							<span class="cerca-libro-header-dot"></span>
+
+						</div>
+
 
 					</div>
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/CercaLibro/scambia">
-
-<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
-<tr>
-<td width="70%">&nbsp;
-<table id="customers">
-
-<h1> libri da scegliere </h1>
-
-  <tr>
-    <th>Seleziona</th>
-    <th>User</th>
-    <th>Titolo</th>
-    <th>Autore</th>
-    <th>Editore</th>
-    <th>Genere</th>
-    <th>Anno</th>
-    <th>Condizione</th>
-    
-  </tr>
-  {foreach $LibroRichiesto as $x}
-    <tr>
-    <td>
-    <div class="bottone">
-	<input type="radio" name="LibroRichiesto" value="titolo">	
-	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}</div><br></div>
-	</td>
-    <td>{$x->getUser()->getuser()}</td>
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
-    <td>{$x->geteditore()}</td>
-    <td>{$x->getgenere()}</td>
-    <td>{$x->getanno()}</td>
-    <td>{$x->getcondizione()}</td>
-    
-  </tr>
-  
-  {/foreach}
-  </table>
-  </td>
-    
-<td width="30%">&nbsp;
-<table id="customers">
-  
- 
-<h1> libri personali </h1>
-  <tr>
-    <th>Seleziona</th>
-    <th>Titolo</th>
-    <th>Autore</th>
-    <th>Editore</th>
-    <th>Genere</th>
-    <th>Anno</th>
-    
-  </tr>
-  {foreach $LibroProposto as $x}
-    <tr>
-    <td>
-    <div class="bottone">
-	<input type="radio" name="LibroPersonale" value="titolo">	
-	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}</div><br></div>
-	</td>
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
-    <td>{$x->geteditore()}</td>
-    <td>{$x->getgenere()}</td>
-    <td>{$x->getanno()}</td>
-    
-    
-    
-  </tr>
-  {/foreach}
-  </table>
-</td>
-  
-  
-  </tr>
-  </table>
-  
- 
-
-		
-						<div class="testo-centrato">
-						  
-							
 
 
- 							 <input type="submit" name="ricerca" value="Richiedi scambio" >
+	<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+		<tr>
+			<td width="50%">&nbsp;
+				<table id="customers">
 
-								</div>
-								
-									
-									</form>
-									
-									
-									<div class="testo-centrato">
-						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
-					</div>
+					<h1> Richiedente</h1>
 
-							<!-- End Cerca Libro Overview Content -->
+					<tr>
+						<th>Richiedente</th>
+						<th>Titolo</th>
+						<th>Autore</th>
+						<th>Editore</th>
+						<th>Genere</th>
+						<th>Anno</th>
+						<th>Condizione</th>
+
+
+					</tr>
+						<tr>
+							<td>{$prop->getutenteprop()}</td>
+							<td>{$prop->getlibroprop()->getTitolo()}</td>
+							<td>{$prop->getlibroprop()->getAutore()}</td>
+							<td>{$prop->getlibroprop()->getEditore()}</td>
+							<td>{$prop->getlibroprop()->getGenere()}</td>
+							<td>{$prop->getlibroprop()->getAnno()}</td>
+							<td>{$prop->getlibroprop()->getCondizione()}</td>
+
+						</tr>
+
+				</table>
+			</td>
+
+			<td width="50%">&nbsp;
+				<table id="customers">
+
+
+					<h1> Ricevente </h1>
+					<tr>
+						<th>Ricevente</th>
+						<th>Titolo</th>
+						<th>Autore</th>
+						<th>Editore</th>
+						<th>Genere</th>
+						<th>Anno</th>
+						<th>Condizione</th>
+					</tr>
+						<tr>
+							<td>{$prop->getutenterich()}</td>
+							<td>{$prop->getlibrorich()->getTitolo()}</td>
+							<td>{$prop->getlibrorich()->getAutore()}</td>
+							<td>{$prop->getlibrorich()->getEditore()}</td>
+							<td>{$prop->getlibrorich()->getGenere()}</td>
+							<td>{$prop->getlibrorich()->getAnno()}</td>
+							<td>{$prop->getlibrorich()->getCondizione()}</td>
 
 
 
-		<!-- End Cerca Libro -->
+						</tr>
+				</table>
+			</td>
+
+
+		</tr>
+
+	</table>
+	<button onclick="location.href='/booksharing/'">
+		Torna alla Home
+	</button>
+
+
+
+
+
+
+
+
+	<div class="testo-centrato">
+		<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+	</div>
+
+	<!-- End Cerca Libro Overview Content -->
+
+
+
+	<!-- End Cerca Libro -->
 
 
 

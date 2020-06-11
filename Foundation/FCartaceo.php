@@ -1,5 +1,7 @@
 <?php
 
+if(file_exists('config.inc.php')) require_once 'config.inc.php';
+
 class FCartaceo
 {
     protected $connection;
@@ -11,7 +13,14 @@ class FCartaceo
 
     public function __construct()
     {
-        $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
+        try {
+
+            $this->connection = new PDO ("mysql:dbname=".$GLOBALS['database'].";host=localhost; charset=utf8;", $GLOBALS['username'], $GLOBALS['password']);
+
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            die;
+        }
     }
 
 
@@ -87,6 +96,7 @@ class FCartaceo
                             $return[':' . $key] = $value;
 
             }
+
         $stmt = $this->connection->prepare($query);
         $stmt->execute($return);
 
@@ -123,6 +133,7 @@ class FCartaceo
         $query='DELETE ' .
             'FROM `'.$this->tab.'` ' .
             'WHERE '.$s;
+        print $query;
         return $this->query($query);
     }
 
@@ -130,18 +141,19 @@ class FCartaceo
     {
         $i=0;
         $fields='';
+
         foreach ($parametri as $key=>$value) {
             if($i==0) {
-                if ($value == 'integer')
-                    $fields .= $key . ' = ' . $value;
-                else
+                if ($value == 'string')
                     $fields .= $key . '=' . '\'' . $value . '\'';
+                else
+                    $fields .= $key . ' = ' . $value;
             }
             else {
-                if ($value == 'integer')
-                    $fields.=', '.$key.' = '.$value;
-                else
+                if ($value == 'string')
                     $fields.=', '.$key.'='.'\''.$value.'\'';
+                else
+                    $fields.=', '.$key.' = '.$value;
             }
             $i++;
         }
@@ -159,12 +171,14 @@ class FCartaceo
         $query=substr($query,0,strlen($query)-4);
         $stmt=$this->connection->prepare($query);
         $stmt->execute();
+
     }
 
     public function search($par,$o):array
     {
 
         $s='';
+        if(!empty($par)){
         foreach ($par as $key=>$value)
             if(gettype($value)=="integer")
                 $s.=' '.$key.'='.$value.' AND';
@@ -185,7 +199,20 @@ class FCartaceo
                 (int)$this->risultato[$i]['anno'], $this->risultato[$i]['condizione'],$x);
             array_push($t,$p);
         }
-        return $t;
+        return $t;}
+        else{
+        $query='SELECT * ' . 'FROM `'.$this->tab.'`';
+        $this->query($query);
+        $t=array();
+        $n=count($this->risultato);
+        for($i=0;$i<$n;$i++) {
+            $l = new FRegistrato();
+            $x = $l->load($this->risultato[$i]['user']);
+            $p = new ECartaceo($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],
+                (int)$this->risultato[$i]['anno'], $this->risultato[$i]['condizione'],$x);
+            array_push($t,$p);
+        }
+        return $t;}
 
     }
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-21 13:58:46
+/* Smarty version 3.1.34-dev-7, created on 2020-06-05 13:40:01
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\registrati.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ec66cf6b28a49_10496199',
+  'unifunc' => 'content_5eda2f1167ccd6_39508186',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c46b0bd7ed4efb9c6d420082d3fcd27494b4ae2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\registrati.tpl',
-      1 => 1590061830,
+      1 => 1591357199,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ec66cf6b28a49_10496199 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eda2f1167ccd6_39508186 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,17 +70,10 @@ function content_5ec66cf6b28a49_10496199 (Smarty_Internal_Template $_smarty_tpl)
 		<div class="container">
 			<nav class="navbar navbar-default mu-navbar">
 			  	<div class="container-fluid">
-				    <!-- Brand and toggle get grouped for better mobile display -->
-				    <div class="navbar-header">
-				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				        <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				      </button>
+
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -88,16 +81,7 @@ function content_5ec66cf6b28a49_10496199 (Smarty_Internal_Template $_smarty_tpl)
 
 				    </div>
 
-				    <!-- Collect the nav links, forms, and other content for toggling -->
-				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				      	<ul class="nav navbar-nav mu-menu navbar-right">
-					        <li><a href="#">HOME</a></li>
-					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
-					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="">LOGIN</a></li>
-				            <li><a href="#mu-contact">CONTATTI</a></li>
-				      	</ul>
-				    </div><!-- /.navbar-collapse -->
+
 			  	</div><!-- /.container-fluid -->
 			</nav>
 		</div>
@@ -129,20 +113,76 @@ function content_5ec66cf6b28a49_10496199 (Smarty_Internal_Template $_smarty_tpl)
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/Utente/registra">
-
+								<form method="post" action="/booksharing/Utente/Salvadati">
+                                 <?php if ($_smarty_tpl->tpl_vars['messaggio']->value != NULL) {?><h2><?php echo $_smarty_tpl->tpl_vars['messaggio']->value;?>
+</h2><?php }?>
   									<!-- CASELLE DI TESTO -->
- 									NOME<br>
-  									<input type="text" name="nome"><br>
-  									COGNOME<br>
-  									<input type="text" name="cognome"><br>
-  									INDIRIZZO<br>
-  									<input type="text" name="via"><br>
-  
+									User<br>
+									<input type="text" name="user"><br>
+									Password<br>
+									<input type="password" pattern=<?php echo $_smarty_tpl->tpl_vars['psw']->value;?>
+ name="password"><br>
+ 									Nome<br>
+  									<input type="text" pattern=<?php echo $_smarty_tpl->tpl_vars['nome']->value;?>
+ name="nome"><br>
+  									Cognome<br>
+  									<input type="text"  pattern=<?php echo $_smarty_tpl->tpl_vars['cognome']->value;?>
+ name="cognome"><br>
+									email<br>
+									<input type="text" pattern=<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+  name="email"><br>
+									via<br>
+									<input type="text"    pattern=<?php echo $_smarty_tpl->tpl_vars['v']->value;?>
+ name="via"><br>
+									N°civico<br>
+									<input type="text" pattern=<?php echo $_smarty_tpl->tpl_vars['N']->value;?>
+ name="ncivico"><br>
+									COMUNE<br>
+									<select name="comune">
+										<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['comune']->value, 'c');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+?>
+										<option value=<?php echo $_smarty_tpl->tpl_vars['c']->value;?>
+></option>
+										<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+									</select><br>
+									PROVINCE<br>
+										<select name="provincia">
+											<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['province']->value, 'c');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+?>
+												<option value=<?php echo $_smarty_tpl->tpl_vars['c']->value;?>
+></option>
+											<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+										</select><br>
+											CAP<br>
+											<select name="cap">
+												<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['cap']->value, 'c');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+?>
+													<option value=<?php echo $_smarty_tpl->tpl_vars['c']->value;?>
+></option>
+												<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+											</select><br>
 
 
 
-  										<!-- SUBMIT -->
+									<!-- SUBMIT -->
  							 <input type="submit" name="registrati" value="registrati">
   									
   								

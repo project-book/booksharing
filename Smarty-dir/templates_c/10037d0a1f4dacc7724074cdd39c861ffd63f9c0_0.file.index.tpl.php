@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-25 10:47:47
+/* Smarty version 3.1.34-dev-7, created on 2020-06-05 13:25:45
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ecb8633948f37_57387610',
+  'unifunc' => 'content_5eda2bb93f3243_31041252',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '10037d0a1f4dacc7724074cdd39c861ffd63f9c0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\index.tpl',
-      1 => 1590396454,
+      1 => 1591356322,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ecb8633948f37_57387610 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eda2bb93f3243_31041252 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80,7 +80,7 @@ function content_5ecb8633948f37_57387610 (Smarty_Internal_Template $_smarty_tpl)
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="/booksharing/Smarty-dir/templates/index.tpl"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -91,7 +91,6 @@ function content_5ecb8633948f37_57387610 (Smarty_Internal_Template $_smarty_tpl)
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
-					        <li><a href="#">HOME</a></li>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
 				            <li><a href="/booksharing/Utente/inserimento">LOGIN</a></li>
@@ -120,7 +119,8 @@ function content_5ecb8633948f37_57387610 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
 						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Smarty-dir/templates/registrati.tpl">REGISTRATI</a>
+						 <a href="/booksharing/Utente/registra/<?php echo '';?>
+/">REGISTRATI</a>
 					</div>
 				</div>	
 
@@ -154,7 +154,7 @@ function content_5ecb8633948f37_57387610 (Smarty_Internal_Template $_smarty_tpl)
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
+								<form method="post" action="/booksharing/Libri/ricerca">
 
   									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -220,7 +220,7 @@ function content_5ecb8633948f37_57387610 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/CercaEbook/ricerca">
+								<form method="post" action="/booksharing/CEbooks/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-25 09:35:15
+/* Smarty version 3.1.34-dev-7, created on 2020-06-03 16:41:51
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\ricercalibro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ecb75330f62d9_73123837',
+  'unifunc' => 'content_5ed7b6af858629_45832405',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4364c9686e1fc08386de3bfbe9b85d0e743b14f2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\ricercalibro.tpl',
-      1 => 1590391171,
+      1 => 1591195306,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ecb75330f62d9_73123837 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ed7b6af858629_45832405 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +73,7 @@ function content_5ecb75330f62d9_73123837 (Smarty_Internal_Template $_smarty_tpl)
 				<!-- Brand and toggle get grouped for better mobile display -->
 
 					<!-- Text Logo -->
-					<a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+					<a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 					<!-- Image Logo -->
 					<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -113,7 +113,7 @@ function content_5ecb75330f62d9_73123837 (Smarty_Internal_Template $_smarty_tpl)
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/CercaLibro/scambia">
+							<form method="post" action="/booksharing/Libri/scambia">
 
 <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 <tr>
@@ -127,6 +127,7 @@ function content_5ecb75330f62d9_73123837 (Smarty_Internal_Template $_smarty_tpl)
   <tr>
     <th>Seleziona</th>
     <th>User</th>
+	  <th>Voto_medio_user</th>
     <th>Titolo</th>
     <th>Autore</th>
     <th>Editore</th>
@@ -137,7 +138,7 @@ function content_5ecb75330f62d9_73123837 (Smarty_Internal_Template $_smarty_tpl)
     
   </tr>
   <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['libriricercati']->value, 'x');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ?>
@@ -151,7 +152,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 /<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
 "></div><br></div>
 	</td>
-    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+		<td><a href="/booksharing/Utente/dettagliutente/<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+"><?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+</a></td>
+		<td>	<?php echo $_smarty_tpl->tpl_vars['media']->value[$_smarty_tpl->tpl_vars['x']->value->getUser()->getuser()];?>
 </td>
     <td><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
 </td>
@@ -190,7 +194,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     
   </tr>
   <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['array']->value, 'x');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['libriposseduti']->value, 'x');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ?>

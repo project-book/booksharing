@@ -10,7 +10,7 @@ class EIndirizzo
     private $comune;
     private $provincia;
 
-    public function __construct(string $v,string $n,int $d,string $c,string $e)
+    public function __construct(string $v,string $n,string $d,string $c,string $e)
     {
         $this->via=$v;
         $this->civico=$n;
@@ -30,7 +30,7 @@ class EIndirizzo
     }
 
 
-    public function getcap(): int
+    public function getcap(): string
     {
         return $this->cap;
     }

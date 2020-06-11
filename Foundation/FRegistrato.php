@@ -1,5 +1,7 @@
 <?php
 
+if(file_exists('config.inc.php')) require_once 'config.inc.php';
+
 class FRegistrato
 {
     protected $connection;
@@ -8,14 +10,21 @@ class FRegistrato
     protected $key = 'user';
     protected $type;
 
+    public function __construct()
+    {
+        try {
+
+            $this->connection = new PDO ("mysql:dbname=".$GLOBALS['database'].";host=localhost; charset=utf8;", $GLOBALS['username'], $GLOBALS['password']);
+
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            die;
+        }
+    }
+
     public function getkey()
     {
         return $this->key;
-    }
-
-    public function __construct()
-    {
-        $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
     }
 
     public function getris():array
@@ -101,23 +110,40 @@ class FRegistrato
 
     public function update($parametri = array(),$chiave)
     {
-        $i=0;
+        $n=0;
         $fields='';
+        $i=new FIndirizzo();
+        $r=New FRegistrato();
+        $o=$r->load($chiave);
+
         foreach ($parametri as $key=>$value) {
-            if($i==0) {
-                if ($value == 'integer')
-                    $fields .= $key . ' = ' . $value;
-                else
-                    $fields .= $key . '=' . '\'' . $value . '\'';
+            if ($key == 'cap' OR $key == 'civico' OR $key == 'via')
+            {
+             $p[$key]=$value;
             }
-            else {
-                if ($value == 'integer')
-                $fields.=', '.$key.' = '.$value;
             else
-                $fields.=', '.$key.'='.'\''.$value.'\'';
+            {
+                if ($n == 0) {
+                    if (gettype($value) == 'string')
+                        $fields .= $key . '=' . '\'' . $value . '\'';
+                    else
+                        $fields .= $key . ' = ' . $value;
+                } else {
+                    if (gettype($value )== 'string')
+                        $fields .= ', ' . $key . '=' . '\'' . $value . '\'';
+                    else
+                        $fields .= ', ' . $key . ' = ' . $value;
+                }
+                $i++;
             }
-            $i++;
         }
+
+        $k['via']=$o->getindirizzo()->getVia();
+        $k['ncivico']=$o->getindirizzo()->getNcivico();
+        $k['cap']=$o->getindirizzo()->getcap();
+
+        if(!empty($p) AND !empty($k))
+        $i->update($p,$k);
 
         if(gettype($chiave)=="integer")
             $query='UPDATE '.$this->tab.' SET '.$fields.' WHERE '.$this->key.'='.$chiave;
@@ -127,21 +153,25 @@ class FRegistrato
         $stmt->execute();
     }
 
-    public function load($chiave):ERegistrato
+    public function load($chiave)
     {
         $query='SELECT * ' .
             'FROM `'.$this->tab.'` '.'WHERE '.$this->key.'='.'\''.$chiave.'\'';
         $this->query($query);
           $i=new FIndirizzo();
-          $x=$i->load(array($this->risultato[0]['via'],$this->risultato[0]['civico'],$this->risultato[0]['cap']));
-        $p = new ERegistrato($this->risultato[0]['user'],$this->risultato[0]['password'],$this->risultato[0]['nome'],
-            $this->risultato[0]['cognome'],$this->risultato[0]['email'],$x,$this->risultato[0]['saldo']);
-        return $p;
+          if(!empty($this->risultato)) {
+              $x = $i->load(array($this->risultato[0]['via'], $this->risultato[0]['civico'], $this->risultato[0]['cap']));
+              $p = new ERegistrato($this->risultato[0]['user'], $this->risultato[0]['password'], $this->risultato[0]['nome'],
+                  $this->risultato[0]['cognome'], $this->risultato[0]['email'], $x, $this->risultato[0]['saldo']);
+              return $p;
+          } else return NULL;
+
     }
 
     public function search($par,$o):array
     {
             $s='';
+        if(!empty($par)){
             foreach ($par as $key=>$value)
                 if(gettype($value)=="integer")
                     $s.=' '.$key.'='.$value.' AND';
@@ -162,6 +192,26 @@ class FRegistrato
 
                 array_push($t,$p);
             }
+            return $t;}
+        else
+        {
+
+            $query='SELECT * ' .
+                'FROM `'.$this->tab;
+            if ($o!='')
+                $query.='ORDER BY '.$o.' ';
+            $this->query($query);
+            $t=array();
+            $n=count($this->risultato);
+            for($i=0;$i<$n;$i++) {
+                $l = new FIndirizzo();
+                $x = $l->load(array($this->risultato[$i]['via'], $this->risultato[$i]['civico'], (int)$this->risultato[$i]['cap']));
+                $p = new ERegistrato($this->risultato[$i]['user'], $this->risultato[$i]['password'], $this->risultato[$i]['nome'], $this->risultato[$i]['cognome'], $this->risultato[$i]['email'], $x, $this->risultato[$i]['saldo']);
+
+                array_push($t,$p);
+            }
             return $t;
+        }
     }
+
 }

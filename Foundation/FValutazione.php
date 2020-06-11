@@ -1,6 +1,6 @@
 <?php
 
-require_once "autoload.php";
+if(file_exists('config.inc.php')) require_once 'config.inc.php';
 
 class FValutazione
 {
@@ -12,7 +12,14 @@ class FValutazione
 
     public function __construct()
     {
-        $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
+        try {
+
+            $this->connection = new PDO ("mysql:dbname=".$GLOBALS['database'].";host=localhost; charset=utf8;", $GLOBALS['username'], $GLOBALS['password']);
+
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            die;
+        }
     }
 
     public function query($query)
@@ -134,9 +141,11 @@ class FValutazione
             $ii=new FRegistrato();
             $e=$tt->load($this->risultato[$i]['valutante']);
             $ee=$ii->load($this->risultato[$i]['valutato']);
-            $p = new EValutazione($this->risultato[$i]['id'],$this->risultato[$i]['commento'],$this->risultato[$i]['voto'],$e,$ee);
+            $p = new EValutazione($this->risultato[$i]['commento'],$this->risultato[$i]['voto'],$e,$ee);
             array_push($t, $p);
         }
         return $t;
     }
+
+
 }

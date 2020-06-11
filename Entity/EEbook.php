@@ -1,9 +1,22 @@
 <?php
 
 
-class EEbook extends ELibro
+class EEbook extends ELibro implements JsonSerializable
 {
     private $prezzo_punti;
+
+    public function jsonSerialize()
+    {
+        return
+            [
+                'titolo'   => $this->getTitolo(),
+                'autore'   => $this->getAutore(),
+                'editore'   => $this->getEditore(),
+                'genere'   => $this->getGenere(),
+                'anno'   => $this->getAnno(),
+                'prezzo_punti'   => $this->getprezzo()
+            ];
+    }
 
     public function __construct(string $t,string $a,string $e,string $g,int $an,int $p)
     {
@@ -16,7 +29,7 @@ class EEbook extends ELibro
         return $this->prezzo_punti;
     }
 
-    public function controllopunti(ERegistrato $a):boolean
+    public function controllopunti(ERegistrato $a)
     {
         if($a->getsaldo()>=$this->prezzo_punti)
             return true;

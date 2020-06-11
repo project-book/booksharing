@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-21 18:35:50
+/* Smarty version 3.1.34-dev-7, created on 2020-06-11 19:36:13
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ec6ade6cd1835_26352238',
+  'unifunc' => 'content_5ee26b8d10e640_33880395',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a9ae5d6a20ecc9cb7e7409fd4cb285d466938ee' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl',
-      1 => 1590078402,
+      1 => 1591895455,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee26b8d10e640_33880395 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80,7 +80,7 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 				      </button>
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -91,10 +91,9 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
-					        <li><a href="#">HOME</a></li>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="">LOGIN</a></li>
+				            <li><a href="/booksharing/Utente/inserimento">LOGIN</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
 				      	</ul>
 				    </div><!-- /.navbar-collapse -->
@@ -120,7 +119,8 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
 						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Smarty-dir/html/registrati.html">REGISTRATI</a>
+						 <a href="/booksharing/Utente/registra/<?php echo '';?>
+">REGISTRATI</a>
 					</div>
 				</div>	
 
@@ -154,7 +154,7 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
+								<form method="post" action="/booksharing/Libri/ricerca">
 
   									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -167,20 +167,30 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
   									<input type="text" name="anno"><br>
   									
   									
-  									<!-- SELECTBOX -->
+
   									GENERE<br>
   									<select name="genere">
  									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
+  									<option value="Giallo">Giallo</option>
+  									<option value="Horror">Horror</option>ù
+										<option value="Storico">Storico</option>
+										<option value="Biografia">Biografia</option>
+										<option value="Fantasy">Fantasy</option>
+										<option value="Narrativa">Narrativa</option>
+										<option value="Thriller">Thriller</option>
+										<option value="Romanzo">Romanzo</option>
+
   									</select><br>
 
-  									<!-- CHECKBOX -->
+
  									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
-
-
+									<select name="condizione">
+										<option value=""></option>
+										<option value="nuovo">Nuovo</option>
+										<option value="come">Come nuovo</option>
+										<option value="usato">Usato</option>
+										<option value="pessime">Pessime condizioni</option>
+									</select><br>
 
   										<!-- SUBMIT -->
  							 <input type="submit" name="ricerca" value="ricerca">
@@ -220,7 +230,7 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
+								<form method="post" action="/booksharing/Ebooks/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -234,12 +244,18 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
   									
   									
   									<!-- SELECTBOX -->
-  									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
-  									</select><br>
+									GENERE<br>
+									<select name="genere">
+										<option value=""></option>
+										<option value="Giallo">Giallo</option>
+										<option value="Horror">Horror</option>ù
+										<option value="Storico">Storico</option>
+										<option value="Biografia">Biografia</option>
+										<option value="Fantasy">Fantasy</option>
+										<option value="Narrativa">Narrativa</option>
+										<option value="Thriller">Thriller</option>
+										<option value="Romanzo">Romanzo</option>
+									</select><br>
 
   									<!-- CHECKBOX -->
  									PREZZO PUNTI<br>
@@ -267,26 +283,20 @@ function content_5ec6ade6cd1835_26352238 (Smarty_Internal_Template $_smarty_tpl)
 
 	
 		<!-- Start Contact -->
-		<section id="mu-contact">
+	<section id="mu-contact">
 		<hr>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="mu-contact-area">
+								<h2 align="center">CONTATTI</h2>
+		<div style="float: left; text-align: justify; width: 47%;">
+			<p align="center">Federico Paolone </p>
+			<p align="center">federico.paolone@student.univaq.it</p></div>
+		<div style="float: right; text-align: justify; width: 47%;">
+			<p align="center">Giorgio Fraccavento</p>
+			<p align="center">giorgio.fraccavento@student.univaq.it</p></div>
+		<div style="clear: both;">
+		</div>
+		<hr>
+	</section>
 
-							<div class="mu-heading-area">
-								<h2 class="mu-heading-title">CONTATTI</h2>
-								<span class="mu-header-dot"></span>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
-							</div>
-
-
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 		<!-- End Contact -->
 
 

@@ -5,7 +5,7 @@ require_once"Foundation/utility/autoload.php";
 //$pp=new ERegistrato('dedw','d','d','d','d',new EIndirizzo('s','s',4,'s','s'),8);
 
 
-//$rr=new ECartaceo('pp','p','n','c',7,'nuovo',$p);
+//$rr=new ECartaceo('fdefd','p','n','c',7,'nuovo',$p);
 
 //$r=new ECartaceo('uuu','pp','n','c',7,'s',$pp);
 
@@ -17,16 +17,16 @@ require_once"Foundation/utility/autoload.php";
 
 
 //$ee=new EAdmin('brjo','verdi');
-//$tr=new EEbook('o','p','edit','gen',1320,23);
+//$tr=new EEbook('o','fff','edit','gen',1320,5);
 //$aa=new EValutazione(1,'cuai',5,$pp,$p);
 //$bb=new EValutazione(2,'rgdc',5,$p,$pp);
 //$cc=new EValutazione(3,'crfese',5,$pp,$p);
-//$ww=new EProposta($rr,$r);
+//$ww=new EProposta($rr,$r,'');
 //$x->delete('Proposta',24);
 //print_r($x->search('Valutazione',array('id'=>1),''));
 
 
-//$x->store($rr);
+//$x->store($tr);
 
 
 //$x->delete('Admin','mario');

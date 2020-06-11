@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-25 11:29:26
+/* Smarty version 3.1.34-dev-7, created on 2020-05-29 17:54:12
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ecb8ff6171d67_94269998',
+  'unifunc' => 'content_5ed13024c01f57_88493828',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '54a15a83f745911f0013cf5c49abed833ecf37f7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\login.tpl',
-      1 => 1590398962,
+      1 => 1590684767,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ecb8ff6171d67_94269998 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ed13024c01f57_88493828 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,7 +109,7 @@ function content_5ecb8ff6171d67_94269998 (Smarty_Internal_Template $_smarty_tpl)
                         <!-- Start Cerca Libro Overview Content -->
                         <div class="cerca-libro-overview-content">
                             <div class="row">
-                                <form method="post" action="/booksharing/Utente/login">
+                                <form method="post" action="/booksharing/Utente/login/">
                                     <h1>Login</h1>
                                     <input type="text" id="username" placeholder="user" name="user">
                                     <input type="password" id="password" placeholder="password" name="password">
@@ -121,17 +121,10 @@ function content_5ecb8ff6171d67_94269998 (Smarty_Internal_Template $_smarty_tpl)
                                 <?php }?>
                                 <div class="mt-1">
                                     <p align="center">Non hai un account? <br/>
-                                        <a href="/booksharing/Smarty-dir/templates/registrati.tpl" >Registrati</a>
+                                        <a href="/booksharing/Utente/registra" >Registrati</a>
                                         </p>
                                 </div>
 
-
-
-
-
-
-
-                                </form>
                             </div>
                         </div>
                         <!-- End Cerca Libro Overview Content -->

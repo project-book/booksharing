@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-               
+
 
                     <!-- Text Logo -->
                     <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
@@ -56,7 +56,7 @@
 
                 </div>
 
-            
+
             </div><!-- /.container-fluid -->
         </nav>
     </div>
@@ -78,7 +78,7 @@
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
 
-                
+
                         <!-- Start Cerca Libro Overview Content -->
                         <div class="cerca-libro-overview-content">
                             <div class="row">
@@ -88,11 +88,13 @@
                                     <input type="password" id="password" placeholder="password" name="password">
                                     <button type="submit" name="login">Accedi</button>
                                 </form>
-
+                                {if $errore!=NULL}
+                                <h2>{$errore}</h2>
+                                {/if}
                                 <div class="mt-1">
                                     <p align="center">Non hai un account? <br/>
                                         <a href="/booksharing/Smarty-dir/templates/registrati.tpl" >Registrati</a>
-                                        </p>
+                                    </p>
                                 </div>
 
 
@@ -106,7 +108,7 @@
                         </div>
                         <!-- End Cerca Libro Overview Content -->
                         <div class="testo-centrato">
-                        <img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+                            <img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
                         </div>
                         <hr>
                     </div>

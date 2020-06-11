@@ -25,11 +25,16 @@ function my_autoloader($className)
             include_once( $className . '.php' );
             break;
 
-            case 's':
+        case 's':
             include_once( 'Foundation/utility/'. $className . '.php');
             break;
+
         case 'c':
             include_once( 'utility/'. $className . '.php' );
+            break;
+
+        case 'I':
+            include_once( $className . '.php' );
             break;
     }
 }

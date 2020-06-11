@@ -2,7 +2,13 @@
 require_once 'Foundation/utility/autoload.php';
 require_once 'StartSmarty.php';
 
-$fcontroller=new CFrontController();
-$fcontroller->run($_SERVER['REQUEST_URI']);
+
+// si verifica se l'installazione è avvenuta, altrimenti viene effettuata (ramo else)
+if (Installation::verificaInstallazione()){
+    $fcontroller=new CFrontController();
+    $fcontroller->run($_SERVER['REQUEST_URI']);
+}
+else
+    Installation::begin();
 
 ?>

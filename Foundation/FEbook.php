@@ -1,6 +1,6 @@
 <?php
 
-
+if(file_exists('config.inc.php')) require_once 'config.inc.php';
 
 class FEbook
 {
@@ -12,7 +12,14 @@ class FEbook
 
     public function __construct()
     {
-        $this->connection = new PDO("mysql:host=localhost;dbname=booksharing", 'root', '');;
+        try {
+
+            $this->connection = new PDO ("mysql:dbname=".$GLOBALS['database'].";host=localhost; charset=utf8;", $GLOBALS['username'], $GLOBALS['password']);
+
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            die;
+        }
     }
 
     public function query($query)
@@ -128,15 +135,20 @@ class FEbook
 
     public function search($par,$o):array
     {
+        if(!empty($par)){
         $s='';
         foreach ($par as $key=>$value)
+            if($key!='prezzo_punti'){
             if(gettype($value)=="integer")
                 $s.=' '.$key.'='.$value.' AND';
             else
-                $s.=' '.$key.'='.'\''.$value.'\''.'AND';
+                $s.=' '.$key.'='.'\''.$value.'\''.'AND';}
         $s=substr($s,0,strlen($s)-3);
         $query='SELECT * ' .
-            'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
+            'FROM `'.$this->tab.'` '.'WHERE '.$s;
+        if(isset($par['prezzo_punti']))
+            $query=$query.'AND'.' '.static::range($par['prezzo_punti']);
+
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);
@@ -146,6 +158,24 @@ class FEbook
             $p = new EEbook($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],(int)$this->risultato[$i]['anno'], (int)$this->risultato[$i]['prezzo_punti']);
             array_push($t, $p);
         }
-        return $t;
+        return $t;}
+        else{
+            $query='SELECT * ' . 'FROM `'.$this->tab.'`';
+            $this->query($query);
+            $t=array();
+            $n=count($this->risultato);
+            for($i=0;$i<$n;$i++) {
+            $p = new EEbook($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],(int)$this->risultato[$i]['anno'], (int)$this->risultato[$i]['prezzo_punti']);
+            array_push($t, $p);
+            }
+        return $t;}
+
+    }
+
+    public function range($x)
+    {
+        $prezzo = explode('-', $x);
+        $s = ' prezzo_punti BETWEEN ' . $prezzo[0] . ' AND ' . $prezzo[1];
+        return $s;
     }
 }

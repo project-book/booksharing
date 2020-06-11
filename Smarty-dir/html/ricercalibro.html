@@ -44,35 +44,20 @@
 		<nav class="navbar navbar-default mu-navbar">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
 
-					<!-- Text Logo -->
-					<a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				<!-- Text Logo -->
+				<a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
-					<!-- Image Logo -->
-					<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
+				<!-- Image Logo -->
+				<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
 
 
-				</div>
+			</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav mu-menu navbar-right">
-						<li><a href="#">HOME</a></li>
-						<li><a href="#cerca-libro">CERCA LIBRO</a></li>
-						<li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-						<li><a href="">LOGIN</a></li>
-						<li><a href="#mu-contact">CONTATTI</a></li>
-					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+
+	</div><!-- /.container-fluid -->
+	</nav>
 	</div>
 </header>
 <!-- End Header -->
@@ -81,70 +66,135 @@
 <main role="main">
 
 
-		<!-- Start Cerca Libro -->
-	
-		<section id="cerca-libro">
-			<hr>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="cerca-libro-overview-area">
-
-							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
-								<span class="cerca-libro-header-dot"></span>
-								<p>Scrivi i valori di ricerca</p>
-							</div>
-
-							<!-- Start Cerca Libro Overview Content -->
-							<div class="cerca-libro-overview-content">
-								<div class="row">
-
-								<form method="post" action="/booksharing/CercaLibro/ricerca">
-
-  									<!-- CASELLE DI TESTO -->
- 									TITOLO<br>
-  									<input type="text" name="titolo"><br>
-  									AUTORE<br>
-  									<input type="text" name="autore"><br>
-  									EDITORE<br>
-  									<input type="text" name="editore"><br>
-  									ANNO<br>
-  									<input type="text" name="anno"><br>
-  									
-  									
-  									<!-- SELECTBOX -->
-  									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="G">Giallo</option>
-  									<option value="H">Horror</option>
-  									</select><br>
-
-  									<!-- CHECKBOX -->
- 									CONDIZIONE<br>
-  									<input type="checkbox" name="condizione" value="N"> Nuovo<br>
-  									<input type="checkbox" name="condizione" value="U"> Usato<br>
 
 
+	<section id="cerca-libro">
 
-  										<!-- SUBMIT -->
- 							 <input type="submit" name="ricerca" value="ricerca">
-  									
-  								
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="cerca-libro-overview-area">
 
-									</form>
-								</div>
-							</div>
-							<!-- End Cerca Libro Overview Content -->
-
+						<div class="cerca-libro-heading-area">
+							<h2 class="cerca-libro-heading-title">SELEZIONA LIBRO</h2>
+							<span class="cerca-libro-header-dot"></span>
+							<p>Seleziona il libro che vuoi</p>
 						</div>
+
+
 					</div>
 				</div>
 			</div>
-		</section>
+	</section>
+	<form method="post" action="/booksharing/CercaLibro/scambia">
 
-		<!-- End Cerca Libro -->
+		<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+			<tr>
+
+				<td width="70%">&nbsp;
+
+					<table id="customers">
+
+						<h1> libri da scegliere </h1>
+
+						<tr>
+							<th>Seleziona</th>
+							<th>User</th>
+							<th>Titolo</th>
+							<th>Autore</th>
+							<th>Editore</th>
+							<th>Genere</th>
+							<th>Anno</th>
+							<th>Condizione</th>
+
+
+						</tr>
+						{foreach $array as $x}
+						<tr>
+							<td>
+								<div class="bottone">
+
+									<input type="radio" name="LibroRichiesto"
+										   value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"></div><br></div>
+							</td>
+							<td>{$x->getUser()->getuser()}</td>
+							<td>{$x->gettitolo()}</td>
+							<td>{$x->getautore()}</td>
+							<td>{$x->geteditore()}</td>
+							<td>{$x->getgenere()}</td>
+							<td>{$x->getanno()}</td>
+							<td>{$x->getcondizione()}</td>
+
+
+						</tr>
+
+						{/foreach}
+					</table>
+				</td>
+
+
+				<td width="30%">&nbsp;
+
+					<table id="customers">
+
+
+						<h1> libri personali </h1>
+						<tr>
+							<th>Seleziona</th>
+							<th>Titolo</th>
+							<th>Autore</th>
+
+						</tr>
+						{foreach $array as $x}
+						<tr>
+							<td>
+								<div class="bottone">
+									<input type="radio" name="LibroPersonale"
+										   value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"><br></div>
+
+							</td>
+							<td>{$x->gettitolo()}</td>
+							<td>{$x->getautore()}</td>
+
+
+
+						</tr>
+						{/foreach}
+					</table>
+				</td>
+
+
+			</tr>
+		</table>
+
+
+
+
+		<div class="testo-centrato">
+
+
+
+
+			<input type="submit" name="ricerca" value="Richiedi scambio" >
+
+		</div>
+
+
+	</form>
+
+
+	<div class="testo-centrato">
+		<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+	</div>
+
+	<hr>
+	<!-- End Cerca Libro Overview Content -->
+
+
+
+	<!-- End Cerca Libro -->
+
+
 
 
 </main>

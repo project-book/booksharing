@@ -3,14 +3,74 @@
 
 class CUtente
 {
-    public function registra()
+    //registra dati nel database
+    public function Salvadati()
     {
-        $VRegistra=new VUtente();
-        $i= new EIndirizzo($VRegistra->getvia(),$VRegistra->getncivico(),$VRegistra->getcap(),$VRegistra->getcomune(),$VRegistra->getprovincia());
-        $r= new ERegistrato($VRegistra->getuser(),$VRegistra->getpassword(),$VRegistra->getnome(),$VRegistra->getcognome(),$VRegistra->getemail(),$i,0);
-        $x=new FPersistentManager();
-        $VRegistra->showresult($x->store($r));
+        $V = new VUtente();
+
+        if ($V->getuser() == NULL OR $V->getvia() == NULL OR $V->getncivico() == NULL OR
+            $V->getcap() == NULL OR $V->getcomune() == NULL OR $V->getpassword() == NULL OR
+            $V->getnome() == NULL OR $V->getcognome() == NULL OR $V->getemail() == NULL
+            OR $V->getprovincia() == NULL) {
+            $m = 'Devi riempire tutti i campi';
+            static::registra($m);
+
+        }
+        else
+        {
+            $file = 'listacomuni.txt';
+            $fr = fopen($file, 'r');
+            $array = file($file);
+            $X = Array();
+            $b = false;
+            foreach ($array as $rigo) {
+                $X = explode(';', $rigo);
+                if ($V->getcap() == $X[5] AND $V->getcomune() == $X[1] AND $V->getprovincia() == $X[2])
+                    $b = true;
+            }
+            if ($b = false) {
+                $m = 'il comune inserito non esiste';
+                static::registra($m);
+            }
+
+            $psw = "/[A-Za-z0-9]{3,15}/";
+            $email = "/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/";
+            $N = "/[0-9]{1,5}/";
+            $v = "/[A-Za-z0-9'\.\-\s\,]{2,20}/";
+            $cognome = "/[A-Za-z]{1,15}/";
+            $nome = "/[A-Za-z]{1,15}/";
+
+            $t[$nome] = $V->getnome();
+            $t[$cognome] = $V->getcognome();
+            $t[$email] = $V->getemail();
+            $t[$psw] = $V->getpassword();
+            $t[$N] = $V->getncivico();
+            $t[$v] = $V->getvia();
+
+            foreach ($t as $k => $value) {
+                if (!preg_match($k, $value)) {
+                    $m = 'Rispetta i formati';
+                    static::registra($m);
+
+                }
+            }
+
+            $P = new FPersistentManager();
+            if ($P->load('Registrato', $V->getuser())) {
+                $m = 'l\'user inserito è gia esistente';
+                static::registra($m);
+
+            }
+
+            $i= new EIndirizzo($V->getvia(),$V->getncivico(),$V->getcap(),$V->getcomune(),$V->getprovincia());
+            $r= new ERegistrato($V->getuser(),$V->getpassword(),$V->getnome(),$V->getcognome(),$V->getemail(),$i,0);
+            $x=new FPersistentManager();
+            $x->store($r);
+            $V->inserimento();
+        }
     }
+
+    //VERIFICA CHE LE CREDENZIALI ESISTANO
     public function verifica():bool
     {
         $t=array();
@@ -26,49 +86,346 @@ class CUtente
         else $b= false;
         return $b;
     }
+
+
+    //reindirizza alla pagina di log in
     public function inserimento()
     {
         $v=new VUtente();
-        if(static::isLogged())
-            $v->login();
-        else
         $v->inserimento();
     }
+
+
+    //logga l'utente
     public function login()
     {
         $v=new VUtente();
-
+        $vv=new VAdmin();
             if (static::verifica() == true) {
                 session_start();
                 $_SESSION['user'] = $v->getuser();
-                $v->login();
+                if($_SESSION['user']== 'admin')
+                    $vv->homeadmin();
+                else
+                    $v->home();
             } else
                 $v->errore();
-        }
+    }
 
     public function logout()
     {
         session_start();
         session_unset();
         session_destroy();
-        header('Location:/booksharing/Smarty-dir/html/login.html');
+        header('Location:/booksharing/');
     }
 
+    //collega alla pagina di registrazione
+    public function registra($m)
+    {
+        $V=new VUtente();
+        $file = 'listacomuni.txt';
+        $fr = fopen($file, 'r');
+        $array = file($file);
+        $X = Array();
+        $ca=array();
+        $comuni=array();
+        $province=array();
+        $ca[0]='';$comuni[0]='';$province[0]='';
+        foreach ($array as $rigo)
+        {
+            $X = explode(';', $rigo);
+            array_push($ca,$X[5]);
+            array_push($comuni,$X[1]);
+            array_push($province,$X[2]);
+        }
+        asort($ca);asort($province);
+        $ca=array_unique($ca);$province=array_unique($province);
+
+        $V->registra($m,$comuni,$province,$ca);
+    }
+
+//permette di visualizzare le info utente
     public function profilo()
     {
 
+        $V=new VUtente();
+        if(static::isLogged())
+        {
+            $x=new FPersistentManager();
+            $a['valutato']=$_SESSION['user'];
+            $aa['valutante']=$_SESSION['user'];
+            $p['proponente']=$_SESSION['user'];
+            $pp['ricevente']=$_SESSION['user'];
+            $user['user']=$_SESSION['user'];
+            $r=$x->load('Registrato',$_SESSION['user']);
+            $libri=$x->search('Cartaceo',$user,'');
+            $ric=$x->search('Valutazione',$a,'');
+
+            $eff=$x->search('Valutazione',$aa,'');
+
+            $propinv=$x->search('Proposta',$p,'');
+
+
+            $propric=$x->search('Proposta',$pp,'');
+            //$r=$r->getObj();
+            $proposta=array_merge($propinv,$propric);
+            $V->profilo($ric,$eff,$r,$propric,$propinv,$libri,$proposta);
+        }
+        else $V->inserimento();
     }
-            public function isLogged()
-            {
-                $identificato = false;
-                if (isset($_COOKIE['PHPSESSID'])) {
-                    if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
+//verifica che l'utente abbia il cookie di sessione e riavvia la sessione
+    public function isLogged()
+    {
+        $identificato = false;
+        if (isset($_COOKIE['PHPSESSID'])) {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
                     }
                 }
-                if (isset($_SESSION['utente'])) {
+                if (isset($_SESSION['user'])) {
                     $identificato = true;
                 }
                 return $identificato;
+    }
+
+    //permette inviare la risposta riguardo una proposta ricevuta da un user
+    public function Risposta($prop)
+    {
+        $n = new FPersistentManager();
+        $x = new VUtente();
+
+        if ($x->getida() != NULL) {
+            $e = $x->getida();
+            $a['stato'] = "Accettato";
+            $n->update('Proposta', $a, $e);
+            $p=$n->load('Proposta',$e);
+            $t['titolo']=$p->getlibroprop()->getTitolo();
+            $t['autore']=$p->getlibroprop()->getAutore();
+            $t['user']=$p->getlibroprop()->getUser()->getuser();
+            $tt['titolo']=$p->getlibrorich()->getTitolo();
+            $tt['autore']=$p->getlibrorich()->getAutore();
+            $tt['user']=$p->getlibrorich()->getUser()->getuser();
+            $xx['esaurito']=1;
+            $xxx['esaurito']=1;
+            $n->update('Cartaceo',$xx,$t);
+            $n->update('Cartaceo',$xxx,$tt);
+            $pr=$n->load('Proposta',$prop);
+            $reg1=$n->load('Registrato',$t['user']);
+            $reg2=$n->load('Registrato',$tt['user']);
+            $s1['saldo']=$reg1->getsaldo()+10;
+            $s2['saldo']=$reg2->getsaldo()+10;
+
+
+            $n->update('Registrato',$s1,$t['user']);
+            $n->update('Registrato',$s2,$tt['user']);
+            $x->scambioconfermato($pr);
+        }
+        if ($x->getidr() != NULL) {
+            $e = $x->getidr();
+            $a['stato'] = "Rifiutato";
+            $n->update('Proposta', $a, $e);
+            header(('Location:/booksharing/Utente/profilo'));
+        }
+    }
+
+    //collega alla pagina per scrivere la recensione
+    public function Recensione($id){
+        $v=new VUtente();
+        $u=$v->getrecensione();
+        $v->recensione($u,$id);
+    }
+
+    //permette di modificare le info di un utente sul db
+    public function aggiornautente(){
+
+        if(static::isLogged()) {
+            $VRicerca = new VUtente();
+            $psw = "/[A-Za-z0-9]{3,15}/";
+            $email = "/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/";
+            $N = "/[0-9]{1,5}/";
+            $v = "/[A-Za-z0-9'\.\-\s\,]{2,20}/";
+
+            $t = array();
+            $t[$email] = $VRicerca->getemail();
+            $t[$psw] = $VRicerca->getpassword();
+            $t[$N] = $VRicerca->getncivico();
+            $t[$v] = $VRicerca->getvia();
+            foreach ($t as $k => $value) {
+                if (!preg_match($k, $value) and $value != NULL) {
+                    $m = 'Rispetta i formati';
+                    $p = new FPersistentManager();
+                    $u = $p->load('Registrato', $_SESSION['user']);
+                    $VRicerca->modificautente($u, $m);
+                } else {
+                    $a['user'] = $VRicerca->getuser();
+                    $a['password'] = $VRicerca->getpassword();
+                    $a['nome'] = $VRicerca->getnome();
+                    $a['cognome'] = $VRicerca->getcognome();
+                    $a['email'] = $VRicerca->getemail();
+                    $x = new FPersistentManager();
+                    $y = array();
+                    foreach ($a as $k => $v) {
+                        if ($v != NULL)
+                            $y[$k] = $v;
+                    }
+                    $x->update('Registrato', $y, $_SESSION['user']);
+                    $tt = array();
+                    $tt['via'] = $VRicerca->getvia();
+                    $tt['civico'] = $VRicerca->getncivico();
+                    $tt['cap'] = $VRicerca->getcap();
+                    $tt['comune'] = $VRicerca->getcomune();
+                    $tt['provincia'] = $VRicerca->getprovincia();
+                    $ttt = array();
+                    $u = $x->load('Registrato', $_SESSION['user']);
+                    array_push($ttt, $u->getindirizzo()->getVia(), $u->getindirizzo()->getNcivico(), $u->getindirizzo()->getcap());
+                    $yy = array();
+                    foreach ($tt as $k => $v) {
+                        if ($v != NULL)
+                            $yy[$k] = $v;
+                    }
+                    $x->update('Indirizzo', $yy, $ttt);
+                    static::profilo();
+                }
             }
-}
+        }
+    }
+
+ // collega alla pagina di aggiornamento info utente
+    public function modificautente(){
+        $V=new VUtente();
+        $m=NULL;
+        if(static::isLogged()){
+            $x = new FPersistentManager();
+            $u=$x->load('Registrato',$_SESSION['user']);
+            $file = 'listacomuni.txt';
+            $fr = fopen($file, 'r');
+            $array = file($file);
+            $X = Array();
+            $ca=array();
+            $comuni=array();
+            $province=array();
+            $ca[0]='';$comuni[0]='';$province[0]='';
+            foreach ($array as $rigo)
+            {
+                $X = explode(';', $rigo);
+                array_push($ca,$X[5]);
+                array_push($comuni,$X[1]);
+                array_push($province,$X[2]);
+            }
+            asort($ca);asort($province);
+            $ca=array_unique($ca);$province=array_unique($province);
+            $V->modificautente($u,$m,$ca,$province,$comuni);
+        }
+
+    }
+//permette di visualizzare le informazioni di un generico utente
+    public function dettagliutente($user){
+        $v=new VUtente();
+        $x=new FPersistentManager();
+        $u=$x->load('Registrato',$user);
+        $xx['user']=$user;
+        $xxx['valutato']=$user;
+        $l=$x->search('Cartaceo',$xx,'');
+        $val=$x->search('Valutazione',$xxx,'');
+        $v->dettagliutente($u,$l,$val);
+    }
+
+//invia la recensione
+    public function inviarec($u,$id){
+        $v=new VUtente();
+        $o=new FPersistentManager();
+        if(static::isLogged())
+            var_dump($valte=$o->load('Registrato',$_SESSION['user']));
+            $valto=$o->load('Registrato',$u);
+            print $t=$v->getcommento();
+            $x=new EValutazione($v->getcommento(),$v->getvoto(),$valte,$valto);
+            $o->store($x);
+            $arr['stato']='Recensito';
+            $o->update('Proposta',$arr,$id);
+            header(('Location:/booksharing/Utente/profilo'));
+    }
+//aggiunge un libro alla propria lista dei libri
+    public function aggiungilibro(){
+        if(CUtente::isLogged()==true){
+            $VRegistra=new VCercaLibro();
+            $x=new FPersistentManager();
+            $anno=(int)$VRegistra->getanno();
+            $t=array('Giallo','Horror','Storico','Biografia','Narrativa','Fantasy','Thriller','Romanzo');
+            $tt=array('Nuovo','Come','Usato','Pessime');
+            $bool=0;
+            $booltt=0;
+
+
+            if($VRegistra->gettitolo()!=NULL AND $VRegistra->getautore()!=NULL AND $VRegistra->geteditore()!=NULL AND $VRegistra->getgenere()!=NULL AND
+                $VRegistra->getanno()!=NULL AND $VRegistra->getcondizione()!=NULL){
+                foreach($t as $k){
+                    if($VRegistra->getgenere()==$k) $bool=1;}
+
+
+                    foreach($tt as $k){
+                        if($VRegistra->getcondizione()==$k) $booltt=1;}
+
+                    if($booltt==1 and $bool==1){
+
+            var_dump($reg=$x->load('Registrato',$_SESSION['user']));
+            $r= new ECartaceo($VRegistra->gettitolo(),$VRegistra->getautore(),$VRegistra->geteditore(),$VRegistra->getgenere(),$anno,$VRegistra->getcondizione(),$reg);
+            $x->store($r);
+            header("Location:/booksharing/Utente/profilo");}
+                else
+                   $VRegistra->Login();}
+
+
+            else
+                $VRegistra->Login();;
+    }}
+
+
+    //elimina un libro dalla propria lista
+    public function eliminalibro($tit,$aut){
+
+        $x=new FPersistentManager();
+        if(CUtente::isLogged()==true){
+            $u['titolo']=$tit;
+            $u['autore']=$aut;
+            $u['user']=$_SESSION['user'];
+            $x->delete('Cartaceo',$u);
+            header("Location:/booksharing/Utente/profilo");
+        }
+    }
+
+    //propone uno scambio ad un user
+    public function proponiscambio($tit,$a,$u){
+        $VRicerca = new VCercaLibro();
+        if(CUtente::isLogged()==true) {
+            $t = array();
+            $t['titolo'] = $tit;
+            $t['autore'] = $a;
+            $t['user']=$u;
+            $o=new FPersistentManager();
+            $l=$o->search('Cartaceo',$t,'');
+            $to['user']=$_SESSION['user'];
+            $ll=$o->search('Cartaceo',$to,'');
+            foreach ($l as $k)
+            {
+                $x=$k->getUser()->getuser();
+                $user['valutato']=$x;
+                $u=new FPersistentManager();
+                $uu=$u->search('Valutazione',$user,'');
+                $c=array();
+                foreach ($uu as $i)
+                    array_push($c,$i->getVoto());
+
+                $r=$u->load('Registrato',$x);
+                $tt[$x]=$r->calcolamedia($c);
+            }
+            $i=0;
+            foreach ($l as $k)
+            {
+                if($k->getUser()->getuser()==$_SESSION['user'])
+                    unset($l[$i]);
+                $i++;
+            }
+            $VRicerca->showResult($l,$ll,$tt);
+        }
+}}

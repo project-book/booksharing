@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{assign var='mess' value=$mess|default:'null'}
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -45,19 +46,19 @@
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 
-					<!-- Text Logo -->
-					<a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				<!-- Text Logo -->
+				<a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
-					<!-- Image Logo -->
-					<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
+				<!-- Image Logo -->
+				<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
 
 
-				</div>
+			</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
+			<!-- Collect the nav links, forms, and other content for toggling -->
 
-			</div><!-- /.container-fluid -->
-		</nav>
+	</div><!-- /.container-fluid -->
+	</nav>
 	</div>
 </header>
 <!-- End Header -->
@@ -70,91 +71,104 @@
 
 	<section id="cerca-libro">
 
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="cerca-libro-overview-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="cerca-libro-overview-area">
 
-							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">SELEZIONA EBOOK</h2>
-								<span class="cerca-libro-header-dot"></span>
-								<p>Seleziona il libro che vuoi</p>
-							</div>
-							
+						<div class="cerca-libro-heading-area">
+							<h2 class="cerca-libro-heading-title">SELEZIONA EBOOK</h2>
+							<span class="cerca-libro-header-dot"></span>
+							<p>Seleziona il libro che vuoi</p>
+						</div>
+
 
 					</div>
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/CercaLibro/compra">
-
-<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
-<tr>
-<td width="80%">&nbsp;
-<table id="customers">
-
-<h1> Ebook da scegliere </h1>
-
-  <tr>
-    <th>Seleziona</th>
-    <th>Titolo</th>
-    <th>Autore</th>
-    <th>Editore</th>
-    <th>Genere</th>
-    <th>Anno</th>
-    <th>prezzo punti</th>
-    
-  </tr>
-  {foreach $array as $x}
-    <tr>
-    <td>
-    <div class="bottone">
-	<input type="radio" name="LibroRichiesto" value="titolo">	
-	<div class="ciao">{$x->gettitolo()}/{$x->getautore()}</div><br></div>
-	</td>
-    
-    <td>{$x->gettitolo()}</td>
-    <td>{$x->getautore()}</td>
-    <td>{$x->geteditore()}</td>
-    <td>{$x->getgenere()}</td>
-    <td>{$x->getanno()}</td>
-    <td>{$x->getprezzo()}</td>
-    
-  </tr>
-  
-  {/foreach}
-  </table>
-  </td>
-    
-
-  
-  
-  </tr>
-  </table>
-  
- 
-
-		
-						<div class="testo-centrato">
-						  
-							
 
 
- 							 <input type="submit" name="ricerca" value="COMPRA" >
+		<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+			<tr>
+				<td >&nbsp;
+					<table id="customers">
 
-								</div>
-								
-									
-									</form>
-									
-									
-									<div class="testo-centrato">
-						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
-					</div>
-								<hr>
+						<h1> Ebook da scegliere </h1>
+
+						<tr>
+							<th>Seleziona</th>
+							<th>Titolo</th>
+							<th>Autore</th>
+							<th>Editore</th>
+							<th>Genere</th>
+							<th>Anno</th>
+							<th>prezzo punti</th>
+
+						</tr>
+
+						{foreach $array as $x}
+
+						<form method="post" action="/booksharing/Ebooks/compra/{$x->gettitolo()}/{$x->getautore()}">
+							<tr>
+								<td>
+									<div class="bottone">
+										{if ($user->getsaldo()>=$x->getprezzo())}
+										<input type="radio" name="LibroRichiesto" value="titolo">
+										<div class="ciao">{$x->gettitolo()}/{$x->getautore()}</div><br>
+										{else}
+											<input type="radio" name="LibroRichiesto" value="titolo" onclick="myFunction()">
+											<div class="ciao">{$x->gettitolo()}/{$x->getautore()}</div><br>
+											<script>
+												function myFunction() {
+													alert("Saldo punti non sufficente");
+												}
+											</script>
+										{/if}
+									</div>
+								</td>
+
+								<td>{$x->gettitolo()}</td>
+								<td>{$x->getautore()}</td>
+								<td>{$x->geteditore()}</td>
+								<td>{$x->getgenere()}</td>
+								<td>{$x->getanno()}</td>
+								<td>{$x->getprezzo()}</td>
+
+							</tr>
+
+						{/foreach}
+					</table>
+				</td>
 
 
-		<!-- End Cerca Libro -->
+
+
+			</tr>
+		</table>
+
+
+
+
+		<div class="testo-centrato">
+
+			<input type="submit" name="ricerca" value="COMPRA">
+
+		</div>
+	</form>
+
+	<div class="testo-centrato">
+	{if $mess!='null'}
+		<h2>{$mess}</h2>
+	{/if}
+	</div>
+	<div class="testo-centrato">
+		<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+	</div>
+	<hr>
+
+
+	<!-- End Cerca Libro -->
 
 
 

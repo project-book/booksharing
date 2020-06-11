@@ -46,7 +46,7 @@
 				<!-- Brand and toggle get grouped for better mobile display -->
 
 					<!-- Text Logo -->
-					<a class="navbar-brand" href="/booksharing/Smarty-dir/html/index.html"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+					<a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 					<!-- Image Logo -->
 					<!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -76,7 +76,7 @@
 						<div class="cerca-libro-overview-area">
 
 							<div class="cerca-libro-heading-area">
-								<h2 class="cerca-libro-heading-title">SELEZIONA LIBRO</h2>
+								<h1 class="cerca-libro-heading-title">SELEZIONA LIBRO</h1>
 								<span class="cerca-libro-header-dot"></span>
 								<p>Seleziona il libro che vuoi</p>
 							</div>
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/CercaLibro/scambia">
+							<form method="post" action="/booksharing/Libri/scambia">
 
 <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 <tr>
@@ -95,11 +95,12 @@
 
 <table id="customers">
 
-<h1> libri da scegliere </h1>
+<h2 align="center"> libri da scegliere </h2>
 
   <tr>
     <th>Seleziona</th>
     <th>User</th>
+	  <th>Voto_medio_user</th>
     <th>Titolo</th>
     <th>Autore</th>
     <th>Editore</th>
@@ -109,7 +110,7 @@
 
     
   </tr>
-  {foreach $array as $x}
+  {foreach $libriricercati as $x}
     <tr>
     <td>
     <div class="bottone">
@@ -117,7 +118,8 @@
 	<input type="radio" name="LibroRichiesto"
 	value = "{$x->gettitolo()}/{$x->getautore()}/{$x->getUser()->getuser()}"></div><br></div>
 	</td>
-    <td>{$x->getUser()->getuser()}</td>
+		<td><a href="/booksharing/Utente/dettagliutente/{$x->getUser()->getuser()}">{$x->getUser()->getuser()}</a></td>
+		<td>	{$media[$x->getUser()->getuser()]}</td>
     <td>{$x->gettitolo()}</td>
     <td>{$x->getautore()}</td>
     <td>{$x->geteditore()}</td>
@@ -138,14 +140,15 @@
 <table id="customers">
   
  
-<h1> libri personali </h1>
+<h2 align="center"> libri personali </h2>
+	{if !empty($libriposseduti)}
   <tr>
     <th>Seleziona</th>
     <th>Titolo</th>
     <th>Autore</th>
     
   </tr>
-  {foreach $array as $x}
+  {foreach $libriposseduti as $x}
     <tr>
     <td>
     <div class="bottone">
@@ -160,6 +163,10 @@
     
   </tr>
   {/foreach}
+	{else}
+	<h2 align="center">Vai al profilo per aggiungere i libri</h2>
+
+	{/if}
   </table>
 </td>
   

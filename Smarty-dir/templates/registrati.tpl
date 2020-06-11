@@ -46,7 +46,7 @@
 
 
 				      <!-- Text Logo -->
-				      <a class="navbar-brand" href="/booksharing/Smarty-dir/templates/index.tpl"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+				      <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
 				      <!-- Image Logo -->
 				      <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
@@ -66,7 +66,6 @@
 		
 	<main role="main">
 
-
 		<!-- Start Cerca Libro -->
 	
 		<section id="cerca-libro">
@@ -74,6 +73,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
+
 						<div class="cerca-libro-overview-area">
 
 							<div class="cerca-libro-heading-area">
@@ -86,32 +86,46 @@
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/Utente/registra">
-
+								<form method="post" action="/booksharing/Utente/Salvadati">
+                                 {if $messaggio!=''}<h2>{$messaggio}</h2>{/if}
   									<!-- CASELLE DI TESTO -->
 									User<br>
 									<input type="text" name="user"><br>
 									Password<br>
-									<input type="password" name="password"><br>
+									<input type="password" pattern={$psw} name="password"><br>
  									Nome<br>
-  									<input type="text" name="nome"><br>
+  									<input type="text" pattern={$nome} name="nome"><br>
   									Cognome<br>
-  									<input type="text" name="cognome"><br>
+  									<input type="text"  pattern={$cognome} name="cognome"><br>
 									email<br>
-									<input type="text" name="email"><br>
+									<input type="text" pattern={$email}  name="email"><br>
 									via<br>
-									<input type="text" name="via"><br>
+									<input type="text"  pattern={$v} name="via"><br>
 									N°civico<br>
-									<input type="text" name="ncivico"><br>
+									<input type="text" pattern={$N} name="ncivico"><br>
 									CAP<br>
-									<input type="text" name="cap"><br>
-									Comune<br>
-									<input type="text" name="comune"><br>
-									Provincia<br>
-									<input type="text" name="provincia"><br>
+									<select name="cap">
+										{foreach $cap as $c}
+											<option value={$c}>{$c}</option>
+										{/foreach}
+									</select><br>
+									COMUNE<br>
+									<select name="comune">
+										{foreach $comune as $c}
+										<option value={$c}>{$c}</option>
+										{/foreach}
+									</select><br>
+									PROVINCIA<br>
+										<select name="provincia">
+											{foreach $province as $c}
+												<option value={$c}>{$c}</option>
+											{/foreach}
+										</select><br>
 
 
-  										<!-- SUBMIT -->
+
+
+									<!-- SUBMIT -->
  							 <input type="submit" name="registrati" value="registrati">
   									
   								
