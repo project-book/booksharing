@@ -128,7 +128,7 @@
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/Libri/ricerca">
+								<form method="post" action="/booksharing/CercaLibro/ricerca">
 
   									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -203,7 +203,7 @@
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/Ebooks/ricerca">
+								<form method="post" action="/booksharing/CercaEbook/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>

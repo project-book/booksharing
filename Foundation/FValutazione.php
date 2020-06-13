@@ -2,14 +2,35 @@
 
 if(file_exists('config.inc.php')) require_once 'config.inc.php';
 
+/**
+ * Class FValutazione
+ */
 class FValutazione
 {
+    /**
+     * @var PDO
+     */
     protected $connection;
+    /**
+     * @var
+     */
     protected $risultato;
+    /**
+     * @var string
+     */
     protected $tab = 'valutazione';
+    /**
+     * @var string
+     */
     protected $key = 'id';
+    /**
+     * @var
+     */
     protected $type;
 
+    /**
+     * FValutazione constructor.
+     */
     public function __construct()
     {
         try {
@@ -22,22 +43,36 @@ class FValutazione
         }
     }
 
+    /**
+     * @param $query
+     * Funzione che effettua la query al db e restituisce il risultato in un array.
+     */
     public function query($query)
     {
         $stmt = $this->connection->query($query);
         $this->risultato = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @return string
+     */
     public function gettab(): string
     {
         return $this->tab;
     }
 
+    /**
+     * @return array
+     */
     public function getkey(): array
     {
         return $this->key;
     }
 
+    /**
+     * @param $objec
+     * Funzione che prepara lo statement SQL al fine di inserire l'oggetto nel database.
+     */
     public function store($objec)
     {
         $o=$objec->getobj();
@@ -111,6 +146,10 @@ class FValutazione
 
     }
 
+    /**
+     * @param $val
+     * Elimina la ennupla nel db in base al valore della chiave primaria passata come parametro.
+     */
     public function delete($val)
     {
         $query='DELETE ' .
@@ -119,7 +158,14 @@ class FValutazione
         return $this->query($query);
     }
 
-    public function search($par,$o):array
+    /**
+     * @param $par
+     * @param $o
+     * @return array
+     * Ricerca una ennupla nel db in base a $par.  $par è un array associativo dove la chiave è il nome della colonna nel db
+     * e il valore è il valore dell'attributo in base al quale stiamo effettuando l'interrogazione.
+     */
+    public function search($par, $o):array
     {
         $s='';
         foreach ($par as $key=>$value)

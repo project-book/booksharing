@@ -1,8 +1,15 @@
 <?php
 
 
+/**
+ * Class CAdmin
+ * Controller che permette la gestione degli ebook e degli utenti da parte dell'admin.
+ */
 class CAdmin
 {
+    /**
+     *Funzione che si occupa di ricercare gli ebook nel db in base ai valori prelevati dalla view.
+     */
     public function ricerca()
     {
         $VRicerca=new VAdmin();
@@ -34,7 +41,13 @@ class CAdmin
         }
     }
 
-    public function modifica_elimina($tit,$aut)
+    /**
+     * @param $tit
+     * @param $aut
+     * Funzione che si occupa di eliminare o modificare un ebook dal db in base al valore del titolo e l'autore (chiavi primarie)
+     * passati per parametro.
+     */
+    public function modifica_elimina($tit, $aut)
     {
         $v=new VAdmin();
         if($v->getmodfica()!= null){
@@ -51,6 +64,9 @@ class CAdmin
         }
     }
 
+    /**
+     *Funzione che permette di aggiungere un ebook nel db.
+     */
     public function aggiungiebook(){
         if(CUtente::isLogged()==true){
             $VRegistra=new VAdmin();
@@ -61,6 +77,9 @@ class CAdmin
         }
     }
 
+    /**
+     *Funzione che permette all'admin di ricercare un utente dal db in base ai parametri di ricerca prelevati dalla view.
+     */
     public function ricercautente()
     {
         $VRicerca=new VAdmin();
@@ -102,6 +121,10 @@ class CAdmin
         }
     }
 
+    /**
+     * @param $user
+     * Permette all'admin di bannare un utente e eliminare i sui dati dal db.
+     */
     public function eliminautente($user){
 
         $x=new FPersistentManager();

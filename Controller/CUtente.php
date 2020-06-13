@@ -1,9 +1,15 @@
 <?php
 
 
+/**
+ * Class CUtente
+ * Controller che si occupa di visualizzare e gestire le informazioni utente.
+ */
 class CUtente
 {
-    //registra dati nel database
+    /**
+     *Preleva i dati di registrazione e li salva nel db.
+     */
     public function Salvadati()
     {
         $V = new VUtente();
@@ -70,7 +76,11 @@ class CUtente
         }
     }
 
-    //VERIFICA CHE LE CREDENZIALI ESISTANO
+
+    /**
+     * @return bool
+     * Verifica che le credenziali di accesso inserite esistano nel db.
+     */
     public function verifica():bool
     {
         $t=array();
@@ -88,7 +98,10 @@ class CUtente
     }
 
 
-    //reindirizza alla pagina di log in
+
+    /**
+     *Reindirizza alla pagina di login.
+     */
     public function inserimento()
     {
         $v=new VUtente();
@@ -96,7 +109,10 @@ class CUtente
     }
 
 
-    //logga l'utente
+
+    /**
+     *Permette all'utente di avviare la sessione.
+     */
     public function login()
     {
         $v=new VUtente();
@@ -112,6 +128,9 @@ class CUtente
                 $v->errore();
     }
 
+    /**
+     *Permette all'utente di chiudere la sessione.
+     */
     public function logout()
     {
         session_start();
@@ -121,6 +140,11 @@ class CUtente
     }
 
     //collega alla pagina di registrazione
+
+    /**
+     * @param $m
+     * Prepara la pagina di registrazione.
+     */
     public function registra($m)
     {
         $V=new VUtente();
@@ -146,6 +170,10 @@ class CUtente
     }
 
 //permette di visualizzare le info utente
+
+    /**
+     *Recupera le informazioni profilo utente dal db.
+     */
     public function profilo()
     {
 
@@ -174,7 +202,12 @@ class CUtente
         }
         else $V->inserimento();
     }
-//verifica che l'utente abbia il cookie di sessione e riavvia la sessione
+
+
+    /**
+     * @return bool
+     * verifica che l'utente abbia il cookie di sessione e riavvia la sessione.
+     */
     public function isLogged()
     {
         $identificato = false;
@@ -189,7 +222,13 @@ class CUtente
                 return $identificato;
     }
 
-    //permette inviare la risposta riguardo una proposta ricevuta da un user
+    //
+
+    /**
+     * @param $prop
+     * Permette di accettare o rifiutare una proposta e nel caso di accettazione si occupa di modificare opportunamente il db,
+     * eliminando i libri.
+     */
     public function Risposta($prop)
     {
         $n = new FPersistentManager();
@@ -229,14 +268,22 @@ class CUtente
         }
     }
 
-    //collega alla pagina per scrivere la recensione
+
+
+    /**
+     * @param $id
+     * Indirizza alla pagina che permette la scrittura della recensione.
+     */
     public function Recensione($id){
         $v=new VUtente();
         $u=$v->getrecensione();
         $v->recensione($u,$id);
     }
 
-    //permette di modificare le info di un utente sul db
+
+    /**
+     *Permette di modificare le informazioni utente nel db.
+     */
     public function aggiornautente(){
 
         if(static::isLogged()) {
@@ -291,7 +338,11 @@ class CUtente
         }
     }
 
- // collega alla pagina di aggiornamento info utente
+
+
+    /**
+     *Prepara la pagina che permette di modificare le informazioni utente.
+     */
     public function modificautente(){
         $V=new VUtente();
         $m=NULL;
@@ -319,7 +370,11 @@ class CUtente
         }
 
     }
-//permette di visualizzare le informazioni di un generico utente
+
+    /**
+     * @param $user
+     * Permette di visualizzare le informazioni di un utente dopo aver cliccato una stringa referenziata sulla pagina html.
+     */
     public function dettagliutente($user){
         $v=new VUtente();
         $x=new FPersistentManager();
@@ -331,8 +386,14 @@ class CUtente
         $v->dettagliutente($u,$l,$val);
     }
 
-//invia la recensione
-    public function inviarec($u,$id){
+
+
+    /**
+     * @param $u
+     * @param $id
+     * Salva nel db la recensione scritta.
+     */
+    public function inviarec($u, $id){
         $v=new VUtente();
         $o=new FPersistentManager();
         if(static::isLogged())
@@ -345,7 +406,10 @@ class CUtente
             $o->update('Proposta',$arr,$id);
             header(('Location:/booksharing/Utente/profilo'));
     }
-//aggiunge un libro alla propria lista dei libri
+
+    /**
+     *Permette di aggiungere un libro alla propria lista dei libri da scambiare, quindi lo aggiunge al db.
+     */
     public function aggiungilibro(){
         if(CUtente::isLogged()==true){
             $VRegistra=new VCercaLibro();
@@ -381,8 +445,13 @@ class CUtente
     }}
 
 
-    //elimina un libro dalla propria lista
-    public function eliminalibro($tit,$aut){
+
+    /**
+     * @param $tit
+     * @param $aut
+     * Elimina il libro della propria lista dei libri da scambiare dal db.
+     */
+    public function eliminalibro($tit, $aut){
 
         $x=new FPersistentManager();
         if(CUtente::isLogged()==true){
@@ -394,8 +463,15 @@ class CUtente
         }
     }
 
-    //propone uno scambio ad un user
-    public function proponiscambio($tit,$a,$u){
+
+
+    /**
+     * @param $tit
+     * @param $a
+     * @param $u
+     * Propone uno scambio ad un user.
+     */
+    public function proponiscambio($tit, $a, $u){
         $VRicerca = new VCercaLibro();
         if(CUtente::isLogged()==true) {
             $t = array();

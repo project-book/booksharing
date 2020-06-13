@@ -2,8 +2,16 @@
 
 require_once'StartSmarty.php';
 
+/**
+ * Class CFrontController
+ * Front controller che richiama il controller opportuno per ogni caso d'uso.
+ */
 class CFrontController
 {
+    /**
+     * @param $p
+     * @throws SmartyException
+     */
     public function run($p)
     {
         $resource = explode('/', $p);

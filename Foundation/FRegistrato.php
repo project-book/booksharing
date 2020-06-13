@@ -2,14 +2,35 @@
 
 if(file_exists('config.inc.php')) require_once 'config.inc.php';
 
+/**
+ * Class FRegistrato
+ */
 class FRegistrato
 {
+    /**
+     * @var PDO
+     */
     protected $connection;
+    /**
+     * @var
+     */
     protected $risultato;
+    /**
+     * @var string
+     */
     protected $tab = 'registrato';
+    /**
+     * @var string
+     */
     protected $key = 'user';
+    /**
+     * @var
+     */
     protected $type;
 
+    /**
+     * FRegistrato constructor.
+     */
     public function __construct()
     {
         try {
@@ -22,22 +43,36 @@ class FRegistrato
         }
     }
 
+    /**
+     * @return string
+     */
     public function getkey()
     {
         return $this->key;
     }
 
+    /**
+     * @return array
+     */
     public function getris():array
     {
         return $this->risultato;
     }
 
+    /**
+     * @param $query
+     * Funzione che effettua la query al db e restituisce il risultato in un array.
+     */
     public function query($query)
     {
         $stmt = $this->connection->query($query);
         $this->risultato = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param $objec
+     * Funzione che prepara lo statement SQL al fine di inserire l'oggetto nel database.
+     */
     public function store($objec)
     {
         $o=$objec->getobj();
@@ -100,6 +135,10 @@ class FRegistrato
         $stmt->execute($return);
     }
 
+    /**
+     * @param $val
+     * Elimina la ennupla nel db in base al valore della chiave primaria passata come parametro.
+     */
     public function delete($val)
     {
         $query='DELETE ' .
@@ -108,7 +147,14 @@ class FRegistrato
         return $this->query($query);
     }
 
-    public function update($parametri = array(),$chiave)
+    /**
+     * @param array $parametri
+     * @param $chiave
+     * Aggiorna la ennupla nel db, essa viene ricercata in base alla sua chiave primaria($chiave) e vengono modificati
+     * i parametri specificati in $paramentri. $parametri è un array associativo dove la chiave è il nome della colonna nel db
+     * e il valore è il valore che si vuole dare all'attributo della ennupla.
+     */
+    public function update($parametri = array(), $chiave)
     {
         $n=0;
         $fields='';
@@ -153,6 +199,11 @@ class FRegistrato
         $stmt->execute();
     }
 
+    /**
+     * @param $chiave
+     * @return ERegistrato|null
+     * Ricerca in base alla chiave primaria la ennupla nel db e restituisce l'oggetto.
+     */
     public function load($chiave)
     {
         $query='SELECT * ' .
@@ -168,7 +219,14 @@ class FRegistrato
 
     }
 
-    public function search($par,$o):array
+    /**
+     * @param $par
+     * @param $o
+     * @return array
+     * Ricerca una ennupla nel db in base a $par.  $par è un array associativo dove la chiave è il nome della colonna nel db
+     * e il valore è il valore dell'attributo in base al quale stiamo effettuando l'interrogazione.
+     */
+    public function search($par, $o):array
     {
             $s='';
         if(!empty($par)){

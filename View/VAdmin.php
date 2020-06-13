@@ -1,15 +1,30 @@
 <?php
 
 
+/**
+ * Class VAdmin
+ * View che si occupa di prelevare dalla richiesta http le informazioni da passare al controller opportuno e
+ * permette di indirizzare ai template utili ai casi d'uso dell'admin.
+ */
 class VAdmin
 {
+    /**
+     * @var smarty
+     */
     private $smarty;
 
+    /**
+     * VAdmin constructor
+     */
     public function __construct()
     {
         $this->smarty = StartSmarty::configuration();
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il titolo del libro dalla richiesta post http.
+     */
     public function gettitolo()
     {
         $value = NULL;
@@ -18,6 +33,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva l'autore del libro dalla richiesta post http.
+     */
     public function getautore()
     {
         $value = NULL;
@@ -26,6 +45,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva l'editore del libro dalla richiesta post http.
+     */
     public function geteditore()
     {
         $value = NULL;
@@ -34,6 +57,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva l'anno del libro dalla richiesta post http.
+     */
     public function getanno()
     {
         $value = NULL;
@@ -42,6 +69,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il genere del libro dalla richiesta post http.
+     */
     public function getgenere()
     {
         $value = NULL;
@@ -50,6 +81,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il prezzo del libro dalla richiesta post http.
+     */
     public function getprezzo()
     {
         $value = NULL;
@@ -58,6 +93,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+
+     */
     public function getmodfica()
     {
         $value = NULL;
@@ -66,6 +105,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * <
+     */
     public function getelimina()
     {
         $value = NULL;
@@ -74,6 +117,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva L'user che possiede libro dalla richiesta post http.
+     */
     public function getuser()
     {
         $value = NULL;
@@ -82,6 +129,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva la password dalla richiesta post http.
+     */
     public function getpassword()
     {
         $value = NULL;
@@ -90,6 +141,9 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getnome()
     {
         $value = NULL;
@@ -98,6 +152,9 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getcognome()
     {
         $value = NULL;
@@ -106,6 +163,9 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getemail()
     {
         $value = NULL;
@@ -114,6 +174,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva la via dalla richiesta post http.
+     */
     public function getvia()
     {
         $value = NULL;
@@ -122,6 +186,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il numero civico dalla richiesta post http.
+     */
     public function getncivico()
     {
         $value = NULL;
@@ -130,6 +198,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il cap dalla richiesta post http.
+     */
     public function getcap()
     {
         $value = NULL;
@@ -138,6 +210,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il comune dalla richiesta post http.
+     */
     public function getcomune()
     {
         $value = NULL;
@@ -146,6 +222,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva la provincia dalla richiesta post http.
+     */
     public function getprovincia()
     {
         $value = NULL;
@@ -154,6 +234,9 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getida()
     {
         $value = NULL;
@@ -162,6 +245,9 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getidr()
     {
         $value = NULL;
@@ -170,6 +256,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva la recensione dalla richiesta post http.
+     */
     public function getrecensione()
     {
         $value = NULL;
@@ -178,6 +268,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il voto dalla richiesta post http.
+     */
     public function getvoto()
     {
         $value = NULL;
@@ -186,6 +280,10 @@ class VAdmin
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     * Preleva il commento dalla richiesta post http.
+     */
     public function getcommento()
     {
         $value = NULL;
@@ -195,27 +293,44 @@ class VAdmin
     }
 
 
-
-
+    /**
+     * @throws SmartyException
+     * Indirizza alla home dell'admin.
+     */
     public function homeadmin()
     {
         $this->smarty->assign('nome',$_SESSION['user']);
         $this->smarty->display('adminreg.tpl');
     }
 
-    public function ebookresult($result,$u){
+    /**
+     * @param $result
+     * @param $u
+     * @throws SmartyException
+     * Indirizza alla pagina contenente i risultati di ricerca ebook.
+     */
+    public function ebookresult($result, $u){
 
         $this->smarty->assign('array', $result);
         $this->smarty->assign('user', $u);
         $this->smarty->display('ebookadmin.tpl');
     }
 
+    /**
+     * @throws SmartyException
+     * Indirizza alla pagina di modifica dell'ebook.
+     */
     public function modificaebook(){
 
         $this->smarty->display('modificaebook.tpl');
 
     }
 
+    /**
+     * @param $result
+     * @throws SmartyException
+     * Indirizza alla pagina contentente gli utenti ricercati dall'admin
+     */
     public function utenteresult($result){
 
         $this->smarty->assign('array', $result);

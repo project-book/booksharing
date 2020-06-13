@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @param $className
+ */
 function my_autoloader($className)
 {
     $firstLetter = $className[0];

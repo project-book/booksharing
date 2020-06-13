@@ -1,13 +1,28 @@
 <?php
 
 
-
-
+/**
+ * Class ECartaceo
+ */
 class ECartaceo extends ELibro implements JsonSerializable
 {
+    /**
+     * @var string
+     */
     private $condizione;
+    /**
+     * @var ERegistrato
+     */
     private $proprietario;
+    /**
+     * @var int
+     */
     private $esaurito=0;
+
+    /**
+     * @return array|mixed
+     * Funzione per la conversione da json in array php.
+     */
 
     public function jsonSerialize()
     {
@@ -24,7 +39,17 @@ class ECartaceo extends ELibro implements JsonSerializable
     }
 
 
-    public function __construct(string $t,string $a,string $e,string $g,int $an,string $c,ERegistrato $reg)
+    /**
+     * ECartaceo constructor.
+     * @param string $t
+     * @param string $a
+     * @param string $e
+     * @param string $g
+     * @param int $an
+     * @param string $c
+     * @param ERegistrato $reg
+     */
+    public function __construct(string $t, string $a, string $e, string $g, int $an, string $c, ERegistrato $reg)
     {
         parent::__construct($t,$a,$e,$g,$an);
         $this->condizione = $c;
@@ -34,21 +59,34 @@ class ECartaceo extends ELibro implements JsonSerializable
                ,$reg->getsaldo());
     }
 
+    /**
+     * @return string
+     */
     public function getCondizione(): string
     {
         return $this->condizione;
     }
 
+    /**
+     * @return int
+     */
     public function getesaurito(): int
     {
         return $this->esaurito;
     }
 
+    /**
+     * @return ERegistrato
+     */
     public function getUser()
     {
         return $this->proprietario;
     }
 
+    /**
+     * @return array
+     * Restituzione dell'oggetto in un array.
+     */
     public function getobj():array
     {
         $y=parent::getobj();

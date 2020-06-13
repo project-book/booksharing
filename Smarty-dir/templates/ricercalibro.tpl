@@ -78,7 +78,9 @@
 							<div class="cerca-libro-heading-area">
 								<h1 class="cerca-libro-heading-title">SELEZIONA LIBRO</h1>
 								<span class="cerca-libro-header-dot"></span>
-								<p>Seleziona il libro che vuoi</p>
+								<p>Seleziona dalla tabella di sinistra il libro che vorresti ottentere e dalla colonna di destra
+								il libro di cui ti vuoi liberare.
+								Verrà inviata una proposta di scambio all'utente e riceverai la sua risposta direttamente sul tuo profilo.</p>
 							</div>
 							
 
@@ -86,7 +88,20 @@
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/Libri/scambia">
+
+	<form method="post" action="/booksharing/CercaLibro/ordina/{$LibriRicercati}/{$libriposseduti}">
+	<div class="bottone">
+		ORDINAMENTO<br>
+		<input type="radio" name="ordinamento"
+			   value = 'titolo'>per titolo</div><br>
+	<input type="radio" name="ordinamento"
+		   value = 'autore'>per editore</div><br>
+	<input type="radio" name="ordinamento"
+		   value = 'anno'>per anno</div><br>
+	</div>
+	</form>
+
+							<form method="post" action="/booksharing/CercaLibro/scambia">
 
 <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 <tr>

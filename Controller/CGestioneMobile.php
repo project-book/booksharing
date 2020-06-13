@@ -1,8 +1,15 @@
 <?php
 
 
+/**
+ * Class CGestioneMobile
+ */
 class CGestioneMobile
 {
+    /**
+     * @param $user
+     * Funzione per la gestione mobile che si occupa di prelevare l'utente richiesto dal db.
+     */
     public function dettagliutente($user){
         $v=new VGestioneMobile();
         $p= new FPersistentManager();
@@ -10,6 +17,10 @@ class CGestioneMobile
         $v->showresult($u);
     }
 
+    /**
+     * @param $val
+     * Funzione che si occupa di prelevare il libro richiesto dal db.
+     */
     public function ricerca($val){
         $v=new VGestioneMobile();
         $p= new FPersistentManager();
@@ -26,6 +37,9 @@ class CGestioneMobile
         $v->showresult($result);
     }
 
+    /**
+     *Permette all'utente il login.
+     */
     static function loginToken() {
         $view = new VGestioneMobile();
         $dati = json_decode(file_get_contents('php://input'),true);

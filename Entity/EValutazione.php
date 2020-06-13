@@ -1,15 +1,40 @@
 <?php
 
 
+/**
+ * Class EValutazione
+ */
 class EValutazione
 {
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var string
+     */
     private $commento;
+    /**
+     * @var string
+     */
     private $voto;
+    /**
+     * @var ERegistrato
+     */
     private $valutante;
+    /**
+     * @var ERegistrato
+     */
     private $valutato;
 
-    public function __construct(string $c,string $v,ERegistrato $val,ERegistrato $valto)
+    /**
+     * EValutazione constructor.
+     * @param string $c
+     * @param string $v
+     * @param ERegistrato $val
+     * @param ERegistrato $valto
+     */
+    public function __construct(string $c, string $v, ERegistrato $val, ERegistrato $valto)
     {
         $this->commento = $c;
         $this->voto = $v;
@@ -21,31 +46,50 @@ class EValutazione
                 $valto->getindirizzo()->getComune(),$valto->getindirizzo()->getprovincia()),$valto->getsaldo());;
     }
 
+    /**
+     * @return string
+     */
     public function getCommento(): string
     {
         return $this->commento;
     }
 
+    /**
+     * @return string
+     */
     public function getVoto(): string
     {
         return $this->voto;
     }
 
+    /**
+     * @return string
+     */
     public function getValutato(): string
     {
         return $this->valutato->getuser();
     }
 
+    /**
+     * @return string
+     */
     public function getValutante(): string
     {
         return $this->valutante->getuser();
     }
 
+    /**
+     * @return string
+     */
     public function getid(): string
     {
         return $this->id();
     }
 
+    /**
+     * @return array
+     *Restituzione dell'oggetto in un array.
+     */
     public function getobj():array
     {
         return get_object_vars($this);

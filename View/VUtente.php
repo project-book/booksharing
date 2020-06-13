@@ -1,15 +1,30 @@
 <?php
 
 
+/**
+ * Class VUtente
+ * View che si occupa di indirizzare ai template utili per la gestione delle informazioni utente e di passare le informazioni
+ * di registrazione dell'user al controller che salverà le info nel db.
+ */
 class VUtente
 {
+    /**
+     * @var smarty
+     */
     private $smarty;
 
+    /**
+     * VUtente constructor.
+     */
     public function __construct()
     {
         $this->smarty = StartSmarty::configuration();
     }
 
+    /**
+     * @return mixed|null
+     *Preleva l'user dalla richiesta http post.
+     */
     public function getuser()
     {
         $value = NULL;
@@ -18,6 +33,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva la password dalla richiesta http post.
+     */
     public function getpassword()
     {
         $value = NULL;
@@ -26,6 +45,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva il nome utente dalla richiesta http post.
+     */
     public function getnome()
     {
         $value = NULL;
@@ -34,6 +57,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva il cognome dalla richiesta http post.
+     */
     public function getcognome()
     {
         $value = NULL;
@@ -42,6 +69,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva l'email dalla richiesta http post.
+     */
     public function getemail()
     {
         $value = NULL;
@@ -50,6 +81,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva la via dalla richiesta http post.
+     */
     public function getvia()
     {
         $value = NULL;
@@ -58,6 +93,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva il numero civico dalla richiesta http post.
+     */
     public function getncivico()
     {
         $value = NULL;
@@ -66,6 +105,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva il cap dalla richiesta http post.
+     */
     public function getcap()
     {
         $value = NULL;
@@ -74,6 +117,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva il comune dalla richiesta http post.
+     */
     public function getcomune()
     {
         $value = NULL;
@@ -82,6 +129,10 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     *Preleva la provincia dalla richiesta http post.
+     */
     public function getprovincia()
     {
         $value = NULL;
@@ -90,6 +141,9 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getida()
     {
         $value = NULL;
@@ -98,6 +152,9 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getidr()
     {
         $value = NULL;
@@ -106,6 +163,9 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getrecensione()
     {
         $value = NULL;
@@ -114,6 +174,9 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getvoto()
     {
         $value = NULL;
@@ -122,6 +185,9 @@ class VUtente
         return $value;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getcommento()
     {
         $value = NULL;
@@ -135,6 +201,10 @@ class VUtente
 
 
     //indirizza alla pagina di log in
+
+    /**
+     * @throws SmartyException
+     */
     public function inserimento()
     {
         $this->smarty->assign('errore',NULL);
@@ -142,13 +212,24 @@ class VUtente
     }
 
     //REINDIRIZZA ALLA HOME DEL REGISTRATO
+
+    /**
+     * @throws SmartyException
+     */
     public function home()
     {
         $this->smarty->assign('nome',$_SESSION['user']);
         $this->smarty->display('indexreg.tpl');
     }
 
-    public function registra($m,$comune,$province,$cap)
+    /**
+     * @param $m
+     * @param $comune
+     * @param $province
+     * @param $cap
+     * @throws SmartyException
+     */
+    public function registra($m, $comune, $province, $cap)
     {
         $psw="[A-Za-z0-9]{3,15}";
         $email="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
@@ -171,13 +252,27 @@ class VUtente
     }
 
     //messaggio di errore per dati di log errati
+
+    /**
+     * @throws SmartyException
+     */
     public function errore()
     {
         $this->smarty->assign('errore','Errore');
         $this->smarty->display('login.tpl');
     }
 
-    public function profilo($r,$e,$p,$pr,$pi,$l,$c)
+    /**
+     * @param $r
+     * @param $e
+     * @param $p
+     * @param $pr
+     * @param $pi
+     * @param $l
+     * @param $c
+     * @throws SmartyException
+     */
+    public function profilo($r, $e, $p, $pr, $pi, $l, $c)
     {
         $this->smarty->assign('ricevute',$r);
         $this->smarty->assign('effettuate',$e);
@@ -189,20 +284,36 @@ class VUtente
         $this->smarty->display('profilo.tpl');
     }
 
-    public function recensione($u,$id)
+    /**
+     * @param $u
+     * @param $id
+     * @throws SmartyException
+     */
+    public function recensione($u, $id)
     {
         $this->smarty->assign('user',$u);
         $this->smarty->assign('id',$id);
         $this->smarty->display('recensione.tpl');
     }
 
+    /**
+     * @throws SmartyException
+     */
     public function aggiornautente()
     {
         $this->smarty->assign('ok','Dati aggiornati correttamente');
         $this->smarty->display('profilo.tpl');
     }
 
-    public function modificautente($u,$m,$ca,$province,$comuni)
+    /**
+     * @param $u
+     * @param $m
+     * @param $ca
+     * @param $province
+     * @param $comuni
+     * @throws SmartyException
+     */
+    public function modificautente($u, $m, $ca, $province, $comuni)
     {
 
         $psw="[A-Za-z0-9]{3,15}";
@@ -223,7 +334,13 @@ class VUtente
         $this->smarty->display('modificautente.tpl');
     }
 
-    public function dettagliutente($u,$l,$v)
+    /**
+     * @param $u
+     * @param $l
+     * @param $v
+     * @throws SmartyException
+     */
+    public function dettagliutente($u, $l, $v)
     {
         $this->smarty->assign('user',$u);
         $this->smarty->assign('libri',$l);
@@ -232,6 +349,10 @@ class VUtente
 
     }
 
+    /**
+     * @param $prop
+     * @throws SmartyException
+     */
     public function scambioconfermato($prop)
     {
         $this->smarty->assign('prop',$prop);
