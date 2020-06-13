@@ -204,6 +204,7 @@ class VUtente
 
     /**
      * @throws SmartyException
+     * Indirizza alla pagina di login.
      */
     public function inserimento()
     {
@@ -215,6 +216,7 @@ class VUtente
 
     /**
      * @throws SmartyException
+     * Indirizza alla home del registrato.
      */
     public function home()
     {
@@ -228,6 +230,7 @@ class VUtente
      * @param $province
      * @param $cap
      * @throws SmartyException
+     * Indirizza alla pagina di registrazione.
      */
     public function registra($m, $comune, $province, $cap)
     {
@@ -251,10 +254,10 @@ class VUtente
         $this->smarty->display('registrati.tpl');
     }
 
-    //messaggio di errore per dati di log errati
 
     /**
      * @throws SmartyException
+     * Messaggio di errore per dati di log in errati.
      */
     public function errore()
     {
@@ -271,6 +274,7 @@ class VUtente
      * @param $l
      * @param $c
      * @throws SmartyException
+     * Indirizza alla pagina contenenti le informazioni profilo.
      */
     public function profilo($r, $e, $p, $pr, $pi, $l, $c)
     {
@@ -288,6 +292,7 @@ class VUtente
      * @param $u
      * @param $id
      * @throws SmartyException
+     * Indirizza alla pagina contenente la form per compilare la recensione.
      */
     public function recensione($u, $id)
     {
@@ -298,6 +303,7 @@ class VUtente
 
     /**
      * @throws SmartyException
+     * Indirizza alla pagina profilo dopo aver aggiornato le informazioni.
      */
     public function aggiornautente()
     {
@@ -312,6 +318,7 @@ class VUtente
      * @param $province
      * @param $comuni
      * @throws SmartyException
+     * Indirizza alla pagina contenente la form per modificare i dati utente.
      */
     public function modificautente($u, $m, $ca, $province, $comuni)
     {
@@ -339,6 +346,7 @@ class VUtente
      * @param $l
      * @param $v
      * @throws SmartyException
+     * Indirizza alla pagina contenente i dati dell'utente selezionato.
      */
     public function dettagliutente($u, $l, $v)
     {
@@ -352,6 +360,7 @@ class VUtente
     /**
      * @param $prop
      * @throws SmartyException
+     * Indrizza alla pagina di riepilogo scambio.
      */
     public function scambioconfermato($prop)
     {
