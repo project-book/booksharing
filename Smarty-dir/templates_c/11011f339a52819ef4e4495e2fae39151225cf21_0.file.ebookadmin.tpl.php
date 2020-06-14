@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-02 17:57:55
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 11:54:32
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ebookadmin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ed67703b76bf9_01743680',
+  'unifunc' => 'content_5ee5f3d820e080_75527844',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '11011f339a52819ef4e4495e2fae39151225cf21' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ebookadmin.tpl',
-      1 => 1591113475,
+      1 => 1591812371,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ed67703b76bf9_01743680 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee5f3d820e080_75527844 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('mess', (($tmp = @$_smarty_tpl->tpl_vars['mess']->value)===null||$tmp==='' ? 'null' : $tmp));?>
 <html lang="en">
@@ -182,7 +182,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 <td><input type="text" name="titolo"></td>
                                 <td><input type="text" name="autore"></td>
                                 <td><input type="text" name="editore"></td>
-                                <td><input type="text" name="genere"></td>
+                                <td>
+                                    <select name="genere">
+                                        <option value=""></option>
+                                        <option value="Giallo">Giallo</option>
+                                        <option value="Horror">Horror</option>ù
+                                        <option value="Storico">Storico</option>
+                                        <option value="Biografia">Biografia</option>
+                                        <option value="Fantasy">Fantasy</option>
+                                        <option value="Narrativa">Narrativa</option>
+                                        <option value="Thriller">Thriller</option>
+                                        <option value="Romanzo">Romanzo</option>
+                                    </select><br></td>
                                 <td><input type="text" name="anno"></td>
                                 <td><input type="text" name="prezzo_punti"></td>
                         </tr>

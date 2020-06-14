@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-01 19:51:26
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 12:08:01
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/dettagliutente.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ed5401e8c0cc4_12515421',
+  'unifunc' => 'content_5ee5f70185f290_96543943',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'baf795c15fdc46f0aca8886d0a785e8e17f12aea' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/dettagliutente.tpl',
-      1 => 1591033885,
+      1 => 1591285826,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ed5401e8c0cc4_12515421 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee5f70185f290_96543943 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,7 +230,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ?>
-                                            <form method="post" action="/booksharing/CercaLibro/proponiscambio/<?php echo $_smarty_tpl->tpl_vars['x']->value->getTitolo();?>
+                                            <form method="post" action="/booksharing/Utente/proponiscambio/<?php echo $_smarty_tpl->tpl_vars['x']->value->getTitolo();?>
 /<?php echo $_smarty_tpl->tpl_vars['x']->value->getAutore();?>
 /<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
 ">

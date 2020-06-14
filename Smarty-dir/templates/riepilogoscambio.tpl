@@ -33,6 +33,13 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/sorttable.js"></script>
+
+
+	<script type=”text/javascript”>$(function() {
+			$("#customers").tablesorter();
+		});</script>
+
 </head>
 
 <body>
@@ -91,7 +98,7 @@
 	<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 		<tr>
 			<td width="50%">&nbsp;
-				<table id="customers">
+				<table id="customers" class="sortable">
 
 					<h1> Richiedente</h1>
 
@@ -121,7 +128,7 @@
 			</td>
 
 			<td width="50%">&nbsp;
-				<table id="customers">
+				<table id="customers" class="sortable">
 
 
 					<h1> Ricevente </h1>

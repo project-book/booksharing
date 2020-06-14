@@ -489,6 +489,8 @@ border-radius: 50px;
   text-align: center;
   background-color: #CCC;
   color: white;
+	cursor: pointer;
+	cursor: hand;
 }
 
 .column {

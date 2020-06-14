@@ -18,6 +18,7 @@
 	<!-- Main Style -->
 	<link href="/booksharing/Smarty-dir/assets/css/ricercalibro.css" rel="stylesheet">
 
+
 	<!-- Fonts -->
 
 	<!-- Open Sans for body font -->
@@ -26,13 +27,19 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 
-
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/sorttable.js"></script>
+
+
+	<script type=”text/javascript”>$(function() {
+			$("#customers").tablesorter();
+		});</script>
+
 </head>
 
 <body>
@@ -89,32 +96,21 @@
 			</div>
 	</section>
 
-	<form method="post" action="/booksharing/CercaLibro/ordina/{$LibriRicercati}/{$libriposseduti}">
-	<div class="bottone">
-		ORDINAMENTO<br>
-		<input type="radio" name="ordinamento"
-			   value = 'titolo'>per titolo</div><br>
-	<input type="radio" name="ordinamento"
-		   value = 'autore'>per editore</div><br>
-	<input type="radio" name="ordinamento"
-		   value = 'anno'>per anno</div><br>
-	</div>
-	</form>
 
 							<form method="post" action="/booksharing/CercaLibro/scambia">
 
-<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" >
 <tr>
 
 <td width="70%">&nbsp;
 
-<table id="customers">
+<table id="customers" class="sortable">
 
 <h2 align="center"> libri da scegliere </h2>
 
   <tr>
     <th>Seleziona</th>
-    <th>User</th>
+    <th >User</th>
 	  <th>Voto_medio_user</th>
     <th>Titolo</th>
     <th>Autore</th>
@@ -125,7 +121,9 @@
 
     
   </tr>
-  {foreach $libriricercati as $x}
+
+
+	{foreach $libriricercati as $x}
     <tr>
     <td>
     <div class="bottone">
@@ -144,7 +142,8 @@
 
     
   </tr>
-  
+
+
   {/foreach}
   </table>
   </td>
@@ -152,7 +151,7 @@
 
 <td width="30%">&nbsp;
 
-<table id="customers">
+<table id="customers" class="sortable">
   
  
 <h2 align="center"> libri personali </h2>
@@ -210,11 +209,6 @@
 					</div>
 
 <hr>
-							<!-- End Cerca Libro Overview Content -->
-
-
-
-		<!-- End Cerca Libro -->
 
 
 
@@ -233,7 +227,6 @@
 <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"></script>
 <!-- Ajax contact form  -->
 <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
-
 
 
 <!-- Custom js -->

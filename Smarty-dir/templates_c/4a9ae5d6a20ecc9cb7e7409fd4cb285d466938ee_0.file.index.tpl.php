@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-11 19:36:13
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 11:53:23
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee26b8d10e640_33880395',
+  'unifunc' => 'content_5ee5f3933e1035_32245549',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a9ae5d6a20ecc9cb7e7409fd4cb285d466938ee' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/index.tpl',
-      1 => 1591895455,
+      1 => 1592128402,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee26b8d10e640_33880395 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee5f3933e1035_32245549 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -154,7 +154,7 @@ function content_5ee26b8d10e640_33880395 (Smarty_Internal_Template $_smarty_tpl)
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/Libri/ricerca">
+								<form method="post" action="/booksharing/CercaLibro/ricerca">
 
   									<!-- CASELLE DI TESTO -->
  									TITOLO<br>
@@ -230,7 +230,7 @@ function content_5ee26b8d10e640_33880395 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="row">
 
 
-								<form method="post" action="/booksharing/Ebooks/ricerca">
+								<form method="post" action="/booksharing/CercaEbook/ricerca">
 
 									<!-- CASELLE DI TESTO -->
  									TITOLO<br>

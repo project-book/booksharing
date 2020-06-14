@@ -82,12 +82,10 @@ class CCercaLibro
         $v=new VCercaLibro();
         $v->showlibro($p);
     }
+
     public function ordina($ricercati,$posseduti)
     {
-foreach ($ricercati as $r)
-{
-    if($)
-}
+
     }
 
 }
