@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-11 20:14:27
+/* Smarty version 3.1.34-dev-7, created on 2020-06-14 14:52:50
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercalibro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee274831deb68_90031961',
+  'unifunc' => 'content_5ee61da242c972_52797442',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '96fe506fb3cff8b834c3e53f319ded8f403ea9f3' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/ricercalibro.tpl',
-      1 => 1591899233,
+      1 => 1592139165,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee274831deb68_90031961 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee61da242c972_52797442 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,13 +41,13 @@ function content_5ee274831deb68_90031961 (Smarty_Internal_Template $_smarty_tpl)
 	<!-- Main Style -->
 	<link href="/booksharing/Smarty-dir/assets/css/ricercalibro.css" rel="stylesheet">
 
+
 	<!-- Fonts -->
 
 	<!-- Open Sans for body font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
 	<!-- Lato for Title -->
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
 
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -60,6 +60,22 @@ function content_5ee274831deb68_90031961 (Smarty_Internal_Template $_smarty_tpl)
  src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
 >
 	<![endif]-->
+	<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/sorttable.js"><?php echo '</script'; ?>
+>
+
+
+	<?php echo '<script'; ?>
+ type=”text/javascript”>$(function() {
+			$("#customers").tablesorter();
+		});<?php echo '</script'; ?>
+>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -105,7 +121,9 @@ function content_5ee274831deb68_90031961 (Smarty_Internal_Template $_smarty_tpl)
 							<div class="cerca-libro-heading-area">
 								<h1 class="cerca-libro-heading-title">SELEZIONA LIBRO</h1>
 								<span class="cerca-libro-header-dot"></span>
-								<p>Seleziona il libro che vuoi</p>
+								<p>Seleziona dalla tabella di sinistra il libro che vorresti ottentere e dalla colonna di destra
+								il libro di cui ti vuoi liberare.
+								Verrà inviata una proposta di scambio all'utente e riceverai la sua risposta direttamente sul tuo profilo.</p>
 							</div>
 							
 
@@ -113,20 +131,22 @@ function content_5ee274831deb68_90031961 (Smarty_Internal_Template $_smarty_tpl)
 				</div>
 			</div>
 	</section>
-							<form method="post" action="/booksharing/Libri/scambia">
 
-<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+
+							<form method="post" action="/booksharing/CercaLibro/scambia">
+
+<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" >
 <tr>
 
 <td width="70%">&nbsp;
 
-<table id="customers">
+<table id="customers" class="sortable">
 
 <h2 align="center"> libri da scegliere </h2>
 
   <tr>
     <th>Seleziona</th>
-    <th>User</th>
+    <th >User</th>
 	  <th>Voto_medio_user</th>
     <th>Titolo</th>
     <th>Autore</th>
@@ -137,7 +157,9 @@ function content_5ee274831deb68_90031961 (Smarty_Internal_Template $_smarty_tpl)
 
     
   </tr>
-  <?php
+
+
+	<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['libriricercati']->value, 'x');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
@@ -172,7 +194,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 
     
   </tr>
-  
+
+
   <?php
 }
 }
@@ -183,7 +206,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 <td width="30%">&nbsp;
 
-<table id="customers">
+<table id="customers" class="sortable">
   
  
 <h2 align="center"> libri personali </h2>
@@ -253,12 +276,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 					</div>
 
 <hr>
-							<!-- End Cerca Libro Overview Content -->
-
-
-
-		<!-- End Cerca Libro -->
-
+	
 
 
 
@@ -286,7 +304,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <?php echo '<script'; ?>
  type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"><?php echo '</script'; ?>
 >
-
 
 
 <!-- Custom js -->
