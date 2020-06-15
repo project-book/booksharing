@@ -40,6 +40,7 @@
 			$("#customers").tablesorter();
 		});</script>
 
+
 </head>
 
 <body>
@@ -95,11 +96,11 @@
 				</div>
 			</div>
 	</section>
-
+<section id="sfondo">
 
 							<form method="post" action="/booksharing/CercaLibro/scambia">
 
-<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" >
+<table id="tabellasfondo">
 <tr>
 
 <td width="70%">&nbsp;
@@ -187,8 +188,8 @@
   
   </tr>
   </table>
-  
- 
+
+
 
 		
 						<div class="testo-centrato">
@@ -207,7 +208,7 @@
 									<div class="testo-centrato">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
 					</div>
-
+</section>
 <hr>
 
 

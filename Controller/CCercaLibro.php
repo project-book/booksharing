@@ -68,7 +68,7 @@ class CCercaLibro
         $x=new FPersistentManager();
         $xx=$_POST['LibroPersonale'];
         if(empty($_POST['LibroPersonale']))
-            header("Location:/booksharing/Libri/ricerca");
+            header("Location:/booksharing/CercaLibro/ricerca");
         $ll=$_POST['LibroRichiesto'];
         $t=explode('/',$xx);
         $tt=explode('/',$ll);

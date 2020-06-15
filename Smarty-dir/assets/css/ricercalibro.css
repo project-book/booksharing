@@ -409,7 +409,7 @@ button:focus {
 .cerca-libro-overview-area {
 	display: inline;
 	float: left;
-	padding: 150px 0;
+	padding: 60px 0;
 	width: 50%;
 }
 
@@ -459,38 +459,40 @@ border-radius: 50px;
 	width: 0px;
 	color: #fff;
 }
-.cerca-libro-overview-content1{
-	display: inline;
-	float: right;
-	text-align: right;
-	margin-top: 0px;
-	width: -348%;
-}
-
+#sfondo{background-color: #ff871c;}
+#tabellasfondo{ border:0;
+	cellpadding:0;
+	cellspacing:0;
+	border-collapse: collapse;
+	bordercolor:"#fffff";
+	width:100%; }
 #customers {
 
-    border: 1px solid #000;
-	background-color: #ccc;
+	background-color: #DAA520;
+	border-radius: 40px 40px 40px 40px;
+	text-align: center;
+	width: 100% ;
+
 
 }
 
 #customers td, #customers th {
-  border: 1px solid #ddd;
+	border: 0px ;
   padding: 15px;
+	border-radius: 40px 40px 40px 40px;
+	border-style: dotted;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
 
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #CCC;
-  color: white;
+  background-color: #DAA520;
+
 	cursor: pointer;
 	cursor: hand;
+
 }
 
 .column {

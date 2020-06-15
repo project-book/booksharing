@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-01 19:09:52
+/* Smarty version 3.1.34-dev-7, created on 2020-06-15 15:12:05
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/recensione.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ed5366084a597_98147906',
+  'unifunc' => 'content_5ee773a593b3e2_72647725',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6d4a4c27ab62d6ed55f6ad0532cb8ca253627f6a' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/recensione.tpl',
-      1 => 1591031389,
+      1 => 1592226723,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ed5366084a597_98147906 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee773a593b3e2_72647725 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,15 +125,15 @@ function content_5ed5366084a597_98147906 (Smarty_Internal_Template $_smarty_tpl)
                                         <!-- SELECTBOX -->
                                         VOTO<br>
                                         <select name="voto">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+                                            <option value=1>1</option>
+                                            <option value=2>2</option>
+                                            <option value=3>3</option>
+                                            <option value=4>4</option>
+                                            <option value=5>5</option>
                                         </select><br>
 
-                                        COOMMENTO<br>
-                                        <input type="text" name="commento"><br>
+                                        COMMENTO<br>
+                                        <textarea name="commento" cols="40" rows="5" placeholder="inserisci commento"></textarea><br>
 
 
 
