@@ -264,7 +264,9 @@
 
                         </div>
 
+
         {if !empty($effettuate) || !empty($ricevute)}
+
 
 
 
@@ -272,7 +274,9 @@
                                     <tr>
 
                                         <td width="50%">&nbsp;
+
                                             {if !empty($effettuate)}
+
                                             <table id="customers" class="sortable">
 
                                                 <h2 align="center"> Valutazioni effettuate</h2>
@@ -321,7 +325,9 @@
                                 </table>
                             </td>
                                         {else}
+
                                         <h2 align="center">Nessuna valutazione ricevuta</h2>
+
                                         {/if}
 
                             </tr>
@@ -378,8 +384,13 @@
                             </tr>
                         {/foreach}
                     </table>
+
                     {else}
                         <h2 align="center">Nessuna proposta ricevuta</h2>
+                    {/if}
+                    {/foreach}
+
+
                     {/if}
                     {/foreach}
 

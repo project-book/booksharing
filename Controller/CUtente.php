@@ -419,8 +419,10 @@ class CUtente
                 $arr['stato']='Recensito';
 
             $o->update('Proposta',$arr,$id);
+
             //$v->recensione($u,$id);
             header(('Location:/booksharing/Utente/profilo'));
+
     }
 
     /**
