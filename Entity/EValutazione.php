@@ -34,7 +34,7 @@ class EValutazione
      * @param ERegistrato $val
      * @param ERegistrato $valto
      */
-    public function __construct(string $c, string $v, ERegistrato $val, ERegistrato $valto)
+    public function __construct($c, $v, ERegistrato $val, ERegistrato $valto)
     {
         $this->commento = $c;
         $this->voto = $v;

@@ -181,6 +181,7 @@ class CUtente
         if(static::isLogged())
         {
             $x=new FPersistentManager();
+
             $a['valutato']=$_SESSION['user'];
             $aa['valutante']=$_SESSION['user'];
             $p['proponente']=$_SESSION['user'];
@@ -194,11 +195,19 @@ class CUtente
 
             $propinv=$x->search('Proposta',$p,'');
 
-
             $propric=$x->search('Proposta',$pp,'');
-            //$r=$r->getObj();
-            $proposta=array_merge($propinv,$propric);
-            $V->profilo($ric,$eff,$r,$propric,$propinv,$libri,$proposta);
+            $proposta=array();
+            if(!empty($propric))
+            foreach($propric as $k=>$v)
+               if($v->getstato()!=NULL)
+                   $proposta=array_merge($propric);;
+            if(!empty($propinv))
+            foreach($propinv as $k=>$v)
+                if($v->getstato()!=NULL)
+                    $proposta=array_merge($propinv);;
+
+
+            $V->profilo($ric,$eff,$r,$propinv,$propric,$libri,$proposta);
         }
         else $V->inserimento();
     }
@@ -397,14 +406,15 @@ class CUtente
         $v=new VUtente();
         $o=new FPersistentManager();
         if(static::isLogged())
-            var_dump($valte=$o->load('Registrato',$_SESSION['user']));
+            $valte=$o->load('Registrato',$_SESSION['user']);
             $valto=$o->load('Registrato',$u);
-            print $t=$v->getcommento();
+
             $x=new EValutazione($v->getcommento(),$v->getvoto(),$valte,$valto);
             $o->store($x);
             $arr['stato']='Recensito';
             $o->update('Proposta',$arr,$id);
-            header(('Location:/booksharing/Utente/profilo'));
+            $v->recensione($u,$id);
+            //header(('Location:/booksharing/Utente/profilo'));
     }
 
     /**
