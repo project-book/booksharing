@@ -284,7 +284,9 @@ class VUtente
      * @throws SmartyException
      * Indirizza alla pagina contenenti le informazioni profilo.
      */
+
     public function profilo($r, $e, $p, $pinv, $pric, $l, $c,$i)
+
     {
         $this->smarty->assign('ricevute',$r);
         $this->smarty->assign('effettuate',$e);

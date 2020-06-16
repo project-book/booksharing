@@ -79,7 +79,10 @@
 							<div class="cerca-libro-heading-area">
 								<h2 class="cerca-libro-heading-title">REGISTRATI</h2>
 								<span class="cerca-libro-header-dot"></span>
-								<p>Scrivi i tuoi dati</p>
+								<p>Scrivi i tuoi dati e accertati di rispettare il formato:
+								1)L'user non può appartenere ad un utente gia registrato.
+								2)L'email deve avere un formato valido.
+								3)Inserire cap,comune e provincia validi.</p>
 							</div>
 
 							<!-- Start Cerca Libro Overview Content -->

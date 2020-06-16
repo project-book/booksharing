@@ -235,6 +235,7 @@ class CUtente
             $Img=basename(array_pop($immagine));
 
                 $V->profilo($ric,$eff,$r,$propinv,$propric,$libri,$proposta,$Img);
+
         }
         else $V->inserimento();
     }
@@ -247,13 +248,16 @@ class CUtente
     public function isLogged()
     {
         $identificato = false;
+        $n=new FPersistentManager();
+
         if (isset($_COOKIE['PHPSESSID'])) {
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
                     }
                 }
                 if (isset($_SESSION['user'])) {
-                    $identificato = true;
+                    if($n->load('Registrato',$_SESSION['user']))
+                        $identificato = true;
                 }
                 return $identificato;
     }
@@ -470,8 +474,10 @@ class CUtente
                 $arr['stato']='Recensito';
 
             $o->update('Proposta',$arr,$id);
+
             //$v->recensione($u,$id);
             header(('Location:/booksharing/Utente/profilo'));
+
     }
 
     /**

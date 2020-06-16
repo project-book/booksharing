@@ -99,7 +99,14 @@
             <div class="cerca-libro-heading-area">
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
+
                     <img src="/booksharing/Controller/uploads/user/{$immagine}">
+
+                    <h2>In questa pagina puoi visualizzare le tue informazioni utente, tra cui dati personali, valutazioni e proposte.
+                    Una volta accettata una proposta ricevuta o dopo che una vostra proposta inviata viene accettata, puoi contattare via email l'utente per accordare
+                    lo scambio.
+                    Successivamente potrai inviare una recensione.</h2>
+
                 </div>
             </div>
 
@@ -222,6 +229,10 @@
                                                             <option value="Come">Come nuovo</option>
                                                             <option value="Usato">Usato</option>
                                                             <option value="Pessime">Pessime condizioni</option></td>
+                                                        <td>        <!-- UPLOAD IMMAGINE -->
+                                                            <p>Aggiungi una tua immagnie</p>
+                                                            <input name="file" type="file" size="40" />
+                                                            <!--/ UPLOAD IMMAGINE --></td>
 
 
                                                 </tr>
@@ -236,7 +247,6 @@
 
                                     </tr>
                                 </table>
-
 
 
 
@@ -268,11 +278,14 @@
 
 
 
+
                                 <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
                                     <tr>
 
                                         <td width="50%">&nbsp;
+
                                             {if !empty($effettuate)}
+
                                             <table id="customers" class="sortable">
 
                                                 <h2 align="center"> Valutazioni effettuate</h2>
@@ -321,7 +334,9 @@
                                 </table>
                             </td>
                                         {else}
+
                                         <h2 align="center">Nessuna valutazione ricevuta</h2>
+
                                         {/if}
 
                             </tr>
@@ -378,6 +393,7 @@
                             </tr>
                         {/foreach}
                     </table>
+
                     {else}
                         <h2 align="center">Nessuna proposta ricevuta</h2>
                     {/if}

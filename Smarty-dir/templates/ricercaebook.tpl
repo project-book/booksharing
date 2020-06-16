@@ -86,7 +86,7 @@
 						<div class="cerca-libro-heading-area">
 							<h2 class="cerca-libro-heading-title">SELEZIONA EBOOK</h2>
 							<span class="cerca-libro-header-dot"></span>
-							<p>Seleziona il libro che vuoi</p>
+							<p>Seleziona il libro che vuoi acquistare se hai i punti necessari verrà inviato il libro alla tua mail personale.</p>
 						</div>
 
 
