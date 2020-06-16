@@ -220,13 +220,16 @@ class CUtente
     public function isLogged()
     {
         $identificato = false;
+        $n=new FPersistentManager();
+
         if (isset($_COOKIE['PHPSESSID'])) {
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
                     }
                 }
                 if (isset($_SESSION['user'])) {
-                    $identificato = true;
+                    if($n->load('Registrato',$_SESSION['user']))
+                        $identificato = true;
                 }
                 return $identificato;
     }

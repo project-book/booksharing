@@ -64,7 +64,6 @@
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
-							<h2>Benvenuto   {$nome}</h2>
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
 				            <li><a href="/booksharing/Utente/profilo">PROFILO</a></li>
@@ -77,7 +76,8 @@
 		</div>
 	</header>
 	<!-- End Header -->
-
+	<h2>Benvenuto   {$nome}
+	Cerca un libro da acquisire tramite uno scambio oppure utilizza i tuoi punti per acquistare un ebook.</h2>
 	<!-- Start Featured Slider -->
 
 	<section id="mu-hero">
@@ -93,7 +93,7 @@
 				<div class="col-md-6 col-sm-6 col-sm-pull-6">
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
-						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
+						<p></p>
 
 					</div>
 				</div>	
