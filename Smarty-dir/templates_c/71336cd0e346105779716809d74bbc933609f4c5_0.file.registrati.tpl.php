@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-10 10:40:03
+/* Smarty version 3.1.34-dev-7, created on 2020-06-16 12:36:22
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/registrati.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee09c639a59e5_14465157',
+  'unifunc' => 'content_5ee8a0a63439b9_66055633',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '71336cd0e346105779716809d74bbc933609f4c5' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/registrati.tpl',
-      1 => 1591726175,
+      1 => 1592303779,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee09c639a59e5_14465157 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee8a0a63439b9_66055633 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -113,7 +113,7 @@ function content_5ee09c639a59e5_14465157 (Smarty_Internal_Template $_smarty_tpl)
 							<div class="cerca-libro-overview-content">
 								<div class="row">
 
-								<form method="post" action="/booksharing/Utente/Salvadati">
+								<form method="post" action="/booksharing/Utente/Salvadati" enctype="multipart/form-data">
                                  <?php if ($_smarty_tpl->tpl_vars['messaggio']->value != '') {?><h2><?php echo $_smarty_tpl->tpl_vars['messaggio']->value;?>
 </h2><?php }?>
   									<!-- CASELLE DI TESTO -->
@@ -182,6 +182,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 										</select><br>
+									     <!-- UPLOAD IMMAGINE -->
+										<p>Aggiungi una tua immagnie</p>
+										<input name="file" type="file" size="40" />
+										<!--/ UPLOAD IMMAGINE --><br>
 
 
 

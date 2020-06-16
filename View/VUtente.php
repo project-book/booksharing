@@ -197,6 +197,14 @@ class VUtente
     }
 
 
+    public function getfile()
+    {
+        $value = NULL;
+        if (isset($_FILES))
+            $value = $_FILES;
+        return $value;
+    }
+
 
 
 
@@ -276,15 +284,16 @@ class VUtente
      * @throws SmartyException
      * Indirizza alla pagina contenenti le informazioni profilo.
      */
-    public function profilo($r, $e, $p, $pr, $pi, $l, $c)
+    public function profilo($r, $e, $p, $pinv, $pric, $l, $c,$i)
     {
         $this->smarty->assign('ricevute',$r);
         $this->smarty->assign('effettuate',$e);
-        $this->smarty->assign('propric',$pr);
-        $this->smarty->assign('propinv',$pi);
+        $this->smarty->assign('propric',$pric);
+        $this->smarty->assign('propinv',$pinv);
         $this->smarty->assign('dati',$p);
         $this->smarty->assign('libri',$l);
         $this->smarty->assign('concluse',$c);
+        $this->smarty->assign('immagine',$i);
         $this->smarty->display('profilo.tpl');
     }
 

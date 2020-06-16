@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-09 20:03:27
+/* Smarty version 3.1.34-dev-7, created on 2020-06-16 13:03:11
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/modificautente.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5edfceef5b5467_48475476',
+  'unifunc' => 'content_5ee8a6ef603ea9_30970959',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ea1106894889e13e06c4e317c84b67cc336f49e3' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/modificautente.tpl',
-      1 => 1591725801,
+      1 => 1592304618,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5edfceef5b5467_48475476 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee8a6ef603ea9_30970959 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('messaggio', (($tmp = @$_smarty_tpl->tpl_vars['messaggio']->value)===null||$tmp==='' ? '' : $tmp));?>
 <html lang="en">
@@ -114,7 +114,7 @@ function content_5edfceef5b5467_48475476 (Smarty_Internal_Template $_smarty_tpl)
                         <div class="cerca-libro-overview-content">
                             <div class="row">
 
-                                <form method="post" action="/booksharing/Utente/aggiornautente">
+                                <form method="post" action="/booksharing/Utente/aggiornautente" enctype="multipart/form-data">
 
                                     <!-- CASELLE DI TESTO -->
                                   <?php if ($_smarty_tpl->tpl_vars['messaggio']->value != NULL) {?>  <h2><?php echo $_smarty_tpl->tpl_vars['messaggio']->value;?>
@@ -188,6 +188,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     </select><br>
+                                    <!-- UPLOAD IMMAGINE -->
+                                    <p>Modifica immagnie</p>
+                                    <br><input name="file" type="file" size="40" />
+                                    <!--/ UPLOAD IMMAGINE --><br>
 
                                     <!-- SUBMIT -->
                                     <input type="submit" name="modifica" value="modifica">

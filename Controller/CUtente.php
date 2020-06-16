@@ -20,6 +20,7 @@ class CUtente
             OR $V->getprovincia() == NULL) {
             $m = 'Devi riempire tutti i campi';
             static::registra($m);
+            die;
 
         }
         else
@@ -34,9 +35,10 @@ class CUtente
                 if ($V->getcap() == $X[5] AND $V->getcomune() == $X[1] AND $V->getprovincia() == $X[2])
                     $b = true;
             }
-            if ($b = false) {
+            if ($b == false) {
                 $m = 'il comune inserito non esiste';
                 static::registra($m);
+                exit;
             }
 
             $psw = "/[A-Za-z0-9]{3,15}/";
@@ -45,6 +47,7 @@ class CUtente
             $v = "/[A-Za-z0-9'\.\-\s\,]{2,20}/";
             $cognome = "/[A-Za-z]{1,15}/";
             $nome = "/[A-Za-z]{1,15}/";
+
 
             $t[$nome] = $V->getnome();
             $t[$cognome] = $V->getcognome();
@@ -57,6 +60,7 @@ class CUtente
                 if (!preg_match($k, $value)) {
                     $m = 'Rispetta i formati';
                     static::registra($m);
+                    die;
 
                 }
             }
@@ -65,8 +69,26 @@ class CUtente
             if ($P->load('Registrato', $V->getuser())) {
                 $m = 'l\'user inserito è gia esistente';
                 static::registra($m);
+                exit;
 
             }
+
+            $uploadDir = __DIR__.'/uploads/user';
+            foreach ($V->getfile() as $file) {
+                if (UPLOAD_ERR_OK === $file['error']) {
+                    $f=explode('/',$file['type']);
+
+                    $fileName =$V->getuser().'.'.$f[1];
+                    if (!preg_match('/^(jpeg|jpg|gif|png)$/', $f[1])) {
+                        $m='Tipo non supportato';
+                        static::registra($m);
+                        exit;
+                    }
+                    else
+                    move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
+                }
+            }
+
 
             $i= new EIndirizzo($V->getvia(),$V->getncivico(),$V->getcap(),$V->getcomune(),$V->getprovincia());
             $r= new ERegistrato($V->getuser(),$V->getpassword(),$V->getnome(),$V->getcognome(),$V->getemail(),$i,0);
@@ -181,6 +203,7 @@ class CUtente
         if(static::isLogged())
         {
             $x=new FPersistentManager();
+
             $a['valutato']=$_SESSION['user'];
             $aa['valutante']=$_SESSION['user'];
             $p['proponente']=$_SESSION['user'];
@@ -194,11 +217,24 @@ class CUtente
 
             $propinv=$x->search('Proposta',$p,'');
 
-
             $propric=$x->search('Proposta',$pp,'');
-            //$r=$r->getObj();
-            $proposta=array_merge($propinv,$propric);
-            $V->profilo($ric,$eff,$r,$propric,$propinv,$libri,$proposta);
+            $proposta=array();
+            if(!empty($propric))
+            foreach($propric as $k=>$v)
+               if($v->getstato()!=NULL)
+                   $proposta=array_merge($propric);;
+            if(!empty($propinv))
+            foreach($propinv as $k=>$v)
+                if($v->getstato()!=NULL)
+                    $proposta=array_merge($propinv);;
+
+                    //inserisci immagine
+                    $directory=__DIR__."/uploads/user/";
+            $immagine = glob($directory . $_SESSION['user'].'.{jpg,jpeg,png,gif}', GLOB_BRACE);
+            shuffle($immagine);
+            $Img=basename(array_pop($immagine));
+
+                $V->profilo($ric,$eff,$r,$propinv,$propric,$libri,$proposta,$Img);
         }
         else $V->inserimento();
     }
@@ -303,7 +339,7 @@ class CUtente
                     $m = 'Rispetta i formati';
                     $p = new FPersistentManager();
                     $u = $p->load('Registrato', $_SESSION['user']);
-                    $VRicerca->modificautente($u, $m);
+                    static::modificautente($m);
                 } else {
                     $a['user'] = $VRicerca->getuser();
                     $a['password'] = $VRicerca->getpassword();
@@ -332,6 +368,30 @@ class CUtente
                             $yy[$k] = $v;
                     }
                     $x->update('Indirizzo', $yy, $ttt);
+
+
+                    $directory=__DIR__."/uploads/user/";
+                    $immagine = glob($directory . $_SESSION['user'].'.{jpg,jpeg,png,gif}', GLOB_BRACE);
+                    shuffle($immagine);
+                    $Img=basename(array_pop($immagine));
+                    $uploadDir = __DIR__.'/uploads/user';
+                    foreach ($VRicerca->getfile() as $file) {
+                        if (UPLOAD_ERR_OK === $file['error']) {
+                            $f=explode('/',$file['type']);
+
+                            $fileName =$_SESSION['user'].'.'.$f[1];
+                            if (!preg_match('/^(jpeg|jpg|gif|png)$/', $f[1])) {
+                                $m='Tipo non supportato';
+                                static::modificautente($m);
+                                exit;
+                            }
+                            else{
+                                unlink('\''.$directory.$Img.'\'');
+                                move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);}
+                        }
+                    }
+
+
                     static::profilo();
                 }
             }
@@ -343,9 +403,9 @@ class CUtente
     /**
      *Prepara la pagina che permette di modificare le informazioni utente.
      */
-    public function modificautente(){
+    public function modificautente($m){
         $V=new VUtente();
-        $m=NULL;
+
         if(static::isLogged()){
             $x = new FPersistentManager();
             $u=$x->load('Registrato',$_SESSION['user']);
@@ -397,13 +457,20 @@ class CUtente
         $v=new VUtente();
         $o=new FPersistentManager();
         if(static::isLogged())
-            var_dump($valte=$o->load('Registrato',$_SESSION['user']));
+            $valte=$o->load('Registrato',$_SESSION['user']);
             $valto=$o->load('Registrato',$u);
-            print $t=$v->getcommento();
+
             $x=new EValutazione($v->getcommento(),$v->getvoto(),$valte,$valto);
             $o->store($x);
-            $arr['stato']='Recensito';
+            $prop=$o->load('Proposta',$id);
+
+            if($prop->getstato()=='Accettato')
+                $arr['stato']=$_SESSION['user'];
+            if($prop->getstato()==$u )
+                $arr['stato']='Recensito';
+
             $o->update('Proposta',$arr,$id);
+            //$v->recensione($u,$id);
             header(('Location:/booksharing/Utente/profilo'));
     }
 
@@ -413,6 +480,7 @@ class CUtente
     public function aggiungilibro(){
         if(CUtente::isLogged()==true){
             $VRegistra=new VCercaLibro();
+            $v=new VUtente();
             $x=new FPersistentManager();
             $anno=(int)$VRegistra->getanno();
             $t=array('Giallo','Horror','Storico','Biografia','Narrativa','Fantasy','Thriller','Romanzo');
@@ -432,10 +500,21 @@ class CUtente
 
                     if($booltt==1 and $bool==1){
 
-            var_dump($reg=$x->load('Registrato',$_SESSION['user']));
+            $reg=$x->load('Registrato',$_SESSION['user']);
             $r= new ECartaceo($VRegistra->gettitolo(),$VRegistra->getautore(),$VRegistra->geteditore(),$VRegistra->getgenere(),$anno,$VRegistra->getcondizione(),$reg);
             $x->store($r);
-            header("Location:/booksharing/Utente/profilo");}
+                        $uploadDir = __DIR__.'/uploads/libri';
+
+                        foreach ($v->getfile() as $file) {
+                            if (UPLOAD_ERR_OK === $file['error']) {
+                                $f=explode('/',$file['type']);
+
+                                $fileName =$VRegistra->gettitolo().'_'.$VRegistra->getautore().'_'.$_SESSION['user'].'_'.'.'.$f[1];
+                                move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
+                            }
+                        }
+                        $VRegistra->Login();}
+            //header("Location:/booksharing/Utente/profilo");}
                 else
                    $VRegistra->Login();}
 

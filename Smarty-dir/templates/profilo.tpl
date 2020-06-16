@@ -99,19 +99,20 @@
             <div class="cerca-libro-heading-area">
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
+                    <img src="/booksharing/Controller/uploads/user/{$immagine}">
                 </div>
             </div>
 
                         <!-- Start Cerca Libro Overview Content -->
 
                     <div class="testo-centrato">
-                        <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="200%" id="AutoNumber1">
+                        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="200%" id="AutoNumber1">
                             <tr>
 
                                 <td >&nbsp;
 
                                     <table id="customers" class="sortable">
-                                        <form method="post" action="/booksharing/Utente/modificautente/">
+                                        <form method="post" action="/booksharing/Utente/modificautente/{''}">
                                             <h2> Dati personali</h2>
 
                                             <tr>
@@ -188,6 +189,7 @@
                                                         <td>{$x->getGenere()}</td>
                                                         <td>{$x->getAnno()}</td>
                                                         <td>{$x->getCondizione()}</td>
+
                                                         <td><input type="submit" name="elimina" value="elimina" ></td>
                                                     </tr>
 
@@ -196,7 +198,7 @@
 
 
                                                 <tr>
-                                                    <form method="post" action="/booksharing/Utente/aggiungilibro">
+                                                    <form method="post" action="/booksharing/Utente/aggiungilibro" enctype="multipart/form-data">
                                                         <td><input type="text" name="titolo"></td>
                                                         <td><input type="text" name="autore"></td>
                                                         <td><input type="text" name="editore"></td>
@@ -220,6 +222,7 @@
                                                             <option value="Come">Come nuovo</option>
                                                             <option value="Usato">Usato</option>
                                                             <option value="Pessime">Pessime condizioni</option></td>
+
 
                                                 </tr>
 
@@ -261,7 +264,7 @@
 
                         </div>
 
-        {if !empty($effetuate) and !empty($ricevute)}
+        {if !empty($effettuate) || !empty($ricevute)}
 
 
 
@@ -269,7 +272,7 @@
                                     <tr>
 
                                         <td width="50%">&nbsp;
-
+                                            {if !empty($effettuate)}
                                             <table id="customers" class="sortable">
 
                                                 <h2 align="center"> Valutazioni effettuate</h2>
@@ -292,10 +295,12 @@
                             {/foreach}
                             </table>
                             </td>
-
+                                        {else}
+                                        <h2>Nessuna valutazione inviata</h2>
+                                        {/if}
 
                             <td width="50%">&nbsp;
-
+                                {if !empty($ricevute)}
                                 <table id="customers" class="sortable">
 
 
@@ -315,7 +320,9 @@
                                     {/foreach}
                                 </table>
                             </td>
-
+                                        {else}
+                                        <h2 align="center">Nessuna valutazione ricevuta</h2>
+                                        {/if}
 
                             </tr>
                             </table>
@@ -332,12 +339,14 @@
     <section id="mu-contact">
         <hr>
         <h1 align="center">PROPOSTE IN CORSO</h1>
-        {if !empty($propric) and !empty($propinv)}
-        <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+        {if !empty($propric) || !empty($propinv)}
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
             <tr>
 
                 <td >&nbsp;
-
+                    {if !empty($propric)}
+                    {foreach $propric as $x}
+                    {if $x->getstato()==NULL}
                     <table id="customers" class="sortable">
 
 
@@ -352,10 +361,11 @@
 
 
                         </tr>
+
                         {foreach $propric as $x}
                             <tr>
                                 <form method="post" action=/booksharing/Utente/Risposta/{$x->getid()} >
-                                {if ($x->getstato()=='')}
+                                {if ($x->getstato()==NULL)}
 
                                     <td> <a href="/booksharing/Utente/dettagliutente/{$x->getutenteprop()}">{$x->getutenteprop()}</a></td>.
                                     <td>{$x->getlibrorich()->gettitolo()}</td>
@@ -368,13 +378,22 @@
                             </tr>
                         {/foreach}
                     </table>
+                    {else}
+                        <h2 align="center">Nessuna proposta ricevuta</h2>
+                    {/if}
+                    {/foreach}
+
+                    {/if}
                 </td>
                 </form>
             </tr>
         </table>
+            <hr>
                 <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
                     <td >
-
+                    {if !empty($propinv)}
+                        {foreach $propinv as $x}
+                        {if $x->getstato()==NULL}
                     <table id="customers" class="sortable">
 
 
@@ -401,6 +420,12 @@
                             </tr>
                         {/foreach}
                     </table>
+
+                        {/if}
+                        {/foreach}
+                    {else}
+                        <h2 align="center">Nessuna proposta inviata</h2>
+{/if}
                 </td>
 
 
@@ -412,7 +437,7 @@
     <hr>
     <h1 align="center">PROPOSTE CONCLUSE</h1>
         {if !empty($concluse)}
-    <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+    <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
         <tr>
 
                 <td >&nbsp;
@@ -435,7 +460,7 @@
                         <form method="post" action=/booksharing/Utente/Recensione/{$x->getid()} >
                             <tr>
 
-                                {if ($x->getstato()=='Accettato' || $x->getstato()=='Rifiutato'|| $x->getstato()=='Recensito')}
+                                {if ($x->getstato()!=NULL)}
                                     {if ($dati->getuser()!=$x->getutenteprop())}
                                     <td><a href="/booksharing/Utente/dettagliutente/{$x->getutenteprop()}">{$x->getutenteprop()}</a></td>
                                         {$y=$x->getutenteprop()}
@@ -447,8 +472,10 @@
                                     <td>{$x->getlibrorich()->getautore()}</td>
                                     <td>{$x->getlibroprop()->gettitolo()}</td>
                                     <td>{$x->getlibroprop()->getautore()}</td>
-                                    <td>{$x->getstato()}</td>
-                                    <td>{if ($x->getstato()=='Accettato')}<button type="submit" name="recensione" value="{$y}">Lascia Recensione</button></td>
+                                    {if $dati->getuser()==$x->getstato() || $x->getstato()=='Recensito'}
+                                    <td>Recensito</td>
+                                    {/if}
+                                    <td>{if $dati->getuser()!=$x->getstato() and $x->getstato()!='Recensito' and $x->getstato()!='Rifiutato'}<button type="submit" name="recensione" value="{$y}">Lascia Recensione</button></td>
                                 {/if}{/if}
                             </tr>
                         {/foreach}

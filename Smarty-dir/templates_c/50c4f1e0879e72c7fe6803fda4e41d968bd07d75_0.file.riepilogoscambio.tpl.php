@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-05-29 12:51:13
+/* Smarty version 3.1.34-dev-7, created on 2020-06-15 12:49:51
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/riepilogoscambio.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ed0e921b78a66_19002056',
+  'unifunc' => 'content_5ee7524f4c0587_10358773',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50c4f1e0879e72c7fe6803fda4e41d968bd07d75' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/riepilogoscambio.tpl',
-      1 => 1590749467,
+      1 => 1592141529,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ed0e921b78a66_19002056 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee7524f4c0587_10358773 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +60,17 @@ function content_5ed0e921b78a66_19002056 (Smarty_Internal_Template $_smarty_tpl)
  src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
 >
 	<![endif]-->
+	<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/sorttable.js"><?php echo '</script'; ?>
+>
+
+
+	<?php echo '<script'; ?>
+ type=”text/javascript”>$(function() {
+			$("#customers").tablesorter();
+		});<?php echo '</script'; ?>
+>
+
 </head>
 
 <body>
@@ -118,7 +129,7 @@ function content_5ed0e921b78a66_19002056 (Smarty_Internal_Template $_smarty_tpl)
 	<table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
 		<tr>
 			<td width="50%">&nbsp;
-				<table id="customers">
+				<table id="customers" class="sortable">
 
 					<h1> Richiedente</h1>
 
@@ -155,7 +166,7 @@ function content_5ed0e921b78a66_19002056 (Smarty_Internal_Template $_smarty_tpl)
 			</td>
 
 			<td width="50%">&nbsp;
-				<table id="customers">
+				<table id="customers" class="sortable">
 
 
 					<h1> Ricevente </h1>

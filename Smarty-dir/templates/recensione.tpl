@@ -102,8 +102,8 @@
                                             <option value=5>5</option>
                                         </select><br>
 
-                                        COOMMENTO<br>
-                                        <input type="text" name="commento"><br>
+                                        COMMENTO<br>
+                                        <textarea name="commento" cols="40" rows="5" placeholder="inserisci commento"></textarea><br>
 
 
 
