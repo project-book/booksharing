@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-16 13:03:18
+/* Smarty version 3.1.34-dev-7, created on 2020-06-16 19:46:32
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/profilo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee8a6f6921617_14732011',
+  'unifunc' => 'content_5ee90578b8ed25_61619801',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e4cf29d45088f274fc767a514465a8cd8b8453b2' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/profilo.tpl',
-      1 => 1592305246,
+      1 => 1592329592,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee8a6f6921617_14732011 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ee90578b8ed25_61619801 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
-<?php $_smarty_tpl->_assignInScope('y', (($tmp = @$_smarty_tpl->tpl_vars['y']->value)===null||$tmp==='' ? '' : $tmp));?>
+<?php $_smarty_tpl->_assignInScope('y', (($tmp = @$_smarty_tpl->tpl_vars['y']->value)===null||$tmp==='' ? '' : $tmp));
+$_smarty_tpl->_assignInScope('bool', (($tmp = @$_smarty_tpl->tpl_vars['bool']->value)===null||$tmp==='' ? 'ok' : $tmp));?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -130,8 +131,15 @@ function content_5ee8a6f6921617_14732011 (Smarty_Internal_Template $_smarty_tpl)
             <div class="cerca-libro-heading-area">
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
+
                     <img src="/booksharing/Controller/uploads/user/<?php echo $_smarty_tpl->tpl_vars['immagine']->value;?>
 ">
+
+                    <h2>In questa pagina puoi visualizzare le tue informazioni utente, tra cui dati personali, valutazioni e proposte.
+                    Una volta accettata una proposta ricevuta o dopo che una vostra proposta inviata viene accettata, puoi contattare via email l'utente per accordare
+                    lo scambio.
+                    Successivamente potrai inviare una recensione.</h2>
+
                 </div>
             </div>
 
@@ -280,6 +288,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                                             <option value="Come">Come nuovo</option>
                                                             <option value="Usato">Usato</option>
                                                             <option value="Pessime">Pessime condizioni</option></td>
+                                                        <td>        <!-- UPLOAD IMMAGINE -->
+                                                            <p>Aggiungi una tua immagnie</p>
+                                                            <input name="file" type="file" size="40" />
+                                                            <!--/ UPLOAD IMMAGINE --></td>
 
 
                                                 </tr>
@@ -294,7 +306,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
                                     </tr>
                                 </table>
-
 
 
 
@@ -324,13 +335,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         <?php if (!empty($_smarty_tpl->tpl_vars['effettuate']->value) || !empty($_smarty_tpl->tpl_vars['ricevute']->value)) {?>
 
-
-
                                 <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
                                     <tr>
 
                                         <td width="50%">&nbsp;
+
                                             <?php if (!empty($_smarty_tpl->tpl_vars['effettuate']->value)) {?>
+
                                             <table id="customers" class="sortable">
 
                                                 <h2 align="center"> Valutazioni effettuate</h2>
@@ -401,7 +412,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 </table>
                             </td>
                                         <?php } else { ?>
+
                                         <h2 align="center">Nessuna valutazione ricevuta</h2>
+
                                         <?php }?>
 
                             </tr>
@@ -413,13 +426,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
     </section>
 
-
-
     <!-- Start Contact -->
     <section id="mu-contact">
         <hr>
         <h1 align="center">PROPOSTE IN CORSO</h1>
+
         <?php if (!empty($_smarty_tpl->tpl_vars['propric']->value) || !empty($_smarty_tpl->tpl_vars['propinv']->value)) {?>
+
         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
             <tr>
 
@@ -431,6 +444,14 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ?>
                     <?php if ($_smarty_tpl->tpl_vars['x']->value->getstato() == NULL) {?>
+                        <?php $_smarty_tpl->_assignInScope('bool', 'no');?>
+                    <?php }?>
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+                        <?php if ($_smarty_tpl->tpl_vars['bool']->value == 'no') {?>
                     <table id="customers" class="sortable">
 
 
@@ -478,19 +499,23 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </table>
-                    <?php } else { ?>
-                        <h2 align="center">Nessuna proposta ricevuta</h2>
-                    <?php }?>
-                    <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
+                    <?php }?>
+
+
+
+            <?php if ($_smarty_tpl->tpl_vars['bool']->value == 'ok') {?>
+                    <h2 align="center">Nessuna proposta ricevuta</h2>
                     <?php }?>
                 </td>
                 </form>
             </tr>
+
+            <?php } else { ?>
+            <h2 align="center">Nessuna proposta ricevuta</h2>
+            <?php }?>
         </table>
+
             <hr>
                 <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
                     <td >
@@ -540,8 +565,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </table>
-
+                        <?php } else { ?>
+                            <h2 align="center">Nessuna proposta inviata</h2>
                         <?php }?>
+
                         <?php
 }
 }

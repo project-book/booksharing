@@ -374,11 +374,11 @@ class CUtente
                     $x->update('Indirizzo', $yy, $ttt);
 
 
-                    $directory=__DIR__."/uploads/user/";
+                    $directory=__DIR__."/../Smarty-dir/assets/images/user";
                     $immagine = glob($directory . $_SESSION['user'].'.{jpg,jpeg,png,gif}', GLOB_BRACE);
                     shuffle($immagine);
                     $Img=basename(array_pop($immagine));
-                    $uploadDir = __DIR__.'/uploads/user';
+
                     foreach ($VRicerca->getfile() as $file) {
                         if (UPLOAD_ERR_OK === $file['error']) {
                             $f=explode('/',$file['type']);
@@ -390,8 +390,8 @@ class CUtente
                                 exit;
                             }
                             else{
-                                unlink('\''.$directory.$Img.'\'');
-                                move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);}
+                                unlink('"'.$directory.$Img.'"');
+                                move_uploaded_file($file['tmp_name'], $directory.DIRECTORY_SEPARATOR.$fileName);}
                         }
                     }
 

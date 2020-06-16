@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {assign var='y' value=$y|default:''}
+{assign var='bool' value=$bool|default:'ok'}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -276,9 +277,6 @@
 
         {if !empty($effettuate) || !empty($ricevute)}
 
-
-
-
                                 <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
                                     <tr>
 
@@ -348,13 +346,13 @@
 
     </section>
 
-
-
     <!-- Start Contact -->
     <section id="mu-contact">
         <hr>
         <h1 align="center">PROPOSTE IN CORSO</h1>
+
         {if !empty($propric) || !empty($propinv)}
+
         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
             <tr>
 
@@ -362,6 +360,11 @@
                     {if !empty($propric)}
                     {foreach $propric as $x}
                     {if $x->getstato()==NULL}
+                        {$bool='no'}
+                    {/if}
+                    {/foreach}
+
+                        {if $bool=='no'}
                     <table id="customers" class="sortable">
 
 
@@ -394,16 +397,22 @@
                         {/foreach}
                     </table>
 
-                    {else}
-                        <h2 align="center">Nessuna proposta ricevuta</h2>
                     {/if}
-                    {/foreach}
 
+
+
+            {if $bool=='ok'}
+                    <h2 align="center">Nessuna proposta ricevuta</h2>
                     {/if}
                 </td>
                 </form>
             </tr>
+
+            {else}
+            <h2 align="center">Nessuna proposta ricevuta</h2>
+            {/if}
         </table>
+
             <hr>
                 <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
                     <td >
@@ -436,8 +445,10 @@
                             </tr>
                         {/foreach}
                     </table>
-
+                        {else}
+                            <h2 align="center">Nessuna proposta inviata</h2>
                         {/if}
+
                         {/foreach}
                     {else}
                         <h2 align="center">Nessuna proposta inviata</h2>

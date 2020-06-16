@@ -76,14 +76,14 @@
 		</div>
 	</header>
 	<!-- End Header -->
-	<h2>Benvenuto   {$nome}
-	Cerca un libro da acquisire tramite uno scambio oppure utilizza i tuoi punti per acquistare un ebook.</h2>
+
 	<!-- Start Featured Slider -->
 
 	<section id="mu-hero">
 		<div class="container">
 			<div class="row">
-
+				<h2>Benvenuto   {$nome}
+					Cerca un libro da acquisire tramite uno scambio oppure utilizza i tuoi punti per acquistare un ebook.</h2>
 				<div class="col-md-6 col-sm-6 col-sm-push-6">
 					<div class="mu-hero-right">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
