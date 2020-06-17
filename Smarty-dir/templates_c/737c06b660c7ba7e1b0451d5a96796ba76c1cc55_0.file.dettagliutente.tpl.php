@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-06-17 12:55:46
+  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\dettagliutente.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5ee9f6b2571973_95088442',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '737c06b660c7ba7e1b0451d5a96796ba76c1cc55' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\dettagliutente.tpl',
+      1 => 1592391235,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ee9f6b2571973_95088442 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -30,15 +53,23 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
+>
     <![endif]-->
-    <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/sorttable.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/sorttable.js"><?php echo '</script'; ?>
+>
 
 
-    <script type=”text/javascript”>$(function() {
+    <?php echo '<script'; ?>
+ type=”text/javascript”>$(function() {
 			$("#customers").tablesorter();
-		});</script>
+		});<?php echo '</script'; ?>
+>
 
 
 </head>
@@ -86,10 +117,12 @@
 <!-- Start Featured Slider -->
 
 <section id="mu-hero">
-    <img src="/booksharing/Smarty-dir/assets/images/user/{$immagine}">
-    {if $bool==true}
-    <h2>Contatta via mail l'user per accordarti sulla scambio {$user->getemail()}</h2>
-    {/if}
+    <img src="/booksharing/Smarty-dir/assets/images/user/<?php echo $_smarty_tpl->tpl_vars['immagine']->value;?>
+">
+    <?php if ($_smarty_tpl->tpl_vars['bool']->value == true) {?>
+    <h2>Contatta via mail l'user per accordarti sulla scambio <?php echo $_smarty_tpl->tpl_vars['user']->value->getemail();?>
+</h2>
+    <?php }?>
 </section>
 
 <!-- Start Featured Slider -->
@@ -141,15 +174,24 @@
 
                                                 <tr>
 
-                                                    <td>{$user->getuser()}</td>
-                                                    <td>{$user->getnome()}</td>
-                                                    <td>{$user->getcognome()}</td>
-                                                    <td>{$user->getindirizzo()->getVia()}</td>
-                                                    <td>{$user->getindirizzo()->getNcivico()}</td>
-                                                    <td>{$user->getindirizzo()->getcap()}</td>
-                                                    <td>{$user->getindirizzo()->getComune()}</td>
-                                                    <td>{$user->getindirizzo()->getprovincia()}</td>
-                                                    <td>{$user->getsaldo()}</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getuser();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getnome();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getcognome();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getindirizzo()->getVia();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getindirizzo()->getNcivico();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getindirizzo()->getcap();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getindirizzo()->getComune();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getindirizzo()->getprovincia();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['user']->value->getsaldo();?>
+</td>
 
 
 
@@ -179,18 +221,34 @@
 
                                             </tr>
 
-                                            {foreach $libri as $x}
-                                            <form method="post" action="/booksharing/Utente/proponiscambio/{$x->getTitolo()}/{$x->getAutore()}/{$x->getUser()->getuser()}">
+                                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['libri']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
+                                            <form method="post" action="/booksharing/Utente/proponiscambio/<?php echo $_smarty_tpl->tpl_vars['x']->value->getTitolo();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getAutore();?>
+/<?php echo $_smarty_tpl->tpl_vars['x']->value->getUser()->getuser();?>
+">
                                                 <tr>
                                                     <td><input type="radio" name="LibroRichiesto" value="titolo" "></td>
-                                                    <td>{$x->getTitolo()}</td>
-                                                    <td>{$x->getAutore()}</td>
-                                                    <td>{$x->getEditore()}</td>
-                                                    <td>{$x->getGenere()}</td>
-                                                    <td>{$x->getAnno()}</td>
-                                                    <td>{$x->getCondizione()}</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getTitolo();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getAutore();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getEditore();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getGenere();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getAnno();?>
+</td>
+                                                    <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getCondizione();?>
+</td>
                                                 </tr>
-                                            {/foreach}
+                                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                                 <td><input type="submit" name="proponi scambio" value="proponi scambio"</td>
                                             </form>
                                         </table>
@@ -256,13 +314,24 @@
                                                     <th>Commento</th>
 
                                                 </tr>
-                                                {foreach $valutazione as $x}
+                                                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['valutazione']->value, 'x');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
+?>
                                                     <tr>
-                                                        <td><a href="/booksharing/Utente/dettagliutente/{$x->getValutante()}">{$x->getValutante()}</a></td>
-                                                        <td>{$x->getVoto()}</td>
-                                                        <td>{$x->getCommento()}</td>
+                                                        <td><a href="/booksharing/Utente/dettagliutente/<?php echo $_smarty_tpl->tpl_vars['x']->value->getValutante();?>
+"><?php echo $_smarty_tpl->tpl_vars['x']->value->getValutante();?>
+</a></td>
+                                                        <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getVoto();?>
+</td>
+                                                        <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getCommento();?>
+</td>
                                                     </tr>
-                                                {/foreach}
+                                                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                             </table>
                                         </td>
 
@@ -295,23 +364,37 @@
 
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
+>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
-<script src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="/booksharing/Smarty-dir/assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 <!-- Slick slider -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/slick.min.js"><?php echo '</script'; ?>
+>
 <!-- Counter js -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/counter.js"><?php echo '</script'; ?>
+>
 <!-- Ajax contact form  -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"><?php echo '</script'; ?>
+>
 
 
 
 <!-- Custom js -->
-<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"></script>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/custom.js"><?php echo '</script'; ?>
+>
 
 
 </body>
 </html>
 
+<?php }
+}

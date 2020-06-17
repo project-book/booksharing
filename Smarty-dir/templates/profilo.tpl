@@ -101,7 +101,7 @@
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
 
-                    <img src="/booksharing/Controller/uploads/user/{$immagine}">
+                    <img src="/booksharing/Smarty-dir/assets/images/user/{$immagine}">
 
                     <h2>In questa pagina puoi visualizzare le tue informazioni utente, tra cui dati personali, valutazioni e proposte.
                     Una volta accettata una proposta ricevuta o dopo che una vostra proposta inviata viene accettata, puoi contattare via email l'utente per accordare
@@ -248,8 +248,6 @@
 
                                     </tr>
                                 </table>
-
-
 
 </div>
 
@@ -484,7 +482,7 @@
 
                         </tr>
                         {foreach $concluse as $x}
-                        <form method="post" action=/booksharing/Utente/Recensione/{$x->getid()} >
+                        <form method="post" action=/booksharing/Utente/Recensione/{$x->getid()}/{''} >
                             <tr>
 
                                 {if ($x->getstato()!=NULL)}
@@ -516,6 +514,9 @@
             <h2 align="center">Nessuna proposta conclusa</h2>
         {/if}
         <hr>
+        <form method="post" action="/booksharing/Utente/EliminaAccount">
+            <input type="submit" name="elimina" value="Elimina account" >
+        </form>
     </section>
 
 

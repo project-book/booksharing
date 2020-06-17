@@ -9,6 +9,7 @@ class CUtente
 {
     /**
      *Preleva i dati di registrazione e li salva nel db.
+     * Effettua i controlli necessari e restituisce gli errori.
      */
     public function Salvadati()
     {
@@ -17,7 +18,7 @@ class CUtente
         if ($V->getuser() == NULL OR $V->getvia() == NULL OR $V->getncivico() == NULL OR
             $V->getcap() == NULL OR $V->getcomune() == NULL OR $V->getpassword() == NULL OR
             $V->getnome() == NULL OR $V->getcognome() == NULL OR $V->getemail() == NULL
-            OR $V->getprovincia() == NULL) {
+            OR $V->getprovincia() == NULL OR $V->getfile() == NULL) {
             $m = 'Devi riempire tutti i campi';
             static::registra($m);
             die;
@@ -73,7 +74,7 @@ class CUtente
 
             }
 
-            $uploadDir = __DIR__.'/uploads/user';
+            $uploadDir = __DIR__.'/../Smarty-dir/assets/images/user/';
             foreach ($V->getfile() as $file) {
                 if (UPLOAD_ERR_OK === $file['error']) {
                     $f=explode('/',$file['type']);
@@ -139,11 +140,16 @@ class CUtente
     {
         $v=new VUtente();
         $vv=new VAdmin();
+        $p=new FPersistentManager();
+        $x=$p->load('Registrato','admin');
             if (static::verifica() == true) {
                 session_start();
                 $_SESSION['user'] = $v->getuser();
-                if($_SESSION['user']== 'admin')
-                    $vv->homeadmin();
+                $_SESSION['password']=$v->getpassword();
+                if($_SESSION['user']== 'admin') {
+                    if ($_SESSION['password'] == $x->getpsw())
+                        $vv->homeadmin();
+                }
                 else
                     $v->home();
             } else
@@ -229,7 +235,7 @@ class CUtente
                     $proposta=array_merge($propinv);;
 
                     //inserisci immagine
-                    $directory=__DIR__."/uploads/user/";
+                    $directory=__DIR__."/../Smarty-dir/assets/images/user/";
             $immagine = glob($directory . $_SESSION['user'].'.{jpg,jpeg,png,gif}', GLOB_BRACE);
             shuffle($immagine);
             $Img=basename(array_pop($immagine));
@@ -256,8 +262,11 @@ class CUtente
                     }
                 }
                 if (isset($_SESSION['user'])) {
-                    if($n->load('Registrato',$_SESSION['user']))
+                    if($n->load('Registrato',$_SESSION['user'])) {
+                       $x=$n->load('Registrato',$_SESSION['user']);
+                        if($x->getpsw()==$_SESSION['password'])
                         $identificato = true;
+                    }
                 }
                 return $identificato;
     }
@@ -314,10 +323,10 @@ class CUtente
      * @param $id
      * Indirizza alla pagina che permette la scrittura della recensione.
      */
-    public function Recensione($id){
+    public function Recensione($id,$m){
         $v=new VUtente();
         $u=$v->getrecensione();
-        $v->recensione($u,$id);
+        $v->recensione($u,$id,$m);
     }
 
 
@@ -374,10 +383,11 @@ class CUtente
                     $x->update('Indirizzo', $yy, $ttt);
 
 
-                    $directory=__DIR__."/../Smarty-dir/assets/images/user";
-                    $immagine = glob($directory . $_SESSION['user'].'.{jpg,jpeg,png,gif}', GLOB_BRACE);
-                    shuffle($immagine);
-                    $Img=basename(array_pop($immagine));
+                  $directory=__DIR__.'/../Smarty-dir/assets/images/user/';
+
+                $immagine = glob($directory. $_SESSION['user'] .'.{jpg,jpeg,png,gif}', GLOB_BRACE);
+                shuffle($immagine);
+                $Img=basename(array_pop($immagine));
 
                     foreach ($VRicerca->getfile() as $file) {
                         if (UPLOAD_ERR_OK === $file['error']) {
@@ -390,19 +400,31 @@ class CUtente
                                 exit;
                             }
                             else{
-                                unlink('"'.$directory.$Img.'"');
+                                if(isset($immagine[0])) {
+                                    unlink(realpath($directory) . '/' . $Img);
+                                }
                                 move_uploaded_file($file['tmp_name'], $directory.DIRECTORY_SEPARATOR.$fileName);}
                         }
                     }
 
 
                     static::profilo();
+                    exit;
                 }
             }
         }
     }
-
-
+    /**
+     *Elimina l'account definitivamente.
+     */
+public function EliminaAccount()
+{
+    if(static::isLogged()){
+        $p=new FPersistentManager();
+        $p->delete('Registrato',$_SESSION['user']);
+        header('Location:/booksharing/');
+    }
+}
 
     /**
      *Prepara la pagina che permette di modificare le informazioni utente.
@@ -440,14 +462,30 @@ class CUtente
      * Permette di visualizzare le informazioni di un utente dopo aver cliccato una stringa referenziata sulla pagina html.
      */
     public function dettagliutente($user){
-        $v=new VUtente();
-        $x=new FPersistentManager();
-        $u=$x->load('Registrato',$user);
-        $xx['user']=$user;
-        $xxx['valutato']=$user;
-        $l=$x->search('Cartaceo',$xx,'');
-        $val=$x->search('Valutazione',$xxx,'');
-        $v->dettagliutente($u,$l,$val);
+        $v = new VUtente();
+        if(static::isLogged()) {
+         $b=false;
+            $x = new FPersistentManager();
+            $u = $x->load('Registrato', $user);
+            if(!empty($x->search('Proposta',array('proponente'=>$user,'stato'=>'Accettato'),'')) OR
+                !empty($x->search('Proposta',array('proponente'=>$user,'stato'=>'Recensito'),'')) OR
+                    !empty($x->search('Proposta',array('ricevente'=>$user,'stato'=>'Accettato'),''))OR
+                        !empty($x->search('Proposta',array('ricevente'=>$user,'stato'=>'Recensito'),'')))
+                $b=true;
+
+            $xx['user'] = $user;
+            $xxx['valutato'] = $user;
+            $l = $x->search('Cartaceo', $xx, '');
+            $val = $x->search('Valutazione', $xxx, '');
+            $directory = __DIR__ . "/../Smarty-dir/assets/images/user/";
+            $immagine = glob($directory . $user . '.{jpg,jpeg,png,gif}', GLOB_BRACE);
+            shuffle($immagine);
+            $Img = basename(array_pop($immagine));
+            $v->dettagliutente($u, $l, $val, $Img,$b);
+        }
+        else
+            $v->inserimento();
+
     }
 
 
@@ -458,27 +496,31 @@ class CUtente
      * Salva nel db la recensione scritta.
      */
     public function inviarec($u, $id){
+        $m='';
         $v=new VUtente();
         $o=new FPersistentManager();
         if(static::isLogged())
             $valte=$o->load('Registrato',$_SESSION['user']);
             $valto=$o->load('Registrato',$u);
+if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
+    $x = new EValutazione($v->getcommento(), $v->getvoto(), $valte, $valto);
+    $o->store($x);
+    $prop = $o->load('Proposta', $id);
 
-            $x=new EValutazione($v->getcommento(),$v->getvoto(),$valte,$valto);
-            $o->store($x);
-            $prop=$o->load('Proposta',$id);
+    if ($prop->getstato() == 'Accettato')
+        $arr['stato'] = $_SESSION['user'];
+    if ($prop->getstato() == $u)
+        $arr['stato'] = 'Recensito';
 
-            if($prop->getstato()=='Accettato')
-                $arr['stato']=$_SESSION['user'];
-            if($prop->getstato()==$u )
-                $arr['stato']='Recensito';
+    $o->update('Proposta', $arr, $id);
 
-            $o->update('Proposta',$arr,$id);
-
-            //$v->recensione($u,$id);
-            header(('Location:/booksharing/Utente/profilo'));
-
+    //$v->recensione($u,$id,$m);
+    header(('Location:/booksharing/Utente/profilo'));
+}else {
+    $m ='Devi riempire tutti i campi';
+        $v->recensione($u, $id, $m);
     }
+}
 
     /**
      *Permette di aggiungere un libro alla propria lista dei libri da scambiare, quindi lo aggiunge al db.
@@ -519,8 +561,8 @@ class CUtente
                                 move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
                             }
                         }
-                        $VRegistra->Login();}
-            //header("Location:/booksharing/Utente/profilo");}
+
+            header("Location:/booksharing/Utente/profilo");}
                 else
                    $VRegistra->Login();}
 
