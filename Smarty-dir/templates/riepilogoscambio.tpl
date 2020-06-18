@@ -84,6 +84,8 @@
 
 						<div class="cerca-libro-heading-area">
 							<h2 class="cerca-libro-heading-title">RIEPILOGO SCAMBIO</h2>
+							<h1>Di seguito sono riportate le informazioni dello scambio che hai proposto, puoi controllare lo stato della tua proposta <br>
+							nella sezione 'Profilo'.</h1>
 							<span class="cerca-libro-header-dot"></span>
 
 						</div>
@@ -103,7 +105,7 @@
 					<h1> Richiedente</h1>
 
 					<tr>
-						<th>Richiedente</th>
+						<th>Utente richiedente</th>
 						<th>Titolo</th>
 						<th>Autore</th>
 						<th>Editore</th>
@@ -133,7 +135,7 @@
 
 					<h1> Ricevente </h1>
 					<tr>
-						<th>Ricevente</th>
+						<th>Utente ricevente</th>
 						<th>Titolo</th>
 						<th>Autore</th>
 						<th>Editore</th>
@@ -142,7 +144,7 @@
 						<th>Condizione</th>
 					</tr>
 						<tr>
-							<td>{$prop->getutenterich()}</td>
+							<td><a href="/booksharing/Utente/dettagliutente/{$prop->getutenterich()}">{$prop->getutenterich()}</a></td>
 							<td>{$prop->getlibrorich()->getTitolo()}</td>
 							<td>{$prop->getlibrorich()->getAutore()}</td>
 							<td>{$prop->getlibrorich()->getEditore()}</td>

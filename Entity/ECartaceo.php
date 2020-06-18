@@ -17,7 +17,7 @@ class ECartaceo extends ELibro implements JsonSerializable
     /**
      * @var int
      */
-    private $esaurito=0;
+    private $esaurito;
 
     /**
      * @return array|mixed
@@ -49,7 +49,7 @@ class ECartaceo extends ELibro implements JsonSerializable
      * @param string $c
      * @param ERegistrato $reg
      */
-    public function __construct(string $t, string $a, string $e, string $g, int $an, string $c, ERegistrato $reg)
+    public function __construct(string $t, string $a, string $e, string $g, int $an, string $c, ERegistrato $reg,int $esa)
     {
         parent::__construct($t,$a,$e,$g,$an);
         $this->condizione = $c;
@@ -57,14 +57,23 @@ class ECartaceo extends ELibro implements JsonSerializable
             new EIndirizzo($reg->getindirizzo()->getVia(),$reg->getindirizzo()->getNcivico(),
                 $reg->getindirizzo()->getcap(),$reg->getindirizzo()->getComune(),$reg->getindirizzo()->getprovincia())
                ,$reg->getsaldo());
+        $this->esaurito=$esa;
     }
 
     /**
-     * @return string
-     */
+ * @return string
+ */
     public function getCondizione(): string
     {
         return $this->condizione;
+    }
+
+    /**
+     * @return int
+     */
+    public function getstato(): int
+    {
+        return $this->esaurito;
     }
 
     /**

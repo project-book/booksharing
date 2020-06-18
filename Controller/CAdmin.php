@@ -12,6 +12,7 @@ class CAdmin
      */
     public function ricerca()
     {
+
         $VRicerca=new VAdmin();
         if(CUtente::isLogged()==true){
             $t=array();
@@ -31,6 +32,7 @@ class CAdmin
                     if($v!=NULL)
                         $y[$k]=$v;
                 }
+
                 $user=$x->load('Registrato',$_SESSION['user']);
                 $VRicerca->ebookresult($x->search($classe,$y,$ordine),$user);}
             else
@@ -129,9 +131,9 @@ class CAdmin
 
         $x=new FPersistentManager();
         if(CUtente::isLogged()==true){
-            $u['user']=$_SESSION['user'];
             $x->delete('Registrato',$user);
-            header("Location:/booksharing/");
+            $v=new VAdmin();
+            $v->homeadmin();
         }
     }
 }

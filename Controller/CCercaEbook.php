@@ -1,6 +1,6 @@
 <?php
 
-
+require __DIR__."/../PHPMailer-master/";
 /**
  * Class CEbooks
  * Controller che permette all'utente di ricercare e di acquistare un ebook.
@@ -67,6 +67,23 @@ class CCercaEbook
                 $o->update('Registrato',$s,$_SESSION['user']);
                 $o->delete('Ebook',$c);
                 $v->Compra($t,$x->getemail(),$s['saldo']);
+
+                $mail = new PHPMailer();
+                $mail->From     = "ebooks@booksharing.it";
+                $mail->FromName = "booksharing.com";
+                $mail->AddAddress($x->getemail());
+                $mail->IsHTML(true);
+                //$mail->AddBCC($indirizzibcc);
+                $mail->Subject  =  'Oggetto: Invio libro versione pdf relativo acquisto sul nostro sito';
+                $mail->Body     =  '';
+                $mail->AltBody  =  "";
+                $mail->AddAttachment(__DIR__.'/../Smarty-dir/assets/ebooks/ciao.pdf');
+                if(!$mail->Send()){
+                    $e=new VErrore();
+                    $e->ErroreScambio('Errore nell\'invio del file controllare se la mail registrata è corretta e riprovare di nuovo');
+                }else{
+                    echo "SUCCESSO l'email è stata inviata!";
+                }
             }
             else{
                 $mess='Il tuo saldo punti  è insufficente';

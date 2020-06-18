@@ -77,6 +77,8 @@
 
                         <div class="cerca-libro-heading-area">
                             <h2 class="cerca-libro-heading-title">RIEPILOGO SCAMBIO</h2>
+                            <h2>Contatta via e-mail l'utente per accordarti sullo scambio. Per trovare la mail basta andare sul suo profilo.<br>
+                            Dallo scambio hai acquisito 10 punti da utilizzare per acquistare e-book sullo store.</h2>
                             <span class="cerca-libro-header-dot"></span>
 
                         </div>

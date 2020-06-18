@@ -5,11 +5,11 @@
  * Class EValutazione
  */
 class EValutazione
-{
-    /**
-     * @var
-     */
+{ /**
+ * @var string
+ */
     private $id;
+
     /**
      * @var string
      */

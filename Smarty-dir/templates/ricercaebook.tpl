@@ -116,7 +116,7 @@
 
 						{foreach $array as $x}
 
-						<form method="post" action="/booksharing/Ebooks/compra/{$x->gettitolo()}/{$x->getautore()}">
+						<form method="post" action="/booksharing/CercaEbook/compra/{$x->gettitolo()}/{$x->getautore()}">
 							<tr>
 								<td>
 									<div class="bottone">

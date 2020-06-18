@@ -22,24 +22,30 @@ class Installation{
             $noPHP = false;
             $noCookie = false;
             $noJS = false;
+            $nowrite = false;
             // controllo versione PHP
-            if (version_compare(PHP_VERSION,'7.0.0' , '<' )) {
+            if (version_compare(PHP_VERSION, '7.0.0', '<')) {
                 $noPHP = true;
                 $smarty->assign('nophpv', $noPHP);
             }
             // controllo cookie
-            if (!isset($_COOKIE['verifica_cookie'])){
+            if (!isset($_COOKIE['verifica_cookie'])) {
                 $noCookie = true;
                 $smarty->assign('nocookie', $noCookie);
             }
             // verifica JS
-            if (!isset($_COOKIE['checkjs'])){
+            if (!isset($_COOKIE['checkjs'])) {
                 $noJS = true;
                 $smarty->assign('nojs', $noJS);
             }
-
+            //verifico che la cartella sia scrivibile
+            if (!is_writeable(__DIR__))
+            {
+                $nowrite = true;
+                $smarty->assign('nowrite', $nowrite);
+            }
             // se almeno uno dei controlli non è andato a buon fine, si mostra la pagina di installazione con i relativi errori.
-            if ($noPHP || $noJS || $noCookie ){
+            if ($noPHP || $noJS || $noCookie || $nowrite){
                 $smarty->display('installazione.tpl');
             }
             // altrimenti, se i requisiti sono verificati elimino i cookie inviati in precedenza

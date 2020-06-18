@@ -313,6 +313,7 @@ class VAdmin
 
         $this->smarty->assign('array', $result);
         $this->smarty->assign('user', $u);
+        print 'ciao';
         $this->smarty->display('ebookadmin.tpl');
     }
 

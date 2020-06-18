@@ -77,8 +77,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
-
-                
+{if $messaggio!=''}
+                <h2>{$messaggio}</h2>{/if}
                         <!-- Start Cerca Libro Overview Content -->
                         <div class="cerca-libro-overview-content">
                             <div class="row">

@@ -82,8 +82,11 @@
 	<section id="mu-hero">
 		<div class="container">
 			<div class="row">
-				<h2>Benvenuto   {$nome}
-					Cerca un libro da acquisire tramite uno scambio oppure utilizza i tuoi punti per acquistare un ebook.</h2>
+				<h2>Benvenuto   {$nome}<br>
+					Puoi controllare se hai nuove proposte direttamente nella sezione profilo,
+					altrimenti puoi cercare un libro nella sezione 'Cerca libro' da acquisire tramite uno scambio.<br>
+				Se hai effettuato gia scambi con altri utenti e hai acquisito punti puoi cercare un libro da acquistare sulla sezione 'Cerca Ebook'.<br>
+				Per aggiungere dei nuovi libri alla lista dei libri di cui ti vuoi liberare basta andare nella sezione profilo.</h2>
 				<div class="col-md-6 col-sm-6 col-sm-push-6">
 					<div class="mu-hero-right">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">

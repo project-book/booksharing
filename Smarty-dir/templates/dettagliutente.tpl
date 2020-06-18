@@ -86,25 +86,10 @@
 <!-- Start Featured Slider -->
 
 <section id="mu-hero">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-6 col-sm-6 col-sm-push-6">
-                <div class="mu-hero-right">
-                    <img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-sm-pull-6">
-                <div class="mu-hero-left">
-                    <h1>Condividi i tuoi libri </h1>
-                    <p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-                    <a href="/booksharing/Utente/registra">REGISTRATI</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <img src="/booksharing/Smarty-dir/assets/images/user/{$immagine}">
+    {if $bool==true}
+    <h2>Contatta via mail l'user per accordarti sulla scambio {$user->getemail()}</h2>
+    {/if}
 </section>
 
 <!-- Start Featured Slider -->
@@ -145,7 +130,6 @@
                                                     <th>User</th>
                                                     <th>Nome</th>
                                                     <th>Cognome</th>
-                                                    <th>email</th>
                                                     <th>via</th>
                                                     <th>ncivico</th>
                                                     <th>cap</th>
@@ -160,7 +144,6 @@
                                                     <td>{$user->getuser()}</td>
                                                     <td>{$user->getnome()}</td>
                                                     <td>{$user->getcognome()}</td>
-                                                    <td>{$user->getemail()}</td>
                                                     <td>{$user->getindirizzo()->getVia()}</td>
                                                     <td>{$user->getindirizzo()->getNcivico()}</td>
                                                     <td>{$user->getindirizzo()->getcap()}</td>

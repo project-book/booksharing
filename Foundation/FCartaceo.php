@@ -157,7 +157,7 @@ class FCartaceo
         $i=new FRegistrato();
         $x=$i->load($this->risultato[0]['user']);
         $p = new ECartaceo($this->risultato[0]['titolo'],$this->risultato[0]['autore'],$this->risultato[0]['editore'],
-            $this->risultato[0]['genere'],$this->risultato[0]['anno'],$this->risultato[0]['condizione'],$x);
+            $this->risultato[0]['genere'],$this->risultato[0]['anno'],$this->risultato[0]['condizione'],$x,$this->risultato[0]['esaurito']);
         return $p;
     }
 
@@ -254,7 +254,7 @@ class FCartaceo
             $l = new FRegistrato();
             $x = $l->load($this->risultato[$i]['user']);
             $p = new ECartaceo($this->risultato[$i]['titolo'], $this->risultato[$i]['autore'], $this->risultato[$i]['editore'], $this->risultato[$i]['genere'],
-                (int)$this->risultato[$i]['anno'], $this->risultato[$i]['condizione'],$x);
+                (int)$this->risultato[$i]['anno'], $this->risultato[$i]['condizione'],$x,$this->risultato[$i]['esaurito']);
             array_push($t,$p);
         }
         return $t;}

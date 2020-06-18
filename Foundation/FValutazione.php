@@ -141,6 +141,8 @@ class FValutazione
                 }
             }
         }
+print $query;
+        print_r($return);
         $stmt = $this->connection->prepare($query);
         $stmt->execute($return);
 

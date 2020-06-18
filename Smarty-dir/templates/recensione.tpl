@@ -77,9 +77,13 @@
                     <div class="cerca-libro-overview-area">
 
                         <div class="cerca-libro-heading-area">
-                            <h2 class="cerca-libro-heading-title">REGISTRATI</h2>
+                            <h2 class="cerca-libro-heading-title">Recensisci</h2>
+                            <h2>In questa pagina puoi recensire il cliente una volta che lo scambio è stato effettuato.</h2>
                             <span class="cerca-libro-header-dot"></span>
-                            <p>Scrivi i tuoi dati</p>
+                            {if $m!=''}
+                                <p>{$m}</p>
+                            {/if}
+
                         </div>
 
                         <!-- Start Cerca Libro Overview Content -->

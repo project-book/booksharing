@@ -45,6 +45,7 @@ class VUtente
         return $value;
     }
 
+
     /**
      * @return mixed|null
      *Preleva il nome utente dalla richiesta http post.
@@ -214,13 +215,12 @@ class VUtente
      * @throws SmartyException
      * Indirizza alla pagina di login.
      */
-    public function inserimento()
+    public function inserimento($m)
     {
         $this->smarty->assign('errore',NULL);
+        $this->smarty->assign('messaggio',$m);
         $this->smarty->display('login.tpl');
     }
-
-    //REINDIRIZZA ALLA HOME DEL REGISTRATO
 
     /**
      * @throws SmartyException
@@ -305,8 +305,10 @@ class VUtente
      * @throws SmartyException
      * Indirizza alla pagina contenente la form per compilare la recensione.
      */
-    public function recensione($u, $id)
+    public function recensione($u, $id,$m)
     {
+            $this->smarty->assign('m',$m);
+
         $this->smarty->assign('user',$u);
         $this->smarty->assign('id',$id);
         $this->smarty->display('recensione.tpl');
@@ -359,11 +361,13 @@ class VUtente
      * @throws SmartyException
      * Indirizza alla pagina contenente i dati dell'utente selezionato.
      */
-    public function dettagliutente($u, $l, $v)
+    public function dettagliutente($u, $l, $v,$i,$b)
     {
         $this->smarty->assign('user',$u);
         $this->smarty->assign('libri',$l);
         $this->smarty->assign('valutazione',$v);
+        $this->smarty->assign('immagine',$i);
+        $this->smarty->assign('bool',$b);
         $this->smarty->display('dettagliutente.tpl');
 
     }
