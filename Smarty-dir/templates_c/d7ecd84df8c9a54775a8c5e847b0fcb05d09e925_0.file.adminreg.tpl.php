@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 12:16:04
-  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\adminreg.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 16:43:21
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/adminreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee9ed64a6c3d3_84887619',
+  'unifunc' => 'content_5eeccf09065e90_36225345',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a0ad85cc75fb0fa5d4f683e242ba257dca5a08ef' => 
+    'd7ecd84df8c9a54775a8c5e847b0fcb05d09e925' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\adminreg.tpl',
-      1 => 1592303962,
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/adminreg.tpl',
+      1 => 1592577799,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee9ed64a6c3d3_84887619 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eeccf09065e90_36225345 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +119,8 @@ function content_5ee9ed64a6c3d3_84887619 (Smarty_Internal_Template $_smarty_tpl)
             <div class="row">
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
-
+                        <?php if ($_smarty_tpl->tpl_vars['m']->value != '') {?><h1 align="center"><?php echo $_smarty_tpl->tpl_vars['m']->value;?>
+</h1><?php }?>
                         <div class="cerca-libro-heading-area">
                             <h2 class="cerca-libro-heading-title">CERCA UTENTE</h2>
                             <span class="cerca-libro-header-dot"></span>

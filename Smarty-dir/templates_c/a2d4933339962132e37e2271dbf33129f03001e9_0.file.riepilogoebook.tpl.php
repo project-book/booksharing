@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-16 20:17:37
-  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\login.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 17:43:00
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/riepilogoebook.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee90cc1164ce5_26481377',
+  'unifunc' => 'content_5eecdd043d45c3_63153350',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '54a15a83f745911f0013cf5c49abed833ecf37f7' => 
+    'a2d4933339962132e37e2271dbf33129f03001e9' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\login.tpl',
-      1 => 1592303962,
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/riepilogoebook.tpl',
+      1 => 1592303964,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee90cc1164ce5_26481377 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eecdd043d45c3_63153350 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +39,7 @@ function content_5ee90cc1164ce5_26481377 (Smarty_Internal_Template $_smarty_tpl)
     <link id="switcher" href="/booksharing/Smarty-dir/assets/css/theme-color/default-theme.css" rel="stylesheet">
 
     <!-- Main Style -->
-    <link href="/booksharing/Smarty-dir/assets/css/style.css" rel="stylesheet">
+    <link href="/booksharing/Smarty-dir/assets/css/ricercalibro.css" rel="stylesheet">
 
     <!-- Fonts -->
 
@@ -60,6 +60,17 @@ function content_5ee90cc1164ce5_26481377 (Smarty_Internal_Template $_smarty_tpl)
  src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
 >
     <![endif]-->
+    <?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/sorttable.js"><?php echo '</script'; ?>
+>
+
+
+    <?php echo '<script'; ?>
+ type=”text/javascript”>$(function() {
+			$("#customers").tablesorter();
+		});<?php echo '</script'; ?>
+>
+
 </head>
 
 <body>
@@ -71,76 +82,97 @@ function content_5ee90cc1164ce5_26481377 (Smarty_Internal_Template $_smarty_tpl)
         <nav class="navbar navbar-default mu-navbar">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-               
 
-                    <!-- Text Logo -->
-                    <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+                <!-- Text Logo -->
+                <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
 
-                    <!-- Image Logo -->
-                    <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
+                <!-- Image Logo -->
+                <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
 
 
-                </div>
+            </div>
 
-            
-            </div><!-- /.container-fluid -->
-        </nav>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+    </div><!-- /.container-fluid -->
+    </nav>
     </div>
 </header>
 <!-- End Header -->
-
-
 <!-- Start main content -->
 
 <main role="main">
 
 
-    <!-- Start Cerca Libro -->
+
 
     <section id="cerca-libro">
-        <hr>
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
 
-                
-                        <!-- Start Cerca Libro Overview Content -->
-                        <div class="cerca-libro-overview-content">
-                            <div class="row">
-                                <form method="post" action="/booksharing/Utente/login/">
-                                    <h1>Login</h1>
-                                    <input type="text" id="username" placeholder="user" name="user">
-                                    <input type="password" id="password" placeholder="password" name="password">
-                                    <button type="submit" name="login">Accedi</button>
-                                </form>
-                        <?php if ($_smarty_tpl->tpl_vars['errore']->value != NULL) {?>
-                             <h2><?php echo $_smarty_tpl->tpl_vars['errore']->value;?>
-</h2>
-                                <?php }?>
-                                <div class="mt-1">
-                                    <p align="center">Non hai un account? <br/>
-                                        <a href="/booksharing/Utente/registra/<?php echo '';?>
-" >Registrati</a>
-                                        </p>
-                                </div>
+                        <div class="cerca-libro-heading-area">
+                            <h2 class="cerca-libro-heading-title">Riepilogo transazione</h2>
+                            <span class="cerca-libro-header-dot"></span>
+                        </div>
 
-                            </div>
-                        </div>
-                        <!-- End Cerca Libro Overview Content -->
-                        <div class="testo-centrato">
-                        <img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
-                        </div>
-                        <hr>
+
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
-    <!-- End Cerca Libro -->
+    <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+        <tr>
+            <td >&nbsp;
+                <table id="customers" class="sortable">
 
+                    <h1> Ebook acquistato </h1>
+
+                    <tr>
+                        <th>Titolo</th>
+                        <th>Autore</th>
+                        <th>Editore</th>
+                        <th>Genere</th>
+                        <th>Anno</th>
+                        <th>prezzo punti</th>
+
+                    </tr>
+
+                        <tr>
+
+
+                            <td><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getTitolo();?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getAutore();?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getEditore();?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getGenere();?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getAnno();?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getprezzo();?>
+</td>
+
+                        </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <div class="testo-centrato">
+        <h2>L'Ebook è stato spedito all'indirizzo e-mail: <?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+</h2>
+        <h2>Il nuovo saldo punti è <?php echo $_smarty_tpl->tpl_vars['saldo']->value;?>
+</h2>
+
+    </div>
+
+    <!-- End Cerca Libro -->
 
 
 
@@ -148,10 +180,6 @@ function content_5ee90cc1164ce5_26481377 (Smarty_Internal_Template $_smarty_tpl)
 </main>
 
 <!-- End main content -->
-
-
-
-
 <!-- jQuery library -->
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>

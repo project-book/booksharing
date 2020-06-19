@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 12:57:05
-  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\scambioconfermato.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 16:31:26
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/modificaebook.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee9f7011bfcf1_77363454',
+  'unifunc' => 'content_5eeccc3eaa18b0_96525919',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '0705b464caef32e0662db5d219462f0fd630a1a8' => 
+    'e36deb852639c7d714241fecb1195d76fa2c4513' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\scambioconfermato.tpl',
-      1 => 1592303962,
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/modificaebook.tpl',
+      1 => 1592577073,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee9f7011bfcf1_77363454 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eeccc3eaa18b0_96525919 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +39,7 @@ function content_5ee9f7011bfcf1_77363454 (Smarty_Internal_Template $_smarty_tpl)
     <link id="switcher" href="/booksharing/Smarty-dir/assets/css/theme-color/default-theme.css" rel="stylesheet">
 
     <!-- Main Style -->
-    <link href="/booksharing/Smarty-dir/assets/css/ricercalibro.css" rel="stylesheet">
+    <link href="/booksharing/Smarty-dir/assets/css/style.css" rel="stylesheet">
 
     <!-- Fonts -->
 
@@ -70,7 +70,7 @@ function content_5ee9f7011bfcf1_77363454 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container">
         <nav class="navbar navbar-default mu-navbar">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+
 
                 <!-- Text Logo -->
                 <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
@@ -81,135 +81,89 @@ function content_5ee9f7011bfcf1_77363454 (Smarty_Internal_Template $_smarty_tpl)
 
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
 
     </div><!-- /.container-fluid -->
     </nav>
     </div>
 </header>
 <!-- End Header -->
+
+
 <!-- Start main content -->
 
 <main role="main">
 
 
-
+    <!-- Start Cerca Libro -->
 
     <section id="cerca-libro">
-
+        <hr>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
 
                         <div class="cerca-libro-heading-area">
-                            <h2 class="cerca-libro-heading-title">RIEPILOGO SCAMBIO</h2>
+                            <h2 class="cerca-libro-heading-title">MODIFICA EBOOK</h2>
                             <span class="cerca-libro-header-dot"></span>
-
                         </div>
 
+                        <!-- Start Cerca Libro Overview Content -->
+                        <div class="cerca-libro-overview-content">
+                            <div class="row">
+
+                                <form method="post" action="/booksharing/Admin/aggiornaebook/<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getTitolo();?>
+/<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getAutore();?>
+">
+
+                                    <!-- CASELLE DI TESTO -->
+                                    TITOLO<br>
+                                    <output type="text"  name="titolo"><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getTitolo();?>
+<br></output>
+                                    AUTORE<br>
+                                    <output type="text" name="autore"><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getAutore();?>
+<br></output>
+                                    EDITORE<br>
+                                    <input type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getEditore();?>
+" name="editore"><br>
+                                    GENERE<br>
+                                    <select name="genere">
+                                        <option value=""></option>
+                                        <option value="Giallo">Giallo</option>
+                                        <option value="Horror">Horror</option>ù
+                                        <option value="Storico">Storico</option>
+                                        <option value="Biografia">Biografia</option>
+                                        <option value="Fantasy">Fantasy</option>
+                                        <option value="Narrativa">Narrativa</option>
+                                        <option value="Thriller">Thriller</option>
+                                        <option value="Romanzo">Romanzo</option>
+                                    </select><br>
+                                    ANNO<br>
+                                    <input type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getAnno();?>
+" name="anno"><br>
+                                    PREZZO<br>
+                                    <input type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getprezzo();?>
+" name="prezzo_punti"><br>
+
+
+                                    <!-- SUBMIT -->
+                                    <input type="submit" name="modifica" value="modifica">
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End Cerca Libro Overview Content -->
 
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
-
-    <table border="1" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
-        <tr>
-            <td width="50%">&nbsp;
-                <table id="customers">
-
-                    <h1> Il tuo nuovo libro è</h1>
-
-                    <tr>
-
-                        <th>Titolo</th>
-                        <th>Autore</th>
-                        <th>Editore</th>
-                        <th>Genere</th>
-                        <th>Anno</th>
-                        <th>Condizione</th>
-
-
-                    </tr>
-                    <tr>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibroprop()->getTitolo();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibroprop()->getAutore();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibroprop()->getEditore();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibroprop()->getGenere();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibroprop()->getAnno();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibroprop()->getCondizione();?>
-</td>
-
-                    </tr>
-
-                </table>
-            </td>
-
-            <td width="50%">&nbsp;
-                <table id="customers">
-
-
-                    <h1> Il libro che hai ceduto a <?php echo $_smarty_tpl->tpl_vars['prop']->value->getutenteprop();?>
- è</h1>
-                    <tr>
-                        <th>Titolo</th>
-                        <th>Autore</th>
-                        <th>Editore</th>
-                        <th>Genere</th>
-                        <th>Anno</th>
-                        <th>Condizione</th>
-                    </tr>
-                    <tr>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibrorich()->getTitolo();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibrorich()->getAutore();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibrorich()->getEditore();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibrorich()->getGenere();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibrorich()->getAnno();?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['prop']->value->getlibrorich()->getCondizione();?>
-</td>
-
-
-
-                    </tr>
-                </table>
-            </td>
-
-
-        </tr>
-
-    </table>
-    <button onclick="location.href='/booksharing/'">
-        Torna alla Home
-    </button>
-
-
-
-
-
-
-
-
-    <div class="testo-centrato">
-        <img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
-    </div>
-
-    <!-- End Cerca Libro Overview Content -->
-
-
-
     <!-- End Cerca Libro -->
+
 
 
 
@@ -217,6 +171,10 @@ function content_5ee9f7011bfcf1_77363454 (Smarty_Internal_Template $_smarty_tpl)
 </main>
 
 <!-- End main content -->
+
+
+
+
 <!-- jQuery library -->
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>

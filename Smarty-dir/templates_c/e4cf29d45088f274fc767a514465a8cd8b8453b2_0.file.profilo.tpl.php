@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 13:13:46
-  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\profilo.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 17:55:24
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/profilo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee9faead632d7_78079902',
+  'unifunc' => 'content_5eecdfec44a575_91350409',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '0b03cee961f2b552c613598a8a375d094e59578b' => 
+    'e4cf29d45088f274fc767a514465a8cd8b8453b2' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\profilo.tpl',
-      1 => 1592392298,
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/profilo.tpl',
+      1 => 1592409414,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee9faead632d7_78079902 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eecdfec44a575_91350409 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('y', (($tmp = @$_smarty_tpl->tpl_vars['y']->value)===null||$tmp==='' ? '' : $tmp));
 $_smarty_tpl->_assignInScope('bool', (($tmp = @$_smarty_tpl->tpl_vars['bool']->value)===null||$tmp==='' ? 'ok' : $tmp));?>
@@ -131,10 +131,10 @@ $_smarty_tpl->_assignInScope('bool', (($tmp = @$_smarty_tpl->tpl_vars['bool']->v
             <div class="cerca-libro-heading-area">
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
-
+<?php if (isset($_smarty_tpl->tpl_vars['immagine']->value)) {?>
                     <img src="/booksharing/Smarty-dir/assets/images/user/<?php echo $_smarty_tpl->tpl_vars['immagine']->value;?>
 ">
-
+                    <?php }?>
                     <h2>In questa pagina puoi visualizzare le tue informazioni utente, tra cui dati personali, valutazioni e proposte.
                     Una volta accettata una proposta ricevuta o dopo che una vostra proposta inviata viene accettata, puoi contattare via email l'utente per accordare
                     lo scambio.
@@ -235,7 +235,6 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ?>
-
                                                     <tr>
                                                         <form method="post" action="/booksharing/Utente/eliminalibro/<?php echo $_smarty_tpl->tpl_vars['x']->value->getTitolo();?>
 /<?php echo $_smarty_tpl->tpl_vars['x']->value->getAutore();?>
@@ -429,27 +428,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <hr>
         <h1 align="center">PROPOSTE IN CORSO</h1>
 
-        <?php if (!empty($_smarty_tpl->tpl_vars['propric']->value) || !empty($_smarty_tpl->tpl_vars['propinv']->value)) {?>
 
         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
             <tr>
 
                 <td >&nbsp;
-                    <?php if (!empty($_smarty_tpl->tpl_vars['propric']->value)) {?>
-                    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['propric']->value, 'x');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
-?>
-                    <?php if ($_smarty_tpl->tpl_vars['x']->value->getstato() == NULL) {?>
-                        <?php $_smarty_tpl->_assignInScope('bool', 'no');?>
-                    <?php }?>
-                    <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
-                        <?php if ($_smarty_tpl->tpl_vars['bool']->value == 'no') {?>
+
                     <table id="customers" class="sortable">
 
 
@@ -471,9 +456,10 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ?>
                             <tr>
+                                <?php if (($_smarty_tpl->tpl_vars['x']->value->getstato() == '')) {?>
                                 <form method="post" action=/booksharing/Utente/Risposta/<?php echo $_smarty_tpl->tpl_vars['x']->value->getid();?>
  >
-                                <?php if (($_smarty_tpl->tpl_vars['x']->value->getstato() == NULL)) {?>
+
 
                                     <td> <a href="/booksharing/Utente/dettagliutente/<?php echo $_smarty_tpl->tpl_vars['x']->value->getutenteprop();?>
 "><?php echo $_smarty_tpl->tpl_vars['x']->value->getutenteprop();?>
@@ -490,40 +476,29 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 ">Accetta</button>
                                     <button type="submit" name="idr" value="<?php echo $_smarty_tpl->tpl_vars['x']->value->getid();?>
 ">Rifiutato</button> </td><?php }?>
-
                             </tr>
-                        <?php
+                    <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </table>
 
-                    <?php }?>
 
 
 
-            <?php if ($_smarty_tpl->tpl_vars['bool']->value == 'ok') {?>
-                    <h2 align="center">Nessuna proposta ricevuta</h2>
-                    <?php }?>
+
                 </td>
                 </form>
             </tr>
 
-            <?php } else { ?>
-            <h2 align="center">Nessuna proposta ricevuta</h2>
-            <?php }?>
+
         </table>
 
             <hr>
                 <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
                     <td >
-                    <?php if (!empty($_smarty_tpl->tpl_vars['propinv']->value)) {?>
-                        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['propinv']->value, 'x');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
-?>
-                        <?php if ($_smarty_tpl->tpl_vars['x']->value->getstato() == NULL) {?>
+
+
                     <table id="customers" class="sortable">
 
 
@@ -536,8 +511,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
                             <th>Autore_Libro_Proposto</th>
 
 
-
                         </tr>
+
                         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['propinv']->value, 'x');
 if ($_from !== null) {
@@ -555,33 +530,20 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
                                 <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getlibroprop()->gettitolo();?>
 </td>
                                 <td><?php echo $_smarty_tpl->tpl_vars['x']->value->getlibroprop()->getautore();?>
-</td>
-                                <?php }?>
+</td><?php }?>
                             </tr>
                         <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </table>
-                        <?php } else { ?>
-                            <h2 align="center">Nessuna proposta inviata</h2>
-                        <?php }?>
 
-                        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                    <?php } else { ?>
-                        <h2 align="center">Nessuna proposta inviata</h2>
-<?php }?>
+
                 </td>
 
 
             </tr>
         </table>
-<?php } else { ?>
-            <h2 align="center">Nessuna proposta in corso</h2>
-        <?php }?>
     <hr>
     <h1 align="center">PROPOSTE CONCLUSE</h1>
         <?php if (!empty($_smarty_tpl->tpl_vars['concluse']->value)) {?>
@@ -599,7 +561,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             <th>Titolo_libro_Proposto</th>
                             <th>Autore_Libro_Proposto</th>
                             <th>Stato</th>
-                            <th>Recensione</th>
 
 
 
@@ -636,6 +597,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 </td>
                                     <?php if ($_smarty_tpl->tpl_vars['dati']->value->getuser() == $_smarty_tpl->tpl_vars['x']->value->getstato() || $_smarty_tpl->tpl_vars['x']->value->getstato() == 'Recensito') {?>
                                     <td>Recensito</td>
+                                    <?php }?>
+                                    <?php if ($_smarty_tpl->tpl_vars['x']->value->getstato() == 'Rifiutato') {?>
+                                        <td>Rifiutato</td>
                                     <?php }?>
                                     <td><?php if ($_smarty_tpl->tpl_vars['dati']->value->getuser() != $_smarty_tpl->tpl_vars['x']->value->getstato() && $_smarty_tpl->tpl_vars['x']->value->getstato() != 'Recensito' && $_smarty_tpl->tpl_vars['x']->value->getstato() != 'Rifiutato') {?><button type="submit" name="recensione" value="<?php echo $_smarty_tpl->tpl_vars['y']->value;?>
 ">Lascia Recensione</button></td>

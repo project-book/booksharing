@@ -93,9 +93,9 @@
 								<form action="/booksharing/" method="POST">
 
 									Nome Database<br>
-									<input type="text" name="user"><br>
+									<input type="text" name="nomedb"><br>
 									Nome Utente<br>
-									<input type="text" name="nome"><br>
+									<input type="text" name="nomeutente"><br>
 									Password<br>
 									<input type="password"  name="password"><br>
 
@@ -137,6 +137,7 @@
 <!-- Ajax contact form  -->
 <script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"></script>
 
+<script type="text/javascript" src="/booksharing/Smarty-dir/assets/js/checkjs.js"></script>
 
 
 <!-- Custom js -->

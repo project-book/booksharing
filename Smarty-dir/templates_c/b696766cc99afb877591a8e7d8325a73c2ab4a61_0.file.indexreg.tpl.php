@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-16 20:17:33
-  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\index.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 17:17:19
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/indexreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee90cbd58d358_42574086',
+  'unifunc' => 'content_5eecd6ffde9779_79595637',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '10037d0a1f4dacc7724074cdd39c861ffd63f9c0' => 
+    'b696766cc99afb877591a8e7d8325a73c2ab4a61' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\index.tpl',
-      1 => 1592303962,
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/indexreg.tpl',
+      1 => 1592403800,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee90cbd58d358_42574086 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eecd6ffde9779_79595637 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -93,8 +93,9 @@ function content_5ee90cbd58d358_42574086 (Smarty_Internal_Template $_smarty_tpl)
 				      	<ul class="nav navbar-nav mu-menu navbar-right">
 					        <li><a href="#cerca-libro">CERCA LIBRO</a></li>
 					        <li><a href="#cerca-ebook">CERCA EBOOK</a></li>
-				            <li><a href="/booksharing/Utente/inserimento">LOGIN</a></li>
+				            <li><a href="/booksharing/Utente/profilo">PROFILO</a></li>
 				            <li><a href="#mu-contact">CONTATTI</a></li>
+							<li><a href="/booksharing/Utente/logout">LOGOUT</a></li>
 				      	</ul>
 				    </div><!-- /.navbar-collapse -->
 			  	</div><!-- /.container-fluid -->
@@ -108,7 +109,12 @@ function content_5ee90cbd58d358_42574086 (Smarty_Internal_Template $_smarty_tpl)
 	<section id="mu-hero">
 		<div class="container">
 			<div class="row">
-
+				<h2>Benvenuto   <?php echo $_smarty_tpl->tpl_vars['nome']->value;?>
+<br>
+					Puoi controllare se hai nuove proposte direttamente nella sezione profilo,
+					altrimenti puoi cercare un libro nella sezione 'Cerca libro' da acquisire tramite uno scambio.<br>
+				Se hai effettuato gia scambi con altri utenti e hai acquisito punti puoi cercare un libro da acquistare sulla sezione 'Cerca Ebook'.<br>
+				Per aggiungere dei nuovi libri alla lista dei libri di cui ti vuoi liberare basta andare nella sezione profilo.</h2>
 				<div class="col-md-6 col-sm-6 col-sm-push-6">
 					<div class="mu-hero-right">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
@@ -118,9 +124,8 @@ function content_5ee90cbd58d358_42574086 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="col-md-6 col-sm-6 col-sm-pull-6">
 					<div class="mu-hero-left">
 						<h1>Condividi i tuoi libri </h1>
-						<p>E' semplice basta poco, cerca un libro di tuo interesse fai una proposta di scambio con un tuo libro, se l'utente accetta avrai un nuovo libro da leggere senza spendere un euro. Più scambi più guadagni punti per comprare fantastici ebook su questo sito. Allora perchè perdere tempo inizia la tua condivisione, registrati subito qui sotto.</p>
-						 <a href="/booksharing/Utente/registra/<?php echo '';?>
-">REGISTRATI</a>
+						<p></p>
+
 					</div>
 				</div>	
 
@@ -167,23 +172,21 @@ function content_5ee90cbd58d358_42574086 (Smarty_Internal_Template $_smarty_tpl)
   									<input type="text" name="anno"><br>
   									
   									
-
+  									<!-- SELECTBOX -->
   									GENERE<br>
-  									<select name="genere">
- 									<option value=""></option>
-  									<option value="Giallo">Giallo</option>
-  									<option value="Horror">Horror</option>ù
+									<select name="genere">
+										<option value=""></option>
+										<option value="Giallo">Giallo</option>
+										<option value="Horror">Horror</option>ù
 										<option value="Storico">Storico</option>
 										<option value="Biografia">Biografia</option>
 										<option value="Fantasy">Fantasy</option>
 										<option value="Narrativa">Narrativa</option>
 										<option value="Thriller">Thriller</option>
 										<option value="Romanzo">Romanzo</option>
+									</select><br>
 
-  									</select><br>
-
-
- 									CONDIZIONE<br>
+									CONDIZIONE<br>
 									<select name="condizione">
 										<option value=""></option>
 										<option value="nuovo">Nuovo</option>
@@ -191,6 +194,7 @@ function content_5ee90cbd58d358_42574086 (Smarty_Internal_Template $_smarty_tpl)
 										<option value="usato">Usato</option>
 										<option value="pessime">Pessime condizioni</option>
 									</select><br>
+
 
   										<!-- SUBMIT -->
  							 <input type="submit" name="ricerca" value="ricerca">

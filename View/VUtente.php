@@ -267,9 +267,10 @@ class VUtente
      * @throws SmartyException
      * Messaggio di errore per dati di log in errati.
      */
-    public function errore()
+    public function errore($m)
     {
         $this->smarty->assign('errore','Errore');
+        $this->smarty->assign('messaggio',$m);
         $this->smarty->display('login.tpl');
     }
 

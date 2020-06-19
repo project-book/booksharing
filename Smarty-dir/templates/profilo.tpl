@@ -100,11 +100,9 @@
             <div class="cerca-libro-heading-area">
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
-
 {if isset($immagine)}
                     <img src="/booksharing/Smarty-dir/assets/images/user/{$immagine}">
                     {/if}
-
                     <h2>In questa pagina puoi visualizzare le tue informazioni utente, tra cui dati personali, valutazioni e proposte.
                     Una volta accettata una proposta ricevuta o dopo che una vostra proposta inviata viene accettata, puoi contattare via email l'utente per accordare
                     lo scambio.

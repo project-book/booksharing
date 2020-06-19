@@ -39,6 +39,10 @@ function my_autoloader($className)
         case 'I':
             include_once( $className . '.php' );
             break;
+
+        case 'P':
+            include_once('PHPMailer-master/src/'. $className . '.php' );
+            break;
     }
 }
 

@@ -293,13 +293,15 @@ class VAdmin
     }
 
 
+
     /**
      * @throws SmartyException
      * Indirizza alla home dell'admin.
      */
-    public function homeadmin()
+    public function homeadmin($u,$m)
     {
-        $this->smarty->assign('nome',$_SESSION['user']);
+        $this->smarty->assign('nome',$u);
+        $this->smarty->assign('m',$m);
         $this->smarty->display('adminreg.tpl');
     }
 
@@ -312,8 +314,8 @@ class VAdmin
     public function ebookresult($result, $u){
 
         $this->smarty->assign('array', $result);
+
         $this->smarty->assign('user', $u);
-        print 'ciao';
         $this->smarty->display('ebookadmin.tpl');
     }
 
@@ -321,7 +323,9 @@ class VAdmin
      * @throws SmartyException
      * Indirizza alla pagina di modifica dell'ebook.
      */
-    public function modificaebook(){
+    public function modificaebook($ebook){
+
+        $this->smarty->assign('ebook', $ebook);
 
         $this->smarty->display('modificaebook.tpl');
 

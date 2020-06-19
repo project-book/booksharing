@@ -104,7 +104,6 @@
                     <h1 align="center"> Utente </h1>
 
                     <tr>
-                        <th>Seleziona</th>
                         <th>User</th>
                         <th>Password</th>
                         <th>Nome</th>
@@ -119,20 +118,12 @@
                     </tr>
 
                     {foreach $array as $x}
+                    {if $x->getuser()!= 'admin'}
                     <form method="post" action="/booksharing/Admin/eliminautente/{$x->getuser()}">
 
                         <tr>
-                            {if $x->getuser()!= 'admin'}
-                            <td>
-                                <div class="bottone">
 
-                                    <input type="radio" name="registrato" value="user">
-                                    <div class="ciao">{$x->getuser()}</div><br>
-
-                                </div>
-                            </td>
-
-                            <td>{$x->getuser()}</td>
+                                <td><a href="/booksharing/Utente/dettagliutente/{$x->getuser()}">{$x->getuser()}</a></td>
                             <td>{$x->getpsw()}</td>
                             <td>{$x->getnome()}</td>
                             <td>{$x->getcognome()}</td>
@@ -142,17 +133,22 @@
                             <td>{$x->getindirizzo()->getcap()}</td>
                             <td>{$x->getindirizzo()->getComune()}</td>
                             <td>{$x->getindirizzo()->getprovincia()}</td>
+                            <td><input type="submit" name="elimina" value="elimina" ></td>
 
-                            <td> <input type="submit" name="elimina" value="elimina" ></td>
-                            {/if}
+
+
+                        </form>
+                    {/if}
+                            {/foreach}
+
                         </tr>
-                        {/foreach}
-                    </form>
+
 
 
 
 
                 </table>
+
             </td>
 
 

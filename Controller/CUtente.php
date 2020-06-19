@@ -148,12 +148,12 @@ class CUtente
                 $_SESSION['password']=$v->getpassword();
                 if($_SESSION['user']== 'admin') {
                     if ($_SESSION['password'] == $x->getpsw())
-                        $vv->homeadmin();
+                        $vv->homeadmin($_SESSION['user'],'');
                 }
                 else
                     $v->home();
             } else
-                $v->errore();
+                $v->errore('');
     }
 
     /**

@@ -45,7 +45,7 @@ class CFrontController
                 $vv = new VAdmin;
                 $utente = $_SESSION['user'];
                 if ($utente == 'admin')
-                    $vv->homeadmin();
+                    $vv->homeadmin($utente,'');
                 else
                     $v->home();
             } else {

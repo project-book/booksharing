@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 11:58:39
-  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\registrati.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 15:40:14
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/registrati.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee9e94fa71dd6_24870006',
+  'unifunc' => 'content_5eecc03e30adc9_71769488',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '6c46b0bd7ed4efb9c6d420082d3fcd27494b4ae2' => 
+    '71336cd0e346105779716809d74bbc933609f4c5' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\registrati.tpl',
-      1 => 1592331216,
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/registrati.tpl',
+      1 => 1592410874,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee9e94fa71dd6_24870006 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eecc03e30adc9_71769488 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -107,9 +107,11 @@ function content_5ee9e94fa71dd6_24870006 (Smarty_Internal_Template $_smarty_tpl)
 								<h2 class="cerca-libro-heading-title">REGISTRATI</h2>
 								<span class="cerca-libro-header-dot"></span>
 								<p>Scrivi i tuoi dati e accertati di rispettare il formato:
-								1)L'user non può appartenere ad un utente gia registrato.
-								2)L'email deve avere un formato valido.
-								3)Inserire cap,comune e provincia validi.</p>
+								1)L'user non può appartenere ad un utente gia registrato.<br>
+								2)L'email deve avere un formato valido.<br>
+								3)Inserire cap,comune e provincia validi.<br>
+								4)Il civico deve essere esclusivamente un numero intero.<br>
+								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi</p>
 							</div>
 
 							<!-- Start Cerca Libro Overview Content -->

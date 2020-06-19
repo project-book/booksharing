@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-18 18:00:21
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 15:20:19
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/installazione.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eeb8f95900aa3_10200951',
+  'unifunc' => 'content_5eecbb9341fff1_29458547',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd0cf1f8ff7287832da4b008f3de82652f4831ab5' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/installazione.tpl',
-      1 => 1592496020,
+      1 => 1592572814,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eeb8f95900aa3_10200951 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eecbb9341fff1_29458547 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,9 +120,9 @@ function content_5eeb8f95900aa3_10200951 (Smarty_Internal_Template $_smarty_tpl)
 								<form action="/booksharing/" method="POST">
 
 									Nome Database<br>
-									<input type="text" name="user"><br>
+									<input type="text" name="nomedb"><br>
 									Nome Utente<br>
-									<input type="text" name="nome"><br>
+									<input type="text" name="nomeutente"><br>
 									Password<br>
 									<input type="password"  name="password"><br>
 
@@ -174,6 +174,9 @@ function content_5eeb8f95900aa3_10200951 (Smarty_Internal_Template $_smarty_tpl)
  type="text/javascript" src="/booksharing/Smarty-dir/assets/js/app.js"><?php echo '</script'; ?>
 >
 
+<?php echo '<script'; ?>
+ type="text/javascript" src="/booksharing/Smarty-dir/assets/js/checkjs.js"><?php echo '</script'; ?>
+>
 
 
 <!-- Custom js -->

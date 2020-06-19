@@ -86,6 +86,7 @@
                             <h2 class="cerca-libro-heading-title">GESTISCI EBOOK</h2>
                             <span class="cerca-libro-header-dot"></span>
 
+
                         </div>
 
 
@@ -103,7 +104,6 @@
                     <h1 align="center"> Ebook </h1>
 
                     <tr>
-                        <th>Seleziona</th>
                         <th>Titolo</th>
                         <th>Autore</th>
                         <th>Editore</th>
@@ -114,17 +114,10 @@
                     </tr>
 
                     {foreach $array as $x}
-                    <form method="post" action="/booksharing/Admin/modifica_elimina/{$x->gettitolo()}/{$x->getautore()}">
+
 
                         <tr>
-                            <td>
-                                <div class="bottone">
-
-                                        <input type="radio" name="LibroRichiesto" value="titolo">
-                                        <div class="ciao">{$x->gettitolo()}/{$x->getautore()}</div><br>
-
-                                </div>
-                            </td>
+                            <form method="post" action="/booksharing/Admin/modifica_elimina/{$x->gettitolo()}/{$x->getautore()}">
 
                             <td>{$x->gettitolo()}</td>
                             <td>{$x->getautore()}</td>
@@ -132,15 +125,16 @@
                             <td>{$x->getgenere()}</td>
                             <td>{$x->getanno()}</td>
                             <td>{$x->getprezzo()}</td>
-                            <td> <input type="submit" name="modifica" value="modifica" ></td>
-                            <td> <input type="submit" name="elimina" value="elimina" ></td>
+                            <td><input type="submit" name="modifica" value="modifica" ></td>
+                            <td><input type="submit" name="elimina" value="elimina" ></td>
 
                         </tr>
+                        </form>
 
                         {/foreach}
-                    </form>
+
+
                         <tr><form method="post" action="/booksharing/Admin/aggiungiebook">
-                                <td><output type="text" name=""></td>
                                 <td><input type="text" name="titolo"></td>
                                 <td><input type="text" name="autore"></td>
                                 <td><input type="text" name="editore"></td>
@@ -160,12 +154,14 @@
                                 <td><input type="text" name="prezzo_punti"></td>
                         </tr>
                 </table>
+
             </td>
 
 
 
 
         </tr>
+
     </table>
 
 

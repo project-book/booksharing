@@ -1,6 +1,10 @@
 <?php
 
-require __DIR__."/../PHPMailer-master/";
+require_once __DIR__."/../PHPMailer-master/src/PHPMailer.php";
+require_once __DIR__."/../PHPMailer-master/src/Exception.php";
+require_once __DIR__."/../PHPMailer-master/src/SMTP.php";
+require_once __DIR__."/../PHPMailer-master/src/OAuth.php";
+
 /**
  * Class CEbooks
  * Controller che permette all'utente di ricercare e di acquistare un ebook.
@@ -53,6 +57,7 @@ class CCercaEbook
     {
         if(CUtente::isLogged())
         {
+
             $o=new FPersistentManager();
             $x=$o->load('Registrato',$_SESSION['user']);
             $c['titolo']=$k;
@@ -64,26 +69,15 @@ class CCercaEbook
             $v=new VCercaEbook();
             if($t->controllopunti($x)== true){
                 $s['saldo']=$x->getsaldo()-$t->getprezzo();
+                if(!static::inviaemail($x->getemail(),$t)){;
+                $mess='Riprova, controlla l\'email';
+                $v->saldoinsuff($x,$mess,$e);}
+                else{
+
                 $o->update('Registrato',$s,$_SESSION['user']);
                 $o->delete('Ebook',$c);
-                $v->Compra($t,$x->getemail(),$s['saldo']);
+                $v->Compra($t,$x->getemail(),$s['saldo']);}
 
-                $mail = new PHPMailer();
-                $mail->From     = "ebooks@booksharing.it";
-                $mail->FromName = "booksharing.com";
-                $mail->AddAddress($x->getemail());
-                $mail->IsHTML(true);
-                //$mail->AddBCC($indirizzibcc);
-                $mail->Subject  =  'Oggetto: Invio libro versione pdf relativo acquisto sul nostro sito';
-                $mail->Body     =  '';
-                $mail->AltBody  =  "";
-                $mail->AddAttachment(__DIR__.'/../Smarty-dir/assets/ebooks/ciao.pdf');
-                if(!$mail->Send()){
-                    $e=new VErrore();
-                    $e->ErroreScambio('Errore nell\'invio del file controllare se la mail registrata è corretta e riprovare di nuovo');
-                }else{
-                    echo "SUCCESSO l'email è stata inviata!";
-                }
             }
             else{
                 $mess='Il tuo saldo punti  è insufficente';
@@ -93,4 +87,40 @@ class CCercaEbook
         }
     }
 
+    public function inviaemail($x,$t){
+
+        // Instantiation and passing `true` enables exceptions
+
+            $mail = new \PHPMailer\PHPMailer\PHPMailer();
+            $mail->SMTPDebug = \PHPMailer\PHPMailer\SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';// Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = 'booksharingtest1@gmail.com';                     // SMTP username
+            $mail->Password   = 'booksharingprova';                               // SMTP password
+            $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+
+
+        $mail->From     = "booksharingtest1@gmail.com";
+        $mail->FromName = "booksharing.com";
+        $mail->AddAddress($x);
+        $mail->IsHTML(true);
+        $mail->AddBCC($x,'');
+        $mail->Subject  =  'Oggetto: Invio libro versione pdf relativo acquisto sul nostro sito';
+        $mail->Body     =  'ciao ecco il tuo ebook!!!!!!!';
+        $mail->AltBody  =  "";
+        $mail->AddAttachment(__DIR__.'/../Smarty-dir/assets/ebooks/'.$t->getTitolo().'_'.$t->getAutore.'.pdf');
+            if(!$mail->Send()){
+                return false;
+                echo "ERRORE nell'invio della mail.";
+            }else{
+                return true;
+                echo "SUCCESSO l'email è stata inviata!";}
+
+        }
+
 }
+
+

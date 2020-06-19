@@ -49,18 +49,21 @@ class CAdmin
      * Funzione che si occupa di eliminare o modificare un ebook dal db in base al valore del titolo e l'autore (chiavi primarie)
      * passati per parametro.
      */
-    public function modifica_elimina($tit, $aut)
+    public function modifica_elimina($tit,$aut)
     {
         $v=new VAdmin();
+        $p=new FPersistentManager();
+        $t['titolo']=$tit;
+        $t['autore']=$aut;
         if($v->getmodfica()!= null){
-            $v->modificaebook();
+        $ebook=$p->load('Ebook',$t);
+            $v->modificaebook($ebook);
         }
         if($v->getelimina()!= null){
             $x=new FPersistentManager();
             if(CUtente::isLogged()==true){
-                $u['titolo']=$tit;
-                $u['autore']=$aut;
-                $x->delete('Ebook',$u);
+
+                $x->delete('Ebook',$t);
                 header("Location:/booksharing/Admin/ricerca");
             }
         }
@@ -133,7 +136,29 @@ class CAdmin
         if(CUtente::isLogged()==true){
             $x->delete('Registrato',$user);
             $v=new VAdmin();
-            $v->homeadmin();
+            $m='L\'utente è stato eliminato';
+            $v->homeadmin($_SESSION['user'],$m);
         }
+    }
+
+    public function aggiornaebook($tit,$aut){
+        $p=new FPersistentManager();
+        $v=new VAdmin();
+        if(CUtente::isLogged()==true){
+        $u['titolo']=$tit;
+        $u['autore']=$aut;
+        if($v->geteditore()!=NULL)
+        $t['editore']=$v->geteditore();
+        if($v->getgenere()!=NULL)
+        $t['genere']=$v->getgenere();
+        if($v->getanno()!=NULL)
+        $t['anno']=$v->getanno();
+        if($v->getprezzo()!=NULL)
+        $t['prezzo_punti']=$v->getprezzo();
+
+        $p->update('Ebook',$t,$u);
+        $m='la modifica è andata buon fine';
+        $v->homeadmin($_SESSION['user'],$m);}
+
     }
 }

@@ -91,7 +91,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
-
+                        {if $m!=''}<h1 align="center">{$m}</h1>{/if}
                         <div class="cerca-libro-heading-area">
                             <h2 class="cerca-libro-heading-title">CERCA UTENTE</h2>
                             <span class="cerca-libro-header-dot"></span>

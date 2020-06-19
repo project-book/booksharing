@@ -85,21 +85,31 @@
                         <div class="cerca-libro-overview-content">
                             <div class="row">
 
-                                <form method="post" action="/booksharing/Admin/aggiornaebook">
+                                <form method="post" action="/booksharing/Admin/aggiornaebook/{$ebook->getTitolo()}/{$ebook->getAutore()}">
 
                                     <!-- CASELLE DI TESTO -->
                                     TITOLO<br>
-                                    <input type="text" name="titolo"><br>
+                                    <output type="text"  name="titolo">{$ebook->getTitolo()}<br></output>
                                     AUTORE<br>
-                                    <input type="text" name="autore"><br>
+                                    <output type="text" name="autore">{$ebook->getAutore()}<br></output>
                                     EDITORE<br>
-                                    <input type="text" name="editore"><br>
+                                    <input type="text" placeholder="{$ebook->getEditore()}" name="editore"><br>
                                     GENERE<br>
-                                    <input type="text" name="genere"><br>
+                                    <select name="genere">
+                                        <option value=""></option>
+                                        <option value="Giallo">Giallo</option>
+                                        <option value="Horror">Horror</option>ù
+                                        <option value="Storico">Storico</option>
+                                        <option value="Biografia">Biografia</option>
+                                        <option value="Fantasy">Fantasy</option>
+                                        <option value="Narrativa">Narrativa</option>
+                                        <option value="Thriller">Thriller</option>
+                                        <option value="Romanzo">Romanzo</option>
+                                    </select><br>
                                     ANNO<br>
-                                    <input type="text" name="anno"><br>
+                                    <input type="text" placeholder="{$ebook->getAnno()}" name="anno"><br>
                                     PREZZO<br>
-                                    <input type="text" name="prezzo_punti"><br>
+                                    <input type="text" placeholder="{$ebook->getprezzo()}" name="prezzo_punti"><br>
 
 
                                     <!-- SUBMIT -->

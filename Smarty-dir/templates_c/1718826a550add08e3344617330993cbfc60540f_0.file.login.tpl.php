@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-17 13:11:40
-  from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\recensione.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-06-19 15:20:48
+  from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ee9fa6c221ca0_59751366',
+  'unifunc' => 'content_5eecbbb0217c13_33320910',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a60bf7a7d9cb777bb5cc47b720d4662eeb41e63c' => 
+    '1718826a550add08e3344617330993cbfc60540f' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\recensione.tpl',
-      1 => 1592391986,
+      0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/login.tpl',
+      1 => 1592410254,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ee9fa6c221ca0_59751366 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5eecbbb0217c13_33320910 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,20 +70,22 @@ function content_5ee9fa6c221ca0_59751366 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container">
         <nav class="navbar navbar-default mu-navbar">
             <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+               
+
+                    <!-- Text Logo -->
+                    <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+
+                    <!-- Image Logo -->
+                    <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
 
 
-                <!-- Text Logo -->
-                <a class="navbar-brand" href="/booksharing/"><i class="fa fa-book" aria-hidden="true"></i> BookSharing</a>
+                </div>
 
-                <!-- Image Logo -->
-                <!-- <a class="navbar-brand" href="index.html"><img src="/booksharing/Smarty-dir/assets/images/logo.png"></a> -->
-
-
-            </div>
-
-
-    </div><!-- /.container-fluid -->
-    </nav>
+            
+            </div><!-- /.container-fluid -->
+        </nav>
     </div>
 </header>
 <!-- End Header -->
@@ -102,55 +104,36 @@ function content_5ee9fa6c221ca0_59751366 (Smarty_Internal_Template $_smarty_tpl)
             <div class="row">
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
-
-                        <div class="cerca-libro-heading-area">
-                            <h2 class="cerca-libro-heading-title">Recensisci</h2>
-                            <span class="cerca-libro-header-dot"></span>
-                            <?php if ($_smarty_tpl->tpl_vars['m']->value != '') {?>
-                                <p><?php echo $_smarty_tpl->tpl_vars['m']->value;?>
-</p>
-                            <?php }?>
-
-                        </div>
-
+<?php if ($_smarty_tpl->tpl_vars['messaggio']->value != '') {?>
+                <h2><?php echo $_smarty_tpl->tpl_vars['messaggio']->value;?>
+</h2><?php }?>
                         <!-- Start Cerca Libro Overview Content -->
                         <div class="cerca-libro-overview-content">
                             <div class="row">
-
-                                <form method="post" action="/booksharing/Utente/inviarec/<?php echo $_smarty_tpl->tpl_vars['user']->value;?>
-/<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-">
-
-                                    <!-- CASELLE DI TESTO -->
-                                    USER<br>
-                                    <otuput type="text" name="user"><?php echo $_smarty_tpl->tpl_vars['user']->value;?>
-<br>
-
-                                        <!-- SELECTBOX -->
-                                        VOTO<br>
-                                        <select name="voto">
-                                            <option value=1>1</option>
-                                            <option value=2>2</option>
-                                            <option value=3>3</option>
-                                            <option value=4>4</option>
-                                            <option value=5>5</option>
-                                        </select><br>
-
-                                        COMMENTO<br>
-                                        <textarea name="commento" cols="40" rows="5" placeholder="inserisci commento"></textarea><br>
-
-
-
-                                    <!-- SUBMIT -->
-                                    <input type="submit" name="invia" value="invia">
-
-
-
+                                <form method="post" action="/booksharing/Utente/login/">
+                                    <h1>Login</h1>
+                                    <input type="text" id="username" placeholder="user" name="user">
+                                    <input type="password" id="password" placeholder="password" name="password">
+                                    <button type="submit" name="login">Accedi</button>
                                 </form>
+                        <?php if ($_smarty_tpl->tpl_vars['errore']->value != NULL) {?>
+                             <h2><?php echo $_smarty_tpl->tpl_vars['errore']->value;?>
+</h2>
+                                <?php }?>
+                                <div class="mt-1">
+                                    <p align="center">Non hai un account? <br/>
+                                        <a href="/booksharing/Utente/registra/<?php echo '';?>
+" >Registrati</a>
+                                        </p>
+                                </div>
+
                             </div>
                         </div>
                         <!-- End Cerca Libro Overview Content -->
-
+                        <div class="testo-centrato">
+                        <img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
+                        </div>
+                        <hr>
                     </div>
                 </div>
             </div>
