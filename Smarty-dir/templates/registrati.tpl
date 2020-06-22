@@ -84,7 +84,8 @@
 								2)L'email deve avere un formato valido.<br>
 								3)Inserire cap,comune e provincia validi.<br>
 								4)Il civico deve essere esclusivamente un numero intero.<br>
-								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi</p>
+								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi
+									6)L'immagine è facoltativa ma deve rispettare le dimensioni 3MByte e deve essere .JPEG,.JPG,.PNG,.Gif</p>
 							</div>
 
 							<!-- Start Cerca Libro Overview Content -->

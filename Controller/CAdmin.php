@@ -72,14 +72,53 @@ class CAdmin
     /**
      *Funzione che permette di aggiungere un ebook nel db.
      */
-    public function aggiungiebook(){
-        if(CUtente::isLogged()==true){
-            $VRegistra=new VAdmin();
-            $x=new FPersistentManager();
-            $r= new EEbook($VRegistra->gettitolo(),$VRegistra->getautore(),$VRegistra->geteditore(),$VRegistra->getgenere(),$VRegistra->getanno(),$VRegistra->getprezzo());
-            $x->store($r);
-            header("Location:/booksharing/Admin/ricerca");
-        }
+    public function aggiungiebook()
+    {
+        if (CUtente::isLogged() == true) {
+            $VRegistra = new VAdmin();
+            $x = new FPersistentManager();
+
+
+         $uploadDir = __DIR__ . '/../Smarty-dir/assets/ebooks/';
+            foreach ($VRegistra->getfile() as $file) {
+                if (UPLOAD_ERR_OK === $file['error']) {
+                    $f = explode('/', $file['type']);
+
+                    $fileName = $VRegistra->gettitolo() . '_' . $VRegistra->getautore() . '.' . $f[1];
+                    if (!preg_match('/^(pdf)$/', $f[1])) {
+                        $m = 'IL formato deve essere PDF.';
+                        $e = new VErrore();
+                        $e->ERRORE($m);
+                        exit;
+                    } else {
+                        if ($file['size']>200000) {
+                            $m = 'File di dimensioni eccessive.';
+                            $e = new VErrore();
+                            $e->ERRORE($m);
+                            exit;
+                        } else {
+                            print $uploadDir . DIRECTORY_SEPARATOR . $fileName;
+                            move_uploaded_file($file['tmp_name'], $uploadDir . DIRECTORY_SEPARATOR . $fileName);
+                            $r = new EEbook($VRegistra->gettitolo(), $VRegistra->getautore(), $VRegistra->geteditore(), $VRegistra->getgenere(), $VRegistra->getanno(), $VRegistra->getprezzo());
+                            $x->store($r);
+                            header("Location:/booksharing/Admin/ricerca");
+                        }
+                    }
+                }
+                else
+                {
+                    $m = 'Caricamento interrotto.';
+                    $e = new VErrore();
+                    $e->ERRORE($m);
+                    exit;
+                }
+
+
+            }
+            }
+
+        else
+            CUtente::inserimento();
     }
 
     /**

@@ -21,6 +21,15 @@ class VAdmin
         $this->smarty = StartSmarty::configuration();
     }
 
+
+    public function getfile()
+    {
+        $value = NULL;
+        if (isset($_FILES))
+            $value = $_FILES;
+        return $value;
+    }
+
     /**
      * @return mixed|null
      * Preleva il titolo del libro dalla richiesta post http.
@@ -198,6 +207,8 @@ class VAdmin
         return $value;
     }
 
+
+
     /**
      * @return mixed|null
      * Preleva il cap dalla richiesta post http.
@@ -342,4 +353,5 @@ class VAdmin
 
         $this->smarty->display('utenteadmin.tpl');
     }
+
 }

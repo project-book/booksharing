@@ -80,12 +80,12 @@ class CCercaLibro
             if (empty($_POST['LibroPersonale'])) {
                 print 'ciao';
                 $e = new VErrore();
-                $e->ErroreScambio('Per proporre uno scambio bisogna selezionare un proprio libro da offrire all\'altro utente');
+                $e->ERRORE('Per proporre uno scambio bisogna selezionare un proprio libro da offrire all\'altro utente');
                 exit;
             }
             if (empty($_POST['LibroRichiesto'])) {
                 $e = new VErrore();
-                $e->ErroreScambio('Per proporre uno scambio bisogna selezionare un libro che si desidera acquisire dall\'altro utente');
+                $e->ERRORE('Per proporre uno scambio bisogna selezionare un libro che si desidera acquisire dall\'altro utente');
                 exit;
             }
 

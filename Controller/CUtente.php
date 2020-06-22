@@ -86,7 +86,22 @@ class CUtente
                         exit;
                     }
                     else
-                    move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
+                    {
+                        if ($file['size']>200000) {
+                            $m = 'File di dimensioni eccessive.';
+                            $e = new VErrore();
+                            $e->ERRORE($m);
+                            exit;}
+                            else
+                                move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
+                    }
+
+                }else
+                {
+                    $m = 'Caricamento interrotto.';
+                    $e = new VErrore();
+                    $e->ERRORE($m);
+                    exit;
                 }
             }
 
@@ -405,11 +420,17 @@ class CUtente
                                 exit;
                             }
                             else{
+                                if ($file['size']>3000000) {
+                                    $m = 'File di dimensioni eccessive.';
+                                    $e = new VErrore();
+                                    $e->ERRORE($m);
+                                    exit;}
                                 if(isset($immagine[0])) {
                                     unlink(realpath($directory) . '/' . $Img);
                                 }
                                 move_uploaded_file($file['tmp_name'], $directory.DIRECTORY_SEPARATOR.$fileName);}
                         }
+
                     }
 
 
@@ -459,6 +480,7 @@ public function EliminaAccount()
             $ca=array_unique($ca);$province=array_unique($province);
             $V->modificautente($u,$m,$ca,$province,$comuni);
         }
+        else static::inserimento();
 
     }
 

@@ -134,7 +134,7 @@
                         {/foreach}
 
 
-                        <tr><form method="post" action="/booksharing/Admin/aggiungiebook">
+                        <tr><form method="post" action="/booksharing/Admin/aggiungiebook" enctype="multipart/form-data">
                                 <td><input type="text" name="titolo"></td>
                                 <td><input type="text" name="autore"></td>
                                 <td><input type="text" name="editore"></td>
@@ -152,6 +152,14 @@
                                     </select><br></td>
                                 <td><input type="text" name="anno"></td>
                                 <td><input type="text" name="prezzo_punti"></td>
+
+                                <td>
+                                    <!-- UPLOAD PDF -->
+                                <p>Aggiungi il file pdf dell'ebook.</p>
+                                <input name="file" type="file"/>
+                                    <!--/ UPLOAD PDF -->
+                                </td>
+
                         </tr>
                 </table>
 
