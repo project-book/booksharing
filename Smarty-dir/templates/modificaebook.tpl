@@ -78,6 +78,7 @@
 
                         <div class="cerca-libro-heading-area">
                             <h2 class="cerca-libro-heading-title">MODIFICA EBOOK</h2>
+                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....), l'anno deve essere un intero</h2>
                             <span class="cerca-libro-header-dot"></span>
                         </div>
 

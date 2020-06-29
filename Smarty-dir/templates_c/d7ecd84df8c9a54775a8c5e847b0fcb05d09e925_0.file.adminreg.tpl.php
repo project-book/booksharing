@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-29 14:45:13
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 12:16:43
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/adminreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef9e259da4aa7_06877458',
+  'unifunc' => 'content_5ef9bf8b59a803_75342075',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd7ecd84df8c9a54775a8c5e847b0fcb05d09e925' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/adminreg.tpl',
-      1 => 1593434713,
+      1 => 1593425801,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef9e259da4aa7_06877458 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9bf8b59a803_75342075 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,10 +122,9 @@ function content_5ef9e259da4aa7_06877458 (Smarty_Internal_Template $_smarty_tpl)
                         <?php if ($_smarty_tpl->tpl_vars['m']->value != '') {?><h1 align="center"><?php echo $_smarty_tpl->tpl_vars['m']->value;?>
 </h1><?php }?>
                         <div class="cerca-libro-heading-area">
-                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....) e l'email deve avere un formato valido(example@example.com), n°civico deve essere un intero</h2>
+                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....) e l'email deve avere un formato valido(example@example.com), n°civico e cap devono essere degli interi</h2>
                             <h2 class="cerca-libro-heading-title">CERCA UTENTE</h2>
                             <span class="cerca-libro-header-dot"></span>
-                            <p>Scrivi i valori di ricerca</p>
 
                         </div>
 
@@ -149,20 +148,7 @@ function content_5ef9e259da4aa7_06877458 (Smarty_Internal_Template $_smarty_tpl)
                                     N°civico<br>
                                     <input type="text" name="ncivico"><br>
                                     CAP<br>
-                                    <select name="cap">
-                                        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['cap']->value, 'c');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
-?>
-                                            <option value=<?php echo $_smarty_tpl->tpl_vars['c']->value;?>
-><?php echo $_smarty_tpl->tpl_vars['c']->value;?>
-</option>
-                                        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                                    </select><br>
+                                    <input type="text" name="cap"><br>
 
 
                                     <!-- SUBMIT -->

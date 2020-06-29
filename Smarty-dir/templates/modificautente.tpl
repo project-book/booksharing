@@ -92,7 +92,7 @@
                         <div class="cerca-libro-overview-content">
                             <div class="row">
 
-                                <form method=\"POST\" action="/booksharing/Utente/aggiornautente" enctype="multipart/form-data">
+                                <form method="post" action="/booksharing/Utente/aggiornautente" enctype="multipart/form-data">
 
                                     <!-- CASELLE DI TESTO -->
                                   {if $messaggio!=NULL}  <h2>{$messaggio}</h2>{/if}
@@ -130,8 +130,7 @@
                                     </select><br>
                                     <!-- UPLOAD IMMAGINE -->
                                     <p>Modifica immagnie</p>
-                                    <div align ="center">
-                                    <br><input name="file" type="file" size="40" /></div>
+                                    <br><input name="file" type="file" size="40" />
                                     <!--/ UPLOAD IMMAGINE --><br>
 
                                     <!-- SUBMIT -->
