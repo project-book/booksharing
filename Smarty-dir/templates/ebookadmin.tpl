@@ -135,9 +135,9 @@
 
 
                         <tr><form method="post" action="/booksharing/Admin/aggiungiebook" enctype="multipart/form-data">
-                                <td><input type="text" name="titolo"></td>
-                                <td><input type="text" name="autore"></td>
-                                <td><input type="text" name="editore"></td>
+                                <td><input type="text" name="titolo" ></td>
+                                <td><input type="text" name="autore"  ></td>
+                                <td><input type="text" name="editore" ></td>
                                 <td>
                                     <select name="genere">
                                         <option value=""></option>
@@ -150,8 +150,8 @@
                                         <option value="Thriller">Thriller</option>
                                         <option value="Romanzo">Romanzo</option>
                                     </select><br></td>
-                                <td><input type="text" name="anno"></td>
-                                <td><input type="text" name="prezzo_punti"></td>
+                                <td><input type="text" name="anno"  ></td>
+                                <td><input type="text" name="prezzo_punti"  ></td>
 
                                 <td>
                                     <!-- UPLOAD PDF -->

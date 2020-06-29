@@ -203,7 +203,7 @@ class VAdmin
     {
         $value = NULL;
         if (isset($_POST['ncivico']))
-            $value = $_POST['ncivico'];
+            $value =$_POST['ncivico'];
         return $value;
     }
 

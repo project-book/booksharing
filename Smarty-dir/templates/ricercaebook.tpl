@@ -104,36 +104,18 @@
 						<h1> Ebook da scegliere </h1>
 
 						<tr>
-							<th>Seleziona</th>
 							<th>Titolo</th>
 							<th>Autore</th>
 							<th>Editore</th>
 							<th>Genere</th>
 							<th>Anno</th>
 							<th>prezzo punti</th>
-
 						</tr>
 
 						{foreach $array as $x}
 
 						<form method="post" action="/booksharing/CercaEbook/compra/{$x->gettitolo()}/{$x->getautore()}">
 							<tr>
-								<td>
-									<div class="bottone">
-										{if ($user->getsaldo()>=$x->getprezzo())}
-										<input type="radio" name="LibroRichiesto" value="titolo">
-										<div class="ciao">{$x->gettitolo()}/{$x->getautore()}</div><br>
-										{else}
-											<input type="radio" name="LibroRichiesto" value="titolo" onclick="myFunction()">
-											<div class="ciao">{$x->gettitolo()}/{$x->getautore()}</div><br>
-											<script>
-												function myFunction() {
-													alert("Saldo punti non sufficente");
-												}
-											</script>
-										{/if}
-									</div>
-								</td>
 
 								<td>{$x->gettitolo()}</td>
 								<td>{$x->getautore()}</td>
@@ -141,11 +123,12 @@
 								<td>{$x->getgenere()}</td>
 								<td>{$x->getanno()}</td>
 								<td>{$x->getprezzo()}</td>
-
+								<td><input type="submit" name="ricerca" value="COMPRA"></td>
 							</tr>
-
-						{/foreach}
+						</form>
+							{/foreach}
 					</table>
+
 				</td>
 
 
@@ -159,10 +142,9 @@
 
 		<div class="testo-centrato">
 
-			<input type="submit" name="ricerca" value="COMPRA">
-
 		</div>
-	</form>
+
+
 
 	<div class="testo-centrato">
 	{if $mess!='null'}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-22 19:21:06
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 18:29:39
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\ebookadmin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef0e882d26793_37552118',
+  'unifunc' => 'content_5ef8c573b7cf36_68355787',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '47ed49ca41ceae4cb88a3b0597817b0a82f9c326' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\ebookadmin.tpl',
-      1 => 1592846431,
+      1 => 1593361770,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0e882d26793_37552118 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8c573b7cf36_68355787 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('mess', (($tmp = @$_smarty_tpl->tpl_vars['mess']->value)===null||$tmp==='' ? 'null' : $tmp));?>
 <html lang="en">
@@ -181,9 +181,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 
                         <tr><form method="post" action="/booksharing/Admin/aggiungiebook" enctype="multipart/form-data">
-                                <td><input type="text" name="titolo"></td>
-                                <td><input type="text" name="autore"></td>
-                                <td><input type="text" name="editore"></td>
+                                <td><input type="text" name="titolo" ></td>
+                                <td><input type="text" name="autore"  ></td>
+                                <td><input type="text" name="editore" ></td>
                                 <td>
                                     <select name="genere">
                                         <option value=""></option>
@@ -196,8 +196,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                         <option value="Thriller">Thriller</option>
                                         <option value="Romanzo">Romanzo</option>
                                     </select><br></td>
-                                <td><input type="text" name="anno"></td>
-                                <td><input type="text" name="prezzo_punti"></td>
+                                <td><input type="text" name="anno"  ></td>
+                                <td><input type="text" name="prezzo_punti"  ></td>
 
                                 <td>
                                     <!-- UPLOAD PDF -->

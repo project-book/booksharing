@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 16:43:21
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 12:16:43
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/adminreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eeccf09065e90_36225345',
+  'unifunc' => 'content_5ef9bf8b59a803_75342075',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd7ecd84df8c9a54775a8c5e847b0fcb05d09e925' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/adminreg.tpl',
-      1 => 1592577799,
+      1 => 1593425801,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eeccf09065e90_36225345 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9bf8b59a803_75342075 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,6 +122,7 @@ function content_5eeccf09065e90_36225345 (Smarty_Internal_Template $_smarty_tpl)
                         <?php if ($_smarty_tpl->tpl_vars['m']->value != '') {?><h1 align="center"><?php echo $_smarty_tpl->tpl_vars['m']->value;?>
 </h1><?php }?>
                         <div class="cerca-libro-heading-area">
+                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....) e l'email deve avere un formato valido(example@example.com), n°civico e cap devono essere degli interi</h2>
                             <h2 class="cerca-libro-heading-title">CERCA UTENTE</h2>
                             <span class="cerca-libro-header-dot"></span>
 
@@ -148,10 +149,6 @@ function content_5eeccf09065e90_36225345 (Smarty_Internal_Template $_smarty_tpl)
                                     <input type="text" name="ncivico"><br>
                                     CAP<br>
                                     <input type="text" name="cap"><br>
-                                    Comune<br>
-                                    <input type="text" name="comune"><br>
-                                    Provincia<br>
-                                    <input type="text" name="provincia"><br>
 
 
                                     <!-- SUBMIT -->
@@ -181,6 +178,7 @@ function content_5eeccf09065e90_36225345 (Smarty_Internal_Template $_smarty_tpl)
                     <div class="cerca-ebook-overview-area">
 
                         <div class="cerca-ebook-heading-area">
+                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....), l'anno deve essere un intero</h2>
                             <h2 class="cerca-ebook-heading-title">CERCA EBOOK</h2>
                             <span class="cerca-ebook-header-dot"></span>
                             <p>Scrivi i valori di ricerca</p>
@@ -201,7 +199,8 @@ function content_5eeccf09065e90_36225345 (Smarty_Internal_Template $_smarty_tpl)
                                     EDITORE<br>
                                     <input type="text" name="editore"><br>
                                     ANNO<br>
-                                    <input type="text" name="anno"><br>
+                                    <input type="text" name="anno" pattern="[0-9]<?php echo 4;?>
+"><br>
 
 
                                     <!-- SELECTBOX -->
@@ -220,9 +219,9 @@ function content_5eeccf09065e90_36225345 (Smarty_Internal_Template $_smarty_tpl)
 
                                     <!-- CHECKBOX -->
                                     PREZZO PUNTI<br>
-                                    <input type="checkbox" name="prezzo_punti" value="0-50"> 0-50<br>
-                                    <input type="checkbox" name="prezzo_punti" value="50-100"> 50-100<br>
-                                    <input type="checkbox" name="prezzo_punti" value="50-100"> >100<br>
+                                    <input type="radio" name="prezzo_punti" value="0-10"> 0-10<br>
+                                    <input type="radio" name="prezzo_punti" value="10-30"> 10-30<br>
+                                    <input type="radio" name="prezzo_punti" value="30-70"> 30-70<br>
 
 
 

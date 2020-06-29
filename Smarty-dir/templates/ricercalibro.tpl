@@ -208,8 +208,9 @@
 									<div class="testo-centrato">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
 					</div>
+	<hr>
 </section>
-<hr>
+
 
 
 

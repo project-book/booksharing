@@ -139,6 +139,7 @@ class FEbook
             'FROM `'.$this->tab.'` ' .
             'WHERE '.$s;
         $query=substr($query,0,strlen($query)-4);
+        print $query;
         return $this->query($query);
     }
 
@@ -205,8 +206,10 @@ class FEbook
         $query='SELECT * ' .
             'FROM `'.$this->tab.'` '.'WHERE '.$s;
         if(isset($par['prezzo_punti']))
+            if(count($par)>1)
             $query=$query.'AND'.' '.static::range($par['prezzo_punti']);
-
+            else
+                $query=$query.' '.static::range($par['prezzo_punti']);
         if ($o!='')
             $query.='ORDER BY '.$o.' ';
         $this->query($query);

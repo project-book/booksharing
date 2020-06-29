@@ -89,11 +89,11 @@
 
                                     <!-- CASELLE DI TESTO -->
                                     TITOLO<br>
-                                    <output type="text"  name="titolo">{$ebook->getTitolo()}<br></output>
+                                    <output type="text"  name="titolo" >{$ebook->getTitolo()}<br></output>
                                     AUTORE<br>
                                     <output type="text" name="autore">{$ebook->getAutore()}<br></output>
                                     EDITORE<br>
-                                    <input type="text" placeholder="{$ebook->getEditore()}" name="editore"><br>
+                                    <output type="text" name="editore"  >{$ebook->getEditore()}<br></output>
                                     GENERE<br>
                                     <select name="genere">
                                         <option value=""></option>
@@ -107,7 +107,7 @@
                                         <option value="Romanzo">Romanzo</option>
                                     </select><br>
                                     ANNO<br>
-                                    <input type="text" placeholder="{$ebook->getAnno()}" name="anno"><br>
+                                    <input type="text" placeholder="{$ebook->getAnno()}"name="anno"><br>
                                     PREZZO<br>
                                     <input type="text" placeholder="{$ebook->getprezzo()}" name="prezzo_punti"><br>
 

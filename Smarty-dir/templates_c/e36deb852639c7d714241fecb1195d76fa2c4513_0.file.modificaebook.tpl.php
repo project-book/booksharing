@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 16:31:26
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 12:02:48
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/modificaebook.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eeccc3eaa18b0_96525919',
+  'unifunc' => 'content_5ef9bc4822e7f4_92937853',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e36deb852639c7d714241fecb1195d76fa2c4513' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/modificaebook.tpl',
-      1 => 1592577073,
+      1 => 1593424966,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eeccc3eaa18b0_96525919 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9bc4822e7f4_92937853 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,14 +118,14 @@ function content_5eeccc3eaa18b0_96525919 (Smarty_Internal_Template $_smarty_tpl)
 
                                     <!-- CASELLE DI TESTO -->
                                     TITOLO<br>
-                                    <output type="text"  name="titolo"><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getTitolo();?>
+                                    <output type="text"  name="titolo" ><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getTitolo();?>
 <br></output>
                                     AUTORE<br>
                                     <output type="text" name="autore"><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getAutore();?>
 <br></output>
                                     EDITORE<br>
-                                    <input type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getEditore();?>
-" name="editore"><br>
+                                    <output type="text" name="editore"  ><?php echo $_smarty_tpl->tpl_vars['ebook']->value->getEditore();?>
+<br></output>
                                     GENERE<br>
                                     <select name="genere">
                                         <option value=""></option>
@@ -140,7 +140,7 @@ function content_5eeccc3eaa18b0_96525919 (Smarty_Internal_Template $_smarty_tpl)
                                     </select><br>
                                     ANNO<br>
                                     <input type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getAnno();?>
-" name="anno"><br>
+"name="anno"><br>
                                     PREZZO<br>
                                     <input type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['ebook']->value->getprezzo();?>
 " name="prezzo_punti"><br>

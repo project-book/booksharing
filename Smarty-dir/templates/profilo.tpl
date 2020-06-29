@@ -100,7 +100,7 @@
             <div class="cerca-libro-heading-area">
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
-{if isset($immagine)}
+                     {if !empty($immagine)}
                     <img src="/booksharing/Smarty-dir/assets/images/user/{$immagine}">
                     {/if}
                     <h2>In questa pagina puoi visualizzare le tue informazioni utente, tra cui dati personali, valutazioni e proposte.
@@ -207,7 +207,7 @@
                                                 <tr>
                                                     <form method="post" action="/booksharing/Utente/aggiungilibro" enctype="multipart/form-data">
                                                         <td><input type="text" name="titolo"></td>
-                                                        <td><input type="text" name="autore"></td>
+                                                        <td><input type="text" name="autore" ></td>
                                                         <td><input type="text" name="editore"></td>
                                                         <td><select name="genere">
                                                             <option value=""></option>
@@ -222,17 +222,14 @@
 
 
                                                         </select><br></td>
-                                                        <td><input type="text" name="anno"></td>
+                                                        <td><input type="text" name="anno" ></td>
                                                         <td>  <select name="condizione">
                                                                 <option value=""></option>
                                                                 <option value="Nuovo">Nuovo</option>
-                                                            <option value="Come">Come nuovo</option>
-                                                            <option value="Usato">Usato</option>
+                                                            <option value="Ottime">Ottime condizioni</option>
+                                                                <option value="Buone">Buone condizioni</option>
                                                             <option value="Pessime">Pessime condizioni</option></td>
-                                                        <td>        <!-- UPLOAD IMMAGINE -->
-                                                            <p>Aggiungi una tua immagnie</p>
-                                                            <input name="file" type="file" size="40" />
-                                                            <!--/ UPLOAD IMMAGINE --></td>
+
 
 
                                                 </tr>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Giu 10, 2020 alle 12:04
+-- Host: 127.0.0.1
+-- Creato il: Giu 28, 2020 alle 18:43
 -- Versione del server: 10.4.11-MariaDB
--- Versione PHP: 7.4.5
+-- Versione PHP: 7.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `booksharing`
+-- Database: `b`
 --
 
 -- --------------------------------------------------------
@@ -34,8 +34,16 @@ CREATE TABLE `ebook` (
   `editore` varchar(30) NOT NULL,
   `genere` varchar(20) NOT NULL,
   `anno` smallint(6) NOT NULL,
-  `prezzo_punti` varchar(40) NOT NULL
+  `prezzo_punti` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `ebook`
+--
+
+INSERT INTO `ebook` (`titolo`, `autore`, `editore`, `genere`, `anno`, `prezzo_punti`) VALUES
+('Il processo', 'Kafka', 'Adelphi', 'Romanzo', 2014, 10),
+('Moby Dick', 'Herman Melville ', 'Mondadori', 'Romanzo', 2019, 20);
 
 -- --------------------------------------------------------
 
@@ -56,8 +64,9 @@ CREATE TABLE `indirizzo` (
 --
 
 INSERT INTO `indirizzo` (`via`, `civico`, `cap`, `comune`, `provincia`) VALUES
-('admin', '1', '00010', 'Abano', 'AG'),
-('roma', '13', '00030', 'Acerenza', 'BZ');
+('Genova', '21', '65015', 'Montesilvano', 'PE'),
+('Mologa', '21', '65015', 'Montesilvano', 'PE'),
+('Mologa', '4', '65015', 'Montesilvano', 'PE');
 
 -- --------------------------------------------------------
 
@@ -76,6 +85,15 @@ CREATE TABLE `libro_cartaceo` (
   `esaurito` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `libro_cartaceo`
+--
+
+INSERT INTO `libro_cartaceo` (`titolo`, `autore`, `editore`, `genere`, `anno`, `condizione`, `user`, `esaurito`) VALUES
+('Cento anni di solitudine', 'Gabriel García Márquez  ', 'Mondadori', 'Romanzo', 1965, 'Nuovo', 'marco', 0),
+('Il sentiero dei nidi di ragno', 'Primo Levi', 'Mondadori', 'Storico', 1900, 'Pessime', 'mario', 0),
+('Se questo è un uomo', 'Italo Calvino', 'Einaudi', 'Biografia', 2014, 'Pessime', 'mario', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +110,13 @@ CREATE TABLE `proposta` (
   `autore_prop` varchar(30) NOT NULL,
   `stato` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `proposta`
+--
+
+INSERT INTO `proposta` (`id`, `proponente`, `ricevente`, `titolo_libro`, `autore_libro`, `titolo_prop`, `autore_prop`, `stato`) VALUES
+(12, 'marco', 'mario', 'Il sentiero dei nidi di ragno', 'Primo Levi', 'Cento anni di solitudine', 'Gabriel García Márquez  ', '');
 
 -- --------------------------------------------------------
 
@@ -116,8 +141,9 @@ CREATE TABLE `registrato` (
 --
 
 INSERT INTO `registrato` (`user`, `password`, `nome`, `cognome`, `email`, `via`, `civico`, `cap`, `saldo`) VALUES
-('admin', 'admin', 'admin', 'admin', 'admin@admin.com', 'admin', '1', '00010', 0),
-('gio', 'stu', 'Giorgio', 'Fraccavento', 'gio@gmail.com', 'roma', '13', '00030', 0);
+('admin', 'password', 'admin', 'admin', 'admin@gmail.com', 'Genova', '21', '65015', 0),
+('marco', 'password', 'marco', 'Rossi', 'federicopaolonefederico@gmail.com', 'Mologa', '4', '65015', 0),
+('mario', 'password', 'mario', 'Rossi', 'federicopaolonefederico@gmail.com', 'Genova', '21', '65015', 880);
 
 -- --------------------------------------------------------
 
@@ -187,7 +213,13 @@ ALTER TABLE `valutazione`
 -- AUTO_INCREMENT per la tabella `proposta`
 --
 ALTER TABLE `proposta`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT per la tabella `valutazione`
+--
+ALTER TABLE `valutazione`
+  MODIFY `id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Limiti per le tabelle scaricate

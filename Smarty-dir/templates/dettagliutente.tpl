@@ -109,9 +109,7 @@
                     <div class="cerca-libro-overview-area">
 
                         <div class="cerca-libro-heading-area">
-                            <h2 class="cerca-libro-heading-title">CERCA LIBRO</h2>
                             <span class="cerca-libro-header-dot"></span>
-                            <p>Scrivi i valori di ricerca</p>
                         </div>
 
                         <!-- Start Cerca Libro Overview Content -->
@@ -169,7 +167,6 @@
 
                                             <h1> Libri personali </h1>
                                             <tr>
-                                                <th>Seleziona</th>
                                                 <th>Titolo</th>
                                                 <th>Autore</th>
                                                 <th>Editore</th>
@@ -180,9 +177,7 @@
                                             </tr>
 
                                             {foreach $libri as $x}
-                                            <form method="post" action="/booksharing/Utente/proponiscambio/{$x->getTitolo()}/{$x->getAutore()}/{$x->getUser()->getuser()}">
                                                 <tr>
-                                                    <td><input type="radio" name="LibroRichiesto" value="titolo" "></td>
                                                     <td>{$x->getTitolo()}</td>
                                                     <td>{$x->getAutore()}</td>
                                                     <td>{$x->getEditore()}</td>
@@ -191,8 +186,7 @@
                                                     <td>{$x->getCondizione()}</td>
                                                 </tr>
                                             {/foreach}
-                                                <td><input type="submit" name="proponi scambio" value="proponi scambio"</td>
-                                            </form>
+
                                         </table>
 
 
@@ -229,9 +223,7 @@
                     <div class="cerca-ebook-overview-area">
 
                         <div class="cerca-ebook-heading-area">
-                            <h2 class="cerca-ebook-heading-title">CERCA EBOOK</h2>
                             <span class="cerca-ebook-header-dot"></span>
-                            <p>Scrivi i valori di ricerca</p>
                         </div>
 
                         <!-- Start Cerca Ebook Overview Content -->

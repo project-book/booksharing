@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 17:17:19
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:07:27
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/indexreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eecd6ffde9779_79595637',
+  'unifunc' => 'content_5ef8ce4f7517e6_86263181',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b696766cc99afb877591a8e7d8325a73c2ab4a61' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/indexreg.tpl',
-      1 => 1592403800,
+      1 => 1593021016,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eecd6ffde9779_79595637 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8ce4f7517e6_86263181 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -263,9 +263,9 @@ function content_5eecd6ffde9779_79595637 (Smarty_Internal_Template $_smarty_tpl)
 
   									<!-- CHECKBOX -->
  									PREZZO PUNTI<br>
-  									<input type="checkbox" name="prezzo_punti" value="0-50"> 0-50<br>
-  									<input type="checkbox" name="prezzo_punti" value="50-100"> 50-100<br>
-  									<input type="checkbox" name="prezzo_punti" value="50-100"> >100<br>
+  									<input type="radio" name="prezzo_punti" value="0-10"> 0-10<br>
+  									<input type="radio" name="prezzo_punti" value="10-30"> 10-30<br>
+  									<input type="radio" name="prezzo_punti" value="30-70"> 30-70<br>
 
 
 

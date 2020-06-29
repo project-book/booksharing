@@ -162,9 +162,10 @@
 		</tr>
 
 	</table>
+	<div align="center">
 	<button onclick="location.href='/booksharing/'">
 		Torna alla Home
-	</button>
+	</button></div>
 
 
 

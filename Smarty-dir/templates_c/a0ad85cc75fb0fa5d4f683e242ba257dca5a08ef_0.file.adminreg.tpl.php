@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-22 18:46:01
+/* Smarty version 3.1.34-dev-7, created on 2020-06-24 19:35:21
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\adminreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef0e049831c82_22362042',
+  'unifunc' => 'content_5ef38ed99ad332_91219418',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a0ad85cc75fb0fa5d4f683e242ba257dca5a08ef' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\adminreg.tpl',
-      1 => 1592843298,
+      1 => 1593020120,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0e049831c82_22362042 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef38ed99ad332_91219418 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,10 +148,6 @@ function content_5ef0e049831c82_22362042 (Smarty_Internal_Template $_smarty_tpl)
                                     <input type="text" name="ncivico"><br>
                                     CAP<br>
                                     <input type="text" name="cap"><br>
-                                    Comune<br>
-                                    <input type="text" name="comune"><br>
-                                    Provincia<br>
-                                    <input type="text" name="provincia"><br>
 
 
                                     <!-- SUBMIT -->
@@ -220,9 +216,9 @@ function content_5ef0e049831c82_22362042 (Smarty_Internal_Template $_smarty_tpl)
 
                                     <!-- CHECKBOX -->
                                     PREZZO PUNTI<br>
-                                    <input type="checkbox" name="prezzo_punti" value="0-50"> 0-50<br>
-                                    <input type="checkbox" name="prezzo_punti" value="50-100"> 50-100<br>
-                                    <input type="checkbox" name="prezzo_punti" value="50-100"> >100<br>
+                                    <input type="radio" name="prezzo_punti" value="0-10"> 0-10<br>
+                                    <input type="radio" name="prezzo_punti" value="10-30"> 10-30<br>
+                                    <input type="radio" name="prezzo_punti" value="30-70"> 30-70<br>
 
 
 

@@ -100,6 +100,7 @@ class VCercaLibro
      */
     public function Login()
     {
+        $this->smarty->assign('messaggio','');
         $this->smarty->assign('errore','prima di effettuare una ricerca devi essere registrato');
         $this->smarty->display('login.tpl');
     }

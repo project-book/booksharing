@@ -109,9 +109,11 @@ class VCercaEbook
     public function Compra($e, $m, $s)
     {
         $this->smarty->assign('ebook', $e);
-        $this->smarty->assign('email', $m);
-        $this->smarty->assign('saldo', $s);
+       $this->smarty->assign('email', $m);
+      $this->smarty->assign('saldo', $s);
         $this->smarty->display('riepilogoebook.tpl');
+
+
     }
 
     /**
@@ -119,6 +121,7 @@ class VCercaEbook
      */
     public function Login()
     {
+        $this->smarty->assign('messaggio','');
         $this->smarty->assign('errore','prima di effettuare una ricerca devi essere registrato');
         $this->smarty->display('login.tpl');
     }

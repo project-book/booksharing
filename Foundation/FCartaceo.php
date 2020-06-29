@@ -77,6 +77,7 @@ class FCartaceo
      */
     public function store($objec)
     {
+
         $o=$objec->getobj();
         $i = 0;
         $values = '';
@@ -116,7 +117,7 @@ class FCartaceo
                         }}
 
             }
-        $query = 'INSERT INTO ' .$this->tab . ' (' . $fields . ') VALUES (' . $values . ');';
+       $query = 'INSERT INTO ' .$this->tab . ' (' . $fields . ') VALUES (' . $values . ');';
 
         foreach ($o as $key => $value)
             if (!is_object($value) AND !is_array($value))
@@ -234,7 +235,6 @@ class FCartaceo
      */
     public function search($par, $o):array
     {
-
         $s='';
         if(!empty($par)){
         foreach ($par as $key=>$value)

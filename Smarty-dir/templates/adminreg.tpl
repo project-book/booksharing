@@ -93,6 +93,7 @@
                     <div class="cerca-libro-overview-area">
                         {if $m!=''}<h1 align="center">{$m}</h1>{/if}
                         <div class="cerca-libro-heading-area">
+                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....) e l'email deve avere un formato valido(example@example.com), n°civico e cap devono essere degli interi</h2>
                             <h2 class="cerca-libro-heading-title">CERCA UTENTE</h2>
                             <span class="cerca-libro-header-dot"></span>
 
@@ -119,10 +120,6 @@
                                     <input type="text" name="ncivico"><br>
                                     CAP<br>
                                     <input type="text" name="cap"><br>
-                                    Comune<br>
-                                    <input type="text" name="comune"><br>
-                                    Provincia<br>
-                                    <input type="text" name="provincia"><br>
 
 
                                     <!-- SUBMIT -->
@@ -152,6 +149,7 @@
                     <div class="cerca-ebook-overview-area">
 
                         <div class="cerca-ebook-heading-area">
+                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....), l'anno deve essere un intero</h2>
                             <h2 class="cerca-ebook-heading-title">CERCA EBOOK</h2>
                             <span class="cerca-ebook-header-dot"></span>
                             <p>Scrivi i valori di ricerca</p>
@@ -172,7 +170,7 @@
                                     EDITORE<br>
                                     <input type="text" name="editore"><br>
                                     ANNO<br>
-                                    <input type="text" name="anno"><br>
+                                    <input type="text" name="anno" pattern="[0-9]{4}"><br>
 
 
                                     <!-- SELECTBOX -->
@@ -191,9 +189,9 @@
 
                                     <!-- CHECKBOX -->
                                     PREZZO PUNTI<br>
-                                    <input type="checkbox" name="prezzo_punti" value="0-50"> 0-50<br>
-                                    <input type="checkbox" name="prezzo_punti" value="50-100"> 50-100<br>
-                                    <input type="checkbox" name="prezzo_punti" value="50-100"> >100<br>
+                                    <input type="radio" name="prezzo_punti" value="0-10"> 0-10<br>
+                                    <input type="radio" name="prezzo_punti" value="10-30"> 10-30<br>
+                                    <input type="radio" name="prezzo_punti" value="30-70"> 30-70<br>
 
 
 

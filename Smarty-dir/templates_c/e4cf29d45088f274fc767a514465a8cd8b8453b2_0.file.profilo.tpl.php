@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 17:55:24
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:13:39
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/profilo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eecdfec44a575_91350409',
+  'unifunc' => 'content_5ef8cfc3113bf5_02169708',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e4cf29d45088f274fc767a514465a8cd8b8453b2' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/profilo.tpl',
-      1 => 1592409414,
+      1 => 1593362434,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eecdfec44a575_91350409 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8cfc3113bf5_02169708 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('y', (($tmp = @$_smarty_tpl->tpl_vars['y']->value)===null||$tmp==='' ? '' : $tmp));
 $_smarty_tpl->_assignInScope('bool', (($tmp = @$_smarty_tpl->tpl_vars['bool']->value)===null||$tmp==='' ? 'ok' : $tmp));?>
@@ -131,7 +131,7 @@ $_smarty_tpl->_assignInScope('bool', (($tmp = @$_smarty_tpl->tpl_vars['bool']->v
             <div class="cerca-libro-heading-area">
                 <div class="cerca-libro-heading-title">
                     <h1 >PROFILO</h1>
-<?php if (isset($_smarty_tpl->tpl_vars['immagine']->value)) {?>
+                     <?php if (!empty($_smarty_tpl->tpl_vars['immagine']->value)) {?>
                     <img src="/booksharing/Smarty-dir/assets/images/user/<?php echo $_smarty_tpl->tpl_vars['immagine']->value;?>
 ">
                     <?php }?>
@@ -265,7 +265,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                                 <tr>
                                                     <form method="post" action="/booksharing/Utente/aggiungilibro" enctype="multipart/form-data">
                                                         <td><input type="text" name="titolo"></td>
-                                                        <td><input type="text" name="autore"></td>
+                                                        <td><input type="text" name="autore" ></td>
                                                         <td><input type="text" name="editore"></td>
                                                         <td><select name="genere">
                                                             <option value=""></option>
@@ -280,17 +280,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 
                                                         </select><br></td>
-                                                        <td><input type="text" name="anno"></td>
+                                                        <td><input type="text" name="anno" ></td>
                                                         <td>  <select name="condizione">
                                                                 <option value=""></option>
                                                                 <option value="Nuovo">Nuovo</option>
-                                                            <option value="Come">Come nuovo</option>
-                                                            <option value="Usato">Usato</option>
+                                                            <option value="Ottime">Ottime condizioni</option>
+                                                                <option value="Buone">Buone condizioni</option>
                                                             <option value="Pessime">Pessime condizioni</option></td>
-                                                        <td>        <!-- UPLOAD IMMAGINE -->
-                                                            <p>Aggiungi una tua immagnie</p>
-                                                            <input name="file" type="file" size="40" />
-                                                            <!--/ UPLOAD IMMAGINE --></td>
+
 
 
                                                 </tr>

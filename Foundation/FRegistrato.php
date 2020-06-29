@@ -231,10 +231,10 @@ class FRegistrato
             $s='';
         if(!empty($par)){
             foreach ($par as $key=>$value)
-                if(gettype($value)=="integer")
-                    $s.=' '.$key.'='.$value.' AND';
-                else
+                if(gettype($value)=="string")
                     $s.=' '.$key.'='.'\''.$value.'\''.'AND';
+                else
+                     $s.=' '.$key.'='.$value.' AND';
             $s=substr($s,0,strlen($s)-3);
             $query='SELECT * ' .
                 'FROM `'.$this->tab.'` '.'WHERE '.$s.' ';
@@ -242,6 +242,7 @@ class FRegistrato
                 $query.='ORDER BY '.$o.' ';
             $this->query($query);
             $t=array();
+
             $n=count($this->risultato);
             for($i=0;$i<$n;$i++) {
                 $l = new FIndirizzo();
@@ -268,6 +269,7 @@ class FRegistrato
 
                 array_push($t,$p);
             }
+
             return $t;
         }
     }

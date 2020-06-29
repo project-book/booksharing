@@ -235,9 +235,9 @@
 
   									<!-- CHECKBOX -->
  									PREZZO PUNTI<br>
-  									<input type="checkbox" name="prezzo_punti" value="0-50"> 0-50<br>
-  									<input type="checkbox" name="prezzo_punti" value="50-100"> 50-100<br>
-  									<input type="checkbox" name="prezzo_punti" value="50-100"> >100<br>
+  									<input type="radio" name="prezzo_punti" value="0-10"> 0-10<br>
+  									<input type="radio" name="prezzo_punti" value="10-30"> 10-30<br>
+  									<input type="radio" name="prezzo_punti" value="30-70"> 30-70<br>
 
 
 

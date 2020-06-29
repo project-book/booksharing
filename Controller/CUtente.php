@@ -96,12 +96,6 @@ class CUtente
                                 move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
                     }
 
-                }else
-                {
-                    $m = 'Caricamento interrotto.';
-                    $e = new VErrore();
-                    $e->ERRORE($m);
-                    exit;
                 }
             }
 
@@ -177,12 +171,12 @@ class CUtente
     public function logout()
     {
         session_start();
+        //elimina l'array $_SESSION
         session_unset();
         session_destroy();
-        header('Location:/booksharing/');
+       header('Location:/booksharing/');
     }
 
-    //collega alla pagina di registrazione
 
     /**
      * @param $m
@@ -263,7 +257,7 @@ class CUtente
                 $V->profilo($ric,$eff,$r,$propinv,$propric,$ll,$proposta,$Img);
 
         }
-        else $V->inserimento();
+        else $V->inserimento('Sessione scaduta');
     }
 
 
@@ -300,6 +294,7 @@ class CUtente
      */
     public function Risposta($prop)
     {
+        if(static::isLogged()){
         $n = new FPersistentManager();
         $x = new VUtente();
 
@@ -334,7 +329,11 @@ class CUtente
             $a['stato'] = "Rifiutato";
             $n->update('Proposta', $a, $e);
             header(('Location:/booksharing/Utente/profilo'));
-        }
+        }}
+        else {
+                 $v = new VUtente();
+                 $v->inserimento('Sessione scaduta');
+              }
     }
 
 
@@ -344,9 +343,12 @@ class CUtente
      * Indirizza alla pagina che permette la scrittura della recensione.
      */
     public function Recensione($id,$m){
+        if(static::isLogged()){
         $v=new VUtente();
         $u=$v->getrecensione();
-        $v->recensione($u,$id,$m);
+        $v->recensione($u,$id,$m);}
+        else {$v=new VUtente();
+        $v->inserimento('Sessione scaduta');}
     }
 
 
@@ -356,7 +358,33 @@ class CUtente
     public function aggiornautente(){
 
         if(static::isLogged()) {
-            $VRicerca = new VUtente();
+                $VRicerca = new VUtente();
+                if($VRicerca->getcap()!=NULL AND $VRicerca->getcomune()!=NULL AND $VRicerca->getprovincia()!=NULL) {
+                    $file = 'listacomuni.txt';
+                    $fr = fopen($file, 'r');
+                    $array = file($file);
+                    $X = Array();
+                    $b = false;
+                    foreach ($array as $rigo) {
+                        $X = explode(';', $rigo);
+                        if ($VRicerca->getcap() == $X[5] AND $VRicerca->getcomune() == $X[1] AND $VRicerca->getprovincia() == $X[2])
+                            $b = true;
+                    }
+                    if ($b == false) {
+                        $m = 'il comune inserito non esiste';
+                        static::modificautente($m);
+                        exit;
+                    }
+
+                }
+                else {
+                    if ($VRicerca->getcap() != NULL OR $VRicerca->getcomune() != NULL OR $VRicerca->getprovincia() != NULL) {
+                        $m = 'Devi modificare tutti i campi relativi a comune,provincia e cap.';
+                        static::modificautente($m);
+                        exit;
+                    }
+                }
+
             $psw = "/[A-Za-z0-9]{3,15}/";
             $email = "/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/";
             $N = "/[0-9]{1,5}/";
@@ -403,42 +431,45 @@ class CUtente
                     $x->update('Indirizzo', $yy, $ttt);
 
 
-                  $directory=__DIR__.'/../Smarty-dir/assets/images/user/';
+                    $directory = __DIR__ . '/../Smarty-dir/assets/images/user/';
 
-                $immagine = glob($directory. $_SESSION['user'] .'.{jpg,jpeg,png,gif}', GLOB_BRACE);
-                shuffle($immagine);
-                $Img=basename(array_pop($immagine));
+                    $immagine = glob($directory . $_SESSION['user'] . '.{jpg,jpeg,png,gif}', GLOB_BRACE);
+                    shuffle($immagine);
+                    $Img = basename(array_pop($immagine));
 
                     foreach ($VRicerca->getfile() as $file) {
                         if (UPLOAD_ERR_OK === $file['error']) {
-                            $f=explode('/',$file['type']);
+                            $f = explode('/', $file['type']);
 
-                            $fileName =$_SESSION['user'].'.'.$f[1];
+                            $fileName = $_SESSION['user'] . '.' . $f[1];
                             if (!preg_match('/^(jpeg|jpg|gif|png)$/', $f[1])) {
-                                $m='Tipo non supportato';
+                                $m = 'Tipo non supportato';
                                 static::modificautente($m);
                                 exit;
-                            }
-                            else{
-                                if ($file['size']>3000000) {
+                            } else {
+                                if ($file['size'] > 3000000) {
                                     $m = 'File di dimensioni eccessive.';
                                     $e = new VErrore();
                                     $e->ERRORE($m);
-                                    exit;}
-                                if(isset($immagine[0])) {
+                                    exit;
+                                }
+                                if (isset($immagine[0])) {
                                     unlink(realpath($directory) . '/' . $Img);
                                 }
-                                move_uploaded_file($file['tmp_name'], $directory.DIRECTORY_SEPARATOR.$fileName);}
+                                move_uploaded_file($file['tmp_name'], $directory . DIRECTORY_SEPARATOR . $fileName);
+                            }
                         }
 
                     }
 
 
-                    static::profilo();
-                    exit;
+
                 }
             }
-        }
+                  static::profilo();
+                  exit;
+        }else {$v=new VUtente();
+        $v->inserimento('Sessione scaduta');}
     }
     /**
      *Elimina l'account definitivamente.
@@ -446,9 +477,18 @@ class CUtente
 public function EliminaAccount()
 {
     if(static::isLogged()){
+        $directory = __DIR__ . '/../Smarty-dir/assets/images/user/';
+        $immagine = glob($directory . $_SESSION['user']. '.{jpg,jpeg,png,gif}', GLOB_BRACE);
+        shuffle($immagine);
+        $Img = basename(array_pop($immagine));
         $p=new FPersistentManager();
         $p->delete('Registrato',$_SESSION['user']);
+        unlink(realpath($directory) . '/' . $Img);
         header('Location:/booksharing/');
+    }
+    else {
+        $v = new VUtente();
+        $v->inserimento('Sessione scaduta');
     }
 }
 
@@ -480,7 +520,10 @@ public function EliminaAccount()
             $ca=array_unique($ca);$province=array_unique($province);
             $V->modificautente($u,$m,$ca,$province,$comuni);
         }
-        else static::inserimento();
+        else {
+            $v=new VUtente();
+            $v->inserimento('Sessione scaduta');
+        }
 
     }
 
@@ -511,7 +554,7 @@ public function EliminaAccount()
             $v->dettagliutente($u, $l, $val, $Img,$b);
         }
         else
-            $v->inserimento();
+            $v->inserimento('Sessione scaduta');
 
     }
 
@@ -526,7 +569,7 @@ public function EliminaAccount()
         $m='';
         $v=new VUtente();
         $o=new FPersistentManager();
-        if(static::isLogged())
+        if(static::isLogged()){
             $valte=$o->load('Registrato',$_SESSION['user']);
             $valto=$o->load('Registrato',$u);
 if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
@@ -547,6 +590,7 @@ if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
     $m ='Devi riempire tutti i campi';
         $v->recensione($u, $id, $m);
     }
+            }else $v->inserimento('Sessione scaduta');
 }
 
     /**
@@ -559,7 +603,7 @@ if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
             $x=new FPersistentManager();
             $anno=(int)$VRegistra->getanno();
             $t=array('Giallo','Horror','Storico','Biografia','Narrativa','Fantasy','Thriller','Romanzo');
-            $tt=array('Nuovo','Come','Usato','Pessime');
+            $tt=array('Nuovo','Ottime','Pessime','Buone');
             $bool=0;
             $booltt=0;
 
@@ -576,7 +620,7 @@ if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
                     if($booltt==1 and $bool==1){
 
             $reg=$x->load('Registrato',$_SESSION['user']);
-            $r= new ECartaceo($VRegistra->gettitolo(),$VRegistra->getautore(),$VRegistra->geteditore(),$VRegistra->getgenere(),$anno,$VRegistra->getcondizione(),$reg);
+            $r= new ECartaceo($VRegistra->gettitolo(),$VRegistra->getautore(),$VRegistra->geteditore(),$VRegistra->getgenere(),$anno,$VRegistra->getcondizione(),$reg,0);
             $x->store($r);
                         $uploadDir = __DIR__.'/uploads/libri';
 
@@ -591,12 +635,18 @@ if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
 
             header("Location:/booksharing/Utente/profilo");}
                 else
-                   $VRegistra->Login();}
-
-
+                    header("Location:/booksharing/Utente/profilo");}
             else
-                $VRegistra->Login();;
-    }}
+            header("Location:/booksharing/Utente/profilo");
+
+    }
+        else
+        {
+            $v=new VUtente();
+            $v->inserimento('Sessione scaduta');
+        }
+
+    }
 
 
 
@@ -607,15 +657,36 @@ if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
      */
     public function eliminalibro($tit, $aut){
 
+        if(static::isLogged())
+        {
+        $t=explode('%20',$tit);
+        $a=explode('%20',$aut);
+        foreach ($t as $item)
+        {
+            if($item==$t[0])
+            $s=$item;
+            else
+                $s.=' '.$item;
+        }
+        foreach ($a as $item)
+        {
+            if($item==$a[0])
+                $ss=$item;
+            else
+                $ss.=' '.$item;
+        }
+
         $x=new FPersistentManager();
         if(CUtente::isLogged()==true){
-            $u['titolo']=$tit;
-            $u['autore']=$aut;
+            $u['titolo']=$s;
+            $u['autore']=$ss;
             $u['user']=$_SESSION['user'];
             $x->delete('Cartaceo',$u);
             header("Location:/booksharing/Utente/profilo");
         }
     }
+    else{ $v=new VUtente();
+    $v->inserimento('Sessione scaduta');}}
 
 
 
@@ -658,4 +729,10 @@ if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
             }
             $VRicerca->showResult($l,$ll,$tt);
         }
+        else
+        {
+            $v=new VUtente();
+            $v->inserimento('Sessione scaduta');
+        }
+
 }}

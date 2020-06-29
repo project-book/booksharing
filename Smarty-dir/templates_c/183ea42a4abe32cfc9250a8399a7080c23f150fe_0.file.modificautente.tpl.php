@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-22 19:39:16
+/* Smarty version 3.1.34-dev-7, created on 2020-06-24 18:27:09
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\modificautente.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef0ecc4e73af2_00563144',
+  'unifunc' => 'content_5ef37edda2be01_55386269',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '183ea42a4abe32cfc9250a8399a7080c23f150fe' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\modificautente.tpl',
-      1 => 1592843298,
+      1 => 1593016025,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0ecc4e73af2_00563144 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef37edda2be01_55386269 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('messaggio', (($tmp = @$_smarty_tpl->tpl_vars['messaggio']->value)===null||$tmp==='' ? '' : $tmp));?>
 <html lang="en">
@@ -107,7 +107,12 @@ function content_5ef0ecc4e73af2_00563144 (Smarty_Internal_Template $_smarty_tpl)
                         <div class="cerca-libro-heading-area">
                             <h2 class="cerca-libro-heading-title">REGISTRATI</h2>
                             <span class="cerca-libro-header-dot"></span>
-                            <p>Scrivi i tuoi dati</p>
+                            <p>Scrivi i tuoi dati e accertati di rispettare il formato:
+                                1)L'email deve avere un formato valido.(example@mail.com)<br>
+                                2)Cap,comune e provincia devono essere validi.<br>
+                                3)Il civico deve essere esclusivamente un numero intero.<br>
+                                4)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi
+                                5)L'immagine deve rispettare le dimensioni 3MByte e deve essere .JPEG,.JPG,.PNG,.Gif</p>
                         </div>
 
                         <!-- Start Cerca Libro Overview Content -->

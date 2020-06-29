@@ -51,9 +51,33 @@ class CCercaEbook
      * @param $kk
      * Permette di acquistare l'ebook quindi verrà rimosso dal db e verrà aggiornato il saldo punti dell'utente.
      */
-    public function compra($k, $kk)
+    public function compra($t, $a)
     {
+$k='';
+$kk='';
+        $v=new VUtente();
         if (CUtente::isLogged()) {
+            $tit=explode('%20',$t);
+            $aut=explode('%20',$a);
+            if(count($tit)==1)
+                $k=$tit[0];
+            else
+                foreach($tit as $item)
+                {
+                    $k.=$item.' ';
+                }
+
+
+            if(count($aut)==1)
+                $kk=$aut[0];
+            else
+                foreach($aut as $item)
+                {
+                    $kk.=$item.' ';
+                }
+
+            substr($kk,0,strlen($kk)-1);
+            substr($k,0,strlen($k)-1);
 
             $o = new FPersistentManager();
             $x = $o->load('Registrato', $_SESSION['user']);
@@ -71,6 +95,7 @@ class CCercaEbook
                     $v->saldoinsuff($x, $mess, $e);
                 } else {
                     $o->update('Registrato', $s, $_SESSION['user']);
+
                     $v->Compra($t, $x->getemail(), $s['saldo']);
                 }
 
@@ -80,42 +105,41 @@ class CCercaEbook
             }
 
 
-        }
+        }else {$v->inserimento('Sessione scaduta');}
     }
 
     public function inviaemail($x, $t)
     {
 
-        // Instantiation and passing `true` enables exceptions
+    $mail = new \PHPMailer\PHPMailer\PHPMailer();
+    $mail->SMTPDebug = \PHPMailer\PHPMailer\SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->Host = 'smtp.gmail.com';// Set the SMTP server to send through
+    $mail->SMTPAuth = true;                                   // Enable SMTP authentication
+    $mail->Username = 'booksharingtest1@gmail.com';                     // SMTP username
+    $mail->Password = 'booksharingprova';                               // SMTP password
+    $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-        $mail = new \PHPMailer\PHPMailer\PHPMailer();
-        $mail->SMTPDebug = \PHPMailer\PHPMailer\SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-        $mail->isSMTP();                                            // Send using SMTP
-        $mail->Host = 'smtp.gmail.com';// Set the SMTP server to send through
-        $mail->SMTPAuth = true;                                   // Enable SMTP authentication
-        $mail->Username = 'booksharingtest1@gmail.com';                     // SMTP username
-        $mail->Password = 'booksharingprova';                               // SMTP password
-        $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-        $mail->Port = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $messaggio = '<html><h1>Ecco il tuo ebook!!</h1></html>';
+    $mail->From = "booksharingtest1@gmail.com";
+    $mail->FromName = "booksharing.com";
+    $mail->AddAddress($x);
+    $mail->AddBCC($x, '');
+    $mail->isHTML(true);
+    $mail->Subject = 'Oggetto: Invio libro versione pdf relativo acquisto sul nostro sito';
+    $mail->Body = $messaggio;
+    $mail->AltBody = "";
+    $mail->AddAttachment(__DIR__ . '/../Smarty-dir/assets/ebooks/' . $t->getTitolo() . '_' . $t->getAutore() . '.pdf');
 
+    if (!$mail->Send()) {
+        $mail->smtpClose();
+        return false;
+    } else {
+        $mail->smtpClose();
+        return true;
+    }
 
-        $mail->From = "booksharingtest1@gmail.com";
-        $mail->FromName = "booksharing.com";
-        $mail->AddAddress($x);
-        $mail->AddBCC($x, '');
-        $mail->isHTML(true);
-        $mail->Subject = 'Oggetto: Invio libro versione pdf relativo acquisto sul nostro sito';
-        $mail->Body = 'ciao ecco il tuo ebook!!!!!!!';
-        $mail->AltBody = "";
-        $mail->AddAttachment(__DIR__ . '/../Smarty-dir/assets/ebooks/' . $t->getTitolo() . '_' . $t->getAutore() . '.pdf');
-
-        if (!$mail->Send()) {
-            $mail->smtpClose();
-            return false;
-        } else {
-            $mail->smtpClose();
-            return true;
-        }
 
     }
 }

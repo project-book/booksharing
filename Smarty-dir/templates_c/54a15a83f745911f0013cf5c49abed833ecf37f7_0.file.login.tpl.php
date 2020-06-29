@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-22 18:37:23
+/* Smarty version 3.1.34-dev-7, created on 2020-06-24 18:37:30
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef0de434d8046_07060267',
+  'unifunc' => 'content_5ef3814aae6ba7_42283107',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '54a15a83f745911f0013cf5c49abed833ecf37f7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\login.tpl',
-      1 => 1592843298,
+      1 => 1593016579,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0de434d8046_07060267 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef3814aae6ba7_42283107 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +104,7 @@ function content_5ef0de434d8046_07060267 (Smarty_Internal_Template $_smarty_tpl)
             <div class="row">
                 <div class="col-md-12">
                     <div class="cerca-libro-overview-area">
-<?php if ($_smarty_tpl->tpl_vars['messaggio']->value != '') {?>
+                 <?php if ($_smarty_tpl->tpl_vars['messaggio']->value != '') {?>
                 <h2><?php echo $_smarty_tpl->tpl_vars['messaggio']->value;?>
 </h2><?php }?>
                         <!-- Start Cerca Libro Overview Content -->

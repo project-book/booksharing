@@ -41,6 +41,8 @@ class CAdmin
             $VRicerca->ebookresult($x->search('Ebook',$a,$ordine),$user);
 
         }
+        else {$v=new VUtente();
+            $v->inserimento('Sessione scaduta');}
     }
 
     /**
@@ -49,24 +51,74 @@ class CAdmin
      * Funzione che si occupa di eliminare o modificare un ebook dal db in base al valore del titolo e l'autore (chiavi primarie)
      * passati per parametro.
      */
-    public function modifica_elimina($tit,$aut)
-    {
+    public function modifica_elimina($ti,$a)
+    {if(CUtente::isLogged()==true){
+        $k='';$j='';
+        $kk='';$jj='';
+        $tit=explode('%20',$ti);
+        $aut=explode('%20',$a);
+        if(count($tit)==1)
+            $k=$tit[0];
+        else
+            foreach($tit as $item)
+            {
+                $k.=$item.'_';
+            }
+
+
+        if(count($aut)==1)
+            $kk=$aut[0];
+        else
+            foreach($aut as $item)
+            {
+                $kk.=$item.'_';
+            }
+
+        if(count($tit)==1)
+            $j=$tit[0];
+        else
+            foreach($tit as $item)
+            {
+                $j.=$item.' ';
+            }
+
+
+        if(count($aut)==1)
+            $jj=$aut[0];
+        else
+            foreach($aut as $item)
+            {
+                $jj.=$item.' ';
+            }
+
+        $kk=substr($kk,0,strlen($kk)-1);
+        $k=substr($k,0,strlen($k)-1);
+        $jj=substr($jj,0,strlen($jj)-1);
+        $j=substr($j,0,strlen($j)-1);
+
+        $directory = __DIR__ . '/../Smarty-dir/assets/ebooks/';
+        $immagine = glob($directory . $k.'_'.$kk . '.pdf', GLOB_BRACE);
+        shuffle($immagine);
+        $Img = basename(array_pop($immagine));
+
         $v=new VAdmin();
         $p=new FPersistentManager();
-        $t['titolo']=$tit;
-        $t['autore']=$aut;
+        $t['titolo']=$j;
+        $t['autore']=$jj;
         if($v->getmodfica()!= null){
         $ebook=$p->load('Ebook',$t);
             $v->modificaebook($ebook);
         }
         if($v->getelimina()!= null){
             $x=new FPersistentManager();
-            if(CUtente::isLogged()==true){
-
+                print (realpath($directory));
+                print $Img;
                 $x->delete('Ebook',$t);
+                unlink(realpath($directory) . '/' . $Img);
                 header("Location:/booksharing/Admin/ricerca");
             }
-        }
+        }else{$v=new VUtente();
+        $v->inserimento('Sessione scaduta');}
     }
 
     /**
@@ -77,14 +129,34 @@ class CAdmin
         if (CUtente::isLogged() == true) {
             $VRegistra = new VAdmin();
             $x = new FPersistentManager();
+            $s='';$ss='';
 
-
-         $uploadDir = __DIR__ . '/../Smarty-dir/assets/ebooks/';
+         $uploadDir = __DIR__ . '/../Smarty-dir/assets/ebooks';
             foreach ($VRegistra->getfile() as $file) {
                 if (UPLOAD_ERR_OK === $file['error']) {
                     $f = explode('/', $file['type']);
+                    print_r($t=explode(' ',$VRegistra->gettitolo()));
+                    $a=explode(' ',$VRegistra->getautore());
+                    foreach ($t as $item)
+                    {
+                        if($item==$t[0])
+                            $s=$item;
+                        else
+                            $s.='_'.$item;
+                    }
+                    foreach ($a as $item)
+                    {
+                        if($item==$a[0])
+                            $ss=$item;
+                        else
+                            $ss.='_'.$item;
+                    }
+                    //substr($s,0,strlen($s)-1);
+                    //substr($ss,0,strlen($ss)-1);
 
-                    $fileName = $VRegistra->gettitolo() . '_' . $VRegistra->getautore() . '.' . $f[1];
+
+
+                    $fileName = $s . '_' . $ss . '.' . $f[1];
                     if (!preg_match('/^(pdf)$/', $f[1])) {
                         $m = 'IL formato deve essere PDF.';
                         $e = new VErrore();
@@ -118,7 +190,8 @@ class CAdmin
             }
 
         else
-            CUtente::inserimento();
+        {$v=new VUtente();
+            $v->inserimento('Sessione scaduta');}
     }
 
     /**
@@ -135,15 +208,13 @@ class CAdmin
             $t['cognome']=$VRicerca->getcognome();
             $t['email']=$VRicerca->getemail();
             $t['via']=$VRicerca->getvia();
-            $t['ncivico']=$VRicerca->getncivico();
+            $t['civico']=$VRicerca->getncivico();
             $t['cap']=$VRicerca->getcap();
-            $t['provincia']=$VRicerca->getprovincia();
-            $t['comune']=$VRicerca->getcomune();
             $classe='Registrato';
             $x=new FPersistentManager();
             $y=array();
-
-            if($t['user']!= null || $t['password']!= null || $t['nome']!= null || $t['cognome']!= null || $t['email']!= null || $t['via']!= null || $t['ncivico']!= null || $t['cap']!= null || $t['provincia']!= null || $t['comune']!= null){
+            $r=array();
+            if($t['user']!= null || $t['password']!= null || $t['nome']!= null || $t['cognome']!= null || $t['email']!= null || $t['via']!= null || $t['civico']!= null || $t['cap']!= null){
                 foreach ($t as $k=>$v)
                 {
                     if($v!=NULL)
@@ -154,15 +225,17 @@ class CAdmin
                     if($u->getuser()=='admin');
                         unset($u);}
                 $VRicerca->utenteresult($ee);}
-            else
-                $a=array();
-                $eee=$x->search($classe,$a,'');
-                foreach($eee as $u){
-                    if($u->getuser()=='admin');
-                        }
-            $VRicerca->utenteresult($eee);
+            else {
+                $a = array();
+                $eee = $x->search($classe, $a, '');
+                foreach ($eee as $u) {
+                    if ($u->getuser() == 'admin') ;
+                }
+                $VRicerca->utenteresult($eee);
+            }
 
-        }
+        }else {$v=new VUtente();
+            $v->inserimento('Sessione scaduta');}
     }
 
     /**
@@ -170,22 +243,27 @@ class CAdmin
      * Permette all'admin di bannare un utente e eliminare i sui dati dal db.
      */
     public function eliminautente($user){
+        $directory = __DIR__ . '/../Smarty-dir/assets/images/user/';
+        $immagine = glob($directory . $user. '.{jpg,jpeg,png,gif}', GLOB_BRACE);
+        shuffle($immagine);
+        $Img = basename(array_pop($immagine));
 
         $x=new FPersistentManager();
         if(CUtente::isLogged()==true){
             $x->delete('Registrato',$user);
+            unlink(realpath($directory) . '/' . $Img);
             $v=new VAdmin();
             $m='L\'utente è stato eliminato';
             $v->homeadmin($_SESSION['user'],$m);
-        }
+        }else {$v=new VUtente();
+            $v->inserimento('Sessione scaduta');}
     }
 
-    public function aggiornaebook($tit,$aut){
+    public function aggiornaebook($ti,$a){
         $p=new FPersistentManager();
         $v=new VAdmin();
+        $k='';$kk='';
         if(CUtente::isLogged()==true){
-        $u['titolo']=$tit;
-        $u['autore']=$aut;
         if($v->geteditore()!=NULL)
         $t['editore']=$v->geteditore();
         if($v->getgenere()!=NULL)
@@ -194,10 +272,33 @@ class CAdmin
         $t['anno']=$v->getanno();
         if($v->getprezzo()!=NULL)
         $t['prezzo_punti']=$v->getprezzo();
+            $tit=explode('%20',$ti);
+            $aut=explode('%20',$a);
+            if(count($tit)==1)
+                $k=$tit[0];
+            else
+                foreach($tit as $item)
+                {
+                    $k.=$item.' ';
+                }
 
+
+            if(count($aut)==1)
+                $kk=$aut[0];
+            else
+                foreach($aut as $item)
+                {
+                    $kk.=$item.' ';
+                }
+            $kk=substr($kk,0,strlen($kk)-1);
+            $k=substr($k,0,strlen($k)-1);
+            $u['titolo']=$k;
+            $u['autore']=$kk;
         $p->update('Ebook',$t,$u);
         $m='la modifica è andata buon fine';
         $v->homeadmin($_SESSION['user'],$m);}
-
+else
+{$v=new VUtente();
+$v->inserimento('Sessione scaduta');}
     }
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-22 18:38:27
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 14:08:32
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\ricercaebook.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef0de831db529_87809674',
+  'unifunc' => 'content_5ef88840617d10_66832046',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '57622eca15288f941e016173d7a186cc072e2510' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\ricercaebook.tpl',
-      1 => 1592843298,
+      1 => 1593346110,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0de831db529_87809674 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef88840617d10_66832046 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('mess', (($tmp = @$_smarty_tpl->tpl_vars['mess']->value)===null||$tmp==='' ? 'null' : $tmp));?>
 <html lang="en">
@@ -135,14 +135,12 @@ function content_5ef0de831db529_87809674 (Smarty_Internal_Template $_smarty_tpl)
 						<h1> Ebook da scegliere </h1>
 
 						<tr>
-							<th>Seleziona</th>
 							<th>Titolo</th>
 							<th>Autore</th>
 							<th>Editore</th>
 							<th>Genere</th>
 							<th>Anno</th>
 							<th>prezzo punti</th>
-
 						</tr>
 
 						<?php
@@ -155,28 +153,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 /<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
 ">
 							<tr>
-								<td>
-									<div class="bottone">
-										<?php if (($_smarty_tpl->tpl_vars['user']->value->getsaldo() >= $_smarty_tpl->tpl_vars['x']->value->getprezzo())) {?>
-										<input type="radio" name="LibroRichiesto" value="titolo">
-										<div class="ciao"><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
-/<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
-</div><br>
-										<?php } else { ?>
-											<input type="radio" name="LibroRichiesto" value="titolo" onclick="myFunction()">
-											<div class="ciao"><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
-/<?php echo $_smarty_tpl->tpl_vars['x']->value->getautore();?>
-</div><br>
-											<?php echo '<script'; ?>
->
-												function myFunction() {
-													alert("Saldo punti non sufficente");
-												}
-											<?php echo '</script'; ?>
->
-										<?php }?>
-									</div>
-								</td>
 
 								<td><?php echo $_smarty_tpl->tpl_vars['x']->value->gettitolo();?>
 </td>
@@ -190,14 +166,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['x']->value) {
 </td>
 								<td><?php echo $_smarty_tpl->tpl_vars['x']->value->getprezzo();?>
 </td>
-
+								<td><input type="submit" name="ricerca" value="COMPRA"></td>
 							</tr>
-
-						<?php
+						</form>
+							<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 					</table>
+
 				</td>
 
 
@@ -211,10 +188,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 		<div class="testo-centrato">
 
-			<input type="submit" name="ricerca" value="COMPRA">
-
 		</div>
-	</form>
+
+
 
 	<div class="testo-centrato">
 	<?php if ($_smarty_tpl->tpl_vars['mess']->value != 'null') {?>

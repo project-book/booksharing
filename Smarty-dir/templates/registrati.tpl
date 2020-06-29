@@ -82,7 +82,7 @@
 								<p>Scrivi i tuoi dati e accertati di rispettare il formato:
 								1)L'user non può appartenere ad un utente gia registrato.<br>
 								2)L'email deve avere un formato valido.<br>
-								3)Inserire cap,comune e provincia validi.<br>
+								3)Cap,comune e provincia devono essere validi.<br>
 								4)Il civico deve essere esclusivamente un numero intero.<br>
 								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi
 									6)L'immagine è facoltativa ma deve rispettare le dimensioni 3MByte e deve essere .JPEG,.JPG,.PNG,.Gif</p>
@@ -127,9 +127,11 @@
 												<option value={$c}>{$c}</option>
 											{/foreach}
 										</select><br>
+									<br>
 									     <!-- UPLOAD IMMAGINE -->
 										<p>Aggiungi una tua immagnie</p>
-										<input name="file" type="file" size="40" />
+									<div align ="center">
+									<input name="file" type="file" size="40" ></div>
 										<!--/ UPLOAD IMMAGINE --><br>
 
 

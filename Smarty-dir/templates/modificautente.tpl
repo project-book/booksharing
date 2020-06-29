@@ -80,7 +80,12 @@
                         <div class="cerca-libro-heading-area">
                             <h2 class="cerca-libro-heading-title">REGISTRATI</h2>
                             <span class="cerca-libro-header-dot"></span>
-                            <p>Scrivi i tuoi dati</p>
+                            <p>Scrivi i tuoi dati e accertati di rispettare il formato:
+                                1)L'email deve avere un formato valido.(example@mail.com)<br>
+                                2)Cap,comune e provincia devono essere validi.<br>
+                                3)Il civico deve essere esclusivamente un numero intero.<br>
+                                4)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi
+                                5)L'immagine deve rispettare le dimensioni 3MByte e deve essere .JPEG,.JPG,.PNG,.Gif</p>
                         </div>
 
                         <!-- Start Cerca Libro Overview Content -->

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-19 15:40:14
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:02:40
   from '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/registrati.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5eecc03e30adc9_71769488',
+  'unifunc' => 'content_5ef8cd30302cd7_42500515',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '71336cd0e346105779716809d74bbc933609f4c5' => 
     array (
       0 => '/opt/lampp/htdocs/booksharing/Smarty-dir/templates/registrati.tpl',
-      1 => 1592410874,
+      1 => 1593363758,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5eecc03e30adc9_71769488 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8cd30302cd7_42500515 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -109,9 +109,10 @@ function content_5eecc03e30adc9_71769488 (Smarty_Internal_Template $_smarty_tpl)
 								<p>Scrivi i tuoi dati e accertati di rispettare il formato:
 								1)L'user non può appartenere ad un utente gia registrato.<br>
 								2)L'email deve avere un formato valido.<br>
-								3)Inserire cap,comune e provincia validi.<br>
+								3)Cap,comune e provincia devono essere validi.<br>
 								4)Il civico deve essere esclusivamente un numero intero.<br>
-								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi</p>
+								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi
+									6)L'immagine è facoltativa ma deve rispettare le dimensioni 3MByte e deve essere .JPEG,.JPG,.PNG,.Gif</p>
 							</div>
 
 							<!-- Start Cerca Libro Overview Content -->
@@ -187,9 +188,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 										</select><br>
+									<br>
 									     <!-- UPLOAD IMMAGINE -->
 										<p>Aggiungi una tua immagnie</p>
-										<input name="file" type="file" size="40" />
+									<div align ="center">
+									<input name="file" type="file" size="40" ></div>
 										<!--/ UPLOAD IMMAGINE --><br>
 
 

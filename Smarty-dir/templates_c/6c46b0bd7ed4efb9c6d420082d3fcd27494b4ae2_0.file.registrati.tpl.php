@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-22 18:32:31
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 14:06:10
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\registrati.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef0dd1f9ec119_46535711',
+  'unifunc' => 'content_5ef887b2e51811_53925375',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c46b0bd7ed4efb9c6d420082d3fcd27494b4ae2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\registrati.tpl',
-      1 => 1592843298,
+      1 => 1593016025,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef0dd1f9ec119_46535711 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef887b2e51811_53925375 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -109,9 +109,10 @@ function content_5ef0dd1f9ec119_46535711 (Smarty_Internal_Template $_smarty_tpl)
 								<p>Scrivi i tuoi dati e accertati di rispettare il formato:
 								1)L'user non può appartenere ad un utente gia registrato.<br>
 								2)L'email deve avere un formato valido.<br>
-								3)Inserire cap,comune e provincia validi.<br>
+								3)Cap,comune e provincia devono essere validi.<br>
 								4)Il civico deve essere esclusivamente un numero intero.<br>
-								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi</p>
+								5)La password deve essere lunga da 7 a 15 caratteri, i quali possono essere lettere maiuscole minuscole e numeri interi
+									6)L'immagine è facoltativa ma deve rispettare le dimensioni 3MByte e deve essere .JPEG,.JPG,.PNG,.Gif</p>
 							</div>
 
 							<!-- Start Cerca Libro Overview Content -->

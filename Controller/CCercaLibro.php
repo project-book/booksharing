@@ -75,6 +75,7 @@ class CCercaLibro
     public function scambia()
     {
         $v=new VCercaLibro();
+        $vv=new VUtente();
         if(CUtente::islogged()) {
 
             if (empty($_POST['LibroPersonale'])) {
@@ -103,7 +104,7 @@ class CCercaLibro
             $x->store($p);
             $v->showlibro($p);
         }
-        else $v->inserimento();
+        else $vv->inserimento('Sessione scaduta');
     }
 
 

@@ -1433,7 +1433,7 @@ class PHPMailer
                 return false;
             }
 
-            return $this->postSend();
+           return $this->postSend();
         } catch (Exception $exc) {
             $this->mailHeader = '';
             $this->setError($exc->getMessage());
@@ -1857,6 +1857,7 @@ class PHPMailer
         if (!$this->smtpConnect($this->SMTPOptions)) {
             throw new Exception($this->lang('smtp_connect_failed'), self::STOP_CRITICAL);
         }
+
         //Sender already validated in preSend()
         if ('' === $this->Sender) {
             $smtp_from = $this->From;
@@ -1977,6 +1978,7 @@ class PHPMailer
 
             //Check the host name is a valid name or IP address before trying to use it
             if (!static::isValidHost($hostinfo[2])) {
+
                 $this->edebug($this->lang('invalid_host') . ' ' . $hostinfo[2]);
                 continue;
             }
