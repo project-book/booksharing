@@ -44,8 +44,22 @@ class CFrontController
                 $v = new VUtente();
                 $vv = new VAdmin;
                 $utente = $_SESSION['user'];
-                if ($utente == 'admin')
-                    $vv->homeadmin($utente,'');
+                if ($utente == 'admin'){
+                    $V=new VUtente();
+                $file = 'listacomuni.txt';
+                $fr = fopen($file, 'r');
+                $array = file($file);
+                $X = Array();
+                $ca=array();
+                $ca[0]='';
+                foreach ($array as $rigo)
+                {
+                    $X = explode(';', $rigo);
+                    array_push($ca,$X[5]);
+                }
+                asort($ca);
+                $ca=array_unique($ca);
+                    $vv->homeadmin($utente,'',$ca);}
                 else
                     $v->home();
             } else {

@@ -13,21 +13,7 @@ class CCercaLibro
     {
             $VRicerca = new VCercaLibro();
             if(CUtente::isLogged()==true) {
-
-                $titolo = "/[0-9A-Za-z]{1,30}/";
-                $autore = "/[0-9A-Z]{1,30}/";
-                $editore = "/[0-9A-Za-z]{1,30}/";
-                $anno="/[0-9]{1,4}/";
-
-
-                if((!preg_match($titolo,$VRicerca->gettitolo()) AND $VRicerca->gettitolo()!=nulL) OR
-                    (!preg_match($autore,$VRicerca->getautore()) AND $VRicerca->getautore()!=nulL)
-                    OR (!preg_match($editore,$VRicerca->geteditore()) AND $VRicerca->geteditore()!=nulL)
-                    OR (!preg_match($anno,$VRicerca->getanno()) AND $VRicerca->getanno()!=nulL) ){
-                    $e=new VErrore();
-                    $e->ERRORE('Rispettare i formati richiesti');
-                } else{
-                    $t = array();
+            $t = array();
             $t['titolo'] = $VRicerca->gettitolo();
             $t['autore'] = $VRicerca->getautore();
             $t['editore'] = $VRicerca->geteditore();
@@ -78,7 +64,7 @@ class CCercaLibro
                    $i++;
                }
             $VRicerca->showresult($l, $ll,$tt,'');
-        }}
+        }
         else $VRicerca->Login();
     }
 //

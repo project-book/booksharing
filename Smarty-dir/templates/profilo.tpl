@@ -165,8 +165,7 @@
 
 
 
-                        <h2>Puoi aggiungere un libro alla tua lista.
-                            Non sono ammessi caratteri speciali(?'^@ etc....) e l'anno deve essere un intero</h2>
+
 
                         <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="200%" id="AutoNumber1">
                                             <tr>
@@ -207,7 +206,7 @@
 
                                                 <tr>
                                                     <form method="post" action="/booksharing/Utente/aggiungilibro" enctype="multipart/form-data">
-                                                        <td><input type="text" name="titolo" ></td>
+                                                        <td><input type="text" name="titolo"></td>
                                                         <td><input type="text" name="autore" ></td>
                                                         <td><input type="text" name="editore"></td>
                                                         <td><select name="genere">

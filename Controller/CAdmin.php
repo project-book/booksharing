@@ -296,7 +296,21 @@ class CAdmin
             $u['autore']=$kk;
         $p->update('Ebook',$t,$u);
         $m='la modifica è andata buon fine';
-        $v->homeadmin($_SESSION['user'],$m);}
+            $file = 'listacomuni.txt';
+            $fr = fopen($file, 'r');
+            $array = file($file);
+            $X = Array();
+            $ca=array();
+            $ca[0]='';
+            foreach ($array as $rigo)
+            {
+                $X = explode(';', $rigo);
+                array_push($ca,$X[5]);
+            }
+            asort($ca);
+            $ca=array_unique($ca);
+
+        $v->homeadmin($_SESSION['user'],$m,$ca);}
 else
 {$v=new VUtente();
 $v->inserimento('Sessione scaduta');}

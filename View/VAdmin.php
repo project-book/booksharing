@@ -309,8 +309,9 @@ class VAdmin
      * @throws SmartyException
      * Indirizza alla home dell'admin.
      */
-    public function homeadmin($u,$m)
+    public function homeadmin($u,$m,$ca)
     {
+        $this->smarty->assign('cap',$ca);
         $this->smarty->assign('nome',$u);
         $this->smarty->assign('m',$m);
         $this->smarty->display('adminreg.tpl');

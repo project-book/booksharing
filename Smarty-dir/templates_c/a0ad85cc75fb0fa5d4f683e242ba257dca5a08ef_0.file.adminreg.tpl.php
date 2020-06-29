@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-29 15:06:05
+/* Smarty version 3.1.34-dev-7, created on 2020-06-24 19:35:21
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\adminreg.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef9e73d621370_19627608',
+  'unifunc' => 'content_5ef38ed99ad332_91219418',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a0ad85cc75fb0fa5d4f683e242ba257dca5a08ef' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\adminreg.tpl',
-      1 => 1593425801,
+      1 => 1593020120,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef9e73d621370_19627608 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef38ed99ad332_91219418 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,7 +122,6 @@ function content_5ef9e73d621370_19627608 (Smarty_Internal_Template $_smarty_tpl)
                         <?php if ($_smarty_tpl->tpl_vars['m']->value != '') {?><h1 align="center"><?php echo $_smarty_tpl->tpl_vars['m']->value;?>
 </h1><?php }?>
                         <div class="cerca-libro-heading-area">
-                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....) e l'email deve avere un formato valido(example@example.com), n°civico e cap devono essere degli interi</h2>
                             <h2 class="cerca-libro-heading-title">CERCA UTENTE</h2>
                             <span class="cerca-libro-header-dot"></span>
 
@@ -178,7 +177,6 @@ function content_5ef9e73d621370_19627608 (Smarty_Internal_Template $_smarty_tpl)
                     <div class="cerca-ebook-overview-area">
 
                         <div class="cerca-ebook-heading-area">
-                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....), l'anno deve essere un intero</h2>
                             <h2 class="cerca-ebook-heading-title">CERCA EBOOK</h2>
                             <span class="cerca-ebook-header-dot"></span>
                             <p>Scrivi i valori di ricerca</p>
@@ -199,8 +197,7 @@ function content_5ef9e73d621370_19627608 (Smarty_Internal_Template $_smarty_tpl)
                                     EDITORE<br>
                                     <input type="text" name="editore"><br>
                                     ANNO<br>
-                                    <input type="text" name="anno" pattern="[0-9]<?php echo 4;?>
-"><br>
+                                    <input type="text" name="anno"><br>
 
 
                                     <!-- SELECTBOX -->

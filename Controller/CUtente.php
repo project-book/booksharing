@@ -359,6 +359,7 @@ class CUtente
 
         if(static::isLogged()) {
                 $VRicerca = new VUtente();
+                print $VRicerca->getcomune();
                 if($VRicerca->getcap()!=NULL AND $VRicerca->getcomune()!=NULL AND $VRicerca->getprovincia()!=NULL) {
                     $file = 'listacomuni.txt';
                     $fr = fopen($file, 'r');
@@ -596,65 +597,53 @@ if($v->getcommento()!=NULL AND preg_match("/[1-5]{1}/",$v->getvoto())) {
     /**
      *Permette di aggiungere un libro alla propria lista dei libri da scambiare, quindi lo aggiunge al db.
      */
-    public function aggiungilibro()
-    {
-        if (CUtente::isLogged() == true) {
-            $VRegistra = new VCercaLibro();
-            $v = new VUtente();
-            $x = new FPersistentManager();
-            $anno = (int)$VRegistra->getanno();
-            $t = array('Giallo', 'Horror', 'Storico', 'Biografia', 'Narrativa', 'Fantasy', 'Thriller', 'Romanzo');
-            $tt = array('Nuovo', 'Ottime', 'Pessime', 'Buone');
-            $bool = 0;
-            $booltt = 0;
+    public function aggiungilibro(){
+        if(CUtente::isLogged()==true){
+            $VRegistra=new VCercaLibro();
+            $v=new VUtente();
+            $x=new FPersistentManager();
+            $anno=(int)$VRegistra->getanno();
+            $t=array('Giallo','Horror','Storico','Biografia','Narrativa','Fantasy','Thriller','Romanzo');
+            $tt=array('Nuovo','Ottime','Pessime','Buone');
+            $bool=0;
+            $booltt=0;
 
 
-            $titolo = "/[0-9A-Za-z]{1,30}/";
-            $autore = "/[0-9A-Z]{1,30}/";
-            $editore = "/[0-9A-Za-z]{1,30}/";
-            $anno="/[0-9]{1,4}/";
+            if($VRegistra->gettitolo()!=NULL AND $VRegistra->getautore()!=NULL AND $VRegistra->geteditore()!=NULL AND $VRegistra->getgenere()!=NULL AND
+                $VRegistra->getanno()!=NULL AND $VRegistra->getcondizione()!=NULL){
+                foreach($t as $k){
+                    if($VRegistra->getgenere()==$k) $bool=1;}
 
 
-            if((!preg_match($titolo,$VRegistra->gettitolo()) AND $VRegistra->gettitolo()!=nulL) OR
-                (!preg_match($autore,$VRegistra->getautore()) AND $VRegistra->getautore()!=nulL)
-                OR (!preg_match($editore,$VRegistra->geteditore()) AND $VRegistra->geteditore()!=nulL)
-                OR (!preg_match($anno,$VRegistra->getanno()) AND $VRegistra->getanno()!=nulL) ){
-                $e=new VErrore();
-                $e->ERRORE('Rispettare i formati richiesti');
-            } else {
-            foreach ($t as $k) {
-                if ($VRegistra->getgenere() == $k) $bool = 1;
-            }
+                    foreach($tt as $k){
+                        if($VRegistra->getcondizione()==$k) $booltt=1;}
 
+                    if($booltt==1 and $bool==1){
 
-            foreach ($tt as $k) {
-                if ($VRegistra->getcondizione() == $k) $booltt = 1;
-            }
+            $reg=$x->load('Registrato',$_SESSION['user']);
+            $r= new ECartaceo($VRegistra->gettitolo(),$VRegistra->getautore(),$VRegistra->geteditore(),$VRegistra->getgenere(),$anno,$VRegistra->getcondizione(),$reg,0);
+            $x->store($r);
+                        $uploadDir = __DIR__.'/uploads/libri';
 
-            if ($booltt == 1 and $bool == 1) {
+                        foreach ($v->getfile() as $file) {
+                            if (UPLOAD_ERR_OK === $file['error']) {
+                                $f=explode('/',$file['type']);
 
-                $reg = $x->load('Registrato', $_SESSION['user']);
-                $r = new ECartaceo($VRegistra->gettitolo(), $VRegistra->getautore(), $VRegistra->geteditore(), $VRegistra->getgenere(), $anno, $VRegistra->getcondizione(), $reg, 0);
-                $x->store($r);
-                $uploadDir = __DIR__ . '/uploads/libri';
+                                $fileName =$VRegistra->gettitolo().'_'.$VRegistra->getautore().'_'.$_SESSION['user'].'_'.'.'.$f[1];
+                                move_uploaded_file($file['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
+                            }
+                        }
 
-                foreach ($v->getfile() as $file) {
-                    if (UPLOAD_ERR_OK === $file['error']) {
-                        $f = explode('/', $file['type']);
+            header("Location:/booksharing/Utente/profilo");}
+                else
+                    header("Location:/booksharing/Utente/profilo");}
+            else
+            header("Location:/booksharing/Utente/profilo");
 
-                        $fileName = $VRegistra->gettitolo() . '_' . $VRegistra->getautore() . '_' . $_SESSION['user'] . '_' . '.' . $f[1];
-                        move_uploaded_file($file['tmp_name'], $uploadDir . DIRECTORY_SEPARATOR . $fileName);
-                    }
-                }
-
-                header("Location:/booksharing/Utente/profilo");
-            } else
-                header("Location:/booksharing/Utente/profilo");
-
-    }}
-    else
+    }
+        else
         {
-            $v = new VUtente();
+            $v=new VUtente();
             $v->inserimento('Sessione scaduta');
         }
 
