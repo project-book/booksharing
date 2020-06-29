@@ -19,29 +19,43 @@ class CCercaEbook
 
         $VRicerca = new VCercaEbook();
         if (CUtente::isLogged() == true) {
-            $t = array();
-            $t['titolo'] = $VRicerca->gettitolo();
-            $t['autore'] = $VRicerca->getautore();
-            $t['editore'] = $VRicerca->geteditore();
-            $t['genere'] = $VRicerca->getgenere();
-            $t['anno'] = $VRicerca->getanno();
-            $t['prezzo_punti'] = $VRicerca->getprezzo();
-            $ordine = '';
-            $classe = 'Ebook';
-            $x = new FPersistentManager();
-            $y = array();
-            if ($t['titolo'] != null || $t['autore'] != null || $t['editore'] != null || $t['genere'] != null || $t['anno'] != null || $t['prezzo_punti'] != null) {
-                foreach ($t as $k => $v) {
-                    if ($v != NULL)
-                        $y[$k] = $v;
-                }
-                $user = $x->load('Registrato', $_SESSION['user']);
-                $VRicerca->showresult($x->search($classe, $y, $ordine), $user);
-            } else
-                $a = array();
-            $user = $x->load('Registrato', $_SESSION['user']);
-            $VRicerca->showresult($x->search('Ebook', $a, $ordine), $user);
+            $titolo = "/[0-9A-Za-z]{1,30}/";
+            $autore = "/[0-9A-Z]{1,30}/";
+            $editore = "/[0-9A-Za-z]{1,30}/";
+            $prezzo = "/[0-9]{1,10}/";
+            $anno="/[0-9]{1,4}/";
 
+            if((!preg_match($titolo,$VRicerca->gettitolo()) AND $VRicerca->gettitolo()!=nulL) OR
+                (!preg_match($autore,$VRicerca->getautore()) AND $VRicerca->getautore()!=nulL)
+               OR (!preg_match($editore,$VRicerca->geteditore()) AND $VRicerca->geteditore()!=nulL)
+                OR (!preg_match($anno,$VRicerca->getanno()) AND $VRicerca->getanno()!=nulL) ){
+                $e=new VErrore();
+                $e->ERRORE('Rispettare i formati richiesti');
+            }
+            else{ $t = array();
+                $t['titolo'] = $VRicerca->gettitolo();
+                $t['autore'] = $VRicerca->getautore();
+                $t['editore'] = $VRicerca->geteditore();
+                $t['genere'] = $VRicerca->getgenere();
+                $t['anno'] = $VRicerca->getanno();
+                $t['prezzo_punti'] = $VRicerca->getprezzo();
+                $ordine = '';
+                $classe = 'Ebook';
+                $x = new FPersistentManager();
+                $y = array();
+                if ($t['titolo'] != null || $t['autore'] != null || $t['editore'] != null || $t['genere'] != null || $t['anno'] != null || $t['prezzo_punti'] != null) {
+                    foreach ($t as $k => $v) {
+                        if ($v != NULL)
+                            $y[$k] = $v;
+                    }
+                    $user = $x->load('Registrato', $_SESSION['user']);
+                    $VRicerca->showresult($x->search($classe, $y, $ordine), $user);
+                } else
+                    $a = array();
+                $user = $x->load('Registrato', $_SESSION['user']);
+                $VRicerca->showresult($x->search('Ebook', $a, $ordine), $user);
+
+            }
         } else
             $VRicerca->Login();
     }

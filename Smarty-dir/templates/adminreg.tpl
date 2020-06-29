@@ -93,10 +93,9 @@
                     <div class="cerca-libro-overview-area">
                         {if $m!=''}<h1 align="center">{$m}</h1>{/if}
                         <div class="cerca-libro-heading-area">
-                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....) e l'email deve avere un formato valido(example@example.com), n°civico deve essere un intero</h2>
+                            <h2>Non sono ammessi caratteri speciali(?'^@ etc....) e l'email deve avere un formato valido(example@example.com), n°civico e cap devono essere degli interi</h2>
                             <h2 class="cerca-libro-heading-title">CERCA UTENTE</h2>
                             <span class="cerca-libro-header-dot"></span>
-                            <p>Scrivi i valori di ricerca</p>
 
                         </div>
 
@@ -120,11 +119,7 @@
                                     N°civico<br>
                                     <input type="text" name="ncivico"><br>
                                     CAP<br>
-                                    <select name="cap">
-                                        {foreach $cap as $c}
-                                            <option value={$c}>{$c}</option>
-                                        {/foreach}
-                                    </select><br>
+                                    <input type="text" name="cap"><br>
 
 
                                     <!-- SUBMIT -->

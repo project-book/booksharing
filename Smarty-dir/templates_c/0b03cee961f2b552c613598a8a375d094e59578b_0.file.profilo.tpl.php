@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 18:40:34
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 15:02:45
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\profilo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef8c802d899f4_96599978',
+  'unifunc' => 'content_5ef9e6759fc986_33595137',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0b03cee961f2b552c613598a8a375d094e59578b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\profilo.tpl',
-      1 => 1593362433,
+      1 => 1593433964,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef8c802d899f4_96599978 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9e6759fc986_33595137 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php $_smarty_tpl->_assignInScope('y', (($tmp = @$_smarty_tpl->tpl_vars['y']->value)===null||$tmp==='' ? '' : $tmp));
 $_smarty_tpl->_assignInScope('bool', (($tmp = @$_smarty_tpl->tpl_vars['bool']->value)===null||$tmp==='' ? 'ok' : $tmp));?>
@@ -208,7 +208,8 @@ $_smarty_tpl->_assignInScope('bool', (($tmp = @$_smarty_tpl->tpl_vars['bool']->v
 
 
 
-
+                        <h2>Puoi aggiungere un libro alla tua lista.
+                            Non sono ammessi caratteri speciali(?'^@ etc....) e l'anno deve essere un intero</h2>
 
                         <table border="0" cellpadding="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="200%" id="AutoNumber1">
                                             <tr>
@@ -264,7 +265,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
                                                 <tr>
                                                     <form method="post" action="/booksharing/Utente/aggiungilibro" enctype="multipart/form-data">
-                                                        <td><input type="text" name="titolo"></td>
+                                                        <td><input type="text" name="titolo" ></td>
                                                         <td><input type="text" name="autore" ></td>
                                                         <td><input type="text" name="editore"></td>
                                                         <td><select name="genere">

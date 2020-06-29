@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-24 17:55:41
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 14:27:53
   from 'C:\xampp\htdocs\booksharing\Smarty-dir\templates\ricercalibro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef3777d2edc10_65046668',
+  'unifunc' => 'content_5ef9de49044d46_03433517',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4364c9686e1fc08386de3bfbe9b85d0e743b14f2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\booksharing\\Smarty-dir\\templates\\ricercalibro.tpl',
-      1 => 1592843298,
+      1 => 1593364148,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef3777d2edc10_65046668 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9de49044d46_03433517 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -270,8 +270,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 									<div class="testo-centrato">
 						<img src="/booksharing/Smarty-dir/assets/images/ebook.png" alt="Ebook img">
 					</div>
+	<hr>
 </section>
-<hr>
+
 
 
 
