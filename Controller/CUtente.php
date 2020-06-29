@@ -359,6 +359,7 @@ class CUtente
 
         if(static::isLogged()) {
                 $VRicerca = new VUtente();
+                print $VRicerca->getcomune();
                 if($VRicerca->getcap()!=NULL AND $VRicerca->getcomune()!=NULL AND $VRicerca->getprovincia()!=NULL) {
                     $file = 'listacomuni.txt';
                     $fr = fopen($file, 'r');
